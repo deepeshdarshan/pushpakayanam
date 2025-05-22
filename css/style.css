@@ -295,6 +295,10 @@ h6,
     width: 98% !important;
 }
 
+.w-60c {
+    width: 60% !important;
+}
+
 .minutes-heading:hover {
     cursor: pointer;
     color: red;
@@ -307,5 +311,9 @@ h6,
 @media (max-width: 768px) {
     .responsive-logo {
         width: 80%;
+    }
+
+    .w-60c {
+        width: 100% !important;
     }
 }
