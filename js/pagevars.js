@@ -34,6 +34,7 @@ const navbarHTML = `
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Announcements</a>
                 <div class="dropdown-menu m-0">
+                    <a href="walkathon.html" class="dropdown-item">Walkathon</a>
                     <a href="logo_reveal.html" class="dropdown-item">ലോഗോ പ്രകാശനം</a>
                     <a href="vishu_contest.html" class="dropdown-item">വിഷു ഫോട്ടോഗ്രാഫി മത്സരം</a>
                     <a href="reels.html" class="dropdown-item">റീൽസ് മത്സരം</a>
