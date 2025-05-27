@@ -22,14 +22,14 @@ const topbarHTML = `
 `;
 
 const navbarHTML = `
-<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-1 py-3 py-lg-0">
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-4 py-3 py-lg-0">
     <img src="img/logo.png" class="responsive-logo" onClick='goto("index.html")'>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 me-n3">
-        <a href="index.html" class="nav-item nav-link">Home</a>
+            <a href="index.html" class="nav-item nav-link item">Home</a>
             <a href="program.html" class="nav-item nav-link">Programs</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Announcements</a>
@@ -43,6 +43,14 @@ const navbarHTML = `
                 </div>
             </div>
             <a href="location.html" class="nav-item nav-link">Venue</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Downloads</a>
+                <div class="dropdown-menu m-0">
+                    <a href="https://drive.google.com/uc?export=download&id=1SFdMyNgFRC-LMZCyVmgZmPXzJhpllN8j" download="Logo" class="dropdown-item">Logo</a>
+                    <!-- <a href="https://drive.google.com/uc?export=download&id=1-RW6G3MuugCKI0sFgkoD-BP49PXnmCxK" download="Logo with description" class="dropdown-item">Logo with description</a>
+                    <a href="https://drive.google.com/uc?export=download&id=19RFv4dRF0Tq4aXHS7MKvn-uFKHTW_0L_" download="Logo with dates" class="dropdown-item">Logo with dates</a> -->
+                </div>
+             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
                 <div class="dropdown-menu m-0">
