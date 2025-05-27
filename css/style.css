@@ -306,11 +306,13 @@ h6,
 
 .responsive-logo {
     width: 25%;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
     .responsive-logo {
         width: 80%;
+        cursor: pointer;
     }
 
     .w-60c {

@@ -3,7 +3,7 @@ const topbarHTML = `
             <div class="row gx-0">
                 <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <a class="text-body py-2 pe-3 border-end" href="yuvavedi/index.html"><small>Yuvavedi</small></a>
+                        <a class="text-body py-2 pe-3 border-end" href="yuvavedi/index.html"><small></small></a>
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-lg-end">
@@ -23,7 +23,7 @@ const topbarHTML = `
 
 const navbarHTML = `
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-1 py-3 py-lg-0">
-    <img src="img/logo.png" class="responsive-logo">
+    <img src="img/logo.png" class="responsive-logo" onClick='goto("index.html")'>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -72,7 +72,9 @@ const footerHTML = `
             <div class="col-lg-2 col-md-6">
                 <h3 class="text-white mb-4">Favourite Links</h3>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-secondary mb-2" href="orgcom.html"><i class="bi bi-arrow-right text-primary me-2"></i>സ്വാഗതസംഘ രൂപീകരണം ഫോട്ടോസ്</a>
+                    <a class="text-secondary mb-2" href="logo_reveal.html"><i class="bi bi-arrow-right text-primary me-2"></i>ലോഗോ പ്രകാശനം</a>
+                    <a class="text-secondary mb-2" href="vishu_contest.html"><i class="bi bi-arrow-right text-primary me-2"></i>വിഷു ഫോട്ടോഗ്രാഫി മത്സരം</a>
+                    <a class="text-secondary mb-2" href="orgcomfly.html"><i class="bi bi-arrow-right text-primary me-2"></i>സ്വാഗതസംഘ രൂപീകരണം</a>
                     <a class="text-secondary mb-2" href="reels.html"><i class="bi bi-arrow-right text-primary me-2"></i>റീൽസ് മത്സരം</a>
                     <a class="text-secondary mb-2" href="naming_contest.html"><i class="bi bi-arrow-right text-primary me-2"></i>നാമനിർദ്ദേശ മത്സരം</a>
                 </div>
@@ -80,7 +82,7 @@ const footerHTML = `
             <div class="col-lg-2 col-md-6">
                 <h3 class="text-white mb-4">External Links</h3>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-secondary mb-2" href="yuvavedi/index.html"><i class="bi bi-arrow-right text-primary me-2"></i>Yuvavedi</a>
+                    <a class="text-secondary mb-2" href="yuvavedi/index.html"><i class="bi bi-arrow-right text-primary me-2"></i>EKM Jilla Yuvavedi</a>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6">
