@@ -122,28 +122,26 @@
           })
           .then(html => {
             document.getElementById("app").innerHTML = html;
+
+            setTimeout(() => {
+              $(".testimonial-carousel").owlCarousel({
+                autoplay: false,
+                smartSpeed: 500,
+                items: 1,
+                dots: false,
+                loop: true,
+                nav: true,
+                navText: [
+                  '<i class="bi bi-arrow-left"></i>',
+                  '<i class="bi bi-arrow-right"></i>'
+                ],
+              });
+            }, 100);
           })
           .catch(() => {
             document.getElementById("app").innerHTML = "Page not found";
           });
-
-        setTimeout(() => {
-          $(".testimonial-carousel").owlCarousel({
-            autoplay: false,
-            smartSpeed: 500,
-            items: 1,
-            dots: false,
-            loop: true,
-            nav: true,
-            navText: [
-              '<i class="bi bi-arrow-left"></i>',
-              '<i class="bi bi-arrow-right"></i>'
-            ],
-          });
-        }, 200);
       }
-
-
 
       // Handle browser back/forward
       window.onpopstate = () => {
