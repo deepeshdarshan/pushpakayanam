@@ -78,6 +78,12 @@
         </div>
         <a href="#" onclick="navigateTo('location')" class="nav-item nav-link">Venue</a>
         <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
+          <div class="dropdown-menu m-0">
+            <a href="#" onclick="navigateTo('orgcom', 'gallery')" class="dropdown-item">സ്വാഗതസംഘം രൂപീകരണം</a>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Downloads</a>
           <div class="dropdown-menu m-0">
             <a href="https://drive.google.com/uc?export=download&id=1SFdMyNgFRC-LMZCyVmgZmPXzJhpllN8j"
@@ -86,14 +92,6 @@
                     <a href="https://drive.google.com/uc?export=download&id=19RFv4dRF0Tq4aXHS7MKvn-uFKHTW_0L_" download="Logo with dates" class="dropdown-item">Logo with dates</a> -->
           </div>
         </div>
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
-          <div class="dropdown-menu m-0">
-            <a href="#" onclick="navigateTo('orgcom', 'gallery')" class="dropdown-item">സ്വാഗതസംഘം രൂപീകരണം</a>
-          </div>
-        </div>
-        <a href="#" onclick="navigateTo('team')" class="nav-item nav-link">Our Team</a>
-        <a href="#" onclick="navigateTo('contact')" class="nav-item nav-link">Contact Us</a>
       </div>
     </div>
   </nav>
@@ -177,7 +175,7 @@
   <!-- Footer Start -->
   <div class="container-fluid bg-dark text-secondary p-5">
     <div class="row g-5">
-      
+
       <div class="col-lg-2 col-md-6">
         <h3 class="text-white mb-4">Quick Links</h3>
         <div class="d-flex flex-column justify-content-start">
@@ -220,9 +218,14 @@
 
       <div class="col-lg-2 col-md-6">
         <h3 class="text-white mb-4">Get In Touch</h3>
-        <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>SPSS EKM Jilla Committe</p>
-        <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>yuvavedi.ekm@gmail.com</p>
-        <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+91-00000 00000</p>
+        <div class="d-flex flex-column justify-content-start">
+          <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>yuvavedi.ekm@gmail.com</p>
+          <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+91-00000 00000</p>
+          <a class="text-secondary mb-2" href="#" onclick="navigateTo('team')"><i
+              class="bi bi-people text-primary me-2"></i>Our team</a>
+          <a class="text-secondary mb-2" href="#" onclick="navigateTo('contact')"><i
+              class="bi bi-chat-dots-fill text-primary me-2 "></i>Contact Us</a>
+        </div>
       </div>
 
       <div class="col-lg-2 col-md-6">
@@ -230,10 +233,10 @@
         <div class="d-flex">
           <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2"
             href="https://www.youtube.com/@YuvavediErnakulam" target="_blank"><i
-              class="fab fa-youtube fw-normal"></i></a>
+              class="fab fa-youtube fw-normal pt-1"></i></a>
           <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2"
             href="https://www.facebook.com/groups/224314291078396" target="_blank"><i
-              class="fab fa-facebook-f fw-normal"></i></a>
+              class="fab fa-facebook-f fw-normal pt-1"></i></a>
         </div>
       </div>
 
