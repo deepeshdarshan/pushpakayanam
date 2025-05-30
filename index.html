@@ -33,6 +33,9 @@
 </head>
 
 <body>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
   <!-- Topbar Start -->
   <div class="container-fluid bg-secondary ps-5 pe-0 d-none d-lg-block">
     <div class="row gx-0">
@@ -68,12 +71,14 @@
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Announcements</a>
           <div class="dropdown-menu m-0">
-            <a href="#" onclick="navigateTo('walkathon')" class="dropdown-item">Walkathon</a>
-            <a href="#" onclick="navigateTo('logo_reveal')" class="dropdown-item">ലോഗോ പ്രകാശനം</a>
-            <a href="#" onclick="navigateTo('vishu_contest')" class="dropdown-item">വിഷു ഫോട്ടോഗ്രാഫി മത്സരം</a>
-            <a href="#" onclick="navigateTo('reels')" class="dropdown-item">റീൽസ് മത്സരം</a>
-            <a href="#" onclick="navigateTo('orgcomfly')" class="dropdown-item">സ്വാഗതസംഘ രൂപീകരണം</a>
-            <a href="#" onclick="navigateTo('naming_contest')" class="dropdown-item">നാമനിർദ്ദേശ മത്സരം</a>
+            <a href="#" onclick="navigateTo('announcements/walkathon')" class="dropdown-item">Walkathon</a>
+            <a href="#" onclick="navigateTo('announcements/logo_reveal')" class="dropdown-item">ലോഗോ പ്രകാശനം</a>
+            <a href="#" onclick="navigateTo('announcements/vishu_contest')" class="dropdown-item">വിഷു ഫോട്ടോഗ്രാഫി
+              മത്സരം</a>
+            <a href="#" onclick="navigateTo('announcements/reels')" class="dropdown-item">റീൽസ് മത്സരം</a>
+            <a href="#" onclick="navigateTo('announcements/orgcom')" class="dropdown-item">സ്വാഗതസംഘ രൂപീകരണം</a>
+            <a href="#" onclick="navigateTo('announcements/naming_contest')" class="dropdown-item">നാമനിർദ്ദേശ
+              മത്സരം</a>
           </div>
         </div>
         <a href="#" onclick="navigateTo('location')" class="nav-item nav-link">Venue</a>
@@ -100,21 +105,28 @@
   <!-- Horizontal Line -->
   <div class="container-fluid bg-dark text-secondary p-1"></div>
 
-  <!-- Page Loading Section -->
-  <div id="app">Loading...</div>
+  <!-- Page Loading Section Start -->
+  <div id="app" class="align-items-center justify-content-center">Loading Pushpakayanam 2025...</div>
+  <!-- Page Loading Section End -->
 
   <!-- Page Loading Script Start -->
   <script>
     navigateTo('home');
 
     function navigateTo(path, root = "content") {
-      history.pushState({}, "", path);
-      loadContent(path, root);
-      collapseNavBar()
+      updateUrl("path");
+      loadContent(path, root)
+      collapseNavBarIfSmallScreen();
+    }
+
+    function updateUrl(path) {
+      history.pushState({}, "", `${path}`);
     }
 
     function collapseNavBar() {
-      $(".navbar-collapse").collapse("hide");
+      if (window.innerWidth < 768) {
+        $(".navbar-collapse").collapse("hide");
+      }
     }
 
     function loadContent(path, root = "content") {
@@ -128,38 +140,41 @@
           if (root === "gallery") {
             reloadPublicAlbumScript();
           }
-
-          setTimeout(() => {
-            $(".testimonial-carousel").owlCarousel({
-              autoplay: false,
-              smartSpeed: 500,
-              items: 1,
-              dots: false,
-              loop: true,
-              nav: true,
-              navText: [
-                '<i class="bi bi-arrow-left"></i>',
-                '<i class="bi bi-arrow-right"></i>'
-              ],
-            });
-            
-            $(".header-carousel").owlCarousel({
-              autoplay: true,
-              smartSpeed: 500,
-              items: 1,
-              dots: false,
-              loop: true,
-              nav: true,
-              navText: [
-                '<i class="bi bi-arrow-left"></i>',
-                '<i class="bi bi-arrow-right"></i>'
-              ],
-            });
-          }, 100);
+          loadCarousels();
         })
         .catch(() => {
           document.getElementById("app").innerHTML = "Page not found";
         });
+    }
+
+    function loadCarousels() {
+      setTimeout(() => {
+        $(".testimonial-carousel").owlCarousel({
+          autoplay: false,
+          smartSpeed: 500,
+          items: 1,
+          dots: false,
+          loop: true,
+          nav: true,
+          navText: [
+            '<i class="bi bi-arrow-left"></i>',
+            '<i class="bi bi-arrow-right"></i>'
+          ],
+        });
+
+        $(".header-carousel").owlCarousel({
+          autoplay: true,
+          smartSpeed: 500,
+          items: 1,
+          dots: false,
+          loop: true,
+          nav: true,
+          navText: [
+            '<i class="bi bi-arrow-left"></i>',
+            '<i class="bi bi-arrow-right"></i>'
+          ],
+        });
+      }, 100);
     }
 
     function reloadPublicAlbumScript() {
@@ -171,17 +186,16 @@
       document.body.appendChild(newScript);
     }
 
-    // Handle browser back/forward
-    window.onpopstate = () => {
-      const path = location.pathname.replace("/", "") || "home";
-      loadContent(path);
-    };
+    window.addEventListener("DOMContentLoaded", () => {
+      const initialPath = window.location.pathname.replace(/^\/+/, "") || "home";
+      navigateTo(initialPath);
+    });
 
-    // Load initial route
-    window.onload = () => {
-      const path = location.pathname.replace("/", "") || "home";
-      loadContent(path);
-    };
+    // Respond to back/forward browser buttons
+    window.addEventListener("popstate", () => {
+      const path = window.location.pathname.replace(/^\/+/, "") || "home";
+      navigateTo(path);
+    });
   </script>
   <!-- Page Loading Script End -->
 
@@ -192,22 +206,18 @@
       <div class="col-lg-2 col-md-6">
         <h3 class="text-white mb-4">Quick Links</h3>
         <div class="d-flex flex-column justify-content-start">
-          <a class="text-secondary mb-2" href="#" onclick="navigateTo('home')"><i
-              class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-          <a class="text-secondary mb-2" href="#" onclick="navigateTo('team')"><i
-              class="bi bi-arrow-right text-primary me-2"></i>Our team</a>
           <a class="text-secondary mb-2" href="#" onclick="navigateTo('program')"><i
               class="bi bi-arrow-right text-primary me-2"></i>Programs</a>
           <a class="text-secondary mb-2" href="#" onclick="navigateTo('location')"><i
-              class="bi bi-arrow-right text-primary me-2"></i>How to reach</a>
-          <a class="text-secondary" href="#" onclick="navigateTo('contact')"><i
-              class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+              class="bi bi-arrow-right text-primary me-2"></i>Know the venue</a>
         </div>
       </div>
 
       <div class="col-lg-2 col-md-6">
         <h3 class="text-white mb-4">Favourite Links</h3>
         <div class="d-flex flex-column justify-content-start">
+          <a class="text-secondary mb-2" href="#" onclick="navigateTo('walkathon')"><i
+              class="bi bi-arrow-right text-primary me-2"></i>Walkathon</a>
           <a class="text-secondary mb-2" href="#" onclick="navigateTo('logo_reveal')"><i
               class="bi bi-arrow-right text-primary me-2"></i>ലോഗോ പ്രകാശനം</a>
           <a class="text-secondary mb-2" href="#" onclick="navigateTo('vishu_contest')"><i
@@ -232,12 +242,12 @@
       <div class="col-lg-2 col-md-6">
         <h3 class="text-white mb-4">Get In Touch</h3>
         <div class="d-flex flex-column justify-content-start">
-          <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>yuvavedi.ekm@gmail.com</p>
-          <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+91-00000 00000</p>
           <a class="text-secondary mb-2" href="#" onclick="navigateTo('team')"><i
               class="bi bi-people text-primary me-2"></i>Our team</a>
-          <a class="text-secondary mb-2" href="#" onclick="navigateTo('contact')"><i
-              class="bi bi-chat-dots-fill text-primary me-2 "></i>Contact Us</a>
+          <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>yuvavedi.ekm@gmail.com</p>
+          <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+91-00000 00000</p>
+          <a class="text-secondary mt-2" href="#" onclick="navigateTo('contact')"><i
+              class="bi bi-chat-dots text-primary me-2"></i>Contact Us</a>
         </div>
       </div>
 
@@ -268,7 +278,6 @@
 
 
   <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/waypoints/waypoints.min.js"></script>
