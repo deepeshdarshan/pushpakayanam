@@ -61,6 +61,7 @@
 
     netlifyIdentity.on("login", user => {
       updateUI(user);
+      window.location.href = "/admin.html"
       netlifyIdentity.close();
     });
 
