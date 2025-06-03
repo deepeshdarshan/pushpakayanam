@@ -76,24 +76,26 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-4 py-3 py-lg-0">
-            <img src="/img/logo.png" style="width: 250px;">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0 me-n3">
-                    <a href="/main/admin/dashboard.html" class="nav-item nav-link item">Dashboard</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Contest</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="/main//admin/naming-contest.html" class="dropdown-item">Naming Contest</a>
-                            <a href="/main//admin/vishu-contest.html" class="dropdown-item">Vishu Contest</a>
-                            <a href="/main//admin/souvenir-contest.html" class="dropdown-item">Souvenir
-                                Contest</a>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-3 py-2">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="/img/logo.png" class="img-fluid" style="max-width: 180px;" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="/main/admin/dashboard.html" class="nav-item nav-link">Dashboard</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Contest</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="/main/admin/naming-contest.html" class="dropdown-item">Naming Contest</a>
+                                <a href="/main/admin/vishu-contest.html" class="dropdown-item">Vishu Contest</a>
+                                <a href="/main/admin/souvenir-contest.html" class="dropdown-item">Souvenir Contest</a>
+                            </div>
                         </div>
                     </div>
-                    <a id="logoutBtn" href="#" class="nav-item nav-link item">Logout</a>
                 </div>
             </div>
         </nav>
@@ -103,14 +105,24 @@
         <!-- Topbar End -->
 
         <!-- Page Header Start -->
-        <div class="container-fluid bg-dark p-3">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <a id="userEmail" href="#">Welcome User</a>
-                    <h1 class="display-8 text-white">Pushpakayanam 2025 Naming Contest</h1>
-                    <a href="">Home</a>
-                    <i class="far fa-square text-primary px-2"></i>
-                    <a href="">Naming Contest</a>
+        <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="text-white text-center text-md-start mb-3 mb-md-0">
+                    <h1 class="fw-bold mb-1 fs-3 text-white" id="page-title">Admin Dashboard</h1>
+                    <div id="breadcrumb-container" class="small ">
+                        <a href="#" class="text-primary text-decoration-none">Home</a>
+                        <i class="far fa-square text-primary px-2"></i>
+                        <a href="#" class="text-primary text-decoration-none">Naming contest</a>
+                    </div>
+                </div>
+                <div class="text-white text-center text-md-end">
+                    <div id="userEmail" class="small text-truncate mx-auto mx-md-0" style="max-width: 250px;">
+                        pushpakayanam2025@gmail.com
+                    </div>
+                    <button id="logoutBtn"
+                        class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0">
+                        Logout
+                    </button>
                 </div>
             </div>
         </div>

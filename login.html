@@ -3,6 +3,13 @@
 
 <head>
     <script type="module" src="/js/firebase.js"></script>
+
+    <script>
+        function home() {
+            window.location.href = "/index.html"
+        }
+    </script>
+
     <meta charset="UTF-8" />
     <title>Login</title>
     <style>
@@ -77,13 +84,59 @@
         .error-message {
             padding-top: 15px;
         }
+
+        .pointer {
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .login-box {
+                width: 500px;
+                padding: 70px 60px;
+            }
+
+            .login-box h2 {
+                font-size: 26px;
+            }
+
+            .login-box input,
+            .login-box button {
+                font-size: 16px;
+                padding: 14px;
+            }
+
+            .login-box img.logo {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-box {
+                width: 95%;
+                padding: 40px 25px;
+            }
+
+            .login-box h2 {
+                font-size: 22px;
+            }
+
+            .login-box input,
+            .login-box button {
+                font-size: 17px;
+                padding: 15px;
+            }
+
+            .login-box img.logo {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
         <form class="login-box" id="loginForm">
-            <img src="img/logo.png" alt="Logo" class="logo" />
+            <img src="img/logo.png" alt="Logo" class="logo pointer" onclick="home()" />
             <h2>Login</h2>
             <input type="email" placeholder="Email" name="email" required />
             <input type="password" placeholder="Password" name="password" required />

@@ -1,6 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
+const SESSION_TIMEOUT_MINUTES = 15;
+const SESSION_KEY = 'lastPageLoadTime';
+
 const firebaseConfig = {
     apiKey: "AIzaSyCuw-WYpsHX98Yz7BwyrvigeE0adXO6uSw",
     authDomain: "pushpakayanam.firebaseapp.com",
@@ -41,6 +44,7 @@ if (loginForm) {
             setTimeout(() => {
                 window.location.href = "/main/admin/dashboard.html";
             }, 1500);
+            localStorage.setItem(SESSION_KEY, Date.now());
         } catch (error) {
             console.error("Login error:", error);
             errorMsg.style.color = "red";
@@ -50,27 +54,58 @@ if (loginForm) {
 }
 
 // Logout Handler
+async function logoutUser() {
+    try {
+        await signOut(auth);
+        localStorage.removeItem(SESSION_KEY);
+        console.log("User logged out");
+        window.location.href = "/login.html";
+    } catch (error) {
+        console.error("Logout failed:", error);
+    }
+}
+
 if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
-        try {
-            await signOut(auth);
-            console.log("User logged out");
-            window.location.href = "/login.html";
-        } catch (error) {
-            console.error("Logout failed:", error);
-        }
+        logoutUser();
     });
 }
 
 onAuthStateChanged(auth, (user) => {
-    if (!user) {
-        if (!loginForm) {
-            window.location.href = "/login.html";
+    if (user) {
+        localStorage.setItem(SESSION_KEY, Date.now());
+        checkSessionTimeout();
+
+        // If user is on login.html and already logged in, redirect to dashboard
+        if (window.location.pathname.includes("login.html")) {
+            window.location.href = "/main/admin/dashboard.html";
+        } else if (userEmailLabel) {
+            userEmailLabel.textContent = `${user.email}`;
         }
     } else {
-        console.log("Logged in as:", user.email);
-        if (userEmailLabel) {
-            userEmailLabel.textContent = `Welcome ${user.email}`;
+        localStorage.removeItem(SESSION_KEY);
+        
+        // If user is not logged in and is not on login page, redirect to login
+        if (!window.location.pathname.includes("login.html")) {
+            window.location.href = "/login.html";
         }
     }
 });
+
+function checkSessionTimeout() {
+    const lastLoad = localStorage.getItem(SESSION_KEY);
+    if (!lastLoad) {
+        // No previous session info, set current time
+        localStorage.setItem(SESSION_KEY, Date.now());
+        return;
+    }
+    const lastLoadTime = parseInt(lastLoad, 10);
+    const now = Date.now();
+    const diffMinutes = (now - lastLoadTime) / 1000 / 60;
+
+    if (diffMinutes > SESSION_TIMEOUT_MINUTES) {
+        logoutUser();
+    } else {
+        setTimeout(logoutUser, (SESSION_TIMEOUT_MINUTES - diffMinutes) * 60 * 1000);
+    }
+}
