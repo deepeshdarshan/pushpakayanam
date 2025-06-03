@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Login - Netlify Identity</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      text-align: center;
-      background-color: #f9f9f9;
-    }
+    <script type="module" src="/js/firebase.js"></script>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
 
-    .container {
-      max-width: 400px;
-      margin: auto;
-      padding: 2rem;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
+        .login-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    button {
-      padding: 0.6rem 1.2rem;
-      margin-top: 1rem;
-      font-size: 1rem;
-      border: none;
-      background-color: #007acc;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        .login-box {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-sizing: border-box;
+            text-align: center;
+        }
 
-    button:hover {
-      background-color: #005fa3;
-    }
+        .login-box img.logo {
+            width: 225px;
+            margin-bottom: 20px;
+        }
 
-    #user-info {
-      margin-top: 1rem;
-      display: none;
-    }
-  </style>
+        .login-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: red;
+        }
+
+        .message.success {
+            color: green;
+        }
+
+        .error-message {
+            padding-top: 15px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <h2>Login</h2>
-    <p>This site uses Netlify Identity for secure login.</p>
-    <button id="login-btn">Login / Signup</button>
-
-    <div id="user-info">
-      <p><strong>User:</strong> <span id="user-email"></span></p>
-      <button id="logout-btn">Logout</button>
+    <div class="login-container">
+        <form class="login-box" id="loginForm">
+            <img src="img/logo.png" alt="Logo" class="logo" />
+            <h2>Login</h2>
+            <input type="email" placeholder="Email" name="email" required />
+            <input type="password" placeholder="Password" name="password" required />
+            <button type="submit">Login</button>
+            <div id="error" class="error-message"></div>
+        </form>
     </div>
-  </div>
-
-  <script>
-    netlifyIdentity.on("init", user => {
-      updateUI(user);
-    });
-
-    netlifyIdentity.on("login", user => {
-      updateUI(user);
-      window.location.href = "/admin.html"
-      netlifyIdentity.close();
-    });
-
-    netlifyIdentity.on("logout", () => {
-      updateUI(null);
-    });
-
-    document.getElementById("login-btn").addEventListener("click", () => {
-      netlifyIdentity.open();
-    });
-
-    document.getElementById("logout-btn").addEventListener("click", () => {
-      netlifyIdentity.logout();
-    });
-
-    function updateUI(user) {
-      const info = document.getElementById("user-info");
-      const email = document.getElementById("user-email");
-      if (user) {
-        email.textContent = user.email;
-        info.style.display = "block";
-        document.getElementById("login-btn").style.display = "none";
-      } else {
-        info.style.display = "none";
-        document.getElementById("login-btn").style.display = "inline-block";
-      }
-    }
-
-    netlifyIdentity.init();
-  </script>
 </body>
+
 </html>
