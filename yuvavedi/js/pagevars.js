@@ -13,7 +13,7 @@ const topbarHTML = `
                             <p class="m-0"><i class="fa fa-envelope-open me-2"></i>yuvavedi.ekm@gmail.com</p>
                         </div>
                         <div class="py-2">
-                            <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+91-00000 00000</span></p>
+                            <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+91-96455 88784</span></p>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,6 @@ const navbarHTML = `
                     <a href="puple2025.html" class="dropdown-item">PUPLE 2025</a>
                 </div>
             </div>
-            <a href="../contact.html" class="nav-item nav-link">Contact Us</a>
         </div>
     </div>
 </nav>
@@ -61,8 +60,8 @@ const footerHTML = `
                 <h3 class="text-white mb-4">Quick Links</h3>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-secondary mb-2" href="index.html"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                    <a class="text-secondary mb-2" href="program.html"><i class="bi bi-arrow-right text-primary me-2"></i>PUPLE 2025</a>
-                    <a class="text-secondary" href="contact.html"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                    <a class="text-secondary mb-2" href="puple2025report.html"><i class="bi bi-arrow-right text-primary me-2"></i>PUPLE 2025</a>
+                    <a class="text-secondary" href="vivekanandam2025report.html"><i class="bi bi-arrow-right text-primary me-2"></i>വിവേകാനന്ദം 2025</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -73,9 +72,9 @@ const footerHTML = `
             </div>
             <div class="col-lg-3 col-md-6">
                 <h3 class="text-white mb-4">Get In Touch</h3>
-                <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>SPSS EKM Jilla Committe</p>
+                <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>SPSS EKM Jilla Yuvavedi Committe</p>
                 <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>yuvavedi.ekm@gmail.com</p>
-                <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+91-00000 00000</p>
+                <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+91-96455 88784</p>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h3 class="text-white mb-4">Follow Us</h3>
