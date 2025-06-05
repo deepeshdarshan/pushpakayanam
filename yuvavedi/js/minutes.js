@@ -1,3 +1,5 @@
+const buildMinutesTitle = item => `<h4>യുവവേദി മീറ്റിങ് മിനിറ്റ്സ്&nbsp;&nbsp;|&nbsp;&nbsp;${item.date}&nbsp;&nbsp;|&nbsp;&nbsp;${item.time}</h4>`
+
 const _09nov2024 = `
 <p>
 എറണാകുളം ജില്ലാ യുവവേദിയുടെ പുതിയ ഭരണസമിതിയുടെ ആദ്യ മീറ്റിംഗ് 2024 നവംബർ 9 തിയതി രാത്രി 8 മണിക്ക് ഓൺലൈൻ ആയി ചേരുകയുണ്ടായി.
@@ -62,7 +64,7 @@ SPSS ദേശീയ സെക്രട്ടറി ശ്രീ കൃഷ്ണ
 
 const _26jan2025 = `
 <p>
-എറണാകുളം ജില്ലാ യുവവേദിയുടെ ജനുവരി മാസത്തെ രണ്ടാമത്തെ എക്സിക്യൂട്ടീവ് മീറ്റിംഗ് 2025 ജനുവരി 26 ന് രാത്രി 8:30 മണിക്ക് ഓൺലൈനായി ചേരുകയുണ്ടായി.
+എറണാകുളം ജില്ലാ യുവവേദിയുടെ ജനുവരി മാസത്തെ എക്സിക്യൂട്ടീവ് മീറ്റിംഗ് 2025 ജനുവരി 26 ന് രാത്രി 8:30 മണിക്ക് ഓൺലൈനായി ചേരുകയുണ്ടായി.
 </p>
 <p>
 ഈ മാസം പന്ത്രണ്ടാം തീയതി കടമറ്റത്ത് വച്ചു നടന്ന വിവേകാനന്ദം 2025 ന്റെ അവലോകനം, യുവവേദിയുടെ ഫെബ്രുവരി മാസത്തെ പ്രവർത്തനങ്ങൾ, ദേശീയ സമ്മേളനവുമായി ബന്ധപ്പെട്ട് യുവവേദി മുന്നോട്ടുവയ്ക്കുന്ന റീൽസ് മത്സരം ഇവയൊക്കെ ആയിരുന്നു ഈ മീറ്റിങ്ങിന്റെ പ്രധാന അജണ്ട.
@@ -110,7 +112,7 @@ PUPLE 2025 വളരെ ഭംഗിയായി നടത്തുവാൻ വ
 തുടർന്ന് ജില്ലാ യുവവേദി സെക്രട്ടറി ശ്രീ ദീപേഷ് ദർശൻ, ജില്ലയിൽ നിന്നുള്ള കേന്ദ്ര പ്രസിഡൻറ് ശ്രീ കൃഷ്ണൻ നമ്പീശൻ, ജില്ലാ പ്രസിഡൻറ് ശ്രീ ആർ എസ് നമ്പ്യാർ, ജില്ലാ സെക്രട്ടറി ശ്രീ നാരായണൻ വാസുദേവൻ, യുവവേദി മെൻറർ ശ്രീ ഗിരീഷ്, വനിതാവേദി പ്രസിഡൻറ് ശ്രീമതി രമ്യ വികാസ് തുടങ്ങിയവർ സംസാരിച്ചു. കേന്ദ്ര യുവവേദി ചെയർമാൻ ശ്രീ ആനന്ദ് കേശവനും അദ്ദേഹത്തിന്റെ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുകയുണ്ടായി.
 </p>
 <p>
-പെരുമ്പാവൂർ പ്രാദേശിക സഭയിലെ കുമാരി കൃഷ്ണേന്ദുവിന്റെ നന്ദി പ്രകാശനത്തോടുകൂടി ഏകദേശം 10.15 ന് മീറ്റിംഗ് അവസാനിച്ചു.
+പെരുമ്പാവൂർ പ്രാദേശിക സഭയിലെ കുമാരി കൃഷ്ണേന്ദുവിന്റെ നന്ദി പ്രകാശനത്തോടുകൂടി ഏകദേശം 10.30 ന് മീറ്റിംഗ് അവസാനിച്ചു.
 </p>
 `;
 
@@ -126,16 +128,13 @@ const minutesListContainer = document.getElementById("minutesList");
 Object.keys(minutesMap).forEach((key, index) => {
     const minute = minutesMap[key];
     const itemHTML = `
-        <div class="minitues-item" id="item${index + 1}">
-            <br />
-            <div class="bg-secondary d-flex">
+        <div class="minitues-item pt-3">
+            <div class="d-flex bg-secondary" onclick="onMinituesItemClick('${key}')" style="border: 1px solid black">
                 <div class="flex-shrink-0 d-flex flex-column justify-content-center text-center bg-primary text-white px-4">
-                    <span><i class="bi bi-broadcast me-2 fs-1"></i></span>
+                    <span><i class="bi bi-columns-gap me-2 fs-1"></i></span>
                 </div>
-                <div class="d-flex flex-column justify-content-center py-3 px-4">
-                    <a class="h4 minutes-heading" id="${key}" onclick="onMinituesItemClick('${key}')">
-                        യുവവേദി മീറ്റിങ് മിനിറ്റ്സ്‌
-                    </a>
+                <div class="d-flex flex-column justify-content-center py-3 px-4 minitues-item-text" id="minitues-item${key}" style="width: 100%">
+                    <div class="h4">യുവവേദി മീറ്റിങ് മിനിറ്റ്സ്‌</div>
                     <div class="d-flex flex-column flex-sm-row mb-2">
                         <small class="text-uppercase me-sm-3 mb-1 mb-sm-0">
                             <i class="bi bi-calendar me-2"></i>${formatDate(minute.date)}
@@ -164,8 +163,12 @@ function formatDate(dateString) {
 function onMinituesItemClick(key) {
     const item = minutesMap[key];
     if (item) {
-        document.getElementById("minutes-title").innerHTML = `<h4>യുവവേദി മീറ്റിങ് മിനിറ്റ്സ്&nbsp;&nbsp;|&nbsp;&nbsp;${item.date}&nbsp;&nbsp;|&nbsp;&nbsp;${item.time}</h4>`
-        document.getElementById("minitues-content").innerHTML = item.content;
-        document.getElementById("minitues-content").scrollIntoView();
+        Array.from(document.getElementsByClassName("minitues-item-text"))
+            .forEach(item => item.style.backgroundColor = "transparent");
+        document.getElementById("minitues-item" + key).style.backgroundColor = "#FFFFCC";
+        document.getElementById("minutes-title").innerHTML = buildMinutesTitle(item);
+        const minituesContent = document.getElementById("minitues-content");
+        minituesContent.innerHTML = item.content;
+        minituesContent.scrollIntoView();
     }
 }

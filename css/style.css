@@ -279,9 +279,17 @@ h6,
     width: 60% !important;
 }
 
-.minutes-heading:hover {
+.minitues-item-text {
     cursor: pointer;
-    color: red;
+}
+
+#minitues-content {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.dashboard-item {
+    background-color: #F6F6F6;
 }
 
 .responsive-logo {
@@ -289,7 +297,7 @@ h6,
     cursor: pointer;
 }
 
-.hw-60-p{
+.hw-60-p {
     height: 60px;
     width: 60px;
 }
