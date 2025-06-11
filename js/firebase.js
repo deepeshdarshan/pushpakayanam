@@ -1,5 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, startAfter } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
 
 const SESSION_TIMEOUT_MINUTES = 15;
 const SESSION_KEY = 'lastPageLoadTime';
@@ -14,15 +16,18 @@ const firebaseConfig = {
     measurementId: "G-D7TBLMT7KL"
 };
 
-// Firebase Configuration & Initialization
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+export { db, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, startAfter };
 
 //  DOM Elements
 const loginForm = document.getElementById("loginForm");
 const errorMsg = document.getElementById("error");
 const logoutBtn = document.getElementById("logoutBtn");
 const userEmailLabel = document.getElementById("userEmail");
+const contests = document.getElementById("contests");
 
 // Login Handler
 if (loginForm) {
@@ -84,13 +89,22 @@ onAuthStateChanged(auth, (user) => {
         }
     } else {
         localStorage.removeItem(SESSION_KEY);
-        
+
         // If user is not logged in and is not on login page, redirect to login
         if (!window.location.pathname.includes("login.html")) {
             window.location.href = "/login.html";
         }
     }
 });
+
+if (contests) {
+    document.addEventListener('DOMContentLoaded', async () => {
+        if (document.getElementById('contests')) {
+            const data = await fetchDocuments();
+            console.log(data);
+        }
+    });
+}
 
 function checkSessionTimeout() {
     const lastLoad = localStorage.getItem(SESSION_KEY);
@@ -108,4 +122,12 @@ function checkSessionTimeout() {
     } else {
         setTimeout(logoutUser, (SESSION_TIMEOUT_MINUTES - diffMinutes) * 60 * 1000);
     }
+}
+
+export async function fetchDocuments() {
+    const querySnapshot = await getDocs(collection(db, "pushpakayanam_contests"));
+    querySnapshot.forEach((doc) => {
+        console.log("Document ID:", doc.id);
+        console.log("Fields:", doc.data());
+    });
 }

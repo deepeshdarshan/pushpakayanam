@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSV to Firestore Upload</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <!-- PapaParse -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+</head>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">CSV to Firestore Upload</h5>
+          </div>
+          <div class="card-body">
+
+            <div class="mb-3">
+              <label for="collectionInput" class="form-label">Collection Name</label>
+              <input type="text" class="form-control" id="collectionInput" placeholder="e.g. souvenir_contest" />
+            </div>
+
+            <div class="mb-3">
+              <label for="csvFileInput" class="form-label">Select CSV File</label>
+              <input type="file" class="form-control" id="csvFileInput" accept=".csv" />
+            </div>
+
+            <button id="uploadBtn" class="btn btn-success w-100">
+              Upload to Firestore
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="statusModalLabel">Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="statusModalBody">
+          <!-- Status message will go here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script type="module">
+    import { db, collection, addDoc } from '/js/firebase.js';
+
+    let csvData = [];
+
+    function showModal(title, message) {
+      document.getElementById('statusModalLabel').textContent = title;
+      document.getElementById('statusModalBody').textContent = message;
+      const modal = new bootstrap.Modal(document.getElementById('statusModal'));
+      modal.show();
+    }
+
+    document.getElementById('csvFileInput').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: function (results) {
+          csvData = results.data;
+          console.log("Parsed CSV data:", csvData);
+        }
+      });
+    });
+
+    document.getElementById('uploadBtn').addEventListener('click', async () => {
+      const collectionName = document.getElementById('collectionInput').value.trim();
+
+      if (!collectionName) {
+        showModal('Missing Collection Name', 'Please enter a collection name.');
+        return;
+      }
+
+      if (csvData.length === 0) {
+        showModal('No CSV Data', 'Please select a CSV file.');
+        return;
+      }
+
+      const collectionRef = collection(db, collectionName);
+
+      try {
+        for (const row of csvData) {
+          await addDoc(collectionRef, row);
+        }
+        showModal('Success', 'Data uploaded successfully!');
+      } catch (error) {
+        console.error('Error uploading data:', error);
+        showModal('Upload Failed', 'An error occurred while uploading. Check the console for details.');
+      }
+    });
+  </script>
+</body>
+</html>
