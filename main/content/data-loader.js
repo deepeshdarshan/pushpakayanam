@@ -1,6 +1,21 @@
-import { db, getDocs, deleteDoc, doc, addDoc, updateDoc } from '/js/firebase.js';
+import { db, getDocs, deleteDoc, doc, addDoc, updateDoc, limit, limitToLast, startAfter, endBefore, orderBy, query } from '/js/firebase.js';
 
-// ===== DOM UTILITIES =====
+let lastVisible = null;
+let firstVisible = null;
+let currentState = null;
+
+function createDefaultOption() {
+    return createOption("-- Select --", "");
+}
+
+function createOption(text, value) {
+    const option = document.createElement("option");
+    option.textContent = text;
+    option.value = value;
+    return option;
+}
+
+
 function createElement(element) {
     return document.createElement(element);
 }
@@ -13,15 +28,12 @@ function createHeaderCell(text) {
 
 function createTableHeader(headers) {
     const headerRow = createElement('tr');
-
     headers.forEach(header => {
         const th = createHeaderCell(header);
         headerRow.appendChild(th);
     });
-
     const actionTh = createHeaderCell('Actions');
     headerRow.appendChild(actionTh);
-
     return headerRow;
 }
 
@@ -31,56 +43,49 @@ function createDataCell(value) {
     return td;
 }
 
+function createButton(text, id, clickHandler) {
+    const button = createElement('button');
+    button.textContent = text;
+    button.id = id;
+    button.onclick = clickHandler;
+    return button;
+}
+
 function createEditButton(docId, data) {
-    const editBtn = createElement('button');
-    editBtn.textContent = 'Edit';
-    editBtn.id = "editBtn";
-    editBtn.onclick = () => showEditPopup(docId, data);
-    return editBtn;
+    return createButton('Edit', 'editBtn', () => showEditPopup(docId, data));
 }
 
 function createDeleteButton(docId, colRef, headers, query, collection) {
-    const delBtn = createElement('button');
-    delBtn.textContent = 'Delete';
-    delBtn.id = "deleteBtn";
-    delBtn.onclick = () => showDeletePopup(docId, colRef, headers, query, collection);
-    return delBtn;
+    return createButton('Delete', 'deleteBtn', () => showDeleteConfirmPopup(docId, colRef, headers, query, collection));
 }
 
 function createActionCell(docId, data, colRef, headers, query, collection) {
     const actionTd = createElement('td');
-
     const editBtn = createEditButton(docId, data);
     const delBtn = createDeleteButton(docId, colRef, headers, query, collection);
-
     actionTd.appendChild(editBtn);
     actionTd.appendChild(delBtn);
-
     return actionTd;
 }
 
 function createDataRow(headers, data, docId, colRef, query, collection) {
     const row = createElement('tr');
-
     headers.forEach(header => {
         const td = createDataCell(data[header]);
         row.appendChild(td);
     });
-
     const actionTd = createActionCell(docId, data, colRef, headers, query, collection);
     row.appendChild(actionTd);
 
     return row;
 }
 
-function clearTable() {
+function createTable() {
     const dataTable = document.getElementById('dataTable');
     const thead = dataTable.querySelector('thead');
     const tbody = dataTable.querySelector('tbody');
-
     thead.innerHTML = '';
     tbody.innerHTML = '';
-
     return { thead, tbody };
 }
 
@@ -92,13 +97,16 @@ function hideSpinner() {
     document.getElementById("spinnerOverlay").style.display = "none";
 }
 
-// ===== BUTTON STATE MANAGEMENT =====
-export function disableButtons() {
+export function createButtons() {
     const submitBtn = document.getElementById("submitBtn");
     const cancelBtn = document.getElementById("cancelBtn");
+    disableButtons(submitBtn, cancelBtn);
+    return { submitBtn, cancelBtn };
+}
+
+export function disableButtons(submitBtn, cancelBtn) {
     submitBtn.disabled = true;
     cancelBtn.disabled = true;
-    return { submitBtn, cancelBtn };
 }
 
 export function enableButtons(submitBtn, cancelBtn) {
@@ -106,10 +114,29 @@ export function enableButtons(submitBtn, cancelBtn) {
     cancelBtn.disabled = false;
 }
 
-// ===== MODAL UTILITIES =====
+function disableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn) {
+    confirmDeleteBtn.disabled = false;
+    cancelDeleteBtn.disabled = false;
+}
+
+function enableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn) {
+    confirmDeleteBtn.disabled = true;
+    cancelDeleteBtn.disabled = true;
+}
+
 export function updateModalUI(modalConfigProp) {
     document.getElementById("formTitle").textContent = modalConfigProp.formTitle;
     document.getElementById("submitBtn").textContent = modalConfigProp.submitButtonLabel;
+}
+
+function createModal(modalId) {
+    const modalEl = document.getElementById(modalId);
+    return new bootstrap.Modal(modalEl);
+}
+
+function getExistingModal(modalId) {
+    const modalEl = document.getElementById(modalId);
+    return bootstrap.Modal.getInstance(modalEl);
 }
 
 export function showModal(bootstrapModal) {
@@ -124,47 +151,47 @@ export function resetForm(form) {
     form.reset();
 }
 
-// ===== STATE MANAGEMENT =====
-export function resetState(state) {
+export function resetCurrentEditId(state) {
     state.currentEditId = null;
 }
 
-export function setEditState(state, id) {
+function setCurrentEditId(state, id) {
     state.currentEditId = id;
 }
 
-// ===== DATABASE OPERATIONS =====
-export async function addNewEntry(colRef, entryData) {
-    await addDoc(colRef, entryData);
+export async function addDocument(collection, document) {
+    await addDoc(collection, document);
 }
 
-export async function updateExistingEntry(editId, entryData, collection) {
-    const docRef = doc(db, collection, editId);
-    await updateDoc(docRef, entryData);
+export async function updateDocument(docId, data, collection) {
+    const docRef = doc(db, collection, docId);
+    await updateDoc(docRef, data);
 }
 
-// ===== ERROR HANDLING =====
+async function deleteDocument(docId, db, collection) {
+    await deleteDoc(doc(db, collection, docId));
+}
+
+async function getData(query) {
+    return await getDocs(query);
+}
+
+
 export function handleSubmissionError(err) {
     console.error("Error submitting form:", err);
-    alert("An error occurred while submitting the form. Please try again.");
 }
 
 export function populateSearchDropdown(headers) {
-    const searchField = document.getElementById("searchField");
-    const option = document.createElement("option");
-    option.value = "";
-    option.textContent = "-- Select --";
-    searchField.appendChild(option);
+    const searchDropdown = document.getElementById("searchField");
+    const defaultOption = createDefaultOption();
+    searchDropdown.appendChild(defaultOption);
     headers.forEach(header => {
-        const option = document.createElement("option");
-        option.value = header;
-        option.textContent = header;
-        searchField.appendChild(option);
+        const option = createOption(header, header);
+        searchDropdown.appendChild(option);
     });
 }
 
-// ===== DELETE FUNCTIONALITY =====
-export function showDeleteConfirmationPopupGeneric(docId, colRef, headers, query, collection, deleteModal) {
+export function showDeleteConfirmPopup(docId, colRef, headers, query, collection) {
     window.currentDeleteInfo = {
         id: docId,
         colRef: colRef,
@@ -172,7 +199,8 @@ export function showDeleteConfirmationPopupGeneric(docId, colRef, headers, query
         query: query,
         collection: collection
     };
-    deleteModal.show();
+    const deleteModal = createModal('deleteConfirmModal');
+    showModal(deleteModal);
 }
 
 function setupGlobalDeleteConfirmation() {
@@ -182,189 +210,101 @@ function setupGlobalDeleteConfirmation() {
         confirmDeleteBtn.setAttribute('data-listener-added', 'true');
 
         confirmDeleteBtn.addEventListener('click', async () => {
-            const currentDeleteInfo = window.currentDeleteInfo;
-            if (currentDeleteInfo) {
-                await handleDeleteConfirmation(
-                    currentDeleteInfo.id,
-                    currentDeleteInfo.colRef,
-                    currentDeleteInfo.headers,
-                    currentDeleteInfo.query,
-                    currentDeleteInfo.collection
-                );
-                window.currentDeleteInfo = null;
-            }
+            await attachConfirmDeleteButtonEvent();
         });
     }
+}
+
+async function attachConfirmDeleteButtonEvent() {
+    const currentDeleteInfo = window.currentDeleteInfo;
+    if (currentDeleteInfo) {
+        await handleDeleteConfirmation(
+            currentDeleteInfo.id,
+            currentDeleteInfo.colRef,
+            currentDeleteInfo.headers,
+            currentDeleteInfo.query,
+            currentDeleteInfo.collection
+        );
+        window.currentDeleteInfo = null;
+    }
+}
+
+function setDocIndex(snapshot) {
+    firstVisible = snapshot.docs[0];
+    lastVisible = snapshot.docs[snapshot.docs.length - 1];
 }
 
 async function handleDeleteConfirmation(deleteId, colRef, headers, query, collection) {
     const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
     const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
 
-    confirmDeleteBtn.disabled = true;
-    cancelDeleteBtn.disabled = true;
+    enableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn);
 
     if (deleteId) {
         try {
-            await deleteDoc(doc(db, collection, deleteId));
+            await deleteDocument(deleteId, db, collection);
 
-            const deleteModalEl = document.getElementById('deleteConfirmModal');
-            const deleteModal = bootstrap.Modal.getInstance(deleteModalEl);
-            deleteModal.hide();
+            const deleteModal = getExistingModal('deleteConfirmModal');
+            hideModal(deleteModal);
 
             await loadData(colRef, headers, query, collection);
         } catch (err) {
             console.error("Error deleting document:", err);
         } finally {
-            confirmDeleteBtn.disabled = false;
-            cancelDeleteBtn.disabled = false;
+            disableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn);
         }
     }
 }
 
-// let paginationState = {
-//     currentPage: 1,
-//     lastVisible: null,
-//     firstVisible: null,
-//     pageSize: 10,
-//     pageStack: [],
-// };
+function renderTableBody(snapshot, headers, colRef, q, collectionName, tbody) {
+    snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        renderTableData(docSnap.id, data, headers, colRef, q, collectionName, tbody);
+    });
+}
 
-// const nextBtn = document.getElementById('nextPageBtn');
-// const prevBtn = document.getElementById('prevPageBtn');
-// const pageInfo = document.getElementById('pageInfo');
+function updatePageInfo() {
+    document.getElementById("pageInfo").textContent = `Page ${currentState.page.currentPage}`;
+    document.getElementById("prevPageBtn").disabled = currentState.page.isOnFirstPage;
+    document.getElementById("nextPageBtn").disabled = currentState.page.isOnLastPage;
+}
 
-// // Pagination Event Listeners
-// if (nextBtn && prevBtn) {
-//     nextBtn.addEventListener('click', () => loadPaginatedData(paginationState.collection, paginationState.headers));
-//     prevBtn.addEventListener('click', () => loadPreviousPage());
-// }
+export async function loadNext(colRef, headers, collectionName) {
+    const q = query(colRef, orderBy(headers[1]), startAfter(lastVisible), limit(currentState.page.size));
+    currentState.page.isOnFirstPage = false;
+    currentState.page.currentPage++;
+    await loadData(colRef, headers, q, collectionName);
+}
 
+export async function loadPrev(colRef, headers, collectionName) {
+    const q = query(colRef, orderBy(headers[1]), endBefore(firstVisible), limitToLast(currentState.page.size));
+    currentState.page.currentPage--;
+    currentState.page.isOnFirstPage = currentState.page.currentPage === 1;
+    currentState.page.isOnLastPage = false;
+    await loadData(colRef, headers, q, collectionName);
+}
 
-// export async function loadPaginatedData(collectionRef, headers) {
-//     const { thead, tbody } = clearTable();
-//     setupGlobalDeleteConfirmation();
-
-//     let colQuery = query(collectionRef, limit(paginationState.pageSize));
-//     if (paginationState.lastVisible) {
-//         colQuery = query(collectionRef, startAfter(paginationState.lastVisible), limit(paginationState.pageSize));
-//     }
-
-//     try {
-//         const snapshot = await getDocs(colQuery);
-//         if (snapshot.empty) {
-//             showNoDataMessage(tbody);
-//             return;
-//         }
-
-//         const docs = snapshot.docs;
-//         paginationState.firstVisible = docs[0];
-//         paginationState.lastVisible = docs[docs.length - 1];
-
-//         // Push page stack
-//         paginationState.pageStack.push(paginationState.firstVisible);
-//         paginationState.currentPage++;
-
-//         // UI updates
-//         pageInfo.textContent = `Page ${paginationState.currentPage}`;
-//         prevBtn.disabled = paginationState.pageStack.length <= 1;
-//         nextBtn.disabled = docs.length < paginationState.pageSize;
-
-//         const headerRow = createTableHeader(headers);
-//         thead.appendChild(headerRow);
-
-//         docs.forEach(docSnap => {
-//             const data = docSnap.data();
-//             const row = createDataRow(headers, data, docSnap.id, collectionRef, null, collectionRef.id);
-//             tbody.appendChild(row);
-//         });
-
-//     } catch (err) {
-//         console.error("Pagination error:", err);
-//     } finally {
-//         hideSpinner();
-//     }
-// }
-
-
-// async function loadPreviousPage() {
-//     if (paginationState.pageStack.length < 2) return;
-
-//     paginationState.pageStack.pop(); // Remove current
-//     const prevStart = paginationState.pageStack[paginationState.pageStack.length - 1];
-
-//     const { thead, tbody } = clearTable();
-//     setupGlobalDeleteConfirmation();
-
-//     let colQuery = query(paginationState.collection, startAfter(prevStart), limit(paginationState.pageSize));
-
-//     try {
-//         const snapshot = await getDocs(colQuery);
-//         if (snapshot.empty) {
-//             showNoDataMessage(tbody);
-//             return;
-//         }
-
-//         const docs = snapshot.docs;
-//         paginationState.firstVisible = docs[0];
-//         paginationState.lastVisible = docs[docs.length - 1];
-
-//         paginationState.currentPage--;
-//         pageInfo.textContent = `Page ${paginationState.currentPage}`;
-//         prevBtn.disabled = paginationState.pageStack.length <= 1;
-//         nextBtn.disabled = docs.length < paginationState.pageSize;
-
-//         const headerRow = createTableHeader(paginationState.headers);
-//         thead.appendChild(headerRow);
-
-//         docs.forEach(docSnap => {
-//             const data = docSnap.data();
-//             const row = createDataRow(paginationState.headers, data, docSnap.id, paginationState.collection, null, paginationState.collection.id);
-//             tbody.appendChild(row);
-//         });
-
-//     } catch (err) {
-//         console.error("Previous page error:", err);
-//     } finally {
-//         hideSpinner();
-//     }
-// }
-
-
-// // Entry point to start pagination
-// export function initPaginatedLoad(colRef, headers) {
-//     paginationState = {
-//         ...paginationState,
-//         collection: colRef,
-//         headers: headers,
-//         currentPage: 0,
-//         lastVisible: null,
-//         firstVisible: null,
-//         pageStack: []
-//     };
-
-//     loadPaginatedData(colRef, headers);
-// }
-
-// ===== MAIN DATA LOADING FUNCTION =====
-export async function loadData(colRef, headers, query, collection) {
-    const { thead, tbody } = clearTable();
-
+export async function loadData(colRef, headers, q, collectionName, state) {
+    if (state) currentState = state;
+    const { thead, tbody } = createTable();
+    const paginationContainer = document.getElementById("paginationNavContainer");
     setupGlobalDeleteConfirmation();
-
     try {
-        const snapshot = await getDocs(query);
+        const snapshot = await getData(q);
         if (snapshot.empty) {
+            paginationContainer.style.display = "none";
             showNoDataMessage(tbody);
             return;
+        } else {
+            paginationContainer.style.display = "block";
         }
-        const headerRow = createTableHeader(headers);
-        thead.appendChild(headerRow);
-        snapshot.forEach(docSnap => {
-            const data = docSnap.data();
-            const row = createDataRow(headers, data, docSnap.id, colRef, query, collection);
-            tbody.appendChild(row);
-        });
+        if (snapshot.docs.length < currentState.page.size) {
+            currentState.page.isOnLastPage = true;
+        }
+        setDocIndex(snapshot);
+        renderTableHeader(headers, thead);
+        renderTableBody(snapshot, headers, colRef, q, collectionName, tbody);
+        updatePageInfo();
     } catch (err) {
         console.error("Error loading data:", err);
     } finally {
@@ -372,19 +312,30 @@ export async function loadData(colRef, headers, query, collection) {
     }
 }
 
+
+function renderTableHeader(headers, thead) {
+    const headerRow = createTableHeader(headers);
+    thead.appendChild(headerRow);
+}
+
+function renderTableData(id, data, headers, colRef, query, collection, tbody) {
+    const row = createDataRow(headers, data, id, colRef, query, collection);
+    tbody.appendChild(row);
+}
+
 // ===== GENERIC FORM SUBMISSION HANDLER =====
 export async function handleFormSubmission(e, form, state, colRef, headers, query, collection, bootstrapModal, extractFormDataFn) {
     e.preventDefault();
 
-    const { submitBtn, cancelBtn } = disableButtons();
+    const { submitBtn, cancelBtn } = createButtons();
     const formData = new FormData(form);
     const newEntry = extractFormDataFn(formData);
 
     try {
         if (state.currentEditId) {
-            await updateExistingEntry(state.currentEditId, newEntry, collection);
+            await updateDocument(state.currentEditId, newEntry, collection);
         } else {
-            await addNewEntry(colRef, newEntry);
+            await addDocument(colRef, newEntry);
         }
 
         hideModal(bootstrapModal);
@@ -409,20 +360,20 @@ export function showWarningModal(title, message) {
 
 
 export function showAddPopup(state, bootstrapModal, addModalConfig) {
-    resetState(state);
+    resetCurrentEditId(state);
     updateModalUI(addModalConfig);
     showModal(bootstrapModal);
 }
 
 export function showEditPopupGeneric(id, data, bootstrapModal, form, state, editModalConfig, populateFormFn) {
-    setEditState(state, id);
+    setCurrentEditId(state, id);
     updateModalUI(editModalConfig);
     populateFormFn(form, data);
     showModal(bootstrapModal);
 }
 
 export function hidePopup(state, bootstrapModal) {
-    resetState(state);
+    resetCurrentEditId(state);
     hideModal(bootstrapModal);
 }
 
@@ -430,7 +381,7 @@ export function hidePopup(state, bootstrapModal) {
 export function attachModalResetHandler(popupModalEl, form, state, addModalConfig) {
     popupModalEl.addEventListener('hidden.bs.modal', () => {
         resetForm(form);
-        resetState(state);
+        resetCurrentEditId(state);
         updateModalUI(addModalConfig);
     });
 }

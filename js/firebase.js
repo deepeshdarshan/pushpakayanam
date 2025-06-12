@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, startAfter } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, limitToLast, startAfter, endBefore } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
 
 const SESSION_TIMEOUT_MINUTES = 15;
@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { db, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, startAfter };
+export { db, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, limitToLast,  startAfter, endBefore };
 
 //  DOM Elements
 const loginForm = document.getElementById("loginForm");

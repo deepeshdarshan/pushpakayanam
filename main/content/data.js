@@ -1,14 +1,18 @@
+import { limit, orderBy } from '../../js/firebase.js';
 import {
     loadData,
     handleFormSubmission,
     showAddPopup,
     showEditPopupGeneric,
-    showDeleteConfirmationPopupGeneric,
     hidePopup,
     attachModalResetHandler,
     populateSearchDropdown,
-    showWarningModal
+    showWarningModal,
+    loadNext,
+    loadPrev
 } from './data-loader.js';
+
+export { loadNext, loadPrev };
 
 // ===== FORM-SPECIFIC CONFIGURATION =====
 
@@ -49,7 +53,7 @@ async function submitForm(e, form, state, colRef, headers, query, bootstrapModal
     await handleFormSubmission(e, form, state, colRef, headers, query, collectionName, bootstrapModal, extractFormData);
 }
 
-export async function search(query, where, orderBy, colRef, headers, COLLECTION_NAME) {
+export async function search(query, where, orderBy, colRef, headers, COLLECTION_NAME, state) {
     const field = document.getElementById("searchField")?.value;
     const value = document.getElementById("searchQuery")?.value.trim();
 
@@ -60,30 +64,27 @@ export async function search(query, where, orderBy, colRef, headers, COLLECTION_
         colRef,
         where(field, ">=", value),
         where(field, "<=", value + "\uf8ff"),
-        orderBy(field)
+        orderBy(field),
+        limit(state.page.size)
     );
 
     await loadData(colRef, headers, q, COLLECTION_NAME);
 }
 
-export async function resetSearch(query, colRef, headers, COLLECTION_NAME) {
+export async function resetSearch(query, colRef, headers, COLLECTION_NAME, state) {
     const field = document.getElementById("searchField");
     const value = document.getElementById("searchQuery");
     if (field) field.value = "";
     if (value) value.value = "";
-    const q = query(colRef);
+    const q = query(colRef, limit(state.page.size));
     await loadData(colRef, headers, q, COLLECTION_NAME);
 }
 
 // ===== INITIALIZATION =====
-export function init(query, colRef, headers, collectionName) {
-    const state = { currentEditId: null };
-    const q = query(colRef);
+export function init(query, colRef, headers, collectionName, state) {
+    const q = query(colRef, orderBy(headers[1]), limit(state.page.size));
     const popupModalEl = document.getElementById('popupModal');
     const bootstrapModal = new bootstrap.Modal(popupModalEl);
-
-    const deleteModalEl = document.getElementById('deleteConfirmModal')
-    const deleteModal = new bootstrap.Modal(deleteModalEl);
 
     const form = document.getElementById("dataForm");
 
@@ -95,12 +96,11 @@ export function init(query, colRef, headers, collectionName) {
     // Set up global functions
     window.showPopup = () => showAddPopup(state, bootstrapModal, modalConfig.add);
     window.showEditPopup = (id, data) => showEditPopupGeneric(id, data, bootstrapModal, form, state, modalConfig.edit, populateFormForEdit);
-    window.showDeletePopup = (docId, colRef, headers, query, collection) => showDeleteConfirmationPopupGeneric(docId, colRef, headers, query, collection, deleteModal);
     window.hidePopup = () => hidePopup(state, bootstrapModal);
 
     // Set up modal reset handler
     attachModalResetHandler(popupModalEl, form, state, modalConfig.add);
 
     populateSearchDropdown(headers);
-    loadData(colRef, headers, q, collectionName);
+    loadData(colRef, headers, q, collectionName, state);
 }
