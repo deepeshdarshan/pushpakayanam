@@ -3,7 +3,7 @@ import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, limitToLast, startAfter, endBefore } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
 
-const SESSION_TIMEOUT_MINUTES = 15;
+const SESSION_TIMEOUT_MINUTES = 45;
 const SESSION_KEY = 'lastPageLoadTime';
 
 const firebaseConfig = {

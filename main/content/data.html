@@ -65,6 +65,11 @@
             color: #adb5bd;
             cursor: not-allowed;
         }
+
+        .no-padding {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
     </style>
 </head>
 
@@ -87,9 +92,6 @@
         <div class="col-12 col-lg-auto">
             <div class="row g-2">
                 <div class="col-12 col-lg-auto">
-                    <label class="form-label fw-bold mb-0 pt-1">Search by</label>
-                </div>
-                <div class="col-12 col-lg-auto">
                     <select id="searchField" class="form-select w-100">
                         <!-- Populated dynamically -->
                     </select>
@@ -109,25 +111,31 @@
 
 
     <!-- Pagination Controls -->
-    <div id="paginationNavContainer">
-        <nav aria-label="Pagination" class="mt-4">
-            <ul class="pagination justify-content-center" id="paginationControls">
-                <li class="page-item" id="prevPageLi">
-                    <button class="page-link" id="prevPageBtn" aria-label="Previous">
-                        &laquo;
-                    </button>
-                </li>
-                <li class="page-item">
-                    <span class="page-link" id="pageInfo">Page 1</span>
-                </li>
-                <li class="page-item" id="nextPageLi">
-                    <button class="page-link" id="nextPageBtn" aria-label="Next">
-                        &raquo;
-                    </button>
-                </li>
-            </ul>
-        </nav>
+    <div class="container no-padding">
+        <div class="row">
+            <div class="col-12 text-start text-lg-end" id="paginationNavContainer">
+                <nav aria-label="Pagination" class="mt-4">
+                    <ul class="pagination justify-content-start justify-content-lg-end" id="paginationControls">
+                        <li class="page-item" id="prevPageLi">
+                            <button class="page-link" id="prevPageBtn" aria-label="Previous">
+                                &laquo;
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <span class="page-link" id="pageInfo">Page 1</span>
+                        </li>
+                        <li class="page-item" id="nextPageLi">
+                            <button class="page-link" id="nextPageBtn" aria-label="Next">
+                                &raquo;
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
+
+
 
     <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -139,23 +147,23 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">#</label>
-                        <input type="text" id="number" name="number" class="form-control" />
+                        <input type="text" id="number" name="number" class="form-control" required />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Contestant</label>
-                        <input type="text" id="contestant" name="contestant" class="form-control" />
+                        <input type="text" id="contestant" name="contestant" class="form-control" required />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Pradeshika Sabha</label>
-                        <input type="text" id="pradeshikaSabha" name="pradeshikaSabha" class="form-control" />
+                        <input type="text" id="pradeshikaSabha" name="pradeshikaSabha" class="form-control" required />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone</label>
-                        <input type="text" id="phone" name="phone" class="form-control" />
+                        <input type="text" id="phone" name="phone" class="form-control" required />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" />
+                        <input type="text" id="name" name="name" class="form-control" required />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -177,9 +185,7 @@
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="statusModalBody">
-                    <!-- Warning message goes here -->
-                </div>
+                <div class="modal-body" id="statusModalBody"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">OK</button>
                 </div>
@@ -223,7 +229,7 @@
 
     <script type="module">
         import { db, collection, query, orderBy, where, limit, startAfter } from '/js/firebase.js';
-        import { init, search, resetSearch, loadNext, loadPrev } from './data.js';
+        import { init, search, resetSearch, loadNext, loadPrev, getById } from './data.js';
 
         const COLLECTION_NAME = "souvenir_contest";
         const colRef = collection(db, COLLECTION_NAME);
@@ -231,11 +237,36 @@
 
         const state = {
             currentEditId: null,
-            page: {
+            fieldMapping: null,
+            formModalConfig: null,
+            collectionName: COLLECTION_NAME,
+            pagination: {
                 currentPage: 1,
-                isOnFirstPage: true, 
-                isOnLastPage: false, 
-                size: 10
+                isOnFirstPage: true,
+                isOnLastPage: false,
+                pageSize: 10
+            },
+            ui: {
+                formModal: getById("popupModal"),
+                form: getById("dataForm"),
+                formTitle: getById("formTitle"),
+                searchField: getById("searchField"),
+                searchQuery: getById("searchQuery"),
+                dataTable: getById("dataTable"),
+                thead: dataTable?.querySelector("thead"),
+                tbody: dataTable?.querySelector("tbody"),
+                spinner: getById("spinnerOverlay"),
+                submitBtn: getById("submitBtn"),
+                cancelBtn: getById("cancelBtn"),
+                confirmDeleteBtn: getById("confirmDeleteBtn"),
+                cancelDeleteBtn: getById("cancelDeleteBtn"),
+                paginationNavContainer: getById("paginationNavContainer"),
+                pageInfo: getById("pageInfo"),
+                prevPageBtn: getById("prevPageBtn"),
+                nextPageBtn: getById("nextPageBtn"),
+                statusModal: getById("statusModal"),
+                statusModalLabel: getById("statusModalLabel"),
+                statusModalBody: getById("statusModalBody")
             }
         };
 
