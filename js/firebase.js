@@ -20,7 +20,24 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { db, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, limitToLast,  startAfter, endBefore };
+export { db, collection, getDocs, addDoc, deleteDoc, doc, updateDoc, query, orderBy, where, limit, limitToLast, startAfter, endBefore };
+
+export async function addData(collection, document) {
+    await addDoc(collection, document);
+}
+
+export async function updateData(docId, collectionName, data) {
+    const docRef = doc(db, collectionName, docId);
+    await updateDoc(docRef, data);
+}
+
+export async function deleteData(docId, db, collection) {
+    await deleteDoc(doc(db, collection, docId));
+}
+
+export async function getData(query) {
+    return await getDocs(query);
+}
 
 //  DOM Elements
 const loginForm = document.getElementById("loginForm");

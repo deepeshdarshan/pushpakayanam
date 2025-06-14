@@ -1,20 +1,17 @@
 import { limit, orderBy } from '../../js/firebase.js';
 import {
     loadData,
-    handleFormSubmission,
+    submitForm,
     attachModalResetHandler,
     populateSearchDropdown,
-    showWarningModal,
     loadNext,
     loadPrev,
     getById,
     showSpinner,
-    hideSpinner
+    showStatusModal
 } from './data-loader.js';
 
 export { loadNext, loadPrev, getById };
-
-// ===== FORM-SPECIFIC CONFIGURATION =====
 
 const formModalConfig = {
     add: {
@@ -37,15 +34,40 @@ const fieldMapping = {
     "Name": "name"
 };
 
-export async function search(query, where, orderBy, colRef, headers, COLLECTION_NAME, state) {
-    showSpinner();
+const statusModalMap = {
+    success: {
+        headerClass: "bg-success text-white",
+        borderClass: "border-success",
+        iconClass: "bi bi-check-circle-fill",
+        buttonClass: "btn-success"
+    },
+    error: {
+        headerClass: "bg-danger text-white",
+        borderClass: "border-danger",
+        iconClass: "bi bi-x-circle-fill",
+        buttonClass: "btn-danger"
+    },
+    warning: {
+        headerClass: "bg-warning text-dark",
+        borderClass: "border-warning",
+        iconClass: "bi bi-exclamation-triangle-fill",
+        buttonClass: "btn-warning"
+    },
+    info: {
+        headerClass: "bg-info text-dark",
+        borderClass: "border-info",
+        iconClass: "bi bi-info-circle-fill",
+        buttonClass: "btn-info"
+    }
+};
 
+export async function search(query, where, orderBy, colRef, headers, COLLECTION_NAME, state) {
     const field = state.ui.searchField?.value;
     const value = state.ui.searchQuery?.value.trim();
 
-    if (!field) return showWarningModal("Error", "Please select a search field.");
-    if (!value) return showWarningModal("Error", "Please enter a search value.");
-
+    if (!field) return showStatusModal("Alert", "Please select a search field.", "warning");
+    if (!value) return showStatusModal("Alert", "Please enter a search value.", "warning");
+    showSpinner();
     const q = query(
         colRef,
         where(field, ">=", value),
@@ -76,10 +98,11 @@ export function init(query, colRef, headers, collectionName, state) {
     const form = state.ui.form
     state.formModalConfig = formModalConfig;
     state.fieldMapping = fieldMapping;
+    state.statusModalMap = statusModalMap;
 
     // Set up form submission handler
     form.addEventListener("submit", (e) => {
-        handleFormSubmission(e, form, state, colRef, headers, q, collectionName, bootstrapModal, fieldMapping);
+        submitForm(e, form, state, colRef, headers, q, collectionName, bootstrapModal, fieldMapping);
     });
 
     // Set up modal reset handler

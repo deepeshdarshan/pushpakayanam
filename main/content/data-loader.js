@@ -1,8 +1,21 @@
-import { db, getDocs, deleteDoc, doc, addDoc, updateDoc, limit, limitToLast, startAfter, endBefore, orderBy, query } from '/js/firebase.js';
+import {
+    db,
+    limit,
+    limitToLast,
+    startAfter,
+    endBefore,
+    orderBy,
+    query,
+    addData,
+    updateData,
+    deleteData,
+    getData
+} from '/js/firebase.js';
 
 let lastVisible = null;
 let firstVisible = null;
 let currentState = null;
+
 
 function extractFormData(formData, fieldMapping) {
     const result = {};
@@ -196,24 +209,6 @@ function setCurrentEditId(state, id) {
     state.currentEditId = id;
 }
 
-export async function addDocument(collection, document) {
-    await addDoc(collection, document);
-}
-
-export async function updateDocument(docId, collectionName, data) {
-    const docRef = doc(db, collectionName, docId);
-    await updateDoc(docRef, data);
-}
-
-async function deleteDocument(docId, db, collection) {
-    await deleteDoc(doc(db, collection, docId));
-}
-
-async function getData(query) {
-    return await getDocs(query);
-}
-
-
 export function handleSubmissionError(err) {
     console.error("Error submitting form:", err);
 }
@@ -277,12 +272,14 @@ async function handleDeleteConfirmation(deleteId, colRef, headers, query, collec
     enableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn);
     if (deleteId) {
         try {
-            await deleteDocument(deleteId, db, collection);
+            await deleteData(deleteId, db, collection);
             const deleteModal = getModal('deleteConfirmModal');
             hideModal(deleteModal);
             await loadData(colRef, headers, query, collection);
+            showStatusModal("Success", "Document has been deleted successfully", "success");
         } catch (err) {
             console.error("Error deleting document:", err);
+            showStatusModal("Error", "Error deleting document", "error");
         } finally {
             disableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn);
         }
@@ -362,13 +359,13 @@ function renderTableData(id, data, headers, colRef, query, collection, tbody) {
 
 async function addOrUpdateDocument(id, collectionName, collection, data) {
     if (id) {
-        await updateDocument(id, collectionName, data);
+        await updateData(id, collectionName, data);
     } else {
-        await addDocument(collection, data);
+        await addData(collection, data);
     }
 }
 
-export async function handleFormSubmission(e, form, state, collection, headers, query, collectionName, bootstrapModal, fieldMapping) {
+export async function submitForm(e, form, state, collection, headers, query, collectionName, bootstrapModal, fieldMapping) {
     e.preventDefault();
     const { submitBtn, cancelBtn } = createButtons();
     const formData = new FormData(form);
@@ -380,14 +377,46 @@ export async function handleFormSubmission(e, form, state, collection, headers, 
         await loadData(collection, headers, query, collectionName);
     } catch (err) {
         handleSubmissionError(err);
+        showStatusModal("Error", state.currentEditId ? "Error updating data" : "Erro saving data", "error");
     } finally {
+        showStatusModal("Success", state.currentEditId ? "Data has been updated" : "Data has been saved", "success");
         enableButtons(submitBtn, cancelBtn);
     }
 }
 
-export function showWarningModal(title, message) {
-    currentState.ui.statusModalLabel.textContent = title;
-    currentState.ui.statusModalBody.textContent = message;
+export function showStatusModal(titleTxt, message, type = "info") {
+    const config = currentState.statusModalMap[type] || currentState.statusModalMap.info;
+
+    const content = currentState.ui.statusModalContent;
+    const header = currentState.ui.statusModalHeader;
+    const icon = currentState.ui.statusModalIcon;
+    const title = currentState.ui.statusModalTitle;
+    const body = currentState.ui.statusModalBody;
+    const btn = currentState.ui.statusModalBtn;
+
+    if (content) {
+        content.className = "modal-content";
+        content.classList.add(...config.borderClass.split(" "));
+    }
+
+    if (header) {
+        header.className = "modal-header";
+        header.classList.add(...config.headerClass.split(" "));
+    }
+
+    if (btn) {
+        btn.className = "btn";
+        btn.classList.add(config.buttonClass);
+    }
+
+    if (icon) {
+        icon.className = config.iconClass;
+        icon.classList.add("me-2");
+    }
+
+    if (title) title.textContent = titleTxt;
+    if (body) body.textContent = message
+
     const modal = new bootstrap.Modal(currentState.ui.statusModal);
     showModal(modal);
 }
