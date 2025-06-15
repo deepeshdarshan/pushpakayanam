@@ -31,22 +31,19 @@ export async function updateData(docId, collectionName, data) {
     await updateDoc(docRef, data);
 }
 
-export async function deleteData(docId, db, collection) {
-    await deleteDoc(doc(db, collection, docId));
+export async function deleteData(docId, db, collectionName) {
+    await deleteDoc(doc(db, collectionName, docId));
 }
 
 export async function getData(query) {
     return await getDocs(query);
 }
 
-//  DOM Elements
 const loginForm = document.getElementById("loginForm");
 const errorMsg = document.getElementById("error");
 const logoutBtn = document.getElementById("logoutBtn");
 const userEmailLabel = document.getElementById("userEmail");
-const contests = document.getElementById("contests");
 
-// Login Handler
 if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -75,7 +72,6 @@ if (loginForm) {
     });
 }
 
-// Logout Handler
 async function logoutUser() {
     try {
         await signOut(auth);
@@ -114,15 +110,6 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-if (contests) {
-    document.addEventListener('DOMContentLoaded', async () => {
-        if (document.getElementById('contests')) {
-            const data = await fetchDocuments();
-            console.log(data);
-        }
-    });
-}
-
 function checkSessionTimeout() {
     const lastLoad = localStorage.getItem(SESSION_KEY);
     if (!lastLoad) {
@@ -139,12 +126,4 @@ function checkSessionTimeout() {
     } else {
         setTimeout(logoutUser, (SESSION_TIMEOUT_MINUTES - diffMinutes) * 60 * 1000);
     }
-}
-
-export async function fetchDocuments() {
-    const querySnapshot = await getDocs(collection(db, "pushpakayanam_contests"));
-    querySnapshot.forEach((doc) => {
-        console.log("Document ID:", doc.id);
-        console.log("Fields:", doc.data());
-    });
 }

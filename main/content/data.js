@@ -1,4 +1,4 @@
-import { limit, orderBy } from '../../js/firebase.js';
+import { limit, orderBy, query } from '../../js/firebase.js';
 import {
     loadData,
     submitForm,
@@ -8,7 +8,11 @@ import {
     loadPrev,
     getById,
     showSpinner,
-    showStatusModal
+    showStatusModal,
+    showModal,
+    hideModal,
+    attachConfirmDeleteButtonEvent,
+    hideSpinner
 } from './data-loader.js';
 
 export { loadNext, loadPrev, getById };
@@ -61,13 +65,62 @@ const statusModalMap = {
     }
 };
 
+const formActionsMap = {
+    save: {
+        success: {
+            title: "Success",
+            message: "Data saved successfully.",
+            type: "success"
+        },
+        error: {
+            title: "Error",
+            message: "Error saving data.",
+            type: "error"
+        }
+    },
+    update: {
+        success: {
+            title: "Success",
+            message: "Data updated successfully.",
+            type: "success"
+        },
+        error: {
+            title: "Error",
+            message: "Error updating data.",
+            type: "error"
+        }
+    },
+    delete: {
+        success: {
+            title: "Success",
+            message: "Data deleted successfully.",
+            type: "success"
+        },
+        error: {
+            title: "Error",
+            message: "Error deleting data.",
+            type: "error"
+        }
+    },
+    validate: {
+        type: "warning",
+        title: "Alert"
+    }
+};
+
+export function handleConfirmDeleteButtonEvent() {
+    attachConfirmDeleteButtonEvent();
+}
+
 export async function search(query, where, orderBy, colRef, headers, COLLECTION_NAME, state) {
     const field = state.ui.searchField?.value;
     const value = state.ui.searchQuery?.value.trim();
 
-    if (!field) return showStatusModal("Alert", "Please select a search field.", "warning");
-    if (!value) return showStatusModal("Alert", "Please enter a search value.", "warning");
+    if (!field) return showStatusModal(formActionsMap.validate.title, "Please select a search field.", formActionsMap.validate.type);
+    if (!value) return showStatusModal(formActionsMap.validate.title, "Please enter a search value.", formActionsMap.validate.type);
+
     showSpinner();
+
     const q = query(
         colRef,
         where(field, ">=", value),
@@ -76,7 +129,7 @@ export async function search(query, where, orderBy, colRef, headers, COLLECTION_
         limit(state.pagination.pageSize)
     );
 
-    await loadData(colRef, headers, q, COLLECTION_NAME);
+    await loadData(headers, q);
 }
 
 export async function resetSearch(query, colRef, headers, COLLECTION_NAME, state) {
@@ -86,28 +139,47 @@ export async function resetSearch(query, colRef, headers, COLLECTION_NAME, state
     if (field) field.value = "";
     if (value) value.value = "";
     const q = query(colRef, limit(state.pagination.pageSize));
-    await loadData(colRef, headers, q, COLLECTION_NAME);
+    await loadData(headers, q);
 }
 
 // ===== INITIALIZATION =====
-export function init(query, colRef, headers, collectionName, state) {
-    const q = query(colRef, orderBy(headers[1]), limit(state.pagination.pageSize));
-    const popupModalEl = state.ui.formModal;
-    const bootstrapModal = new bootstrap.Modal(popupModalEl);
+export function init(colRef, state) {
 
-    const form = state.ui.form
+    const q = query(colRef, orderBy(state.headers[1]), limit(state.pagination.pageSize));
+    const formModalEl = state.ui.formModal;
+    const formModal = new bootstrap.Modal(formModalEl);
+
     state.formModalConfig = formModalConfig;
     state.fieldMapping = fieldMapping;
     state.statusModalMap = statusModalMap;
+    state.formActionsMap = formActionsMap;
 
-    // Set up form submission handler
-    form.addEventListener("submit", (e) => {
-        submitForm(e, form, state, colRef, headers, q, collectionName, bootstrapModal, fieldMapping);
+    state.ui.form.addEventListener("submit", (e) => {
+        submitFormHandler(state, colRef, e);
     });
 
-    // Set up modal reset handler
-    attachModalResetHandler(popupModalEl, form, state, formModalConfig.add);
+    state.ui.addContestantBtn.addEventListener("click", (e) => {
+       addContestanEventHandler(state);
+    });
 
-    populateSearchDropdown(state, headers);
-    loadData(colRef, headers, q, collectionName, state);
+    attachModalResetHandler(state);
+    populateSearchDropdown(state);
+    loadData(state.headers, q, state);
 }
+
+export function addContestanEventHandler(state) {
+    const formModalEl = state.ui.formModal;
+    const formModal = new bootstrap.Modal(formModalEl);
+    showModal(formModal);
+};
+
+export async function submitFormHandler(state, colRef, e) {
+    e.preventDefault();
+    const q = query(colRef, orderBy(state.headers[1]), limit(state.pagination.pageSize));
+    const formModalEl = state.ui.formModal;
+    const formModal = bootstrap.Modal.getInstance(formModalEl);
+    submitForm(state.ui.form, state, colRef, formModal, fieldMapping);
+    hideModal(formModal);
+    loadData(state.headers, q, state);
+}
+

@@ -17,12 +17,13 @@ let firstVisible = null;
 let currentState = null;
 
 
-function extractFormData(formData, fieldMapping) {
-    const result = {};
+function extractFormData(form, fieldMapping) {
+    const data = {};
+    const formData = new FormData(form);
     for (const [label, field] of Object.entries(fieldMapping)) {
-        result[label] = formData.get(field);
+        data[label] = formData.get(field);
     }
-    return result;
+    return data;
 }
 
 function populateFormData(form, data, fieldMapping) {
@@ -88,7 +89,7 @@ function createEditButton(docId, data) {
     return createButton('editBtn', 'Edit', () => showEditPopup(
         docId,
         data,
-        getModal('popupModal'),
+        getModalByEl(currentState.ui.formModal),
         currentState.ui.form,
         currentState,
         currentState.formModalConfig.edit,
@@ -96,26 +97,26 @@ function createEditButton(docId, data) {
     ));
 }
 
-function createDeleteButton(docId, colRef, headers, query, collection) {
-    return createButton('deleteBtn', 'Delete', () => showDeleteConfirmPopup(docId, colRef, headers, query, collection));
+function createDeleteButton(docId, query) {
+    return createButton('deleteBtn', 'Delete', () => showDeleteConfirmPopup(docId, query));
 }
 
-function createActionCell(docId, data, colRef, headers, query, collection) {
+function createActionCell(docId, data, query) {
     const actionTd = createElement('td');
     const editBtn = createEditButton(docId, data);
-    const delBtn = createDeleteButton(docId, colRef, headers, query, collection);
+    const delBtn = createDeleteButton(docId, query);
     actionTd.appendChild(editBtn);
     actionTd.appendChild(delBtn);
     return actionTd;
 }
 
-function createDataRow(headers, data, docId, colRef, query, collection) {
+function createDataRow(headers, data, docId, query) {
     const row = createElement('tr');
     headers.forEach(header => {
         const td = createDataCell(data[header]);
         row.appendChild(td);
     });
-    const actionTd = createActionCell(docId, data, colRef, headers, query, collection);
+    const actionTd = createActionCell(docId, data, query);
     row.appendChild(actionTd);
 
     return row;
@@ -147,31 +148,31 @@ export function hideSpinner() {
     if (spinner) spinner.style.display = "none";
 }
 
-export function createButtons() {
+export function disableButtons() {
     const submitBtn = currentState.ui.submitBtn;
     const cancelBtn = currentState.ui.cancelBtn;
-    disableButtons(submitBtn, cancelBtn);
+    disableEl(submitBtn);
+    disableEl(cancelBtn);
     return { submitBtn, cancelBtn };
 }
 
-export function disableButtons(submitBtn, cancelBtn) {
-    submitBtn.disabled = true;
-    cancelBtn.disabled = true;
+export function enableButtons(submitBtn, cancelBtn) {
+    disableEl(submitBtn, false);
+    disableEl(cancelBtn, false);
 }
 
-export function enableButtons(submitBtn, cancelBtn) {
-    submitBtn.disabled = false;
-    cancelBtn.disabled = false;
+export function disableEl(el, value = true) {
+    el.disabled = value;
 }
 
 function disableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn) {
-    confirmDeleteBtn.disabled = false;
-    cancelDeleteBtn.disabled = false;
+    disableEl(confirmDeleteBtn, false);
+    disableEl(cancelDeleteBtn, false);
 }
 
 function enableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn) {
-    confirmDeleteBtn.disabled = true;
-    cancelDeleteBtn.disabled = true;
+    disableEl(confirmDeleteBtn);
+    disableEl(cancelDeleteBtn);
 }
 
 export function updateModalUI(modalConfigProp) {
@@ -179,15 +180,24 @@ export function updateModalUI(modalConfigProp) {
     currentState.ui.submitBtn.textContent = modalConfigProp.submitButtonLabel;
 }
 
-function createModal(modalId) {
+function createModalById(modalId) {
     const modalEl = getById(modalId);
+    return createModalByEl(modalEl);
+}
+
+function createModalByEl(modalEl) {
     return new bootstrap.Modal(modalEl);
 }
 
-function getModal(modalId) {
-    const modalEl = document.getElementById(modalId);
+function getModalById(modalId) {
+    const modalEl = getById(modalId);
+    return getModalByEl(modalEl);
+}
+
+function getModalByEl(modalEl) {
     return bootstrap.Modal.getInstance(modalEl);
 }
+
 
 export function showModal(bootstrapModal) {
     bootstrapModal.show();
@@ -213,49 +223,31 @@ export function handleSubmissionError(err) {
     console.error("Error submitting form:", err);
 }
 
-export function populateSearchDropdown(state, headers) {
+export function populateSearchDropdown(state) {
     const searchDropdown = state.ui.searchField;
     const defaultOption = createDefaultOption();
     searchDropdown.appendChild(defaultOption);
-    headers.forEach(header => {
+    state.headers.forEach(header => {
         const option = createOption(header, header);
         searchDropdown.appendChild(option);
     });
 }
 
-export function showDeleteConfirmPopup(docId, colRef, headers, query, collection) {
+export function showDeleteConfirmPopup(docId, query) {
     window.currentDeleteInfo = {
         id: docId,
-        colRef: colRef,
-        headers: headers,
-        query: query,
-        collection: collection
+        query: query
     };
-    const deleteModal = createModal('deleteConfirmModal');
+    const deleteModal = createModalById('deleteConfirmModal');
     showModal(deleteModal);
 }
 
-function setupGlobalDeleteConfirmation() {
-    const confirmDeleteBtn = currentState.ui.confirmDeleteBtn;
-
-    if (!confirmDeleteBtn.hasAttribute('data-listener-added')) {
-        confirmDeleteBtn.setAttribute('data-listener-added', 'true');
-
-        confirmDeleteBtn.addEventListener('click', async () => {
-            await attachConfirmDeleteButtonEvent();
-        });
-    }
-}
-
-async function attachConfirmDeleteButtonEvent() {
+export async function attachConfirmDeleteButtonEvent() {
     const currentDeleteInfo = window.currentDeleteInfo;
     if (currentDeleteInfo) {
         await handleDeleteConfirmation(
             currentDeleteInfo.id,
-            currentDeleteInfo.colRef,
-            currentDeleteInfo.headers,
             currentDeleteInfo.query,
-            currentDeleteInfo.collection
         );
         window.currentDeleteInfo = null;
     }
@@ -266,35 +258,30 @@ function setDocIndex(snapshot) {
     lastVisible = snapshot.docs[snapshot.docs.length - 1];
 }
 
-async function handleDeleteConfirmation(deleteId, colRef, headers, query, collection) {
+async function handleDeleteConfirmation(deleteId, query) {
     const confirmDeleteBtn = currentState.ui.confirmDeleteBtn;
     const cancelDeleteBtn = currentState.ui.cancelDeleteBtn;
+    const deleteAction = currentState.formActionsMap.delete;
     enableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn);
     if (deleteId) {
         try {
-            await deleteData(deleteId, db, collection);
-            const deleteModal = getModal('deleteConfirmModal');
-            hideModal(deleteModal);
-            await loadData(colRef, headers, query, collection);
-            showStatusModal("Success", "Document has been deleted successfully", "success");
+            hideModal(getModalByEl(currentState.ui.deleteConfirmModal));
+            await deleteData(deleteId, db, currentState.collectionName);
+            await loadData(currentState.headers, query);
+            showStatusModal(deleteAction.success.title, deleteAction.success.message, deleteAction.success.type);
         } catch (err) {
-            console.error("Error deleting document:", err);
-            showStatusModal("Error", "Error deleting document", "error");
+            console.error("Error deleting data:", err);
+            showStatusModal(deleteAction.error.title, deleteAction.error.message, deleteAction.error.type);
         } finally {
             disableDeleteConfirmationPopupButtons(confirmDeleteBtn, cancelDeleteBtn);
         }
     }
 }
 
-function getPaginationNavbar() {
-    return currentState.ui.paginationNavContainer;
-}
-
-
-function renderTableBody(snapshot, headers, colRef, q, collectionName, tbody) {
+function renderTableBody(snapshot, headers, q, tbody) {
     snapshot.forEach(docSnap => {
         const data = docSnap.data();
-        renderTableData(docSnap.id, data, headers, colRef, q, collectionName, tbody);
+        renderTableData(docSnap.id, data, headers, q, tbody);
     });
 }
 
@@ -308,7 +295,7 @@ export async function loadNext(colRef, headers, collectionName) {
     const q = query(colRef, orderBy(headers[1]), startAfter(lastVisible), limit(currentState.pagination.pageSize));
     currentState.pagination.isOnFirstPage = false;
     currentState.pagination.currentPage++;
-    await loadData(colRef, headers, q, collectionName);
+    await loadData(headers, q);
 }
 
 export async function loadPrev(colRef, headers, collectionName) {
@@ -316,14 +303,14 @@ export async function loadPrev(colRef, headers, collectionName) {
     currentState.pagination.currentPage--;
     currentState.pagination.isOnFirstPage = currentState.pagination.currentPage === 1;
     currentState.pagination.isOnLastPage = false;
-    await loadData(colRef, headers, q, collectionName);
+    await loadData(headers, q);
 }
 
-export async function loadData(colRef, headers, q, collectionName, state) {
+export async function loadData(headers, q, state) {
     if (state) currentState = state;
+    showSpinner();
     const { thead, tbody } = createTable();
-    const paginationNavbar = getPaginationNavbar();
-    setupGlobalDeleteConfirmation();
+    const paginationNavbar = currentState.ui.paginationNavContainer;
     try {
         const snapshot = await getData(q);
         if (snapshot.empty) {
@@ -338,7 +325,7 @@ export async function loadData(colRef, headers, q, collectionName, state) {
         }
         setDocIndex(snapshot);
         renderTableHeader(headers, thead);
-        renderTableBody(snapshot, headers, colRef, q, collectionName, tbody);
+        renderTableBody(snapshot, headers, q, tbody);
         updatePageInfo();
     } catch (err) {
         console.error("Error loading data:", err);
@@ -352,12 +339,12 @@ function renderTableHeader(headers, thead) {
     thead.appendChild(headerRow);
 }
 
-function renderTableData(id, data, headers, colRef, query, collection, tbody) {
-    const row = createDataRow(headers, data, id, colRef, query, collection);
+function renderTableData(id, data, headers, query, tbody) {
+    const row = createDataRow(headers, data, id, query);
     tbody.appendChild(row);
 }
 
-async function addOrUpdateDocument(id, collectionName, collection, data) {
+async function addOrUpdateData(id, collectionName, collection, data) {
     if (id) {
         await updateData(id, collectionName, data);
     } else {
@@ -365,21 +352,17 @@ async function addOrUpdateDocument(id, collectionName, collection, data) {
     }
 }
 
-export async function submitForm(e, form, state, collection, headers, query, collectionName, bootstrapModal, fieldMapping) {
-    e.preventDefault();
-    const { submitBtn, cancelBtn } = createButtons();
-    const formData = new FormData(form);
-    const data = extractFormData(formData, fieldMapping);
+export async function submitForm(form, state, collection, bootstrapModal, fieldMapping) {
+    const { submitBtn, cancelBtn } = disableButtons();
     try {
-        addOrUpdateDocument(state.currentEditId, collectionName, collection, data);
-        hideModal(bootstrapModal);
+        const data = extractFormData(form, fieldMapping);
+        addOrUpdateData(state.currentEditId, state.collectionName, collection, data);
         resetForm(form);
-        await loadData(collection, headers, query, collectionName);
     } catch (err) {
         handleSubmissionError(err);
-        showStatusModal("Error", state.currentEditId ? "Error updating data" : "Erro saving data", "error");
+        showStatusModal("Error", state.currentEditId ? "Error updating data" : "Error saving data", "error");
     } finally {
-        showStatusModal("Success", state.currentEditId ? "Data has been updated" : "Data has been saved", "success");
+        showStatusModal("Success", state.currentEditId ? "Data updated successfully" : "Data saved successfully", "success");
         enableButtons(submitBtn, cancelBtn);
     }
 }
@@ -417,7 +400,7 @@ export function showStatusModal(titleTxt, message, type = "info") {
     if (title) title.textContent = titleTxt;
     if (body) body.textContent = message
 
-    const modal = new bootstrap.Modal(currentState.ui.statusModal);
+    const modal = createModalByEl(currentState.ui.statusModal);
     showModal(modal);
 }
 
@@ -441,10 +424,10 @@ export function hidePopup(state, bootstrapModal) {
 }
 
 // ===== MODAL EVENT HANDLER SETUP =====
-export function attachModalResetHandler(popupModalEl, form, state, addModalConfig) {
-    popupModalEl.addEventListener('hidden.bs.modal', () => {
-        resetForm(form);
+export function attachModalResetHandler(state) {
+    state.ui.formModal.addEventListener('hidden.bs.modal', () => {
+        resetForm(state.ui.form);
         resetCurrentEditId(state);
-        updateModalUI(addModalConfig);
+        updateModalUI(state.formModalConfig.add);
     });
 }

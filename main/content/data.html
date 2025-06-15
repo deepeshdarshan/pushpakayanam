@@ -19,8 +19,8 @@
     <div class="row align-items-center mb-3">
         <!-- Add Entry Button -->
         <div class="col-12 col-lg-auto mb-2 mb-lg-0">
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#popupModal">
-                Add Entry
+            <button class="btn btn-success" id="addContestantBtn">
+                Add Contestant
             </button>
         </div>
 
@@ -80,7 +80,7 @@
         <div class="modal-dialog">
             <form class="modal-content" id="dataForm">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formTitle">Add New Entry</h5>
+                    <h5 class="modal-title" id="formTitle">Add New Contestant</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -168,7 +168,7 @@
 
     <script type="module">
         import { db, collection, query, orderBy, where, limit, startAfter } from '/js/firebase.js';
-        import { init, search, resetSearch, loadNext, loadPrev, getById } from './data.js';
+        import { init, search, resetSearch, loadNext, loadPrev, getById, handleConfirmDeleteButtonEvent, submitFormHandler } from './data.js';
 
         const COLLECTION_NAME = "souvenir_contest";
         const colRef = collection(db, COLLECTION_NAME);
@@ -180,6 +180,8 @@
             formModalConfig: null,
             collectionName: COLLECTION_NAME,
             statusModalMap: null,
+            headers: headers,
+            formActionsMap: null,
             pagination: {
                 currentPage: 1,
                 isOnFirstPage: true,
@@ -196,11 +198,13 @@
                 thead: dataTable?.querySelector("thead"),
                 tbody: dataTable?.querySelector("tbody"),
                 spinner: getById("spinnerOverlay"),
+                addContestantBtn: getById("addContestantBtn"),
                 submitBtn: getById("submitBtn"),
                 cancelBtn: getById("cancelBtn"),
                 confirmDeleteBtn: getById("confirmDeleteBtn"),
                 cancelDeleteBtn: getById("cancelDeleteBtn"),
                 paginationNavContainer: getById("paginationNavContainer"),
+                deleteConfirmModal: getById("deleteConfirmModal"),
                 pageInfo: getById("pageInfo"),
                 prevPageBtn: getById("prevPageBtn"),
                 nextPageBtn: getById("nextPageBtn"),
@@ -223,7 +227,7 @@
         });
 
         document.addEventListener("DOMContentLoaded", () => {
-            init(query, colRef, headers, COLLECTION_NAME, state);
+            init(colRef, state);
         });
 
         document.getElementById("nextPageBtn").addEventListener("click", () => {
@@ -233,6 +237,12 @@
         document.getElementById("prevPageBtn").addEventListener("click", () => {
             loadPrev(colRef, headers, COLLECTION_NAME);
         });
+
+        state.ui.confirmDeleteBtn.addEventListener('click', async () => {
+            await handleConfirmDeleteButtonEvent();
+        });
+
+    
 
     </script>
 </body> 
