@@ -10,6 +10,7 @@ import {
     sort,
     log
 } from '/js/dom-utils.js';
+import { domElements, populatePageHeader } from '/js/dom-generator.js';
 
 const EMPTY_STRING = "";
 const NO_SORT_OPTION_SELECTED = "-1";
@@ -21,6 +22,7 @@ let currentPage = 1;
 let isFirstPage = true;
 let isLastPage = false;
 let rowIdx = 1;
+let pageTitle = null;
 
 let paginationEnabled = true;
 let searchEnabled = true;
@@ -251,6 +253,71 @@ function fetchAndRenderData() {
         })
 }
 
+function attachEventHandlers() {
+    const prevPageLi = getById("prevPageLi");
+    const nextPageLi = getById("nextPageLi");
+    const searchBtn = getById("searchBtn");
+    const resetBtn = getById("resetBtn");
+    const sortBtn = getById("sortBtn");
+    const checkboxDropdownMenu = getById("checkboxDropdownMenu");
+    const pageSizeSelect = getById("pageSizeSelect");
+
+    if (prevPageLi) {
+        prevPageLi.addEventListener("click", () => {
+            prevPageLiClickHandler();
+        });
+    }
+
+    if (nextPageLi) {
+        nextPageLi.addEventListener("click", () => {
+            nextPageLiClickHandler();
+        });
+    }
+
+    if (searchBtn) {
+        searchBtn.addEventListener("click", () => {
+            searchButtonClickHandler();
+        });
+    }
+
+    if (pageSizeSelect) {
+        pageSizeSelect.addEventListener("change", () => {
+            pageSizeChangeHandler();
+        });
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+            resetButtonClickHandler();
+        });
+    }
+
+    if (sortBtn) {
+        sortBtn.addEventListener("click", () => {
+            sortButtonClickHandler();
+        });
+    }
+
+    if (checkboxDropdownMenu) {
+        checkboxDropdownMenu.addEventListener("change", (e) => {
+            const target = e.target;
+            checkboxDropdownChangeListener(target);
+        });
+    }
+}
+
+function renderDom() {
+    getById("navbar").innerHTML = domElements.navbar;
+    getById("topbar").innerHTML = domElements.topbar;
+    getById("pageHeader").innerHTML = populatePageHeader(pageTitle);
+    getById("pagination-controls").innerHTML = domElements.paginationControls;
+    getById("data-filter-controls").innerHTML = domElements.dataFilterControls;
+    getById("spinner-modal").innerHTML = domElements.spinnerModal;
+    getById("warning-modal").innerHTML = domElements.warningModal;
+    getById("data-table").innerHTML = domElements.dataTable;
+
+}
+
 export function prevPageLiClickHandler() {
     if (currentPage > 1) {
         currentPage--;
@@ -302,7 +369,8 @@ export function sortButtonClickHandler() {
         return;
     }
     const pageSize = getPageSize();
-    setRowIdx(rowIdx - pageSize);
+    const offset = (currentPage - 1) * pageSize;
+    setRowIdx(offset + 1);
     fetchAndRenderData();
 }
 
@@ -328,6 +396,9 @@ export function init(state) {
     searchEnabled = state.settings.uiSettings.searchEnabled;
     columnSelectionEnabled = state.settings.uiSettings.columnSelectionEnabled;
     sortEnabled = state.settings.uiSettings.sortEnabled;
+    pageTitle = state.settings.pageSettings.pageTitle;
+    renderDom();
+    attachEventHandlers();
     renderSearchOptions();
     renderSortOptions();
     renderCheckboxDropdown();

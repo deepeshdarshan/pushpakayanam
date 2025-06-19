@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <title>പുഷ്പകായനം 2025</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Vishu contest | പുഷ്പകായനം 2025" name="keywords">
-    <meta content="Vishu contest | പുഷ്പകായനം 2025" name="description">
+    <meta content="Naming contest | പുഷ്പകായനം 2025" name="keywords">
+    <meta content="Naming contest | പുഷ്പകായനം 2025" name="description">
 
     <!-- Favicon -->
     <link href="/img/favicon.ico" rel="icon">
@@ -20,135 +20,86 @@
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
-
-    <style>
-        #loader {
-            font-size: 20px;
-            text-align: center;
-            margin-top: 50px;
-            color: #555;
-        }
-
-        iframe {
-            display: none;
-            /* Hide initially */
-            width: 100%;
-            height: 70vh;
-            border: none;
-        }
-    </style>
+    <link href="/css/spreadsheet.css" rel="stylesheet">
 
 </head>
 
 <body>
     <div>
-
         <!-- Topbar Start -->
-        <div class="container-fluid bg-secondary ps-5 pe-0 d-none d-lg-block">
-            <div class="row gx-0">
-                <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-body py-2 pe-3 border-end" href="yuvavedi/index.html"><small></small></a>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center text-lg-end">
-                    <div
-                        class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
-                        <div class="me-3 pe-3 border-end py-2">
-                            <p class="m-0"><i class="fa fa-envelope-open me-2"></i>pushpakayanam2025@gmail.com</p>
-                        </div>
-                        <div class="py-2">
-                            <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+91-00000 00000</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-3 py-2">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="/img/logo.png" class="img-fluid" style="max-width: 180px;" alt="Logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="/main/admin/dashboard.html" class="nav-item nav-link">Dashboard</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Contest</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="/main/admin/naming-contest.html" class="dropdown-item">Naming Contest</a>
-                                <a href="/main/admin/vishu-contest.html" class="dropdown-item">Vishu Contest</a>
-                                <a href="/main/admin/souvenir-contest.html" class="dropdown-item">Souvenir Contest</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-                class="bi bi-arrow-up"></i></a>
+        <div id="topbar"></div>
         <!-- Topbar End -->
 
+        <!-- Navbar Start -->
+        <div id="navbar"></div>
+        <!-- Navbar End -->
+
         <!-- Page Header Start -->
-        <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <div class="text-white text-center text-md-start mb-3 mb-md-0">
-                    <h1 class="fw-bold mb-1 fs-3 text-white" id="page-title">Admin Dashboard</h1>
-                    <div id="breadcrumb-container" class="small ">
-                        <a href="#" class="text-primary text-decoration-none">Home</a>
-                        <i class="far fa-square text-primary px-2"></i>
-                        <a href="#" class="text-primary text-decoration-none">Vishu contest</a>
-                    </div>
-                </div>
-                <div class="text-white text-center text-md-end">
-                    <div id="userEmail" class="small text-truncate mx-auto mx-md-0" style="max-width: 250px;">
-                        pushpakayanam2025@gmail.com
-                    </div>
-                    <button id="logoutBtn"
-                        class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0">
-                        Logout
-                    </button>
-                </div>
-            </div>
-        </div>
+        <div id="pageHeader"></div>
         <!-- Page Header End -->
 
-        <!-- About Start -->
-        <div id="loader">Loading vishu contest details...</div>
+        <div class="container-fluid mb-3 mt-2">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
 
-        <iframe id="sheetIframe"
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRIxhBuLNv0l9lUir3o5yqD8R9_Ygz8JzQ8jQwWkFwK3mVQWzvpBDC0PsDV96bxlkmjhASI6bncsh2d/pubhtml?widget=true&amp;headers=false"
-            onload="iframeLoaded()"></iframe>
-        <!-- About End -->
+                <!-- Pagination Controls - Aligned Left -->
+                <div id="pagination-controls"></div>
 
-        <script type="module" src="/js/firebase.js"></script>
+                <!-- Search, Sort, Reset Controls - Aligned Right -->
+                <div id="data-filter-controls"></div>
+            </div>
+        </div>
+
+
+        <!-- Spinner Modal -->
+        <div id="spinner-modal"></div>
+
+        <!-- Warning Modal -->
+        <div id="warning-modal"></div>
+
+        <div id="data-table"></div>
+
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="/lib/easing/easing.min.js"></script>
-        <script src="/lib/waypoints/waypoints.min.js"></script>
-        <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="module" src="/js/firebase.js"></script>
 
-        <script>
-            function iframeLoaded() {
-                document.getElementById("loader").style.display = "none";
-                document.getElementById("sheetIframe").style.display = "block";
+        <script type="module">
+            import { init } from '/js/spreadsheet.js';
+            import { domElements } from '/js/dom-generator.js';
+
+            const columnSettings = [
+                { columnIndex: 0, columnKey: "B", displayName: "Contestant", enabled: true },
+                { columnIndex: 2, columnKey: "C", displayName: "Phone No", enabled: true },
+                { columnIndex: 3, columnKey: "D", displayName: "Pradeshika Sabha", enabled: true },
+            ];
+
+            const state = {
+                settings: {
+                    tableSettings: {
+                        id: "12y8ZFzEUQElXnS8plCdloZkxKS5RKygPUooDaRfH-os",
+                        columnSettings: columnSettings
+                    },
+                    uiSettings: {
+                        paginationEnabled: true,
+                        searchEnabled: true,
+                        columnSelectionEnabled: true,
+                        sortEnabled: true,
+                    },
+                    pageSettings: {
+                        pageTitle: "Vishu Contest"
+                    }
+                }
             }
+
+            document.addEventListener('DOMContentLoaded', () => init(state));
+
         </script>
 
 </body>

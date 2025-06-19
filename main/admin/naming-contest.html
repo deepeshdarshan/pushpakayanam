@@ -41,11 +41,6 @@
         <div id="navbar"></div>
         <!-- Navbar End -->
 
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
-            <i class="bi bi-arrow-up"></i>
-        </a>
-
-
         <!-- Page Header Start -->
         <div id="pageHeader"></div>
         <!-- Page Header End -->
@@ -63,39 +58,21 @@
 
 
         <!-- Spinner Modal -->
-       <div id="spinner-modal"></div>
+        <div id="spinner-modal"></div>
 
         <!-- Warning Modal -->
-       <div id="warning-modal"></div>
+        <div id="warning-modal"></div>
 
-       <div id="data-table"></div>
-       
+        <div id="data-table"></div>
+
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="module" src="/js/firebase.js"></script>
+
         <script type="module">
-            import {
-                init,
-                sortButtonClickHandler,
-                resetButtonClickHandler,
-                pageSizeChangeHandler,
-                searchButtonClickHandler,
-                nextPageLiClickHandler,
-                prevPageLiClickHandler,
-                checkboxDropdownChangeListener
-            } from '/js/spreadsheet.js';
-            import { getById } from '/js/dom-utils.js';
-            import { adminPage } from '/js/dom-generator.js';
-
-
-            getById("navbar").innerHTML = adminPage.navbar;
-            getById("topbar").innerHTML = adminPage.topbar;
-            getById("pageHeader").innerHTML = adminPage.pageHeader;
-            getById("pagination-controls").innerHTML = adminPage.paginationControls;
-            getById("data-filter-controls").innerHTML = adminPage.dataFilterControls;
-            getById("spinner-modal").innerHTML = adminPage.spinnerModal;
-            getById("warning-modal").innerHTML = adminPage.warningModal;
-            getById("data-table").innerHTML = adminPage.dataTable;
+            import { init } from '/js/spreadsheet.js';
+            import { domElements } from '/js/dom-generator.js';
 
             const columnSettings = [
                 { columnIndex: 0, columnKey: "B", displayName: "Contestant", enabled: true },
@@ -104,57 +81,6 @@
                 { columnIndex: 3, columnKey: "E", displayName: "First Name", enabled: true },
                 { columnIndex: 4, columnKey: "F", displayName: "Second Name", enabled: true }
             ];
-
-            const prevPageLi = getById("prevPageLi");
-            const nextPageLi = getById("nextPageLi");
-            const searchBtn = getById("searchBtn");
-            const resetBtn = getById("resetBtn");
-            const sortBtn = getById("sortBtn");
-            const checkboxDropdownMenu = getById("checkboxDropdownMenu");
-            const pageSizeSelect = getById("pageSizeSelect");
-
-            if (prevPageLi) {
-                prevPageLi.addEventListener("click", () => {
-                    prevPageLiClickHandler();
-                });
-            }
-
-            if (nextPageLi) {
-                nextPageLi.addEventListener("click", () => {
-                    nextPageLiClickHandler();
-                });
-            }
-
-            if (searchBtn) {
-                searchBtn.addEventListener("click", () => {
-                    searchButtonClickHandler();
-                });
-            }
-
-            if (pageSizeSelect) {
-                pageSizeSelect.addEventListener("change", () => {
-                    pageSizeChangeHandler();
-                });
-            }
-
-            if (resetBtn) {
-                resetBtn.addEventListener("click", () => {
-                    resetButtonClickHandler();
-                });
-            }
-
-            if (sortBtn) {
-                sortBtn.addEventListener("click", () => {
-                    sortButtonClickHandler();
-                });
-            }
-
-            if (checkboxDropdownMenu) {
-                checkboxDropdownMenu.addEventListener("change", (e) => {
-                    const target = e.target;
-                    checkboxDropdownChangeListener(target);
-                });
-            }
 
             const state = {
                 settings: {
@@ -167,6 +93,9 @@
                         searchEnabled: true,
                         columnSelectionEnabled: true,
                         sortEnabled: true,
+                    },
+                    pageSettings: {
+                        pageTitle: "Naming Contest"
                     }
                 }
             }

@@ -3,7 +3,7 @@ let searchEnabled = true;
 let columnSelectionEnabled = true;
 let sortEnabled = true;
 
-export const adminPage = {
+export const domElements = {
 
     spinnerModal: `
         <div class="modal fade" id="spinnerModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
@@ -47,74 +47,10 @@ export const adminPage = {
 
     seperator: `<div class="vr d-none d-md-block mx-2"></div>`,
 
-    dataFilterControls: `<div class="d-flex flex-wrap align-items-center gap-2 control-group">
-                    <div class="dropdown w-md-auto">
-                        <button class="form-select text-start h-43p w-100 w-md-auto" type="button"
-                            id="checkboxDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                            Visible columns
-                        </button>
-                        <ul class="dropdown-menu w-100" aria-labelledby="checkboxDropdownBtn" id="checkboxDropdownMenu">
-                        </ul>
-                    </div>
-
-                    <!-- Separator -->
-                    <div class="vr d-none d-md-block mx-2"></div>
-
-                    <div class="col-12 col-md-auto">
-                        <select id="searchField" class="form-select w-100 w-md-auto"></select>
-                    </div>
-                    <div class="col-12 col-md-auto">
-                        <input type="text" id="searchQuery" class="form-control" placeholder="Search text..." />
-                    </div>
-                    <div class="col-12 col-md-auto">
-                        <button id="searchBtn" class="btn btn-outline-danger w-100">Search</button>
-                    </div>
-                    <!-- Separator -->
-                    <div class="vr d-none d-md-block mx-2"></div>
-                    <div class="col-12 col-md-auto">
-                        <select id="sortField" class="form-select w-100 w-md-auto"></select>
-                    </div>
-                    <div class="col-12 col-md-auto">
-                        <button id="sortBtn" class="btn btn-outline-danger w-100">Sort</button>
-                    </div>
-                    <!-- Separator -->
-                    <div class="vr d-none d-md-block mx-2"></div>
-                    <div class="col-12 col-md-auto">
-                        <button id="resetBtn" class="btn btn-outline-dark w-100">Reset</button>
-                    </div>
-                </div>`,
+    dataFilterControls: populateDataFilterControls(),
 
 
-    paginationControls: `
-                    <div class="d-flex flex-wrap flex-md-nowrap align-items-center gap-2 control-group">
-                        <div>
-                            Page size:
-                        </div>
-                        <div>
-                            <select id="pageSizeSelect" class="form-select w-100 w-md-auto">
-                                <option value="10">10</option>
-                                <option value="25" selected>25</option>
-                                <option value="50">50</option>
-                            </select>
-                        </div>
-                        <!-- Separator -->
-                        <div class="vr d-none d-md-block mx-2"></div>
-                        <div class="col-12 col-md-auto">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination stylish-pagination mb-0">
-                                    <li class="page-item" id="prevPageLi">
-                                        <button class="page-link" id="prevBtn">&laquo;</button>
-                                    </li>
-                                    <li class="page-item active" id="pageInfoLi">
-                                        <span class="page-link" id="pageInfo">Page 1</span>
-                                    </li>
-                                    <li class="page-item" id="nextPageLi">
-                                        <button class="page-link" id="nextBtn">&raquo;</button>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>`,
+    paginationControls: populatePaginationControls(),
 
     pageHeader: `
                 <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
@@ -187,11 +123,106 @@ export const adminPage = {
             </div>`
 
 }
+function populateDataFilterControls() {
+    let html = `<div class="d-flex flex-wrap align-items-center gap-2 control-group">`;
+    if (columnSelectionEnabled) {
+        html += `<div class="dropdown w-md-auto">
+                        <button class="form-select text-start h-43p w-100 w-md-auto" type="button"
+                            id="checkboxDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                            Visible columns
+                        </button>
+                        <ul class="dropdown-menu w-100" aria-labelledby="checkboxDropdownBtn" id="checkboxDropdownMenu">
+                        </ul>
+                    </div>`;
+    }
+    if (searchEnabled) {
+        html += `<div class="vr d-none d-md-block mx-2"></div>
+                    <div class="col-12 col-md-auto">
+                        <select id="searchField" class="form-select w-100 w-md-auto"></select>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                        <input type="text" id="searchQuery" class="form-control" placeholder="Search text..." />
+                    </div>
+                    <div class="col-12 col-md-auto">
+                        <button id="searchBtn" class="btn btn-outline-danger w-100">Search</button>
+                    </div>`;
+    }
+    if (sortEnabled) {
+        html += `<div class="vr d-none d-md-block mx-2"></div>
+                    <div class="col-12 col-md-auto">
+                        <select id="sortField" class="form-select w-100 w-md-auto"></select>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                        <button id="sortBtn" class="btn btn-outline-danger w-100">Sort</button>
+                    </div>`;
+    }
+    html += `<div class="vr d-none d-md-block mx-2"></div>
+                    <div class="col-12 col-md-auto">
+                        <button id="resetBtn" class="btn btn-outline-dark w-100">Reset</button>
+                    </div>
+                </div>`;
 
-function init(state) {
-    paginationEnabled = state.settings.uiSettings.paginationEnabled;
-    searchEnabled = state.settings.uiSettings.searchEnabled;
-    columnSelectionEnabled = state.settings.uiSettings.columnSelectionEnabled;
-    sortEnabled = state.settings.uiSettings.sortEnabled;
+    return html;
+}
 
+function populatePaginationControls() {
+    let html = null;
+    if (paginationEnabled) {
+        html = `
+                    <div class="d-flex flex-wrap flex-md-nowrap align-items-center gap-2 control-group">
+                        <div>
+                            Page size:
+                        </div>
+                        <div>
+                            <select id="pageSizeSelect" class="form-select w-100 w-md-auto">
+                                <option value="10">10</option>
+                                <option value="25" selected>25</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                        <!-- Separator -->
+                        <div class="vr d-none d-md-block mx-2"></div>
+                        <div class="col-12 col-md-auto">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination stylish-pagination mb-0">
+                                    <li class="page-item" id="prevPageLi">
+                                        <button class="page-link" id="prevBtn">&laquo;</button>
+                                    </li>
+                                    <li class="page-item active" id="pageInfoLi">
+                                        <span class="page-link" id="pageInfo">Page 1</span>
+                                    </li>
+                                    <li class="page-item" id="nextPageLi">
+                                        <button class="page-link" id="nextBtn">&raquo;</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>`
+    }
+    return html;
+}
+
+export function populatePageHeader(title) {
+    return `
+            <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <div class="text-white text-center text-md-start mb-3 mb-md-0">
+                        <h1 class="fw-bold mb-1 fs-3 text-white" id="page-title">${title}</h1>
+                        <div id="breadcrumb-container" class="small ">
+                            <a href="#" class="text-primary text-decoration-none">Home</a>
+                            <i class="bi bi-exclude text-primary px-2"></i>
+                            <a href="#" class="text-primary text-decoration-none">${title}</a>
+                        </div>
+                    </div>
+                    <div class="text-white text-center text-md-end">
+                        <div id="userEmail" class="small text-truncate mx-auto mx-md-0" style="max-width: 250px;">
+                            pushpakayanam2025@gmail.com
+                        </div>
+                        <button id="logoutBtn"
+                            class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0">
+                        Logout
+                        </button>
+                    </div>
+                </div>
+            </div>`
 }
