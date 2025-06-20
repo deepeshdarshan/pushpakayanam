@@ -9,7 +9,7 @@
             $('.navbar').removeClass('sticky-top');
         }
     });
-    
+
     // Dropdown on mouse hover
     $(document).ready(function () {
         function toggleNavbarMethod() {
@@ -26,51 +26,61 @@
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
+            $('#visitCounter').fadeOut('slow');
             $('.back-to-top').fadeIn('slow');
         } else {
+            $('#visitCounter').fadeIn('slow');
             $('.back-to-top').fadeOut('slow');
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
         return false;
     });
 
 
     // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: false,
-        smartSpeed: 500,
-        items: 1,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-    });
+    try {
+        $(".testimonial-carousel").owlCarousel({
+            autoplay: false,
+            smartSpeed: 500,
+            items: 1,
+            dots: false,
+            loop: true,
+            nav: true,
+            navText: [
+                '<i class="bi bi-arrow-left"></i>',
+                '<i class="bi bi-arrow-right"></i>'
+            ],
+        });
+    } catch (e) {
+        console.log("Error initializing testimonial-carousel")
+    }
 
-    $(".header-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 500,
-        items: 1,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-    });
-    
+    try {
+        $(".header-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 500,
+            items: 1,
+            dots: false,
+            loop: true,
+            nav: true,
+            navText: [
+                '<i class="bi bi-arrow-left"></i>',
+                '<i class="bi bi-arrow-right"></i>'
+            ],
+        });
+    } catch (e) {
+        console.log("Error initializing header-carousel")
+    }
+
 })(jQuery);
 
 function goto(url) {
-    window.location.href=url;
+    window.location.href = url;
 }

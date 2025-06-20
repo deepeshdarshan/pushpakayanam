@@ -1,4 +1,4 @@
-import { limit, orderBy, query } from '../../js/firebase.js';
+import { limit, orderBy, query } from './firestore.js';
 import {
     loadData,
     submitForm,

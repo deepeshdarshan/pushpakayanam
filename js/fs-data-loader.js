@@ -10,7 +10,7 @@ import {
     updateData,
     deleteData,
     getData
-} from '/js/firebase.js';
+} from '/js/firestore.js';
 
 let lastVisible = null;
 let firstVisible = null;

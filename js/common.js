@@ -166,14 +166,15 @@ const links = [
     },
 ];
 
-function init(pageId) {
+async function init(pageId) {
     loadMeta();
     loadHeadLinks();
     loadHeader();
     loadTitle();
     loadPageHeader(pageId);
     loadFooter();
-
+    const module = await import('/js/visit-counter.js');
+    module.initVisitCounter();
 }
 
 function loadHeader(loadScripts = true) {
