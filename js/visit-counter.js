@@ -30,12 +30,35 @@ async function showVisitCount() {
     try {
         const snap = await getDoc(counterDoc);
         if (snap.exists()) {
-            document.getElementById("visitCount").textContent = snap.data().count;
+            const count = snap.data().count;
+            const countEl = document.getElementById("visitCount");
+            if (countEl) {
+                animateCountUp(countEl, count);
+            }
         }
     } catch (err) {
         console.error("Error fetching count:", err);
     }
 }
+
+function animateCountUp(element, endValue, duration = 1000) {
+    const startValue = 0;
+    const increment = endValue / (duration / 10);
+    let currentValue = startValue;
+
+    const updateCounter = () => {
+        currentValue += increment;
+        if (currentValue < endValue) {
+            element.textContent = Math.floor(currentValue);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = endValue;
+        }
+    };
+
+    updateCounter();
+}
+
 
 // Call the functions
 export function initVisitCounter() {

@@ -238,6 +238,10 @@ h6,
     opacity: 75%;
 }
 
+.text-muted-primary {
+    color: #DC3545 !important;
+}
+
 .testimonial-carousel .owl-nav {
     margin-top: 30px;
     display: flex;
