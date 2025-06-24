@@ -166,6 +166,22 @@ const links = [
     },
 ];
 
+function copyToClipboard() {
+    const copyBtn = document.querySelector('.copy-clipbrd-btn');
+    const textToCopy = copyBtn.getAttribute('data-clipboard-text');
+    copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const msg = document.querySelector('.copy-success-msg');
+            if (msg) {
+                msg.classList.remove('d-none');
+                setTimeout(() => msg.classList.add('d-none'), 1500);
+            }
+        }).catch(err => {
+            console.log('Copy failed: ' + err);
+        });
+    });
+}
+
 async function init(pageId) {
     loadMeta();
     loadHeadLinks();
