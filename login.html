@@ -140,10 +140,14 @@
             <h2>Login</h2>
             <input type="email" placeholder="Email" name="email" required />
             <input type="password" placeholder="Password" name="password" required />
-            <button type="submit">Login</button>
+            <button id="loginBtn" type="submit">Login</button>
             <div id="error" class="error-message"></div>
         </form>
     </div>
+    <script type="module">
+        import { initAuth } from '/js/auth.js';
+        document.addEventListener('DOMContentLoaded', () => initAuth());
+    </script>
 </body>
 
 </html>

@@ -2,604 +2,802 @@
 <html lang="ml">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Team Members</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="/css/team.css" rel="stylesheet" />
+
     <script src="/js/common.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", () => init("team"));</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => init("team"));
+    </script>
 </head>
 
 <body>
-    <div>
+    <!-- Topbar -->
+    <div id="header-container"></div>
 
-        <!-- Topbar Start -->
-        <div id="header-container"></div>
-        <!-- Topbar End -->
+    <!-- Page Header -->
+    <div id="page-header-container"></div>
 
-        <!-- Page Header Start -->
-        <div id="page-header-container"></div>
-        <!-- Page Header End -->
-        <!-- Team Start -->
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">മുഖ്യ രക്ഷാധികാരികൾ</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <!-- Main Executives Section -->
+    <section class="executive-section">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">മുഖ്യ രക്ഷാധികാരികൾ</h1>
+                <div class="section-divider"></div>
+                <i class="fas fa-users section-decoration"></i>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/p.vishwanathan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">P Vishwanathan</h3>
-                            <p class="text-white text-uppercase mb-0">President</p>
-                        </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/p.vishwanathan.jpg" alt="P Vishwanathan" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">P Vishwanathan</h3>
+                        <p class="team-position">President</p>
+                        <div class="position-badge"><i class="fas fa-crown me-1"></i>പ്രസിഡന്റ്</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/t.r.harinarayanan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text ">
-                            <h3 class="text-white">T R Harinarayanan</h3>
-                            <p class="text-white text-uppercase mb-0">General Secretary</p>
-                        </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/t.r.harinarayanan.jpg" alt="T R Harinarayanan" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">T R Harinarayanan</h3>
+                        <p class="team-position">General Secretary</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ജനറൽ സെക്രട്ടറി</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/p.r.hari.png" alt="" style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">P R Hari</h3>
-                            <p class="text-white text-uppercase mb-0">Treasurer</p>
-                        </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/p.r.hari.png" alt="P R Hari" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">P R Hari</h3>
+                        <p class="team-position">Treasurer</p>
+                        <div class="position-badge"><i class="fas fa-coins me-1"></i>ട്രഷറർ</div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Team End -->
+    </section>
 
-
-        <!-- Team Start -->
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">ഉപദേശിക സമിതി</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <!-- Advisory Committee Section -->
+    <section class="advisory-section py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">ഉപദേശിക സമിതി</h1>
+                <div class="section-divider"></div>
+                <i class="fas fa-lightbulb section-decoration"></i>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/n.s.ramachandran.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">N S Ramachandran</h3>
-                        </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/n.s.ramachandran.jpg" alt="N S Ramachandran" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">N S Ramachandran</h3>
+                        <div class="position-badge"><i class="fas fa-user-graduate me-1"></i>ഉപദേശിക സമിതി അംഗം</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/n.n.sankaran.nambiar.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">N N Sankaran Nambiar</h3>
-                        </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/n.n.sankaran.nambiar.jpg" alt="N N Sankaran Nambiar" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">N N Sankaran Nambiar</h3>
+                        <div class="position-badge"><i class="fas fa-user-graduate me-1"></i>ഉപദേശിക സമിതി അംഗം</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/c.n.raman.nambeesan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">C N Raman Nambeesan</h3>
-                        </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/c.n.raman.nambeesan.jpg" alt="C N Raman Nambeesan" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">C N Raman Nambeesan</h3>
+                        <div class="position-badge"><i class="fas fa-user-graduate me-1"></i>ഉപദേശിക സമിതി അംഗം</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/k.p.umadevi.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">K P Umadevi</h3>
-                        </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/k.p.umadevi.jpg" alt="K P Umadevi" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">K P Umadevi</h3>
+                        <div class="position-badge"><i class="fas fa-user-graduate me-1"></i>ഉപദേശിക സമിതി അംഗം</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/k.s.ramachandran.unni.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">K S Ramachandran Unni</h3>
-                        </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/k.s.ramachandran.unni.jpg" alt="K S Ramachandran Unni" />
+                        <div class="team-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">K S Ramachandran Unni</h3>
+                        <div class="position-badge"><i class="fas fa-user-graduate me-1"></i>ഉപദേശിക സമിതി അംഗം</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">സ്വാഗതസംഘം</h1>
-                <hr class="w-25 mx-auto bg-primary">
+
+
+    <!-- ========================= സ്വാഗതസംഘം ========================= -->
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="section-title">സ്വാഗതസംഘം</h1>
+                    <div class="section-divider"></div>
+                </div>
+                <i class="fas fa-hands-helping section-decoration"></i>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/r.s.nambiar.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">R S Nambiar</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <!-- Members -->
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/r.s.nambiar.jpg" alt="R S Nambiar">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/v.unnikrishnan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">V Unnikrishnan</h3>
-                            <p class="text-white text-uppercase mb-0">Vice Chairman</p>
-                        </div>
+                    <div class="team-info">
+                        <h3 class="team-name">R S Nambiar</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/krishnan.nambeesan.k.k.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Krishnan Nambeesan</h3>
-                            <p class="text-white text-uppercase mb-0">Chief Coordinator</p>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/v.unnikrishnan.jpg" alt="V Unnikrishnan">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/narayanan.vasudevan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Narayanan Vasudevan</h3>
-                            <p class="text-white text-uppercase mb-0">General Convener</p>
-                        </div>
+                    <div class="team-info">
+                        <h3 class="team-name">V Unnikrishnan</h3>
+                        <p class="team-position">Vice Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user me-1"></i>വൈസ് ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/balasubramaniyan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Balasubramanyan K A</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/krishnan.nambeesan.k.k.jpg" alt="Krishnan Nambeesan">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/gireesh.n.g.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Gireesh N G</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Krishnan Nambeesan</h3>
+                        <p class="team-position">Chief Coordinator</p>
+                        <div class="position-badge"><i class="fas fa-users-cog me-1"></i>ചീഫ് കോർഡിനേറ്റർ</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/remya.vikas.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Remya Vikas</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/narayanan.vasudevan.jpg" alt="Narayanan Vasudevan">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Narayanan Vasudevan</h3>
+                        <p class="team-position">General Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-cog me-1"></i>ജനറൽ കൺവീനർ</div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/balasubramaniyan.jpg" alt="Balasubramanyan K A">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Balasubramanyan K A</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/gireesh.n.g.jpg" alt="Gireesh N G">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Gireesh N G</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/remya.vikas.jpg" alt="Remya Vikas">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Remya Vikas</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">സാമ്പത്തികം</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <!-- ========================= സാമ്പത്തികം ========================= -->
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="section-title">സാമ്പത്തികം</h1>
+                    <div class="section-divider"></div>
+                </div>
+                <i class="fas fa-coins section-decoration"></i>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/e.d.sivasankaran.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">E D Sivasankaran</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-large-container">
+                        <img class="team-image" src="/img/team/e.d.sivasankaran.jpg" alt="E D Sivasankaran">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
                     </div>
+                    <div class="team-info">
+                        <h3 class="team-name">E D Sivasankaran</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
+                    </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/t.n.mohanachandran.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">T N Mohanachandran</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-large-container">
+                        <img class="team-image" src="/img/team/t.n.mohanachandran.jpg" alt="T N Mohanachandran">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">T N Mohanachandran</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">വേദി, വെളിച്ചം & ശബ്ദം</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <!-- ========================= വേദി, വെളിച്ചം & ശബ്ദം ========================= -->
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="section-title">വേദി, വെളിച്ചം, ശബ്ദം</h1>
+                    <div class="section-divider"></div>
+                </div>
+                <i class="fas fa-microphone-alt section-decoration"></i>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/bhavadasan.k.m.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Bhavadasan K M</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/bhavadasan.k.m.jpg" alt="Bhavadasan K M">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/vimalkumar.sharma.k.l.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Vimalkumar Sharma K N</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Bhavadasan K M</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/suresh.kumar.g.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Suresh Kumar G</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/vimalkumar.sharma.k.l.jpg" alt="Vimalkumar Sharma K L">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
                         </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Vimalkumar Sharma K L</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
+                    </div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/suresh.kumar.g.jpg" alt="Suresh Kumar G">
+                        <div class="team-overlay">
+                            <!-- Removed social media links -->
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Suresh Kumar G</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">ഭക്ഷണം</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">ഭക്ഷണം</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/balasubramaniyan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Balasubramanyan K A</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/balasubramaniyan.jpg" alt="Balasubramanyan K A" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Balasubramanyan K A</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/vasudevan.t.r.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Vasudevan T R</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/vasudevan.t.r.jpg" alt="Vasudevan T R" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Vasudevan T R</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">താമസവും ഗതാഗതവും</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">താമസവും ഗതാഗതവും</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/balakrishnan.padmanabhan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Balakrishnan Padmanabhan</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/balakrishnan.padmanabhan.jpg"
+                            alt="Balakrishnan Padmanabhan" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Balakrishnan Padmanabhan</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/udayakumar.n.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Udayakumar N</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/udayakumar.n.jpg" alt="Udayakumar N" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Udayakumar N</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">സുവനീർ</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">സുവനീർ</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/t.v.shankar.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Dr. T V Shankar </h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/t.v.shankar.jpg" alt="Dr. T V Shankar" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. T V Shankar</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/k.venugopal.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">K Venugopal</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/k.venugopal.jpg" alt="K Venugopal" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">K Venugopal</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">ഔദ്യോഗിക പരിപാടി</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">ഔദ്യോഗിക പരിപാടി</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/gireesh.n.g.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Gireesh N G</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/gireesh.n.g.jpg" alt="Gireesh N G" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Gireesh N G</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/saritha.vijayan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Saritha Vijayan</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/saritha.vijayan.jpg" alt="Saritha Vijayan" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Saritha Vijayan</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/kavitha.hari.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Kavitha Hari</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/kavitha.hari.jpg" alt="Kavitha Hari" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Kavitha Hari</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">പരസ്യം</h1>
-                <hr class="w-25 mx-auto bg-primary">
+
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">പരസ്യം</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/v.unnikrishnan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">V Unnikrishnan</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/v.unnikrishnan.jpg" alt="V Unnikrishnan" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">V Unnikrishnan</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/k.unnikrishnan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">K Unnikrishnan</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/k.unnikrishnan.jpg" alt="K Unnikrishnan" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">K Unnikrishnan</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">രജിസ്ട്രേഷൻ</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">രജിസ്ട്രേഷൻ</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/remya.vikas.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Remya Vikas</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/remya.vikas.jpg" alt="Remya Vikas" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Remya Vikas</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/saumini.k.p.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Sowmini K P</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/saumini.k.p.jpg" alt="Sowmini K P" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Sowmini K P</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">പബ്ലിസിറ്റി</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">പബ്ലിസിറ്റി</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/hareesh.n.jpg" alt="" style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Hareesh N</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/hareesh.n.jpg" alt="Hareesh N" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Hareesh N</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/satheesh.narayanan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Satheesh Narayanan</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/satheesh.narayanan.jpg" alt="Satheesh Narayanan" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Satheesh Narayanan</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/deepesh.darshan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Deepesh Darshan</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/deepesh.darshan.jpg" alt="Deepesh Darshan" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Deepesh Darshan</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">വളണ്ടിയർമാരും മോമെന്റോകളും</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">വളണ്ടിയർമാരും മോമെന്റോകളും</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/anoop.unni.png" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Anoop Unni</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/anoop.unni.png" alt="Anoop Unni" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Anoop Unni</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/satheesh.c.r.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Satheesh C R</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/satheesh.c.r.jpg" alt="Satheesh C R" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Satheesh C R</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">പർച്ചേസ് - മോമെന്റോകൾ/സമ്മാനങ്ങൾ</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">പർച്ചേസ് - മോമെന്റോകൾ/സമ്മാനങ്ങൾ</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/prameela.narayanan.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Prameela Narayanan</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/prameela.narayanan.jpg" alt="Prameela Narayanan" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Prameela Narayanan</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/ganesh.kumar.t.v.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Ganesh Kumar T V</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/ganesh.kumar.t.v.jpg" alt="Ganesh Kumar T V" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Ganesh Kumar T V</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">സ്വീകരണം/ക്ഷണം</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">സ്വീകരണം/ക്ഷണം</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/jayan.m.p.jpg" alt="" style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Jayan M P</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/jayan.m.p.jpg" alt="Jayan M P" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Jayan M P</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/heera.lejeesh.jpg" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Heera Lejeesh</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/heera.lejeesh.jpg" alt="Heera Lejeesh" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Heera Lejeesh</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container-fluid py-1 px-2">
-            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-                <h1 class="display-5 mb-0">സാംസ്കാരിക പരിപാടി</h1>
-                <hr class="w-25 mx-auto bg-primary">
+    <section class="py-5">
+        <div class="section-header">
+            <div class="container text-center">
+                <h1 class="section-title">സാംസ്കാരിക പരിപാടി</h1>
+                <div class="section-divider"></div>
             </div>
-            <div class="row g-5">
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/vikas.r.d.png" alt="" style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Vikas R D</h3>
-                            <p class="text-white text-uppercase mb-0">Chairman</p>
-                        </div>
+        </div>
+        <div class="container-fluid">
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/vikas.r.d.png" alt="Vikas R D" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Vikas R D</h3>
+                        <p class="team-position">Chairman</p>
+                        <div class="position-badge"><i class="fas fa-user-tie me-1"></i>ചെയര്‍മാന്‍</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="team-item position-relative overflow-hidden">
-                        <img class="img-fluid" src="/img/team/prasad.arayala.png" alt=""
-                            style="height: 450px; width: 380px;">
-                        <div class="position-absolute text-center bg-primary p-4 team-item-text">
-                            <h3 class="text-white">Prasad Arayala</h3>
-                            <p class="text-white text-uppercase mb-0">Convener</p>
-                        </div>
+                <div class="team-card fade-in">
+                    <div class="team-image-container">
+                        <img class="team-image" src="/img/team/prasad.arayala.png" alt="Prasad Arayala" />
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Prasad Arayala</h3>
+                        <p class="team-position">Convener</p>
+                        <div class="position-badge"><i class="fas fa-user-check me-1"></i>കൺവീനർ</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Footer Start -->
-        <div id="footer-container"></div>
-        <!-- Footer End -->
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Enhanced animations and interactions
+        document.addEventListener('DOMContentLoaded', function () {
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add loading effect to images
+            document.querySelectorAll('.team-image').forEach(img => {
+                img.addEventListener('load', function () {
+                    this.style.opacity = '1';
+                });
+            });
+
+            // Smooth scroll for any anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
