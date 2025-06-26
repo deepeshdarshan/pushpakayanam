@@ -79,12 +79,12 @@ export const domElements = {
             <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-3 py-2">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <img src="/img/logo.png" class="img-fluid" style="max-width: 250px;" alt="Logo">
+                        <img src="/img/logo.png" class="img-fluid" style="max-width: 240px;" alt="Logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="collapse navbar-collapse" id="navbarCollapse" style="padding-right: 30px">
                         <div class="navbar-nav ms-auto py-0">
                             <a href="/main/admin/dashboard.html" class="nav-item nav-link">Dashboard</a>
                             <div class="nav-item dropdown">
@@ -93,6 +93,12 @@ export const domElements = {
                                     <a href="/main/admin/naming-contest.html" class="dropdown-item">Naming Contest</a>
                                     <a href="/main/admin/vishu-contest.html" class="dropdown-item">Vishu Contest</a>
                                     <a href="/main/admin/souvenir-contest.html" class="dropdown-item">Souvenir Contest</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Enqueries</a>
+                                <div class="dropdown-menu m-0">
+                                    <a href="/main/admin/contact-us.html" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -219,7 +225,7 @@ export function populatePageHeader(title) {
                             pushpakayanam2025@gmail.com
                         </div>
                         <button id="logoutBtn"
-                            class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0">
+                            class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0 position-relative z-3">
                         Logout
                         </button>
                     </div>

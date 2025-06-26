@@ -155,23 +155,23 @@
                             <div class="col-lg-3">
                                 <div class="card h-100 shadow-sm rounded-lg border-0 payment-card">
                                     <div class="card-body bg-secondary text-white p-4">
-                                        <h5 class="card-title mb-4 border-bottom pb-2">Bank Account Details</h5>
+                                        <h5 class="card-title mb-4 border-bottom pb-2">Bank Account Details: </h5>
                                         <table class="table table-borderless mb-0 account-details">
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row" class="text-light-muted">Account Holder</th>
+                                                    <th scope="row" class="text-light-muted">Account Holder: </th>
                                                     <td class="fw-semibold">Sree Pushpaka Seva Sangham Ekm Unit</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" class="text-light-muted">Account Number</th>
+                                                    <th scope="row" class="text-light-muted">Account Number: </th>
                                                     <td class="fw-semibold">302 9480 7208</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" class="text-light-muted">IFS Code</th>
+                                                    <th scope="row" class="text-light-muted">IFS Code: </th>
                                                     <td class="fw-semibold">SBIN0007016</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row" class="text-light-muted">Branch</th>
+                                                    <th scope="row" class="text-light-muted">Branch: </th>
                                                     <td class="fw-semibold">SBI Aluva</td>
                                                 </tr>
                                             </tbody>
@@ -658,6 +658,7 @@
             import { initVisitCounter } from '/js/visit-counter.js';
             document.addEventListener("DOMContentLoaded", () => {
                 loadHeader(false);
+                loadHeadLinks();
                 loadFooter();
                 initVisitCounter();
                 copyToClipboard();

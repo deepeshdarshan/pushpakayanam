@@ -84,7 +84,6 @@ const pageData = {
         title: "Contact us",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
             { name: "Contact us", href: "#" }
         ]
     },
@@ -94,6 +93,20 @@ const pageData = {
             { name: "Home", href: "/index.html" },
             { name: "Announcements", href: "#" },
             { name: "സ്വാഗതസംഘ രൂപീകരണം", href: "#" }
+        ]
+    },
+    account_details: {
+         title: "Account Details",
+        breadcrumbs: [
+            { name: "Home", href: "/index.html" },
+            { name: "Account details", href: "#" }
+        ]
+    },
+    announcements: {
+         title: "Announcements",
+        breadcrumbs: [
+            { name: "Home", href: "/index.html" },
+            { name: "Announcements", href: "#" }
         ]
     }
 }
@@ -118,7 +131,7 @@ const metas = [
 
 const headerScripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
-    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js",
     "/lib/easing/easing.min.js",
     "/lib/waypoints/waypoints.min.js",
     "/lib/owlcarousel/owl.carousel.min.js",
@@ -150,7 +163,7 @@ const links = [
     },
     {
         rel: "stylesheet",
-        href: "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css",
+        href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css",
     },
     {
         rel: "stylesheet",
@@ -189,6 +202,10 @@ async function init(pageId) {
     loadTitle();
     loadPageHeader(pageId);
     loadFooter();
+    loadVisitCounter();
+}
+
+async function loadVisitCounter() {
     const module = await import('/js/visit-counter.js');
     module.initVisitCounter();
 }

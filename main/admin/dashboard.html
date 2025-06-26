@@ -1,13 +1,13 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="ml">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+
     <meta charset="utf-8">
-    <title>Admin Dashboard</title>
+    <title>പുഷ്പകായനം 2025</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Admin Dashboard | പുഷ്പകായനം 2025" name="keywords">
-    <meta content="Admin Dashboard | പുഷ്പകായനം 2025" name="description">
+    <meta content="Naming contest | പുഷ്പകായനം 2025" name="keywords">
+    <meta content="Naming contest | പുഷ്പകായനം 2025" name="description">
 
     <!-- Favicon -->
     <link href="/img/favicon.ico" rel="icon">
@@ -20,11 +20,8 @@
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -33,173 +30,349 @@
     <link href="/css/style.css" rel="stylesheet">
 
     <style>
-        .folder-icon {
-            font-size: 60px;
-            transition: transform 0.2s;
-        }
-
-        .folder-icon i {
-            color: #217346;
-            font-size: 72px;
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
         }
 
         .folder-box {
-            text-align: center;
-            padding: 30px 10px;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            background-color: #fff;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .folder-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .folder-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
             text-decoration: none;
             color: inherit;
         }
 
-        .folder-box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .folder-box:hover::before {
+            opacity: 1;
+        }
+
+        .folder-box:hover .folder-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .folder-box:hover .folder-label {
+            color: #2d3748;
+        }
+
+        /* Individual gradients for each box */
+        .folder-box:nth-child(1) .folder-icon {
+            background: var(--purple-gradient);
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .folder-box:nth-child(2) .folder-icon {
+            background: var(--orange-gradient);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+
+        .folder-box:nth-child(3) .folder-icon {
+            background: var(--teal-gradient);
+            box-shadow: 0 10px 25px rgba(20, 184, 166, 0.3);
+        }
+
+        .folder-box:nth-child(4) .folder-icon {
+            background: var(--rose-gradient);
+            box-shadow: 0 10px 25px rgba(244, 63, 94, 0.3);
+        }
+
+        .folder-box:nth-child(5) .folder-icon {
+            background: var(--emerald-gradient);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .folder-box:nth-child(6) .folder-icon {
+            background: var(--indigo-gradient);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .folder-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .folder-icon::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: inherit;
+            border-radius: 22px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .folder-box:hover .folder-icon::after {
+            opacity: 0.6;
         }
 
         .folder-label {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #333;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            color: #4a5568;
+            margin: 0;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+
+        .stats-bar {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Card entrance animation */
+        .folder-box {
+            animation: slideInUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .folder-box:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .folder-box:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .folder-box:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .folder-box:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .folder-box:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .folder-box:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem 0;
+            }
+
+            .folder-box {
+                padding: 2rem;
+            }
+
+            .folder-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .stats-bar {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-gradient);
         }
     </style>
-
 </head>
 
 <body>
-    <div>
+    <!-- Topbar Start -->
+    <div id="topbar"></div>
+    <!-- Topbar End -->
 
-        <!-- Topbar Start -->
-        <div class="container-fluid bg-secondary ps-5 pe-0 d-none d-lg-block">
-            <div class="row gx-0">
-                <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-body py-2 pe-3 border-end" href="yuvavedi/index.html"><small></small></a>
-                    </div>
+    <!-- Navbar Start -->
+    <div id="navbar"></div>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div id="pageHeader"></div>
+    <!-- Page Header End -->
+
+
+    <div class="container mt-5">
+
+        <!-- Contests Section -->
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="bi bi-trophy-fill me-2"></i>
+                Contest Management
+            </h2>
+            <p class="section-subtitle">Manage all active and upcoming contests</p>
+        </div>
+        <div class="dashboard-grid">
+            <a href="/main/admin/naming-contest.html" class="folder-box dashboard-item">
+                <div class="folder-icon">
+                    <i class="bi bi-pencil-square"></i>
                 </div>
-                <div class="col-md-6 text-center text-lg-end">
-                    <div
-                        class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
-                        <div class="me-3 pe-3 border-end py-2">
-                            <p class="m-0"><i class="fa fa-envelope-open me-2"></i>pushpakayanam2025@gmail.com</p>
-                        </div>
-                        <div class="py-2">
-                            <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+91-00000 00000</p>
-                        </div>
-                    </div>
+                <div class="folder-label">Naming Contest</div>
+            </a>
+
+            <a href="/main/admin/vishu-contest.html" class="folder-box dashboard-item">
+                <div class="folder-icon">
+                    <i class="bi bi-camera-fill"></i>
                 </div>
-            </div>
+                <div class="folder-label">Vishu Contest</div>
+            </a>
+
+            <a href="/main/admin/souvenir-contest.html" class="folder-box dashboard-item">
+                <div class="folder-icon">
+                    <i class="bi bi-gift-fill"></i>
+                </div>
+                <div class="folder-label">Souvenir Contest</div>
+            </a>
+
+            <a href="/main/admin/reels-contest.html" class="folder-box dashboard-item">
+                <div class="folder-icon">
+                    <i class="bi bi-camera-reels-fill"></i>
+                </div>
+                <div class="folder-label">Reels Contest</div>
+            </a>
         </div>
 
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-4 py-3 py-lg-0">
-            <img src="/img/logo.png" class="responsive-logo" onClick='goto("/index.html")'>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="/main/admin/dashboard.html" class="nav-item nav-link">Dashboard</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Contest</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="/main/admin/naming-contest.html" class="dropdown-item">Naming Contest</a>
-                            <a href="/main/admin/vishu-contest.html" class="dropdown-item">Vishu Contest</a>
-                            <a href="/main/admin/souvenir-contest.html" class="dropdown-item">Souvenir Contest</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-                class="bi bi-arrow-up"></i></a>
-        <!-- Topbar End -->
-
-        <!-- Page Header Start -->
-        <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <div class="text-white text-center text-md-start mb-3 mb-md-0">
-                    <h1 class="fw-bold mb-1 fs-3 text-white" id="page-title">Admin Dashboard</h1>
-                    <div id="breadcrumb-container" class="small ">
-                        <a href="#" class="text-primary text-decoration-none">Home</a>
-                        <i class="far fa-square text-primary px-2"></i>
-                        <a href="#" class="text-primary text-decoration-none">Dashboard</a>
-                    </div>
-                </div>
-                <div class="text-white text-center text-md-end">
-                    <div id="userEmail" class="small text-truncate mx-auto mx-md-0" style="max-width: 250px;">
-                        pushpakayanam2025@gmail.com
-                    </div>
-                    <button id="logoutBtn"
-                        class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0">
-                        Logout
-                    </button>
-                </div>
-            </div>
+        <!-- Administration Section -->
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="bi bi-gear-fill me-2"></i>
+                Administration
+            </h2>
+            <p class="section-subtitle">System administration and content management</p>
         </div>
-        <!-- Page Header End -->
+        <div class="dashboard-grid">
+            <a href="/main/admin/photo-gallery.html" class="folder-box dashboard-item">
+                <div class="folder-icon">
+                    <i class="bi bi-images"></i>
+                </div>
+                <div class="folder-label">Photo Gallery</div>
+            </a>
 
-        <!-- About Start -->
-        <div class="container" style="padding-top: 50px;">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <a href="/main/admin/naming-contest.html" class="folder-box d-block dashboard-item">
-                        <div class="folder-icon"><i class="bi bi-file-earmark-excel-fill"></i></div>
-                        <div class="folder-label">Naming Contest</div>
-                    </a>
+            <a href="/main/admin/user-management.html" class="folder-box dashboard-item">
+                <div class="folder-icon">
+                    <i class="bi bi-people-fill"></i>
                 </div>
-                <div class="col-md-4">
-                    <a href="/main/admin/vishu-contest.html" class="folder-box d-block dashboard-item">
-                        <div class="folder-icon"><i class="bi bi-file-earmark-excel-fill"></i></div>
-                        <div class="folder-label">Vishu Contest</div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="/main/admin/souvenir-contest.html" class="folder-box d-block dashboard-item">
-                        <div class="folder-icon"><i class="bi bi-file-earmark-excel-fill"></i></div>
-                        <div class="folder-label">Souvenir Contest</div>
-                    </a>
-                </div>
-                <!-- <div class="col-md-4">
-                    <a href="page4.html" class="folder-box d-block">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-label">Page 4</div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="page5.html" class="folder-box d-block">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-label">Page 5</div>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="page6.html" class="folder-box d-block">
-                        <div class="folder-icon">📁</div>
-                        <div class="folder-label">Page 6</div>
-                    </a>
-                </div> -->
-            </div>
+                <div class="folder-label">User Management</div>
+            </a>
         </div>
-        <!-- About End -->
+    </div>
 
-        <div id="contests"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script type="module" src="/js/firestore.js"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="/lib/easing/easing.min.js"></script>
-        <script src="/lib/waypoints/waypoints.min.js"></script>
-        <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="/js/main.js"></script>
-        <script type="module">
-            import { initAuth } from '/js/auth.js';
-            document.addEventListener('DOMContentLoaded', () => initAuth());
-        </script>
+    <script type="module">
+        import { renderDom } from '/js/spreadsheet.js';
+        import { initAuth } from '/js/auth.js';
 
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDom(false, "Admin Dashboard");
+            initAuth();
+        });
+
+    </script>
 </body>
 
 </html>

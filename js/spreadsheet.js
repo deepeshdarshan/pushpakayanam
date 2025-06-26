@@ -306,15 +306,17 @@ function attachEventHandlers() {
     }
 }
 
-function renderDom() {
+export function renderDom(isSpreadSheet = true, title = null) {
     getById("navbar").innerHTML = domElements.navbar;
     getById("topbar").innerHTML = domElements.topbar;
-    getById("pageHeader").innerHTML = populatePageHeader(pageTitle);
-    getById("pagination-controls").innerHTML = domElements.paginationControls;
-    getById("data-filter-controls").innerHTML = domElements.dataFilterControls;
-    getById("spinner-modal").innerHTML = domElements.spinnerModal;
-    getById("warning-modal").innerHTML = domElements.warningModal;
-    getById("data-table").innerHTML = domElements.dataTable;
+    getById("pageHeader").innerHTML = populatePageHeader(title || pageTitle);
+    if (isSpreadSheet) {
+        getById("pagination-controls").innerHTML = domElements.paginationControls;
+        getById("data-filter-controls").innerHTML = domElements.dataFilterControls;
+        getById("spinner-modal").innerHTML = domElements.spinnerModal;
+        getById("warning-modal").innerHTML = domElements.warningModal;
+        getById("data-table").innerHTML = domElements.dataTable;
+    }
 
 }
 
