@@ -54,6 +54,62 @@
             text-align: center;
             font-weight: 800;
         }
+
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .btn-loading::after {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            margin: auto;
+            border: 2px solid transparent;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .form-message.show {
+            display: block;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translateY(-50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-50%) rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -131,11 +187,12 @@
 
                     <!-- Submit Button -->
                     <div class="text-end">
-                        <button type="submit" class="btn btn-danger btn-md">
-                            <i class="fas fa-paper-plane me-2"></i>Send Query
+                        <button type="submit" class="btn btn-danger btn-md" id="submitBtn">
+                            <i class="fas fa-paper-plane me-2"></i><span id="submitBtnText">Send Query</span>
                         </button>
                     </div>
                 </form>
+                <div id="formMessage" class="form-message" style="margin-top: 25px;"></div>
             </div>
         </div>
 
@@ -374,8 +431,28 @@
                 return data;
             }
 
+            function showMessage(message, type) {
+                const formMessage = document.getElementById('formMessage');
+                formMessage.textContent = message;
+                formMessage.className = `form-message ${type} show`;
+
+                setTimeout(() => {
+                    formMessage.classList.remove('show');
+                }, 5000);
+            }
+
             // Function to send JSON data to server
             function sendToServer(jsonData) {
+
+                const submitBtn = document.getElementById('submitBtn');
+                const submitBtnText = document.getElementById('submitBtnText');
+
+                document.getElementById('formMessage').classList.remove('show');
+
+                submitBtn.disabled = true;
+                submitBtn.classList.add('btn-loading');
+                submitBtnText.textContent = 'Sending your queries...';
+
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbwmiyrfHxYTRxJ5kGC3D6YLLNXqDW1uxgIzJA_8V52kmDWLQ_OYGevzRr6W_ogmEYPWrQ/exec';
                 fetch(scriptUrl, {
                     method: 'POST',
@@ -393,17 +470,22 @@
                     .then(data => {
                         console.log('Server response:', data);
                         if (data.status === 'success') {
-                            alert('Form submitted successfully to Google Sheets!');
+                            showMessage('Thanks! We have received your message. We will reach out to you shortly.', 'success');
                             document.getElementById('contactForm').reset();
                             document.getElementById('pradeshikaSabha').disabled = true;
                             document.getElementById('pradeshikaSabha').innerHTML = '<option value="">Select Pradeshika Sabha</option>';
                         } else {
-                            alert('Error: ' + (data.message || 'Unknown error occurred'));
+                            showMessage('Error: ' + (data.message || 'Unknown error occurred'), 'error');
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        alert('Error submitting form: ' + error.message);
+                        showMessage('Error submitting form: ' + error.message, 'error');
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('btn-loading');
+                        submitBtnText.textContent = 'Send Query';
                     });
             }
         </script>
