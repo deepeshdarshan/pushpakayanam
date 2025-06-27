@@ -108,6 +108,13 @@ const pageData = {
             { name: "Home", href: "/index.html" },
             { name: "Announcements", href: "#" }
         ]
+    },
+    revenue_opportunities: {
+         title: "Revenue Opportunities",
+        breadcrumbs: [
+            { name: "Home", href: "/index.html" },
+            { name: "Revenue Opportunities", href: "#" }
+        ]
     }
 }
 

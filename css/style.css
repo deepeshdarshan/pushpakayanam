@@ -15,7 +15,14 @@
     --teal-gradient: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
     --rose-gradient: linear-gradient(135deg, #f43f5e 0%, #ec4899 100%);
     --emerald-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --autumn-gradient: linear-gradient(135deg, #e17055 0%, #fdcb6e 100%);
+    --galaxy-gradient: linear-gradient(135deg, #2d3436 0%, #6c5ce7 100%);
+    --midnight-gradient: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+    --cosmic-gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    --lavender-gradient: linear-gradient(135deg, #a29bfe 0%, #74b9ff 100%);
     --indigo-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --coral-gradient: linear-gradient(135deg, #fb7185 0%, #facc15 100%);
+    --stone-gradient: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
     --light-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
