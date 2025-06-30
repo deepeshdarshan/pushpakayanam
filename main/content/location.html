@@ -4,6 +4,18 @@
 <head>
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("venue"));</script>
+
+    <style>
+        .item-col {
+            width: 375px !important;
+            border-radius: 20px;
+            padding: 20px 0px !important;
+            border: 1px solid var(--primary);
+            min-height: 475px !important;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
@@ -18,6 +30,64 @@
         <!-- Page Header End -->
 
         <!-- Contact Start -->
+
+        <!-- New description + images row -->
+        <div class="container-fluid bg-light py-5">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col text-center">
+                        <h2 class="mb-3">Venue Details</h2>
+                        <p class="lead">Get a visual glimpse of Sree Poorna Auditorium (P R ഭാരതി നഗർ) through
+                            the photos below. Clear instructions are provided to help you reach the venue by bus, metro,
+                            train, or cab. We've also pinned the exact location on Google Maps for your convenience.</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <img src="/img/venue/front-view.png" alt="Venue View 1"
+                            class="img-fluid rounded shadow-sm w-100">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/img/venue/interior.png" alt="Venue View 2" class="img-fluid rounded shadow-sm w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-5">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <h2 class="mb-3">Why Choose This Auditorium?</h2>
+                    <p class="text-muted">A perfect blend of comfort, convenience, and charm.</p>
+                </div>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <i class="fa fa-parking fa-2x text-primary mb-3"></i>
+                        <h5 class="mb-2">Spacious Parking</h5>
+                        <p class="text-muted mb-0">Ample parking space available for guests and organizers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <i class="bi bi-geo-alt-fill text-primary fs-1 mb-3"></i>
+                        <h5 class="mb-2">Prime Location</h5>
+                        <p class="text-muted mb-0">
+                            Located in the heart of the city with easy access to public transport and nearby hotels.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded shadow-sm h-100">
+                        <i class="fa fa-leaf fa-2x text-primary mb-3"></i>
+                        <h5 class="mb-2">Great Ambience</h5>
+                        <p class="text-muted mb-0">Elegant interiors and a pleasant atmosphere for any occasion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container-fluid bg-secondary px-0">
             <div class="row g-0">
                 <div class="col-lg-6 py-6 px-6">
@@ -26,8 +96,8 @@
                             <h3 class="display-7 mb-0">How to reach the venue</h3>
                             <hr class="w-25 mx-auto bg-primary">
                         </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6 col-md-6">
+                        <div class="row g-3 justify-content-center align-items-center">
+                            <div class="col-lg-6 col-md-6 item-col">
                                 <div class="service-item bg-secondary text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
@@ -42,7 +112,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-6 item-col">
                                 <div class="service-item bg-secondary text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
@@ -55,7 +125,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-6 item-col">
                                 <div class="service-item bg-secondary text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
@@ -68,14 +138,14 @@
                                         ഇറങ്ങുക.
                                         തൃശ്ശൂർ ഭാഗത്തുനിന്നും വരുന്നവർ എറണാകുളം ജംഗ്ഷൻ സ്റ്റേഷനിലോ എറണാകുളം ടൗൺ
                                         സ്റ്റേഷനിലോ
-                                        അല്ലെങ്കിൽ തൃപ്പൂണിത്തുറ സ്റ്റേഷനിലോ ഇറങ്ങി മെട്രോ പിടിച്ച് പേട്ട മെട്രോ
+                                        അല്ലെങ്കിൽ തൃപ്പൂണിത്തുറ സ്റ്റേഷനിലോ ഇറങ്ങി മെട്രോ കയറി പേട്ട മെട്രോ
                                         സ്റ്റേഷനിൽ
                                         ഇറങ്ങുക. കോട്ടയം ഭാഗത്തുനിന്ന് വരുന്നവർ തൃപ്പൂണിത്തുറ റെയിൽവേ സ്റ്റേഷനിൽ ഇറങ്ങി
-                                        മെട്രോ പിടിച്ച് പേട്ട മെട്രോ സ്റ്റേഷനിൽ ഇറങ്ങുക.
+                                        മെട്രോ കയറി പേട്ട മെട്രോ സ്റ്റേഷനിൽ ഇറങ്ങുക.
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-6 item-col">
                                 <div class="service-item bg-secondary text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
@@ -108,6 +178,7 @@
         <!-- Footer Start -->
         <div id="footer-container"></div>
         <!-- Footer End -->
+    </div>
 
 </body>
 

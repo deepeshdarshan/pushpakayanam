@@ -4,6 +4,135 @@
 <head>
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("programs"));</script>
+
+    <style>
+
+        .hw-60-p {
+            height: 60px;
+            width: 60px;
+        }
+
+        .timeline-container {
+            padding: 3rem 1rem;
+        }
+
+        .timeline-day {
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .day-header {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .day-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #000;
+            border-radius: 2px;
+        }
+
+        .program-item {
+            position: relative;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .program-icon {
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .program-with-children {
+            position: relative;
+            padding-left: 0;
+        }
+
+        .program-with-children::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 30px;
+            width: 2px;
+            height: calc(100% - 100px);
+            background: rgba(255, 255, 255, 0.4);
+            z-index: 0;
+        }
+
+        .program-child {
+            position: relative;
+            margin-left: 90px;
+            margin-top: 15px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid rgba(255, 255, 255, 0.4);
+            color: white;
+        }
+
+        .program-child::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -65px;
+            transform: translateY(-50%);
+            width: 63px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .program-child::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -61px;
+            transform: translateY(-50%) translateX(-6px);
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .program-child:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-left-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .program-child:hover::before {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .child-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            color: #000;
+        }
+
+        .child-time {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,64 +147,91 @@
         <!-- Page Header End -->
 
         <!-- About Start -->
-        <div class="container-fluid bg-secondary p-0">
-            <div class="row g-0">
+        <div class="container timeline-container">
+            <div class="row">
                 <div class="col-lg-6">
-                    <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
-                        <div>
-                            <h1 class="display-5 mb-4"><span class="text-primary">DAY 1 (Sep 20, 2025)</span></h1>
-                            <div class="d-flex text-white mb-5">
-                                <div
-                                    class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-primary rounded-circle mb-4 hw-60-p">
-                                    <i class="fa fa-handshake fs-4 text-white"></i>
-                                </div>
-                                <div class="ps-4">
-                                    <h3>ഉത്‌ഘാടന സമ്മേളനം</h3>
-                                    <p class="mb-0 text-primary">3:00 PM</p>
-                                </div>
+                    <div class="timeline-day bg-secondary text-white">
+                        <div class="day-header">
+                            <h1>DAY 1 (Sep 20, 2025)</h1>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-icons"></i></div>
+                            <div class="ps-4">
+                                <h3>കലാപരിപാടികൾ</h3>
+                                <p class="text-primary">3:00 PM</p>
                             </div>
-                            <div class="d-flex text-white mb-5">
-                                <div
-                                    class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-primary rounded-circle mb-4 hw-60-p">
-                                    <i class="fa fa-icons fs-4 text-white"></i>
-                                </div>
-                                <div class="ps-4">
-                                    <h3>കലാസന്ധ്യ</h3>
-                                    <p class="mb-0 text-primary">6:30 PM</p>
-                                </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-handshake"></i></div>
+                            <div class="ps-4">
+                                <h3>സമ്മേളന ഉദ്‌ഘാടനം</h3>
+                                <p class="text-primary">5:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-film"></i></div>
+                            <div class="ps-4">
+                                <h3>Short Film Festival</h3>
+                                <p class="text-primary">10:00 PM</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="h-100 d-flex flex-column justify-content-center bg-primary p-5">
-                        <div>
-                            <h1 class="display-5 mb-4"><span class="text-white">DAY 2 (Sep 21, 2025)</span></h1>
-                            <div class="d-flex text-white mb-5">
-                                <div
-                                    class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white text-primary rounded-circle mb-4 hw-60-p">
-                                    <i class="fa fa-star fs-4"></i>
-                                </div>
+                    <div class="timeline-day bg-primary text-white">
+                        <div class="day-header">
+                            <h1>DAY 2 (Sep 21, 2025)</h1>
+                        </div>
+                        <div class="program-with-children">
+                            <div class="program-item">
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-star"></i></div>
                                 <div class="ps-4">
-                                    <h3>പ്രതിനിധി സമ്മേളനം</h3>
-                                    <p class="mb-0">09:30 AM</p>
+                                    <h3>പ്രതിനിധി സഭ ഉദ്‌ഘാടനം</h3>
+                                    <p>09:00 AM</p>
                                 </div>
                             </div>
-                            <div class="d-flex text-white mb-5">
-                                <div
-                                    class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white text-primary rounded-circle mb-4 hw-60-p">
-                                    <i class="fa fa-shapes fs-4"></i>
+                            <div class="program-child">
+                                <div class="child-title">പ്രതിനിധി സഭ</div>
+                                <div class="child-time">After inauguration</div>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-white text-primary"><i class="fa fa-child"></i></div>
+                            <div class="ps-4">
+                                <h3>ബാലകലോത്സവം (Stage 2)</h3>
+                                <p>10:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-white text-primary"><i class="fa fa-comments"></i></div>
+                            <div class="ps-4">
+                                <h3>സംഘടന ചർച്ച</h3>
+                                <p>2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-with-children">
+                            <div class="program-item">
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-flag-checkered"></i>
                                 </div>
                                 <div class="ps-4">
                                     <h3>സമാപന സമ്മേളനം</h3>
-                                    <p class="mb-0">03:00 PM</p>
+                                    <p>4:00 PM</p>
                                 </div>
+                            </div>
+                            <div class="program-child">
+                                <div class="child-title">സമ്മാനദാനം</div>
+                                <div class="child-time">After conclusion</div>
+                            </div>
+                            <div class="program-child">
+                                <div class="child-title">Lucky Draw</div>
+                                <div class="child-time">After prize distribution</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- About End -->
 
         <!-- Footer Start -->
