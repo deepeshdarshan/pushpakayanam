@@ -4,135 +4,7 @@
 <head>
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("programs"));</script>
-
-    <style>
-
-        .hw-60-p {
-            height: 60px;
-            width: 60px;
-        }
-
-        .timeline-container {
-            padding: 3rem 1rem;
-        }
-
-        .timeline-day {
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .day-header {
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .day-header::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: #000;
-            border-radius: 2px;
-        }
-
-        .program-item {
-            position: relative;
-            padding: 15px 0;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .program-icon {
-            height: 60px;
-            width: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            flex-shrink: 0;
-        }
-
-        .program-with-children {
-            position: relative;
-            padding-left: 0;
-        }
-
-        .program-with-children::before {
-            content: '';
-            position: absolute;
-            top: 60px;
-            left: 30px;
-            width: 2px;
-            height: calc(100% - 100px);
-            background: rgba(255, 255, 255, 0.4);
-            z-index: 0;
-        }
-
-        .program-child {
-            position: relative;
-            margin-left: 90px;
-            margin-top: 15px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-left: 3px solid rgba(255, 255, 255, 0.4);
-            color: white;
-        }
-
-        .program-child::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -65px;
-            transform: translateY(-50%);
-            width: 63px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .program-child::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: -61px;
-            transform: translateY(-50%) translateX(-6px);
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        .program-child:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-left-color: rgba(255, 255, 255, 0.7);
-        }
-
-        .program-child:hover::before {
-            background: rgba(255, 255, 255, 0.7);
-        }
-
-        .child-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin-bottom: 0.25rem;
-            color: #000;
-        }
-
-        .child-time {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-style: bold;
-        }
-    </style>
+    <link href="/css/program.css" rel="stylesheet">
 </head>
 
 <body>
@@ -150,7 +22,7 @@
         <div class="container timeline-container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="timeline-day bg-secondary text-white">
+                    <div class="timeline-day timeline-day-one bg-secondary text-white">
                         <div class="day-header">
                             <h1>DAY 1 (Sep 20, 2025)</h1>
                         </div>
@@ -178,9 +50,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="timeline-day bg-primary text-white">
+                    <div class="timeline-day timeline-day-two bg-primary text-white">
                         <div class="day-header">
-                            <h1>DAY 2 (Sep 21, 2025)</h1>
+                            <h1 class="text-white">DAY 2 (Sep 21, 2025)</h1>
                         </div>
                         <div class="program-with-children">
                             <div class="program-item">
@@ -192,7 +64,7 @@
                             </div>
                             <div class="program-child">
                                 <div class="child-title">പ്രതിനിധി സഭ</div>
-                                <div class="child-time">After inauguration</div>
+                                <div class="child-time">പ്രതിനിധി സഭ ഉദ്‌ഘാടനത്തിന് ശേഷം</div>
                             </div>
                         </div>
                         <div class="program-item">
@@ -220,11 +92,11 @@
                             </div>
                             <div class="program-child">
                                 <div class="child-title">സമ്മാനദാനം</div>
-                                <div class="child-time">After conclusion</div>
+                                <div class="child-time">സമാപന സമ്മേളനത്തിന് ശേഷം</div>
                             </div>
                             <div class="program-child">
-                                <div class="child-title">Lucky Draw</div>
-                                <div class="child-time">After prize distribution</div>
+                                <div class="child-title">Lucky Draw Coupon നറുക്കെടുപ്പ്</div>
+                                <div class="child-time">സമ്മാനദാനത്തിന് ശേഷം</div>
                             </div>
                         </div>
                     </div>
