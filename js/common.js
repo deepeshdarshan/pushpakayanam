@@ -20,7 +20,7 @@ const pageData = {
         title: "ലോഗോ പ്രകാശനം",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "ലോഗോ പ്രകാശനം", href: "#" }
         ]
     },
@@ -28,7 +28,7 @@ const pageData = {
         title: "വിഷു ഫോട്ടോഗ്രാഫി മത്സരം",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "വിഷു ഫോട്ടോഗ്രാഫി മത്സരം", href: "#" }
         ]
     },
@@ -36,15 +36,7 @@ const pageData = {
         title: "സ്വാഗതസംഘ രൂപീകരണം",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
-            { name: "സ്വാഗതസംഘ രൂപീകരണം", href: "#" }
-        ]
-    },
-    orgcom_announcement: {
-        title: "സ്വാഗതസംഘ രൂപീകരണം",
-        breadcrumbs: [
-            { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "സ്വാഗതസംഘ രൂപീകരണം", href: "#" }
         ]
     },
@@ -52,7 +44,7 @@ const pageData = {
         title: "നാമനിർദ്ദേശ മത്സരം",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "നാമനിർദ്ദേശ മത്സരം", href: "#" }
         ]
     },
@@ -60,7 +52,7 @@ const pageData = {
         title: "Walkathon",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "Walkathon", href: "#" }
         ]
     },
@@ -68,7 +60,7 @@ const pageData = {
         title: "റീൽസ് മത്സരം",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "റീൽസ് മത്സരം", href: "#" }
         ]
     },
@@ -76,7 +68,6 @@ const pageData = {
         title: "Our team",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
             { name: "Our team", href: "#" }
         ]
     },
@@ -91,29 +82,36 @@ const pageData = {
         title: "സ്വാഗതസംഘ രൂപീകരണം",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
-            { name: "Announcements", href: "#" },
             { name: "സ്വാഗതസംഘ രൂപീകരണം", href: "#" }
         ]
     },
     account_details: {
-         title: "Account Details",
+        title: "Account Details",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
             { name: "Account details", href: "#" }
         ]
     },
     announcements: {
-         title: "Announcements",
+        title: "Announcements",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
             { name: "Announcements", href: "#" }
         ]
     },
     revenue_opportunities: {
-         title: "Revenue Opportunities",
+        title: "Revenue Opportunities",
         breadcrumbs: [
             { name: "Home", href: "/index.html" },
             { name: "Revenue Opportunities", href: "#" }
+        ]
+    },
+    website: {
+        title: "Website Launch",
+        breadcrumbs: [
+            { name: "Home", href: "/index.html" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
+            { name: "Website Launch", href: "#" }
         ]
     }
 }
@@ -317,7 +315,7 @@ function loadPageHeader(pageId) {
                         const name = item.name || "Untitled";
                         return isLast
                             ? `<a href="${href}">${name}</a>`
-                            : `<a href="${href}">${name}</a><i class="far fa-square text-primary px-2"></i>`;
+                            : `<a href="${href}">${name}</a><i class="bi bi-exclude text-primary px-2"></i>`;
                     }).join('');
                 }
             }

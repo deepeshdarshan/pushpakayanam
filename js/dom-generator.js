@@ -84,7 +84,7 @@ export const domElements = {
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse" style="padding-right: 30px">
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
                             <a href="/main/admin/dashboard.html" class="nav-item nav-link">Dashboard</a>
                             <div class="nav-item dropdown">

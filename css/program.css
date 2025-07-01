@@ -124,14 +124,14 @@
 }
 
 .child-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 800;
     margin-bottom: 0.25rem;
     color: #000;
 }
 
 .child-time {
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 800;
     color: rgba(255, 255, 255, 0.7);
     font-style: bold;

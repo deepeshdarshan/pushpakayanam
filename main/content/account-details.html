@@ -4,9 +4,6 @@
 <head>
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("account_details"));</script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
-        rel="stylesheet">
     <style>
         .hero-section {
             background: var(--primary-gradient);
@@ -24,7 +21,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,0 1000,100 1000,0"/></svg>');
             background-size: cover;
         }
 
@@ -79,15 +75,15 @@
 
         .account-details th {
             color: #6c757d !important;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 400;
+            font-size: 0.8rem;
             width: 40%;
         }
 
         .account-details td {
             color: #2c3e50 !important;
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .or-divider {
@@ -218,12 +214,12 @@
             <div class="hero-content">
                 <h1 class="display-4 fw-bold mb-3 text-white">
                     <i class="bi bi-bank me-3"></i>
-                    Sree Pushpaka Seva Sangham Ekm Unit
+                    Sree Pushpaka Seva Sangham, Ernakulam Jilla
                 </h1>
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <p class="mb-0">Choose your preferred payment method below. <br />
-                            All payments are secure and go directly to supporting our community services.</p>
+                            All payments are secure and go directly to supporting our annual conference.</p>
                     </div>
                 </div>
             </div>
@@ -271,20 +267,20 @@
                             <table class="table table-borderless mb-0 account-details">
                                 <tbody>
                                     <tr>
-                                        <th scope="row">Account Holder: </th>
-                                        <td>Sree Pushpaka Seva Sangham Ekm Unit</td>
+                                        <th scope="row">Account Holder</th>
+                                        <td>: Sree Pushpaka Seva Sangham Ekm Unit</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Account Number: </th>
-                                        <td>302 9480 7208</td>
+                                        <th scope="row">Account Number</th>
+                                        <td>: 302 9480 7208</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">IFS Code: </th>
-                                        <td>SBIN0007016</td>
+                                        <th scope="row">IFS Code</th>
+                                        <td>: SBIN0007016</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Branch: </th>
-                                        <td>SBI Aluva</td>
+                                        <th scope="row">Branch</th>
+                                        <td>: SBI Aluva</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -328,7 +324,7 @@
                                     </p>
                                     <div class="copy-success-msg text-success small d-none">
                                         <i class="bi bi-check-circle me-1"></i>
-                                        Copied to the clipboard!
+                                        Copied to clipboard!
                                     </div>
                                 </div>
                             </div>
@@ -355,7 +351,7 @@
                                 <div class="qr-placeholder bg-light rounded-3 d-flex align-items-center justify-content-center"
                                     style="height: 180px; border: 2px dashed #dee2e6;">
                                     <div class="text-center text-muted">
-                                        <img src="/img/qr-code.png" class="mt-3" width="80%">
+                                        <img src="/img/qr-code.png" class="mt-3" style="width: 70%;">
                                     </div>
                                 </div>
                             </div>
@@ -373,17 +369,14 @@
     <script>
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function () {
-                // Show success message
                 const successMsg = document.querySelector('.copy-success-msg');
                 successMsg.classList.remove('d-none');
 
-                // Hide message after 2 seconds
                 setTimeout(() => {
                     successMsg.classList.add('d-none');
                 }, 2000);
             }).catch(function (err) {
                 console.error('Failed to copy: ', err);
-                // Fallback for older browsers
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
                 document.body.appendChild(textArea);

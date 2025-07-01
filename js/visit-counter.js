@@ -47,12 +47,14 @@ function animateCountUp(element, endValue, duration = 1000) {
     let currentValue = startValue;
 
     const updateCounter = () => {
-        currentValue += increment;
-        if (currentValue < endValue) {
-            element.textContent = Math.floor(currentValue);
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = endValue;
+        if (window.location.hostname === "pushpakayanam.com") {
+            currentValue += increment;
+            if (currentValue < endValue) {
+                element.textContent = Math.floor(currentValue);
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = endValue;
+            }
         }
     };
 
