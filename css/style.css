@@ -287,6 +287,8 @@ h6,
 .carousel-control-prev,
 .carousel-control-next {
     width: 10%;
+    top: 50% !important;
+    height: 250px !important;
 }
 
 .carousel-control-prev-icon,
@@ -489,6 +491,16 @@ h6,
     width: 90px;
     height: 90px;
 } */
+
+.transport-item {
+    width: 375px !important;
+    border-radius: 20px;
+    padding: 20px 0px !important;
+    border: 1px solid var(--primary);
+    min-height: 475px !important;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 @media (min-width: 992px) {
     .w-lg-550 {

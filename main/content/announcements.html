@@ -6,93 +6,88 @@
     <script>document.addEventListener("DOMContentLoaded", () => init("announcements"));</script>
     <style>
         .announcement-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 20px;
             box-shadow: var(--card-shadow);
-            border: none;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             overflow: hidden;
             height: 100%;
             text-decoration: none;
             color: inherit;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .announcement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .announcement-card:hover::before {
+            transform: scaleX(1);
         }
 
         .announcement-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--card-hover-shadow), var(--glow-effect);
             text-decoration: none;
             color: inherit;
+            border-color: rgba(102, 126, 234, 0.3);
         }
 
         .announcement-card .card-header {
             background: transparent;
             border: none;
-            padding: 1.5rem 1.5rem 0;
+            padding: 2rem 2rem 0;
             position: relative;
         }
 
         .announcement-card .card-body {
-            padding: 1rem 1.5rem 1.5rem;
+            padding: 1rem 2rem 2rem;
         }
 
-        .priority-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        @keyframes urgentPulse {
 
-        .priority-high {
-            background: var(--warning-gradient);
-            color: white;
-        }
-
-        .priority-medium {
-            background: var(--info-gradient);
-            color: white;
-        }
-
-        .priority-low {
-            background: var(--success-gradient);
-            color: white;
-        }
-
-        .priority-urgent {
-            background: var(--secondary-gradient);
-            color: white;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
+            0%,
+            100% {
                 transform: scale(1);
+                box-shadow: 0 4px 15px rgba(231, 76, 60, 0.5);
             }
 
             50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
+                transform: scale(1.1);
+                box-shadow: 0 6px 25px rgba(231, 76, 60, 0.7);
             }
         }
 
         .announcement-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
             color: white;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .announcement-card:hover .announcement-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
         }
 
         .icon-general {
@@ -116,18 +111,22 @@
         }
 
         .announcement-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: #2c3e50;
             line-height: 1.4;
+            background: linear-gradient(135deg, #2c3e50, #4a6741);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .announcement-excerpt {
-            color: #6c757d;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.5;
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -138,116 +137,231 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
-            color: #8e9aaf;
+            font-size: 0.85rem;
+            color: #000;
             margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(142, 154, 175, 0.1);
         }
 
         .announcement-date {
             display: flex;
             align-items: center;
-            gap: 0.3rem;
-        }
-
-        .read-more {
-            color: #667eea;
-            font-weight: 500;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid #8e9aaf;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
             transition: all 0.3s ease;
         }
 
-        .read-more:hover {
-            color: #764ba2;
+        .announcement-card:hover .announcement-date {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .read-more {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
             gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .read-more:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            color: white;
         }
 
         .stats-section {
-            background: var(--ocean-gradient);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
             box-shadow: var(--card-shadow);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
         }
 
         .stat-item {
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            -webkit-background-clip: text;
+            font-size: 3rem;
+            font-weight: 800;
             color: #FFF;
-            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .stat-label {
-            color: #e6e6dd;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .filter-tabs {
-            background: var(--dreamy-gradient);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 25px;
             box-shadow: var(--card-shadow);
-            padding: 1rem;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .filter-btn {
             background: transparent;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            color: #6c757d;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            margin: 0 0.25rem;
+            border: 2px solid transparent;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            color: #64748b;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 0.25rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: linear-gradient(135deg, #f8f9ff, #ffffff);
+            color: #2c3e50;
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .filter-btn.active {
             background: var(--primary-gradient);
             color: white;
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
         }
 
-        .filter-btn:hover:not(.active) {
-            background: #f8f9fa;
-            color: #2c3e50;
+        .filter-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #667eea;
         }
 
         .empty-state {
             text-align: center;
-            padding: 3rem;
-            color: #6c757d;
+            padding: 4rem;
+            color: #64748b;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 25px;
+            box-shadow: var(--card-shadow);
         }
 
         .empty-state i {
-            font-size: 4rem;
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            opacity: 0.6;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .empty-state h4 {
+            color: #2c3e50;
+            font-weight: 700;
             margin-bottom: 1rem;
-            opacity: 0.5;
         }
 
         @media (max-width: 768px) {
-            .page-header {
-                padding: 2rem 0 1rem;
+            .announcement-card .card-header {
+                padding: 1.5rem 1.5rem 0;
+            }
+
+            .announcement-card .card-body {
+                padding: 1rem 1.5rem 1.5rem;
             }
 
             .stats-section {
-                padding: 1.5rem;
+                padding: 2rem 1rem;
             }
 
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .announcement-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
         }
 
-        /* Animation for cards */
         .announcement-card {
             opacity: 0;
-            transform: translateY(20px);
-            animation: slideInUp 0.6s ease forwards;
+            transform: translateY(30px) scale(0.95);
+            animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         .announcement-card:nth-child(1) {
@@ -274,10 +388,68 @@
             animation-delay: 0.6s;
         }
 
+        .announcement-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
         @keyframes slideInUp {
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes glowing {
+            0% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .stat-item {
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .stat-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
     </style>
@@ -321,7 +493,7 @@
         </div>
     </div>
     <script>
-        
+
         const announcementsData = [
             {
                 id: 'website-launch',
@@ -417,7 +589,6 @@
                 <div class="col-xl-4 col-md-6" data-category="${announcement.category}" data-priority="${announcement.priority}">
                     <a href="${announcement.link}" class="announcement-card d-block h-100" style="animation-delay: ${(index + 1) * 0.1}s">
                         <div class="card-header">
-                            <div class="priority-badge priority-${announcement.priority}">${announcement.priority.charAt(0).toUpperCase() + announcement.priority.slice(1)}</div>
                             <div class="announcement-icon icon-${announcement.iconType}">
                                 <i class="${announcement.icon}"></i>
                             </div>
