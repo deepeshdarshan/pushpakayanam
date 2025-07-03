@@ -1,234 +1,179 @@
-let paginationEnabled = true;
-let searchEnabled = true;
-let columnSelectionEnabled = true;
-let sortEnabled = true;
-
-export const domElements = {
-
-    spinnerModal: `
-        <div class="modal fade" id="spinnerModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
-            data-bs-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-transparent border-0 shadow-none">
-                    <div class="modal-body text-center">
-                        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-                            <span class="visually-hidden">Loading...</span>
+const programs = `
+        <div class="container timeline-container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="timeline-day timeline-day-one bg-secondary text-white">
+                        <div class="day-header">
+                            <h1>DAY 1 (Sep 20, 2025)</h1>
                         </div>
-                        <div class="mt-3 text-white fw-semibold">Please wait...</div>
+                        <div class="program-item">
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-icons"></i></div>
+                            <div class="ps-4">
+                                <h3>കലാപരിപാടികൾ</h3>
+                                <p class="text-primary">3:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-handshake"></i></div>
+                            <div class="ps-4">
+                                <h3>സമ്മേളന ഉദ്‌ഘാടനം</h3>
+                                <p class="text-primary">5:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-film"></i></div>
+                            <div class="ps-4">
+                                <h3>Short Film Festival</h3>
+                                <p class="text-primary">10:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="timeline-day timeline-day-two bg-primary text-white">
+                        <div class="day-header">
+                            <h1 class="text-white">DAY 2 (Sep 21, 2025)</h1>
+                        </div>
+                        <div class="program-with-children">
+                            <div class="program-item">
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-star"></i></div>
+                                <div class="ps-4">
+                                    <h3>പ്രതിനിധി സഭ ഉദ്‌ഘാടനം</h3>
+                                    <p>09:00 AM</p>
+                                </div>
+                            </div>
+                            <div class="program-child">
+                                <div class="child-title">പ്രതിനിധി സഭ</div>
+                                <div class="child-time">പ്രതിനിധി സഭ ഉദ്‌ഘാടനത്തിന് ശേഷം</div>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-white text-primary"><i class="fa fa-child"></i></div>
+                            <div class="ps-4">
+                                <h3>ബാലകലോത്സവം (Stage 2)</h3>
+                                <p>10:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-white text-primary"><i class="fa fa-comments"></i></div>
+                            <div class="ps-4">
+                                <h3>സംഘടന ചർച്ച</h3>
+                                <p>2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-with-children">
+                            <div class="program-item">
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-flag-checkered"></i>
+                                </div>
+                                <div class="ps-4">
+                                    <h3>സമാപന സമ്മേളനം</h3>
+                                    <p>4:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="program-child">
+                                <div class="child-title">സമ്മാനദാനം</div>
+                                <div class="child-time">സമാപന സമ്മേളനത്തിന് ശേഷം</div>
+                            </div>
+                            <div class="program-child">
+                                <div class="child-title">Lucky Draw Coupon നറുക്കെടുപ്പ്</div>
+                                <div class="child-time">സമ്മാനദാനത്തിന് ശേഷം</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>`,
+        </div>`;
 
-    warningModal: `
-        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border border-warning">
-                    <div class="modal-header bg-warning text-white">
-                        <h5 class="modal-title" id="alertTitle">Warning</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+const venue = `
+        <div class="container-fluid bg-secondary px-0">
+            <div class="row g-0">
+                <div class="col-lg-6 py-6 px-6">
+                    <div class="container-fluid">
+                        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                            <h3 class="display-7 mb-0">How to reach the venue</h3>
+                            <hr class="w-25 mx-auto bg-primary">
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-lg-6 col-md-6 transport-item">
+                                <div class="service-item bg-secondary text-center px-4">
+                                    <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
+                                        style="width: 90px; height: 90px;">
+                                        <i class="fa fa-bus fa-2x"></i>
+                                    </div>
+                                    <h3 class="mb-6 mt-3">BUS</h3>
+                                    <p class="mb-8">തൃശൂർ, ആലപ്പുഴ ഭാഗങ്ങളിൽ നിന്ന് വരുന്നവർ വൈറ്റില ഹബ്ബില്‍ ഇറങ്ങി
+                                        തൃപ്പൂണിത്തുറ ഭാഗത്തേക്ക് പോകുന്ന ബസ്സിൽ കയറി പേട്ട ബസ്സ് സ്റ്റോപ്പിൽ
+                                        ഇറങ്ങുക.
+                                        കോട്ടയം ഭാഗത്ത് നിന്ന് വരുന്നവർ എറണാകുളം ഭാഗത്തേക്ക് പോകുന്ന ബസ്സിൽ കയറി
+                                        പേട്ട
+                                        സ്റ്റോപ്പിൽ ഇറങ്ങുക.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 transport-item">
+                                <div class="service-item bg-secondary text-center px-4">
+                                    <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
+                                        style="width: 90px; height: 90px;">
+                                        <i class="fa fa-subway fa-2x"></i>
+                                    </div>
+                                    <h3 class="mb-6 mt-3">METRO</h3>
+                                    <p class="mb-8">തൃശൂർ, ആലപ്പുഴ ഭാഗങ്ങളിൽ നിന്ന് വരുന്നവർ വൈറ്റില ഹബ്ബില്‍ ഇറങ്ങി
+                                        തൃപ്പൂണിത്തുറ ഭാഗത്തേക്ക് പോകുന്ന മെട്രോയിൽ കയറി പേട്ട മെട്രോ സ്റ്റേഷനിൽ
+                                        ഇറങ്ങുക.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 transport-item">
+                                <div class="service-item bg-secondary text-center px-4">
+                                    <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
+                                        style="width: 90px; height: 90px;">
+                                        <i class="fa fa-train fa-2x"></i>
+                                    </div>
+                                    <h3 class="mb-6 mt-3">TRAIN</h3>
+                                    <p class="mb-0">ആലപ്പുഴ ഭാഗത്തുനിന്ന് വരുന്നവർ എറണാകുളം ജംഗ്ഷൻ റെയിൽവേ
+                                        സ്റ്റേഷനിൽ
+                                        ഇറങ്ങി
+                                        തൃപ്പൂണിത്തുറ ഭാഗത്തേക്ക് പോകുന്ന മെട്രോയിൽ കയറി പേട്ട മെട്രോ സ്റ്റേഷനിൽ
+                                        ഇറങ്ങുക.
+                                        തൃശ്ശൂർ ഭാഗത്തുനിന്നും വരുന്നവർ എറണാകുളം ജംഗ്ഷൻ സ്റ്റേഷനിലോ എറണാകുളം ടൗൺ
+                                        സ്റ്റേഷനിലോ
+                                        അല്ലെങ്കിൽ തൃപ്പൂണിത്തുറ സ്റ്റേഷനിലോ ഇറങ്ങി മെട്രോയിൽ കയറി പേട്ട മെട്രോ
+                                        സ്റ്റേഷനിൽ
+                                        ഇറങ്ങുക. കോട്ടയം ഭാഗത്തുനിന്ന് വരുന്നവർ തൃപ്പൂണിത്തുറ റെയിൽവേ സ്റ്റേഷനിൽ
+                                        ഇറങ്ങി
+                                        മെട്രോയിൽ കയറി പേട്ട മെട്രോ സ്റ്റേഷനിൽ ഇറങ്ങുക.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 transport-item">
+                                <div class="service-item bg-secondary text-center px-4">
+                                    <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
+                                        style="width: 90px; height: 90px;">
+                                        <i class="fa fa-car fa-2x"></i>
+                                    </div>
+                                    <h3 class="mb-6 mt-3">CAB</h3>
+                                    <p class="mb-0">തൃശ്ശൂർ, ആലപ്പുഴ ഭാഗത്തുനിന്ന് സ്വന്തം വാഹനത്തിലോ ടാക്സിയിലോ
+                                        വരുന്നവർ വൈറ്റിലയിൽ നിന്നും തൃപ്പൂണിത്തുറ ഭാഗത്തേക്ക് തിരിഞ്ഞ് പേട്ട ജംഗ്ഷനിൽ
+                                        എത്തി മരട്, കുണ്ടന്നൂർ ഭാഗത്തേക്ക് തിരിയുക. അതുമല്ലെങ്കിൽ ഇവിടെ
+                                        കൊടുത്തിരിക്കുന്ന ലൊക്കേഷൻ, ഗൂഗിൾ മാപ്പിൽ നോക്കി വരിക.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body bg-light bg-white font-weight-bold" id="alertMessage">
-                        Your message goes here.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">OK</button>
+                </div>
+                <div class="col-lg-6" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <iframe class="position-relative w-100 h-100"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5280.32948442317!2d76.33112640543186!3d9.947758598483798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b08731150456e7f%3A0xdc7e71dd43af33e3!2sSreepoorna%20Auditorium!5e1!3m2!1sen!2ssg!4v1737711271700!5m2!1sen!2ssg"
+                            frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                            tabindex="0"></iframe>
                     </div>
                 </div>
             </div>
-        </div>`,
+        </div>`;
 
-    dataTable: `
-        <table id="sheetTable">
-            <thead></thead>
-            <tbody></tbody>
-        </table>`,
+const programsEl = document.getElementById("programs-div");
+const venueEl = document.getElementById("venue-div");
+if (programsEl)
+    document.getElementById("programs-div").innerHTML = programs;
+if (venueEl)
+    document.getElementById("venue-div").innerHTML = venue;
 
-    seperator: `<div class="vr d-none d-md-block mx-2"></div>`,
-
-    dataFilterControls: populateDataFilterControls(),
-
-
-    paginationControls: populatePaginationControls(),
-
-    pageHeader: `
-                <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                        <div class="text-white text-center text-md-start mb-3 mb-md-0">
-                            <h1 class="fw-bold mb-1 fs-3 text-white" id="page-title">Naming Contest</h1>
-                            <div id="breadcrumb-container" class="small ">
-                                <a href="#" class="text-primary text-decoration-none">Home</a>
-                                <i class="bi bi-exclude text-primary px-2"></i>
-                                <a href="#" class="text-primary text-decoration-none">Naming contest</a>
-                            </div>
-                        </div>
-                        <div class="text-white text-center text-md-end">
-                            <div id="userEmail" class="small text-truncate mx-auto mx-md-0" style="max-width: 250px;">
-                                pushpakayanam2025@gmail.com
-                            </div>
-                            <button id="logoutBtn"
-                                class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0">
-                            Logout
-                            </button>
-                        </div>
-                    </div>
-                </div>`,
-
-    navbar: `
-            <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-3 py-2">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src="/img/logo.png" class="img-fluid" style="max-width: 240px;" alt="Logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav ms-auto py-0">
-                            <a href="/main/admin/dashboard.html" class="nav-item nav-link">Dashboard</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Contest</a>
-                                <div class="dropdown-menu m-0">
-                                    <a href="/main/admin/naming-contest.html" class="dropdown-item">Naming Contest</a>
-                                    <a href="/main/admin/vishu-contest.html" class="dropdown-item">Vishu Contest</a>
-                                    <a href="/main/admin/souvenir-contest.html" class="dropdown-item">Souvenir Contest</a>
-                                </div>
-                            </div>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Enqueries</a>
-                                <div class="dropdown-menu m-0">
-                                    <a href="/main/admin/contact-us.html" class="dropdown-item">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>`,
-
-    topbar: `
-            <div class="container-fluid bg-secondary ps-5 pe-0 d-none d-lg-block">
-                <div class="row gx-0">
-                    <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
-                        <div class="d-inline-flex align-items-center">
-                            <a class="text-body py-2 pe-3 border-end" href="yuvavedi/index.html"><small></small></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center text-lg-end">
-                        <div
-                            class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
-                            <div class="me-3 pe-3 border-end py-2">
-                                <p class="m-0"><i class="fa fa-envelope-open me-2"></i>pushpakayanam2025@gmail.com</p>
-                            </div>
-                            <div class="py-2">
-                                <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+91-00000 00000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-
-}
-function populateDataFilterControls() {
-    let html = `<div class="d-flex flex-wrap align-items-center gap-2 control-group">`;
-    if (columnSelectionEnabled) {
-        html += `<div class="dropdown w-md-auto">
-                        <button class="form-select text-start h-43p w-100 w-md-auto" type="button"
-                            id="checkboxDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                            Visible columns
-                        </button>
-                        <ul class="dropdown-menu w-100" aria-labelledby="checkboxDropdownBtn" id="checkboxDropdownMenu">
-                        </ul>
-                    </div>`;
-    }
-    if (searchEnabled) {
-        html += `<div class="vr d-none d-md-block mx-2"></div>
-                    <div class="col-12 col-md-auto">
-                        <select id="searchField" class="form-select w-100 w-md-auto"></select>
-                    </div>
-                    <div class="col-12 col-md-auto">
-                        <input type="text" id="searchQuery" class="form-control" placeholder="Search text..." />
-                    </div>
-                    <div class="col-12 col-md-auto">
-                        <button id="searchBtn" class="btn btn-outline-danger w-100">Search</button>
-                    </div>`;
-    }
-    if (sortEnabled) {
-        html += `<div class="vr d-none d-md-block mx-2"></div>
-                    <div class="col-12 col-md-auto">
-                        <select id="sortField" class="form-select w-100 w-md-auto"></select>
-                    </div>
-                    <div class="col-12 col-md-auto">
-                        <button id="sortBtn" class="btn btn-outline-danger w-100">Sort</button>
-                    </div>`;
-    }
-    html += `<div class="vr d-none d-md-block mx-2"></div>
-                    <div class="col-12 col-md-auto">
-                        <button id="resetBtn" class="btn btn-outline-dark w-100">Reset</button>
-                    </div>
-                </div>`;
-
-    return html;
-}
-
-function populatePaginationControls() {
-    let html = null;
-    if (paginationEnabled) {
-        html = `
-                    <div class="d-flex flex-wrap flex-md-nowrap align-items-center gap-2 control-group">
-                        <div>
-                            Page size:
-                        </div>
-                        <div>
-                            <select id="pageSizeSelect" class="form-select w-100 w-md-auto">
-                                <option value="10">10</option>
-                                <option value="25" selected>25</option>
-                                <option value="50">50</option>
-                            </select>
-                        </div>
-                        <!-- Separator -->
-                        <div class="vr d-none d-md-block mx-2"></div>
-                        <div class="col-12 col-md-auto">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination stylish-pagination mb-0">
-                                    <li class="page-item" id="prevPageLi">
-                                        <button class="page-link" id="prevBtn">&laquo;</button>
-                                    </li>
-                                    <li class="page-item active" id="pageInfoLi">
-                                        <span class="page-link" id="pageInfo">Page 1</span>
-                                    </li>
-                                    <li class="page-item" id="nextPageLi">
-                                        <button class="page-link" id="nextBtn">&raquo;</button>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>`
-    }
-    return html;
-}
-
-export function populatePageHeader(title) {
-    return `
-            <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
-                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                    <div class="text-white text-center text-md-start mb-3 mb-md-0">
-                        <h1 class="fw-bold mb-1 fs-3 text-white" id="page-title">${title}</h1>
-                        <div id="breadcrumb-container" class="small ">
-                            <a href="#" class="text-primary text-decoration-none">Home</a>
-                            <i class="bi bi-exclude text-primary px-2"></i>
-                            <a href="#" class="text-primary text-decoration-none">${title}</a>
-                        </div>
-                    </div>
-                    <div class="text-white text-center text-md-end">
-                        <div id="userEmail" class="small text-truncate mx-auto mx-md-0" style="max-width: 250px;">
-                            pushpakayanam2025@gmail.com
-                        </div>
-                        <button id="logoutBtn"
-                            class="btn btn-sm btn-warning text-dark fw-semibold rounded-pill px-4 mt-2 mx-auto mx-md-0 position-relative z-3">
-                        Logout
-                        </button>
-                    </div>
-                </div>
-            </div>`
-}

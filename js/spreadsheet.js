@@ -10,7 +10,7 @@ import {
     sort,
     log
 } from '/js/dom-utils.js';
-import { domElements, populatePageHeader } from '/js/dom-generator.js';
+import { domElements, populatePageHeader } from '/js/admin-dom-generator.js';
 
 const EMPTY_STRING = "";
 const NO_SORT_OPTION_SELECTED = "-1";
