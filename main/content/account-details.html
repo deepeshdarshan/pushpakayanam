@@ -3,199 +3,7 @@
 
 <head>
     <script src="/js/common.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", () => init("account_details"));</script>
-    <style>
-        .hero-section {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 4rem 0 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-size: cover;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .payment-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-
-        .payment-card {
-            transition: all 0.3s ease;
-            border-radius: 20px !important;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            border: none !important;
-        }
-
-        .payment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .payment-card .card-body {
-            border-radius: 20px;
-            background: white !important;
-            color: #2c3e50 !important;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .payment-card .card-body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-gradient);
-        }
-
-        .card-title {
-            color: #2c3e50 !important;
-            font-weight: 600;
-            border-bottom: 2px solid #e9ecef !important;
-            padding-bottom: 0.75rem !important;
-            margin-bottom: 1.5rem !important;
-        }
-
-        .account-details th {
-            color: #6c757d !important;
-            font-weight: 400;
-            font-size: 0.8rem;
-            width: 40%;
-        }
-
-        .account-details td {
-            color: #2c3e50 !important;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .or-divider {
-            background: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--card-shadow);
-            margin: 0 auto;
-        }
-
-        .or-divider span {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
-
-        .upi-logo {
-            max-height: 40px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-
-        .upi-id-pill {
-            background: var(--primary-gradient);
-            color: white;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .upi-id-pill:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .copy-clipbrd-btn {
-            background: rgba(255, 255, 255, 0.2) !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            color: white !important;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .copy-clipbrd-btn:hover {
-            background: rgba(255, 255, 255, 0.3) !important;
-            transform: scale(1.1);
-        }
-
-        .qr-code {
-            max-width: 180px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .qr-code:hover {
-            transform: scale(1.05);
-        }
-
-        .qr-container {
-            text-align: center;
-        }
-
-        .copy-success-msg {
-            animation: fadeInOut 2s ease-in-out;
-        }
-
-        @keyframes fadeInOut {
-
-            0%,
-            100% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        .payment-options {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @media (max-width: 768px) {
-            .or-divider {
-                margin: 2rem auto;
-            }
-
-            .hero-section {
-                padding: 2rem 0 1rem;
-            }
-
-            .payment-section {
-                padding: 2rem 0;
-            }
-        }
-    </style>
+    <script>document.addEventListener("DOMContentLoaded", () => { init("account_details"); copyToClipboard(); });</script>
 </head>
 
 <body>
@@ -227,7 +35,7 @@
     </section>
 
     <!-- Payment Section -->
-    <section class="payment-section">
+    <section class="payment-section bg-secondary">
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8 text-center">
@@ -314,7 +122,7 @@
                                             sreepushpaka@sbi
                                         </span>
                                         <button class="btn btn-sm copy-clipbrd-btn"
-                                            onclick="copyToClipboard('sreepushpaka@sbi')" title="Copy UPI ID">
+                                            data-clipboard-text="sreepushpaka@sbi" title="Copy UPI ID">
                                             <i class="bi bi-clipboard text-primary"></i>
                                         </button>
                                     </div>
@@ -351,7 +159,7 @@
                                 <div class="qr-placeholder bg-light rounded-3 d-flex align-items-center justify-content-center"
                                     style="height: 180px; border: 2px dashed #dee2e6;">
                                     <div class="text-center text-muted">
-                                        <img src="/img/qr-code.png" class="mt-3" style="width: 70%;">
+                                        <img src="/img/qr-code.png" style="width: 70%;">
                                     </div>
                                 </div>
                             </div>
@@ -367,30 +175,6 @@
     </section>
 
     <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function () {
-                const successMsg = document.querySelector('.copy-success-msg');
-                successMsg.classList.remove('d-none');
-
-                setTimeout(() => {
-                    successMsg.classList.add('d-none');
-                }, 2000);
-            }).catch(function (err) {
-                console.error('Failed to copy: ', err);
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-
-                const successMsg = document.querySelector('.copy-success-msg');
-                successMsg.classList.remove('d-none');
-                setTimeout(() => {
-                    successMsg.classList.add('d-none');
-                }, 2000);
-            });
-        }
 
         // Add smooth scrolling and animations
         document.addEventListener('DOMContentLoaded', function () {

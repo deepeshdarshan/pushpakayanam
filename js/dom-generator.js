@@ -86,9 +86,9 @@ function getProgramDetails() {
         </div>`;
 }
 
-function getVenuedetails() {
+function getVenueDetails() {
     return `
-        <div class="container-fluid bg-secondary px-0">
+        <div class="container-fluid bg-white px-0">
             <div class="row g-0">
                 <div class="col-lg-6 py-6 px-6">
                     <div class="container-fluid">
@@ -97,8 +97,8 @@ function getVenuedetails() {
                             <hr class="w-25 mx-auto bg-primary">
                         </div>
                         <div class="row g-3">
-                            <div class="col-lg-6 col-md-6 transport-item">
-                                <div class="service-item bg-secondary text-center px-4">
+                            <div class="col-lg-6 col-md-6 transport-item attraction-card">
+                                <div class="service-item text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-bus fa-2x"></i>
@@ -112,8 +112,8 @@ function getVenuedetails() {
                                         സ്റ്റോപ്പിൽ ഇറങ്ങുക.</p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 transport-item">
-                                <div class="service-item bg-secondary text-center px-4">
+                            <div class="col-lg-6 col-md-6 transport-item attraction-card">
+                                <div class="service-item text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-subway fa-2x"></i>
@@ -125,8 +125,8 @@ function getVenuedetails() {
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 transport-item">
-                                <div class="service-item bg-secondary text-center px-4">
+                            <div class="col-lg-6 col-md-6 transport-item attraction-card">
+                                <div class="service-item text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-train fa-2x"></i>
@@ -146,8 +146,8 @@ function getVenuedetails() {
                                         മെട്രോയിൽ കയറി പേട്ട മെട്രോ സ്റ്റേഷനിൽ ഇറങ്ങുക.</p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 transport-item">
-                                <div class="service-item bg-secondary text-center px-4">
+                            <div class="col-lg-6 col-md-6 transport-item attraction-card">
+                                <div class="service-item text-center px-4">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-car fa-2x"></i>
@@ -405,7 +405,7 @@ if (programsEl)
     programsEl.innerHTML = getProgramDetails();
 
 if (venueEl)
-    venueEl.innerHTML = getVenuedetails();
+    venueEl.innerHTML = getVenueDetails();
 
 if (testimonialEl) {
     const testimonialWrapper = `

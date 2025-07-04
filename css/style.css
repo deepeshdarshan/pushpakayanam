@@ -385,104 +385,201 @@ h6,
 }
 
 /* Payment section start */
+
+.feature-icon {
+    font-size: 3rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .copy-success-msg {
     font-size: 0.9rem;
     margin-top: 5px;
     transition: opacity 0.3s ease-in-out;
 }
 
-.payment-card {
-    flex: 1;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
+.hero-section {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 4rem 0 2rem;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.payment-section {
+    padding: 4rem 0;
+    /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
+}
+
+.payment-card {
+    transition: all 0.3s ease;
+    border-radius: 20px !important;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: none !important;
 }
 
 .payment-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--hover-shadow);
 }
 
-.payment-card h5 {
-    font-size: 1.25rem;
-    margin-bottom: 15px;
-    color: #333;
+.payment-card .card-body {
+    border-radius: 20px;
+    background: white !important;
+    color: #2c3e50 !important;
+    position: relative;
+    overflow: hidden;
 }
 
-.payment-card table {
-    width: 100%;
-    margin-bottom: 15px;
-    color: #555;
+.payment-card .card-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
 }
 
-.payment-card table th,
-.payment-card table td {
-    text-align: left;
-    padding: 5px 0;
+.card-title {
+    color: #2c3e50 !important;
+    font-weight: 600;
+    border-bottom: 2px solid #e9ecef !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
 }
 
-.payment-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-    border-radius: 8px;
+.account-details th {
+    color: #6c757d !important;
+    font-weight: 400;
+    font-size: 0.8rem;
+    width: 40%;
 }
 
-.payment-card .text-muted {
-    color: #6c757d;
+.account-details td {
+    color: #2c3e50 !important;
+    font-weight: 500;
     font-size: 0.9rem;
 }
 
 .or-divider {
+    background: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #007bff;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    margin: auto;
+    box-shadow: var(--card-shadow);
+    margin: 0 auto;
+}
+
+.or-divider span {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.upi-logo {
+    max-height: 40px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .upi-id-pill {
-    background: linear-gradient(135deg, #e0f0ff, #f0f8ff);
-    border: 1px solid #cce5ff;
-    border-radius: 999px;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+    background: var(--secondary);
+    border-radius: 25px;
     font-weight: 600;
-    color: #004085;
-    font-size: 1.1rem;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgb(0 3 22 / 30%);
+    transition: all 0.3s ease;
 }
 
 .upi-id-pill:hover {
-    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.2);
-}
-
-.upi-id-text {
-    white-space: nowrap;
+    transform: scale(1.05);
+   box-shadow: 0px 5px 15px rgb(0 3 22 / 30%);  
 }
 
 .copy-clipbrd-btn {
-    border-radius: 50px;
-    padding: 4px 8px;
-    transition: background-color 0.2s;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .copy-clipbrd-btn:hover {
-    background-color: #e2e6ea;
+    background: rgba(255, 255, 255, 0.3) !important;
+    transform: scale(1.1);
+}
+
+.qr-code {
+    max-width: 160px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+}
+
+.qr-container {
+    text-align: center;
 }
 
 .copy-success-msg {
-    font-size: 0.9rem;
-    font-weight: 500;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.payment-options {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .or-divider {
+        margin: 2rem auto;
+    }
+
+    .hero-section {
+        padding: 2rem 0 1rem;
+    }
+
+    .payment-section {
+        padding: 2rem 0;
+    }
 }
 
 /* Payment section end */
@@ -496,7 +593,6 @@ h6,
     width: 375px !important;
     border-radius: 20px;
     padding: 20px 0px !important;
-    border: 1px solid var(--primary);
     min-height: 475px !important;
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
