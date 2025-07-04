@@ -160,6 +160,19 @@ function getVenuedetails() {
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-lg-12">
+                                <div class="align-items-center justify-content-center d-flex">
+                                    <p class="ms-2 mt-5 mb-0 text-dark">
+                                        സമ്മേളന വേദിയെ കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ 
+                                        <a class="link-txt-color-primary" href="/main/content/location.html">
+                                            ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6" style="min-height: 400px;">
