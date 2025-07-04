@@ -4,6 +4,251 @@
 <head>
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("venue"));</script>
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+            backdrop-filter: blur(20px);
+            border-radius: 0 0 30px 30px;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .attraction-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .attraction-card:hover .card-image::before {
+            opacity: 1;
+        }
+
+        .distance-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .attraction-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .attraction-type {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .attraction-description {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .attraction-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .visit-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .visit-time {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .mb-5 {
+            margin-bottom: 3rem !important;
+        }
+
+
+        .poornathrayeesa-temple-image {
+            background-image: url('/img/venue/attractions/poornathrayeesa.temple.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .ernakulam-temple-image {
+            background-image: url('/img/venue/attractions/ernakulam.temple.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .marine-drive-image {
+            background-image: url('/img/venue/attractions/marine.drive.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .subhash-park-image {
+            background-image: url('/img/venue/attractions/subhash.park.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hill-palace-image {
+            background-image: url('/img/venue/attractions/hill.palace.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .folklore-museum-image {
+            background-image: url('/img/venue/attractions/folklore.museum.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .forum-mall-image {
+            background-image: url('/img/venue/attractions/forum.mall.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .lulu-mall-image {
+            background-image: url('/img/venue/attractions/lulu.mall.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .chottanikkara-temple-image {
+            background-image: url('/img/venue/attractions/chottanikkara.temple.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .kochi-metro-image {
+            background-image: url('/img/venue/attractions/kochi.metro.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .kochi-water-metro-image {
+            background-image: url('/img/venue/attractions/kochi.water.metro.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .attractions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+            }
+
+            .page-header {
+                padding: 2rem 0;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -25,7 +270,8 @@
                 <div class="row mb-4">
                     <div class="col text-center">
                         <h2 class="mb-3">Venue Details</h2>
-                        <p class="lead">Get a visual glimpse of <span class="fw-bold">Sree Poorna Auditorium (P R ഭാരതി നഗർ)</span> through
+                        <p class="lead">Get a visual glimpse of <span class="fw-bold">Sree Poorna Auditorium (P R ഭാരതി
+                                നഗർ)</span> through
                             the photos below. Clear instructions are provided to help you reach the venue by bus, metro,
                             train, or cab. We've also pinned the exact location on Google Maps for your convenience.</p>
                     </div>
@@ -45,7 +291,7 @@
         <div class="container py-5">
             <div class="row mb-4">
                 <div class="col text-center">
-                    <h2 class="mb-3">Why Choose This Auditorium?</h2>
+                    <h2 class="mb-3">Why This Venue</h2>
                     <p class="text-muted">A perfect blend of comfort, convenience, and charm.</p>
                 </div>
             </div>
@@ -76,9 +322,402 @@
             </div>
         </div>
 
-        <div id="venue-div"></div>
-
+        <div id="venueContainer"></div>
         <!-- Venue End -->
+
+        <div class="container-fluid bg-light py-5">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col text-center">
+                        <h2 class="mb-3">Nearby Attractions</h2>
+                        <p class="text-muted">സമ്മേളന നഗരിയുടെ ചുറ്റുവട്ടത്തായി നിലകൊള്ളുന്ന പ്രധാന സ്ഥലങ്ങളാണ് ചുവടെ
+                            കൊടുത്തിരിക്കുന്നത്. സമ്മേളന നഗരിയിൽ നിന്നും ഓരോ സ്ഥലത്തേക്കുള്ള ദൂരവും താഴെ കാണാവുന്നതാണ്.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            <div class="attractions-grid">
+
+                <!-- Poornathrayeesa Temple -->
+                <div class="attraction-card">
+                    <div class="card-image poornathrayeesa-temple-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            1.2 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">ശ്രീപൂർണ്ണത്രയീശ ക്ഷേത്രം</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-place-of-worship me-1"></i>
+                            വിഷ്ണു ക്ഷേത്രം
+                        </div>
+                        <p class="attraction-description">
+                            ഇന്ത്യയിലെ പഴയ നാട്ടുരാജ്യമാ‍യ കൊച്ചി രാജ്യത്തിന്റെ തലസ്ഥാനമായ തൃപ്പൂണിത്തറയിലാണ് ശ്രീ
+                            പൂർണ്ണത്രയീശ ക്ഷേത്രം സ്ഥിതിചെയ്യുന്നത്. എറണാകുളം നഗരസമീപത്തുള്ള പ്രധാനവും പ്രസിദ്ധവുമായ ഒരു
+                            ക്ഷേത്രമാണിത്. അനന്തന്റെ പുറത്തിരിയ്ക്കുന്ന മഹാവിഷ്ണുവാണ് ക്ഷേത്രത്തിലെ മുഖ്യപ്രതിഷ്ഠ.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ക്ഷേത്രം</span>
+                            <span class="feature-tag">വാസ്തുവിദ്യ</span>
+                            <span class="feature-tag">ചരിത്രം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 4:00 - വൈകുന്നേരം 8:15
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chottanikkara Temple -->
+                <div class="attraction-card">
+                    <div class="card-image chottanikkara-temple-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            9 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">ചോറ്റാനിക്കര ക്ഷേത്രം</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-place-of-worship me-1"></i>
+                            ദേവീ ക്ഷേത്രം
+                        </div>
+                        <p class="attraction-description">
+                            കേരളത്തിലെ ഏറ്റവും പ്രധാനപ്പെട്ട ഭഗവതി ക്ഷേത്രങ്ങളിൽ ഒന്നായ ഇവിടെ ജഗദീശ്വരിയായ
+                            ആദിപരാശക്തിയാണ് മുഖ്യപ്രതിഷ്ഠ. ചോറ്റാനിക്കര അമ്മ എന്ന് അറിയപ്പെടുന്ന ഭഗവതിയെ
+                            മഹാലക്ഷ്മീഭാവത്തിൽ മഹാവിഷ്ണുവിനൊപ്പമാണ് പ്രതിഷ്ഠിച്ചിരിയ്ക്കുന്നത്.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ദേവീക്ഷേത്രം</span>
+                            <span class="feature-tag">തീർത്ഥാടനം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 4:00 - രാത്രി 8:45
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ernakulam Shiva Temple  -->
+                <div class="attraction-card">
+                    <div class="card-image ernakulam-temple-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            8 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">എറണാകുളം ശിവക്ഷേത്രം</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-place-of-worship me-1"></i>
+                            ശിവക്ഷേത്രം
+                        </div>
+                        <p class="attraction-description">
+                            കേരളത്തിലെ പ്രസിദ്ധമായ ശിവക്ഷേത്രങ്ങളുടെ പട്ടികയിൽ വരുന്ന ഒരു ക്ഷേത്രമാണിത്. ഹൈന്ദവ, ശൈവ
+                            വിശ്വാസപ്രകാരം ശ്രീ പരമേശ്വരൻ അഥവാ പരമശിവനാണ്‌ മുഖ്യ പ്രതിഷ്ഠ. കിരാതമൂർത്തിയായും
+                            പാർവ്വതീസമേതനായും രണ്ടുരൂപങ്ങളിൽ ഇവിടെ ശിവന് പ്രതിഷ്ഠകളുണ്ട്. എറണാകുളത്തപ്പൻ എന്ന്‌
+                            അറിയപ്പെടുന്ന ഇവിടത്തെ മഹാദേവൻ എറണാകുളം നഗരത്തിന്റെ കുലദൈവമായി കണക്കാക്കപ്പെടുന്നു.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ശിവക്ഷേത്രം</span>
+                            <span class="feature-tag">പരമ്പരാഗത വാസ്തുവിദ്യ</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 3:30 - വൈകുന്നേരം 8:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hill Palace -->
+                <div class="attraction-card">
+                    <div class="card-image hill-palace-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            4.5 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">ഹിൽ പാലസ് മ്യൂസിയം</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-university me-1"></i>
+                            മ്യൂസിയം & പാലസ്
+                        </div>
+                        <p class="attraction-description">
+                            കേരളത്തിലെ ഏറ്റവും വലിയ പുരാവസ്തു മ്യൂസിയവും കൊച്ചിരാജാക്കന്മാരുടെ
+                            ഭരണസിരാകേന്ദ്രവുമായിരുന്നു 1865-ൽ തൃപ്പൂണിത്തറയിൽ പണികഴിപ്പിച്ച ഹിൽ പാലസ്. 54 ഏക്കറിൽ
+                            തദ്ദേശീയ ശൈലിയിലുള്ള 49 കെട്ടിടങ്ങളടങ്ങുന്ന ഈ കൊട്ടാരത്തിൽ ഹിൽ പാലസ് പുരാവസ്തു മ്യൂസിയം,
+                            ഹെറിട്ടേജ് മ്യൂസിയം, ഡിയർ പാർക്ക്, ചരിത്രാതീത പാർക്ക്, കുട്ടികളുടെ പാർക്ക് എന്നിവ
+                            ഉൾക്കൊള്ളുന്നു.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">പുരാവസ്തുക്കൾ</span>
+                            <span class="feature-tag">പാർക്ക്</span>
+                            <span class="feature-tag">ചരിത്രം</span>
+                            <span class="feature-tag">വിനോദം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 9:00 - വൈകുന്നേരം 6:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kerala Folklore Museum -->
+                <div class="attraction-card">
+                    <div class="card-image folklore-museum-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            5 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">കേരള ഫോക്‌ലോർ മ്യൂസിയം</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-landmark me-1"></i>
+                            സാംസ്കാരിക മ്യൂസിയം
+                        </div>
+                        <p class="attraction-description">
+                            2009-ൽ സ്ഥാപിതമായ ഈ സ്വകാര്യ മ്യൂസിയത്തിൽ ദക്ഷിണേന്ത്യയിലെ വിവിധ ഭാഗങ്ങളിൽ നിന്നുള്ള കലകളും
+                            കൃതികളും പുരാവസ്തുവസ്തുക്കളുമാണ് പ്രദർശിപ്പിക്കുന്നത്. കൂടാതെ, ഇത് നാടൻ കലാരൂപങ്ങൾ ഉൾപ്പെടെ
+                            വിവിധ സാംസ്കാരിക പരിപാടികൾ നടത്തുന്നതിനുള്ള ഒരു തിയറ്ററായും പ്രവർത്തിക്കുന്നു.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">പരമ്പരാഗത കലകൾ</span>
+                            <span class="feature-tag">കരകൗശലം</span>
+                            <span class="feature-tag">സാംസ്കാരിക പ്രദർശനം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 9:30 - വൈകുന്നേരം 6:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marine Drive -->
+                <div class="attraction-card">
+                    <div class="card-image marine-drive-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            9 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">മറൈൻ ഡ്രൈവ്</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-water me-1"></i>
+                            കടൽത്തീരം & വിനോദകേന്ദ്രം
+                        </div>
+                        <p class="attraction-description">
+                            കേരളത്തിലെ കൊച്ചിയിലെ ഒരു പ്രധാന ആകർഷണവും, വിനോദസഞ്ചാരകേന്ദ്രവുമാണ് മറൈൻ ഡ്രൈവ്.
+                            അറബിക്കടലിന്റെ തീരത്തായി കൊച്ചി നഗരത്തിന്റെ ഹൃദയഭാഗത്ത് സ്ഥിതി ചെയ്യുന്ന ഈ സ്ഥലത്തെ പ്രധാന
+                            ആകർഷണങ്ങൾ ഇവിടുത്തെ ചീനവലകളും, മഴവിൽ പാലവുമാണ്.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ബോട്ട് സവാരി</span>
+                            <span class="feature-tag">സൂര്യാസ്തമയം</span>
+                            <span class="feature-tag">ഷോപ്പിംഗ്</span>
+                            <span class="feature-tag">വിനോദം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                24 മണിക്കൂർ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subhash Park -->
+                <div class="attraction-card">
+                    <div class="card-image subhash-park-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            8 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">സുഭാഷ് പാർക്ക്</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-tree me-1"></i>
+                            പാർക്ക് & വിനോദകേന്ദ്രം
+                        </div>
+                        <p class="attraction-description">
+                            കൊച്ചി നഗരത്തിന്റെ ഹൃദയഭാഗത്തായി 11.5 ഏക്കറിൽ സ്ഥിതി ചെയ്യുന്ന മനോഹരമായ ഒരു പാർക്ക് ആണ്
+                            സുഭാഷ് ചന്ദ്ര ബോസ് പാർക്ക് അഥവാ സുഭാഷ് പാർക്ക്. കുട്ടികൾക്കായുള്ള പലതരം ആക്ടിവിറ്റികൾ ഉള്ള ഈ
+                            പാർക്ക്, വൈകുന്നേരങ്ങളിൽ മുതിർന്നവരുടെയും ഒരു വിശ്രമ കേന്ദ്രമാണ്.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">കുട്ടികൾക്കുള്ള പാർക്ക്</span>
+                            <span class="feature-tag">കടൽക്കാഴ്ച</span>
+                            <span class="feature-tag">ജോഗിംഗ്</span>
+                            <span class="feature-tag">വിനോദം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 10:00 - രാത്രി 9:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Lulu Mall -->
+                <div class="attraction-card">
+                    <div class="card-image lulu-mall-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            11.5 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">ലുലു മാൾ</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-shopping-bag me-1"></i>
+                            ഷോപ്പിംഗ് മാൾ
+                        </div>
+                        <p class="attraction-description">
+                            ഇന്ത്യയിലെ ഏറ്റവും വലിയ ഷോപ്പിംഗ് മാളുകളിൽ ഒന്ന്. 2013 മാർച്ച് 10-നാണ് മാൾ പ്രവർത്തനം
+                            ആരംഭിച്ചത്. ലുലൂ ഗ്രൂപ്പിന്റെ ഇന്ത്യയിലെ ആദ്യ മാൾ സംരംഭമാണ് കൊച്ചി മാൾ. 7.32 ലക്ഷം
+                            ചതുരശ്രയടി വിസ്തീർണ്ണത്തിൽ 1600 കോടിയാണ് മാളിന്റെ മുതൽമുടക്ക്. പ്രതിദിനം ശരാശരി
+                            80,000-ത്തിലധികം ആളുകൾ എത്തിച്ചേരുന്ന ഇവിടം, കേരളത്തിൽ ഏറ്റവുമധികം ആളുകൾ സന്ദർശിക്കുന്ന
+                            സ്ഥലങ്ങളിൽ ഒന്നാണ്.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ഷോപ്പിംഗ്</span>
+                            <span class="feature-tag">സിനിമ</span>
+                            <span class="feature-tag">റെസ്റ്റോറന്റുകൾ</span>
+                            <span class="feature-tag">വിനോദം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 10:00 - രാത്രി 10:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forum Mall Kochi -->
+                <div class="attraction-card">
+                    <div class="card-image forum-mall-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            4 km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">ഫോറം മാൾ</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-shopping-bag me-1"></i>
+                            ഷോപ്പിംഗ് മാൾ
+                        </div>
+                        <p class="attraction-description">
+                            ഇന്ത്യയിലെ ഏറ്റവും വലിയ റിയൽറ്റി സ്ഥാപനമായ പ്രസ്റ്റീജ് ഗ്രൂപ്പാണ് മാൾ പ്രൊമോട്ട്
+                            ചെയ്യുന്നത്. 10 ഏക്കറിലധികം സ്ഥലത്ത് വ്യാപിച്ചുകിടക്കുന്ന ഈ മാളിന്റെ മൊത്തം വിസ്തീർണ്ണം
+                            10,60,000 ചതുരശ്ര അടിയാണ്. ലുലു മാൾ കഴിഞ്ഞാൽ കൊച്ചിയിലെ രണ്ടാമത്തെ വലിയ മാളാണിത്. 2011
+                            ഏപ്രിലിൽ നിർമ്മാണം ആരംഭിച്ചു മാൾ, 2023 ഓഗസ്റ്റ് 19-ന് മാൾ പൊതുജനങ്ങൾക്കായി തുറന്നു.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ഷോപ്പിംഗ്</span>
+                            <span class="feature-tag">സിനിമ</span>
+                            <span class="feature-tag">റെസ്റ്റോറന്റുകൾ</span>
+                            <span class="feature-tag">വിനോദം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 10:00 - രാത്രി 10:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Kochi Metro -->
+                <div class="attraction-card">
+                    <div class="card-image kochi-metro-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            800 m
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">കൊച്ചി മെട്രോ</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-subway me-1"></i>
+                            റാപ്പിഡ് ട്രാൻസിറ്റ്
+                        </div>
+                        <p class="attraction-description">
+                            26 കി. മി. നീളത്തിൽ തൃപ്പൂണിത്തൂറ മുതൽ ആലുവ വരെയാണ് കൊച്ചി മെട്രോയുടെ പാത. തൂണുകളിൽ ഉയർത്തിയ
+                            'U' ആകൃതിയുള്ള ഗർഡറുകളും അവയിൽ മെട്രോയുടെ പാളങ്ങളും സ്ഥാപിക്കുന്നു. മൂന്നു കോച്ചുകളുള്ള
+                            റോളിംഗ് സ്റ്റോക്ക് എന്ന സാങ്കേതികനാമമുള്ള തീവണ്ടിയ്ക്ക് അറുനൂറു പേരെ വഹിക്കാൻ കഴിയും. ശരാശരി
+                            വേഗം മണിക്കൂറിൽ 40 കിലോമീറ്ററാണ്.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ഗതാഗതം</span>
+                            <span class="feature-tag">Rapid transit system</span>
+                            <span class="feature-tag">Hassle-free</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 6:00 - രാത്രി 10:30
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kochi Water Metro -->
+                <div class="attraction-card">
+                    <div class="card-image kochi-water-metro-image">
+                        <div class="distance-badge">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            3.2 Km
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="attraction-title">കൊച്ചി വാട്ടർ മെട്രോ</h3>
+                        <div class="attraction-type">
+                            <i class="fas fa-ship me-1"></i>
+                            ജല ഗതാഗത സംവിധാനം
+                        </div>
+                        <p class="attraction-description">
+                            കൊച്ചി മെട്രോയുടെ അനുബന്ധ ജലപാത പദ്ധതിയാണ് കൊച്ചി വാട്ടർ മെട്രോ. കൊച്ചി മെട്രോയുടെ ഫീഡർ
+                            സർവീസ് ആയി ഇതിനെ കണക്കാക്കുന്നു. 2023 ഏപ്രിൽ 26ന് പ്രവർത്തനം ആരംഭിച്ചു. ആധുനിക
+                            സൗകര്യങ്ങളോടുകൂടിയ ബോട്ടുകളാണ് ഇതിൽ ഉപയോഗിക്കുന്നതിന് നിശ്ചയിച്ചിരിക്കുന്നത്. നൂറു വരെ
+                            യാത്രക്കാരെ വഹിക്കാവുന്ന ഇലക്ട്രിക്ക് ബോട്ടുകൾ, 8 നോട്ടിക്കൽ മൈൽ വേഗതയിൽ യാത്ര ചെയ്യും.
+                        </p>
+                        <div class="attraction-features">
+                            <span class="feature-tag">ഗതാഗതം</span>
+                            <span class="feature-tag">Electric boat</span>
+                            <span class="feature-tag">പരിസ്ഥിതി സൗഹൃദം</span>
+                        </div>
+                        <div class="visit-info">
+                            <div class="visit-time">
+                                <i class="fas fa-clock me-1"></i>
+                                രാവിലെ 7:30 - രാത്രി 8:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer Start -->
         <div id="footer-container"></div>
@@ -86,7 +725,7 @@
     </div>
 
     <script src="/js/dom-generator.js"></script>
-    
+
 </body>
 
 </html>
