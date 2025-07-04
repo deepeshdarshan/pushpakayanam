@@ -583,7 +583,6 @@
             { id: 'general', label: 'General', icon: 'bi-info-circle' }
         ];
 
-        // Generate announcement card HTML
         function createAnnouncementCard(announcement, index) {
             return `
                 <div class="col-xl-4 col-md-6" data-category="${announcement.category}" data-priority="${announcement.priority}">
@@ -629,7 +628,7 @@
             const activeCount = totalAnnouncements; // Assuming all are active
 
             const stats = [
-                { number: totalAnnouncements, label: 'Total Announcements' },
+                { number: totalAnnouncements, label: 'Announcements' },
                 { number: urgentCount, label: 'Urgent' },
                 { number: contestsCount, label: 'Contests' },
                 { number: eventsCount, label: 'Events' }
@@ -662,11 +661,9 @@
             // Generate and insert stats
             document.getElementById('stats-container').innerHTML = generateStats();
 
-            // Initialize filter functionality
             initializeFilters();
         }
 
-        // Filter functionality
         function initializeFilters() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const announcementCards = document.querySelectorAll('[data-category]');
@@ -718,11 +715,9 @@
             });
         }
 
-        // Initialize the page when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             initializePage();
 
-            // Add click analytics
             document.addEventListener('click', function (e) {
                 if (e.target.closest('.announcement-card')) {
                     const card = e.target.closest('.announcement-card');
