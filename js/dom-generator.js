@@ -176,6 +176,72 @@ function getVenueDetails() {
 
 function getTestimonialItems() {
 
+    const websiteLaunch = `
+    <div class="testimonial-item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h1 class="display-5 mb-4 text-black">Website Launch</h1>
+                                        <p class="text-white fs-4 fw-normal mb-4"><i
+                                                class="fa fa-quote-left text-white me-3"></i>
+                                            പുഷ്പകായനം 2025 മായി ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും എല്ലാ അംഗങ്ങളിലേക്കും 
+                                            എത്തിക്കുവാനാണ് ഞങ്ങൾ ഈ വെബ്സൈറ്റ് ഒരുക്കിയിരിക്കുന്നത്.
+                                            <br/><br/>
+                                            www.pushpakayanam.com എന്ന ഈ വെബ്സൈറ്റിന്റെ ഉദ്ഘാടനം ജൂൺ 29 ന് 
+                                            എറണാകുളം ജില്ലാ വാർഷിക സമ്മേളനത്തിൽ വച്ച് പുഷ്പകധ്വനി മാനേജിംഗ് എഡിറ്റർ 
+                                            കെ എം ദേവകിക്കുട്ടി നിർവഹിച്ചു. 
+                                            <br/><br/>
+                                            പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട അപ്ഡേറ്റുകൾ അറിയുവാൻ ഈ വെബ്സൈറ്റ് നിരന്തരം സന്ദർശിക്കുക, 
+                                            അതിനോടൊപ്പം തന്നെ ഈ വെബ്സൈറ്റിൽ ഉൾക്കൊള്ളിക്കേണ്ട വിഷയങ്ങളെ കുറിച്ച് ഏവരും 
+                                            നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുക. കൂടുതൽ വിവരങ്ങൾക്ക്
+                                            <a class="link-txt-color-secondary"
+                                                href="/main/content/announcements/website-launch.html">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h1 class="display-5 mb-4 text-black"></h1>
+                                        <iframe class="w-auto w-lg-550" height="315"
+                                            src="https://www.youtube.com/embed/h57ttJZz_kQ">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    `
+    const souvenirConstest = `
+    <div class="testimonial-item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h1 class="display-5 mb-4 text-black">Souvenir Naming Contest</h1>
+                                        <p class="text-white fs-4 fw-normal mb-4"><i
+                                                class="fa fa-quote-left text-white me-3"></i>
+                                            നമ്മുടെ സമുദായത്തിന്റെയും സംഘടനയുടെയും ചരിത്ര വസ്തുതകൾ ഉൾക്കൊണ്ടുകൊണ്ട് ഒരു സുവനീർ ഇറക്കുന്ന വിവരം നിങ്ങൾക്കറിയാവുന്നതാണല്ലോ. 
+                                            <br/><br/>
+                                            ജൂൺ 29ന് എറണാകുളത്ത് നടന്ന ജില്ലാ വാർഷികത്തിൽ വച്ച്, മുതിർന്ന സമുദായംഗം സി എൻ രാമൻ നമ്പീശൻ സുവനീറിന്റെ പേര് ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു. 
+                                            <br/><br/>
+                                            പ്രയാണം എന്നതാണ് നമ്മൾ സുവനീറിനു വേണ്ടി കണ്ടെത്തിയിരിക്കുന്ന പേര്.
+                                            <br/><br/>
+                                            സുവനീർ നാമനിർദ്ദേശമത്സരത്തെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ
+                                            <a class="link-txt-color-secondary"
+                                                href="/main/content/announcements/souvenir-contest.html">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h1 class="display-5 mb-4 text-black"></h1>
+                                        <iframe class="w-auto w-lg-550" height="315"
+                                            src="https://www.youtube.com/embed/mqVg_smMkjk">
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    `
+
     const walkathonItem = `
     <div class="testimonial-item">
                             <div class="container-fluid">
@@ -387,6 +453,8 @@ function getTestimonialItems() {
   `;
 
     const testimonialItems = [
+        websiteLaunch,
+        souvenirConstest,
         walkathonItem,
         vishuItem,
         logoItem,

@@ -113,6 +113,14 @@ const pageData = {
             { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "Website Launch", href: "#" }
         ]
+    },
+    souvenir_contest: {
+        title: "Souvenir Naming Contest",
+        breadcrumbs: [
+            { name: "Home", href: "/index.html" },
+            { name: "Announcements", href: "/main/content/announcements.html" },
+            { name: "Souvenir Naming Contest", href: "#" }
+        ]
     }
 }
 

@@ -5,6 +5,11 @@
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("announcements"));</script>
     <style>
+        body {
+            background: linear-gradient(135deg, #e1f5fe, #ede7f6);
+
+        }
+
         .announcement-card {
             background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
             border-radius: 20px;
@@ -128,7 +133,6 @@
             margin-bottom: 1.5rem;
             line-height: 1.6;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -251,7 +255,7 @@
         }
 
         .filter-tabs {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            background: linear-gradient(135deg, #e0f7e9, #e6f2ff);
             border-radius: 25px;
             box-shadow: var(--card-shadow);
             padding: 1.5rem;
@@ -359,6 +363,7 @@
         }
 
         .announcement-card {
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
             opacity: 0;
             transform: translateY(30px) scale(0.95);
             animation: slideInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -505,6 +510,17 @@
                 icon: 'bi-laptop',
                 iconType: 'general',
                 link: '/main/content/announcements/website-launch.html'
+            },
+            {
+                id: 'souvenir-contest',
+                title: 'Souvenir Naming Contest',
+                excerpt: 'നമ്മുടെ സമുദായത്തിന്റെയും സംഘടനയുടെയും ചരിത്ര വസ്തുതകൾ ഉൾക്കൊണ്ടുകൊണ്ട് ഒരു സുവനീർ ഇറക്കുന്ന വിവരം നിങ്ങൾക്കറിയാവുന്നതാണല്ലോ. ജൂൺ 29ന് എറണാകുളത്ത് നടന്ന ജില്ലാ വാർഷികത്തിൽ വച്ച്, മുതിർന്ന സമുദായംഗം സി എൻ രാമൻ നമ്പീശൻ സുവനീറിന്റെ പേര് ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു. പ്രയാണം എന്നതാണ് നമ്മൾ സുവനീറിനു വേണ്ടി കണ്ടെത്തിയിരിക്കുന്ന പേര്.',
+                date: 'June 29, 2025',
+                priority: 'high',
+                category: 'contests',
+                icon: 'bi-pencil-square',
+                iconType: 'event',
+                link: '/main/content/announcements/souvenir-contest.html'
             },
             {
                 id: 'walkathon',
