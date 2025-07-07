@@ -24,8 +24,9 @@ export const queryCategories = [
     "Cultural Program",
     "Souvenir",
     "Contests",
-    "Finance",
+    "Website Content",
     "Venue",
     "Food",
-    "Advertisement"
+    "Advertisement",
+    "Publc Relations"
 ];
