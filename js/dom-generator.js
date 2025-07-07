@@ -49,13 +49,6 @@ function getProgramDetails() {
                             </div>
                         </div>
                         <div class="program-item">
-                            <div class="program-icon bg-white text-primary"><i class="fa fa-child"></i></div>
-                            <div class="ps-4">
-                                <h3>ബാലകലോത്സവം (Stage 2)</h3>
-                                <p>10:00 AM</p>
-                            </div>
-                        </div>
-                        <div class="program-item">
                             <div class="program-icon bg-white text-primary"><i class="fa fa-comments"></i></div>
                             <div class="ps-4">
                                 <h3>സംഘടന ചർച്ച</h3>
@@ -90,7 +83,7 @@ function getVenueDetails() {
     return `
         <div class="container-fluid bg-white px-0">
             <div class="row g-0">
-                <div class="col-lg-6 py-6 px-6">
+                <div class="col-lg-6 px-6">
                     <div class="container-fluid">
                         <div class="text-center mx-auto mb-5" style="max-width: 600px;">
                             <h3 class="display-7 mb-0">How to reach the venue</h3>

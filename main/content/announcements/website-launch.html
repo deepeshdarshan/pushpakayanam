@@ -1,63 +1,114 @@
 <!DOCTYPE html>
-<html lang="ml">
+<html lang="en">
 
 <head>
     <script src="/js/common.js"></script>
-    <script>document.addEventListener("DOMContentLoaded", () => init("website"));</script>
+    <script>document.addEventListener("DOMContentLoaded", () => init("website_launch"));</script>
+
+    <link href="/css/announcement.css" rel="stylesheet">
 </head>
 
 <body>
-    <div>
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
 
-        <!-- Topbar Start -->
-        <div id="header-container"></div>
-        <!-- Topbar End -->
+    <!-- Page Header Start -->
+    <div id="page-header-container"></div>
+    <!-- Page Header End -->
 
-        <!-- Page Header Start -->
-        <div id="page-header-container"></div>
-        <!-- Page Header End -->
+    <div class="content-section">
+        <div class="container-fluid">
+            <div class="row g-0 justify-content-center">
+                <div class="col-lg-11 col-xl-10">
+                    <div class="content-card">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="text-content">
+                                    <div class="date-place-container">
+                                        <div class="date-badge malayalam-text">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            29/06/2025
+                                        </div>
+                                        <div class="place-badge malayalam-text">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            തൃപ്പൂണിത്തുറ
+                                        </div>
+                                    </div>
 
-        <!-- Testimonial Start -->
-        <div class="bg-gradient-1">
-            <div class="container-fluid bg-secondary p-0">
-                <div class="row g-0 bg-gradient-1">
-                    <div class="col-lg-6 py-5 px-5">
-                        <div class="d-flex justify-content-center align-items-center img-fluid">
-                            <p class="text-dark fs-4 fw-normal mb-4">
-                                <b class="text-primary">29/06/2025, തൃപ്പൂണിത്തുറ</b>
-                                <br /><br />
-                                <i class="fa fa-quote-left text-dark me-3"></i>
-                                പുഷ്പകായനം 2025 പുതുവഴികളിലൂടെ പ്രയാണം ആരംഭിച്ചിരിക്കുന്നു. ഇതുമായി ബന്ധപ്പെട്ട എല്ലാ
-                                വിവരങ്ങളും എല്ലാ അംഗങ്ങളിലേക്കും എത്തിക്കുവാനാണ് ഞങ്ങൾ ഈ വെബ്സൈറ്റ്
-                                ഒരുക്കിയിരിക്കുന്നത്.
-                                <br /><br />
-                                www.pushpakayanam.com എന്ന ഈ വെബ്സൈറ്റിന്റെ ഉദ്ഘാടനം ജൂൺ 29 ന്
-                                എറണാകുളം ജില്ലാ വാർഷിക സമ്മേളനത്തിൽ വച്ച് പുഷ്പകധ്വനി മാനേജിംഗ് എഡിറ്റർ കെ എം
-                                ദേവകിക്കുട്ടി നിർവഹിച്ചു.
-                                <br /><br />
-                                പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട അപ്ഡേറ്റുകൾ അറിയുവാൻ ഈ വെബ്സൈറ്റ്
-                                നിരന്തരം സന്ദർശിക്കുക, അതിനോടൊപ്പം തന്നെ ഈ വെബ്സൈറ്റിൽ ഉൾക്കൊള്ളിക്കേണ്ട വിഷയങ്ങളെ
-                                കുറിച്ച് ഏവരും നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുക.
-                                <br /><br />
-                                നിങ്ങളുടെ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുന്നതിനായി <a class="link-txt-color-primary"
-                                    href="/main/content/contact-us.html">
-                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
-                                </a>
-                            </p>
+                                    <div class="quote-section">
+                                        <div class="quote-icon">
+                                            <i class="fas fa-quote-left"></i>
+                                        </div>
+
+                                        <div class="main-text malayalam-text">
+                                            പുഷ്പകായനം 2025 പുതുവഴികളിലൂടെ പ്രയാണം ആരംഭിച്ചിരിക്കുന്നു. ഇതുമായി
+                                            ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും എല്ലാ അംഗങ്ങളിലേക്കും എത്തിക്കുവാനാണ് ഞങ്ങൾ ഈ
+                                            വെബ്സൈറ്റ് ഒരുക്കിയിരിക്കുന്നത്.
+                                        </div>
+                                    </div>
+
+                                    <div class="elegant-border malayalam-text">
+                                        <strong class="highlight-text">www.pushpakayanam.com</strong> എന്ന ഈ
+                                        വെബ്സൈറ്റിന്റെ ഉദ്ഘാടനം ജൂൺ 29 ന് എറണാകുളം ജില്ലാ വാർഷിക സമ്മേളനത്തിൽ വച്ച്
+                                        പുഷ്പകധ്വനി മാനേജിംഗ് എഡിറ്റർ കെ എം ദേവകിക്കുട്ടി നിർവഹിച്ചു.
+                                    </div>
+
+                                    <div class="main-text malayalam-text">
+                                        പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട അപ്ഡേറ്റുകൾ അറിയുവാൻ ഈ വെബ്സൈറ്റ് നിരന്തരം
+                                        സന്ദർശിക്കുക, അതിനോടൊപ്പം തന്നെ ഈ വെബ്സൈറ്റിൽ ഉൾക്കൊള്ളിക്കേണ്ട വിഷയങ്ങളെ
+                                        കുറിച്ച് ഏവരും നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുക.
+                                    </div>
+
+                                    <div class="cta-section">
+                                        <p class="malayalam-text mb-3">നിങ്ങളുടെ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുവാൻ</p>
+                                        <a href="/main/content/contact-us.html" class="cta-link malayalam-text">
+                                            ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                        </a>
+                                    </div>
+
+                                    <div class="content-meta malayalam-text">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        ദേശീയ സമ്മേളനത്തെക്കുറിച്ചുള്ള കൂടുതൽ അപ്‌ഡേറ്റുകൾക്കായി ഞങ്ങളുടെ വെബ്സൈറ്റ്
+                                        സന്ദർശിക്കുക!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 video-column">
+                                <div class="video-container" style="padding-top: 10rem;">
+                                    <div class="video-wrapper">
+                                        <iframe src="https://www.youtube.com/embed/h57ttJZz_kQ"
+                                            title="Pushpakayanam Video" allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+
+                                <div class="subscribe-section">
+                                    <div class="subscribe-box malayalam-text">
+                                        <p>
+                                            <i class="fab fa-youtube"></i>
+                                            കൂടുതൽ വീഡിയോകൾക്കായി ഞങ്ങളുടെ YouTube ചാനൽ സബ്സ്ക്രൈബ് ചെയ്യുക
+                                        </p>
+                                        <a href="https://www.youtube.com/@YuvavediErnakulam" target="_blank"
+                                            class="youtube-link malayalam-text">
+                                            <i class="fab fa-youtube"></i>
+                                            Subscribe
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 py-5 px-5">
-                        <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/h57ttJZz_kQ">
-                        </iframe>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Testimonial End -->
+    </div>
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
 
-        <!-- Footer Start -->
-        <div id="footer-container"></div>
-        <!-- Footer End -->
 </body>
 
 </html>
