@@ -8,6 +8,7 @@
     --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08);
     --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.15);
     --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.2);
+    --autumn-gradient: linear-gradient(135deg, #e17055 0%, #fdcb6e 100%);
 }
 
 body {
@@ -21,7 +22,7 @@ body {
 .section-header {
     position: relative;
     padding: 4rem 0 3rem;
-    background: var(--gradient-1);
+    background: var(--autumn-gradient);
     margin-bottom: 4rem;
     overflow: hidden;
 }
