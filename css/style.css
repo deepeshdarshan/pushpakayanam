@@ -625,7 +625,11 @@ h6,
     margin: 0 auto;
 }
 
-
+@media (max-width: 768px) {
+    .border-end {
+        border-color: transparent !important;
+    }
+}
 
 .attraction-card {
     background: rgba(255, 255, 255, 0.95);
@@ -720,6 +724,54 @@ h6,
     }
 }
 
+.welcome-container {
+    background: linear-gradient(135deg, #8ca6db 0%, #b993d6 100%);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.welcome-section {
+    background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.payments-container {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.payments-section {
+    background: linear-gradient(135deg, #f8fffe 0%, #e8f8ff 100%);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.announcements-container {
+    background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+}
+
+.announcements-section {
+    background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 /* Bootstrap border start */
 .bootstrap-border {
     border: 1px solid #6c757d;

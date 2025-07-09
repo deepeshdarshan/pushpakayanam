@@ -478,7 +478,7 @@ if (testimonialEl) {
     const testimonialWrapper = `
       <div class="container-fluid p-0">
         <div class="row g-0">
-          <div class="col py-4 px-4 bg-primary">
+          <div class="col py-4 px-4">
             <div id="testimonial-carousel" class="owl-carousel testimonial-carousel testimonial-carousel-white pe-4">
               ${getTestimonialItems().join('')}
             </div>
