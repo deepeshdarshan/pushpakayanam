@@ -375,13 +375,13 @@ h6,
 
 .testimonial-carousel-white .owl-nav .owl-prev,
 .testimonial-carousel-white .owl-nav .owl-next {
-    color: var(--primary);
-    background: #FFFFFF;
+    color: #fff;
+    background: var(--indigo-gradient);
 }
 
 .testimonial-carousel .owl-nav .owl-prev:hover,
 .testimonial-carousel .owl-nav .owl-next:hover {
-    color: var(--dark);
+    color: orange;
 }
 
 /* Payment section start */
@@ -768,7 +768,7 @@ h6,
 }
 
 .announcements-section {
-    background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #ffeaa7 50%, #ffcccb 100%);
     backdrop-filter: blur(10px);
     border-radius: 20px;
 }
@@ -785,12 +785,12 @@ h6,
 }
 
 .h8-container {
-    background: linear-gradient(135deg, #d66d75 0%, #e29587 100%);
+    background: linear-gradient(135deg, #dff6ff 0%, #e9f1ff 100%);
     padding: 20px;
 }
 
 .h8-section {
-    background: linear-gradient(135deg, #fff8f5 0%, #ffe8e0 100%);
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 20px;
