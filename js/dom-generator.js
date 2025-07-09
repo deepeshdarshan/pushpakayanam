@@ -4,8 +4,10 @@ function getProgramDetails() {
             <div class="row">
                 <div class="col-lg-6">
                     <div class="timeline-day timeline-day-one bg-secondary text-white">
-                        <div class="day-header">
-                            <h1>DAY 1 (Sep 20, 2025)</h1>
+                        <div class="day-header-style3">
+                            <div class="ribbon">
+                                <h1><i class="fas fa-calendar-day day-icon"></i>&nbsp;&nbsp;Sep 20, 2025 (DAY 1)</h1>
+                            </div>
                         </div>
                         <div class="program-item">
                             <div class="program-icon bg-primary text-white"><i class="fa fa-icons"></i></div>
@@ -32,8 +34,10 @@ function getProgramDetails() {
                 </div>
                 <div class="col-lg-6">
                     <div class="timeline-day timeline-day-two bg-primary text-white">
-                        <div class="day-header">
-                            <h1 class="text-white">DAY 2 (Sep 21, 2025)</h1>
+                        <div class="day-header-style4">
+                            <div class="ribbon">
+                                <h1><i class="fas fa-calendar-day day-icon"></i>&nbsp;&nbsp;Sep 21, 2025 (DAY 2)</h1>
+                            </div>
                         </div>
                         <div class="program-with-children">
                             <div class="program-item">

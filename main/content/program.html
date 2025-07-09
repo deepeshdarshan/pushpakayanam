@@ -5,6 +5,27 @@
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("programs"));</script>
     <link href="/css/program.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(-45deg, #fdfbfb, #ebedee, #dfe9f3, #fdfbfb);
+            background-size: 400% 400%;
+            animation: waveGradient 15s ease infinite;
+        }
+
+        @keyframes waveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -22,11 +43,11 @@
     <div class="container-fluid d-flex justify-content-center align-items-center">
         <div class="row justify-content-center" style="width: 80%;">
             <div class="col-lg-8">
-                <div class="bootstrap-border d-flex flex-column align-items-center text-center">
+                <div class="bootstrap-border d-flex flex-column align-items-center text-center" style="padding: 15px 0px;">
                     <p>
                         <i class="fas fa-info-circle me-2 text-primary"></i>
                         പരിപാടികളിൽ സമയക്രമീകരണവും, മറ്റു മാറ്റങ്ങളും വരുത്തുവാൻ <br />
-                        ഔദ്യോഗിക പരിപാടികളുടെ ചുമതലയുള്ള ഉപസമിതിക്ക് പരിപൂർണ്ണ അധികാരം ഉണ്ടായിരിക്കുന്നതാണ്.
+                        പ്രോഗ്രാം കോർഡിനേഷൻ കമ്മിറ്റിക്ക് പരിപൂർണ്ണ അധികാരം ഉണ്ടായിരിക്കുന്നതാണ്.
                     </p>
                 </div>
             </div>

@@ -154,3 +154,102 @@ h3 {
     color: #ffd700 !important;
     font-weight: 500;
 }
+
+
+/* Style 3: Ribbon Style */
+.day-header-style3, .day-header-style4 {
+    position: relative;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.day-header-style3 .ribbon {
+    background: linear-gradient(45deg, #f14545, #f1541c);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+}
+
+.day-header-style3 .ribbon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid #ee5a24;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+.day-header-style3 .ribbon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-right: 20px solid #ff6b6b;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+.day-header-style3 h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.day-header-style3::after, .day-header-style4::after {
+    display: none;
+}
+
+/* Style 4: Ribbon Style */
+.day-header-style4 .ribbon {
+    background: linear-gradient(45deg, #fcfbfb, #f1ebe9);
+    color: rgb(19, 0, 0);
+    padding: 20px 30px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(150, 149, 149, 0.3);
+}
+
+.day-header-style4 .ribbon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid #d3c7c2;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+.day-header-style4 .ribbon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-right: 20px solid #d2c9c9;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+.day-header-style4 h1 {
+    color: #0c0b0b;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}

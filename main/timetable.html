@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Timetable Template</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0.5in;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: white;
+            padding: 10px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .title {
+            font-size: 28px;
+            color: #000000;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .decorative-border {
+            height: 8px;
+            background: #333333;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .cartoon-decorations {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+            font-size: 30px;
+        }
+
+        .name-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            border: 2px dashed #333333;
+        }
+
+        .name-field {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2d3436;
+        }
+
+        .input-line {
+            border-bottom: 2px solid #636e72;
+            min-width: 200px;
+            height: 25px;
+            margin-left: 10px;
+        }
+
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            border: 3px solid #333333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .timetable th {
+            background: #333333;
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px solid #333333;
+            position: relative;
+        }
+
+        .timetable th:first-child {
+            background: #000000;
+            font-size: 16px;
+        }
+
+        .period-header {
+            position: relative;
+        }
+
+        .period-header::after {
+            content: '📚';
+            position: absolute;
+            top: -5px;
+            right: 5px;
+            font-size: 12px;
+        }
+
+        .timetable td {
+            padding: 15px 8px;
+            text-align: center;
+            border: 2px solid #333333;
+            height: 60px;
+            position: relative;
+            background: white;
+        }
+
+        .day-cell {
+            background: #666666 !important;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .day-cell::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .monday::after { content: '🌟'; position: absolute; right: 5px; top: 5px; }
+        .tuesday::after { content: '🎨'; position: absolute; right: 5px; top: 5px; }
+        .wednesday::after { content: '🎵'; position: absolute; right: 5px; top: 5px; }
+        .thursday::after { content: '⚽'; position: absolute; right: 5px; top: 5px; }
+        .friday::after { content: '🎉'; position: absolute; right: 5px; top: 5px; }
+        .saturday::after { content: '🌈'; position: absolute; right: 5px; top: 5px; }
+
+        .subject-cell {
+            background: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+
+        .subject-cell:hover {
+            background: #e0e0e0;
+        }
+
+        .corner-decorations {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.3;
+        }
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+        }
+
+        .top-right {
+            top: 10px;
+            right: 10px;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .fun-elements {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 24px;
+        }
+
+        .print-button {
+            background: #333333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #000000;
+        }
+
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+
+        .instructions {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px dashed #333333;
+            text-align: center;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .instructions strong {
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="corner-decorations top-left">🎒</div>
+        <div class="corner-decorations top-right">✏️</div>
+        <div class="corner-decorations bottom-left">📖</div>
+        <div class="corner-decorations bottom-right">🌟</div>
+
+        <div class="header">
+            <div class="title">My Super Fun School Timetable! 🎓</div>
+            <div class="decorative-border"></div>
+            <div class="cartoon-decorations">
+                <span>🦄</span>
+                <span>🌈</span>
+                <span>🎨</span>
+                <span>📚</span>
+                <span>⭐</span>
+                <span>🎵</span>
+                <span>🚀</span>
+            </div>
+        </div>
+
+        <div class="name-section">
+            <div class="name-field">Student Name: <span class="input-line"></span></div>
+            <div class="name-field">Class: <span class="input-line"></span></div>
+            <div class="name-field">Academic Year: <span class="input-line"></span></div>
+        </div>
+
+
+
+        <table class="timetable">
+            <thead>
+                <tr>
+                    <th>DAYS</th>
+                    <th class="period-header">PERIOD 1</th>
+                    <th class="period-header">PERIOD 2</th>
+                    <th class="period-header">PERIOD 3</th>
+                    <th class="period-header">PERIOD 4</th>
+                    <th class="period-header">PERIOD 5</th>
+                    <th class="period-header">PERIOD 6</th>
+                    <th class="period-header">PERIOD 7</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day-cell monday">MONDAY</td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                </tr>
+                <tr>
+                    <td class="day-cell tuesday">TUESDAY</td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                </tr>
+                <tr>
+                    <td class="day-cell wednesday">WEDNESDAY</td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                </tr>
+                <tr>
+                    <td class="day-cell thursday">THURSDAY</td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                </tr>
+                <tr>
+                    <td class="day-cell friday">FRIDAY</td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                    <td class="subject-cell"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="fun-elements">
+            <span>🎈</span>
+            <span>🎁</span>
+            <span>🎪</span>
+            <span>🎯</span>
+            <span>🏆</span>
+            <span>🎊</span>
+            <span>🎭</span>
+            <span>🎨</span>
+        </div>
+    </div>
+</body>
+</html>
