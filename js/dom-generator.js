@@ -93,9 +93,9 @@ function getVenueDetails() {
                             <h3 class="display-7 mb-0">How to reach the venue</h3>
                             <hr class="w-25 mx-auto bg-primary">
                         </div>
-                        <div class="row g-3">
+                        <div class="row g-1">
                             <div class="col-lg-6 col-md-6 transport-item attraction-card">
-                                <div class="service-item text-center px-4">
+                                <div class="service-item text-center px-2">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-bus fa-2x"></i>
@@ -110,7 +110,7 @@ function getVenueDetails() {
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 transport-item attraction-card">
-                                <div class="service-item text-center px-4">
+                                <div class="service-item text-center px-2">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-subway fa-2x"></i>
@@ -123,7 +123,7 @@ function getVenueDetails() {
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 transport-item attraction-card">
-                                <div class="service-item text-center px-4">
+                                <div class="service-item text-center px-2">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-train fa-2x"></i>
@@ -144,7 +144,7 @@ function getVenueDetails() {
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 transport-item attraction-card">
-                                <div class="service-item text-center px-4">
+                                <div class="service-item text-center px-2">
                                     <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-8"
                                         style="width: 90px; height: 90px;">
                                         <i class="fa fa-car fa-2x"></i>
@@ -190,17 +190,21 @@ function getTestimonialItems() {
                                             <br/><br/>
                                             പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട അപ്ഡേറ്റുകൾ അറിയുവാൻ ഈ വെബ്സൈറ്റ് നിരന്തരം സന്ദർശിക്കുക, 
                                             അതിനോടൊപ്പം തന്നെ ഈ വെബ്സൈറ്റിൽ ഉൾക്കൊള്ളിക്കേണ്ട വിഷയങ്ങളെ കുറിച്ച്  
-                                            നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ ഞങ്ങളുമായി പങ്കുവെക്കുക. കൂടുതൽ വിവരങ്ങൾക്ക്
-                                            <a class="text-primary"
-                                                href="/main/content/announcements/website-launch.html">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
-                                            </a>
+                                            നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ ഞങ്ങളുമായി പങ്കുവെക്കുക. 
                                         </p>
+                                        <div class="announcement-section">
+                                            <p class="malayalam-text mb-3">കൂടുതൽ വിവരങ്ങൾക്ക്</p>
+                                            <a href="/main/content/announcements/website-launch.html" class="announcement-link malayalam-text">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6 text-center">
-                                        <iframe class="w-auto w-lg-550" height="315"
-                                            src="https://www.youtube.com/embed/h57ttJZz_kQ">
-                                        </iframe>
+                                    <div class="col-lg-6">
+                                        <div class="ratio ratio-16x9">
+                                            <iframe height="315"
+                                                src="https://www.youtube.com/embed/h57ttJZz_kQ">
+                                            </iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +219,7 @@ function getTestimonialItems() {
                                         <p class="text-dark fs-4 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             നമ്മുടെ സമുദായത്തിന്റെയും സംഘടനയുടെയും ചരിത്ര വസ്തുതകൾ ഉൾക്കൊണ്ടുകൊണ്ട് ഒരു 
-                                            സുവനീർ ഇറക്കുന്ന വിവരം നിങ്ങൾക്കറിയാവുന്നതാണല്ലോ. 
+                                            സുവനീർ ഇറക്കുന്ന വിവരം നിങ്ങൾക്ക് അറിവുള്ളതാണല്ലോ. 
                                             <br/><br/>
                                             ജൂൺ 29ന് എറണാകുളത്ത് നടന്ന ജില്ലാ വാർഷികത്തിൽ വച്ച്, മുതിർന്ന സമുദായംഗം 
                                             സി എൻ രാമൻ നമ്പീശൻ സുവനീറിന്റെ പേര് ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു. 
@@ -223,17 +227,20 @@ function getTestimonialItems() {
                                             പ്രയാണം എന്നതാണ് നമ്മൾ സുവനീറിനു വേണ്ടി കണ്ടെത്തിയിരിക്കുന്ന പേര്.
                                             <br/><br/>
                                             സുവനീർ നാമനിർദ്ദേശ മത്സരത്തെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ
-                                            <a class="text-primary"
-                                                href="/main/content/announcements/souvenir-contest.html">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
-                                            </a>
                                         </p>
+                                        <div class="announcement-section">
+                                            <p class="malayalam-text mb-3">സുവനീർ നാമനിർദ്ദേശ മത്സരത്തെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ</p>
+                                            <a href="/main/content/announcements/souvenir-contest.html" class="announcement-link malayalam-text">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6 text-center">
-                                        <h1 class="display-5 mb-4 text-black"></h1>
-                                        <iframe class="w-auto w-lg-550" height="315"
-                                            src="https://www.youtube.com/embed/mqVg_smMkjk">
-                                        </iframe>
+                                    <div class="col-lg-6">
+                                        <div class="ratio ratio-16x9">
+                                            <iframe height="315"
+                                                src="https://www.youtube.com/embed/mqVg_smMkjk">
+                                            </iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -258,13 +265,13 @@ function getTestimonialItems() {
                                             സന്ദേശം. തൃപ്പൂണിത്തുറ Govt. ബോയ്സ് ഹൈസ്കൂളിൽ നിന്നും തുടങ്ങി
                                             നഗരത്തിലൂടെ 3 KM സഞ്ചരിച്ച്, ബോയ്സ് ഹൈസ്കൂളിൽ തന്നെ വാക്കത്തോൺ
                                             അവസാനിച്ചു.
-                                            <br /><br />
-                                            വാക്കത്തോണിനെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ
-                                            <a class="text-primary"
-                                                href="/main/content/announcements/walkathon.html">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
-                                            </a>
                                         </p>
+                                        <div class="announcement-section">
+                                            <p class="malayalam-text mb-3">വാക്കത്തോണിനെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ</p>
+                                            <a href="/main/content/announcements/walkathon.html" class="announcement-link malayalam-text">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 text-center">
                                         <div class="d-flex img-fluid">
@@ -294,12 +301,13 @@ function getTestimonialItems() {
                                             <b>2. രമണി എം ടി, പേരാമ്പ്ര പ്രാദേശിക സഭ</b>
                                             <br /><br />
                                             വിജയികൾക്ക് അഭിനന്ദനങ്ങൾ!
-                                            <br /><br />
-                                            കൂടുതൽ വിവരങ്ങൾക്കായി <a class="text-primary"
-                                                href="/main/content/announcements/vishu-contest.html">ഇവിടെ
-                                                ക്ലിക്ക്
-                                                ചെയ്യുക</a>.
                                         </p>
+                                        <div class="announcement-section">
+                                            <p class="malayalam-text mb-3">കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാനായി</p>
+                                            <a href="/main/content/announcements/vishu-contest.html" class="announcement-link malayalam-text">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="d-flex img-fluid w-50">
@@ -366,20 +374,20 @@ function getTestimonialItems() {
                                             <br /><br />
                                             പ്രസാദ് അരയാലക്ക് അഭിനന്ദനങ്ങൾ!
                                         </p>
-                                        <p class="fs-4 fw-normal mb-4 text-dark">
-                                            മത്സരത്തിലെ മറ്റു വിജയികളെ അറിയുവാനും, മത്സരത്തിൽ പങ്കെടുത്ത മറ്റ്
-                                            റീലുകൾ കാണുന്നതിനുമായി
-                                            <a class="text-primary"
-                                                href="/main/content/announcements/reels-contest.html">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക.
+                                        <div class="announcement-section">
+                                            <p class="malayalam-text mb-3">മത്സരത്തിലെ മറ്റു വിജയികളെ അറിയുവാനും, മത്സരത്തിൽ പങ്കെടുത്ത മറ്റ്
+                                            റീലുകൾ കാണുന്നതിനുമായി</p>
+                                            <a href="/main/content/announcements/reels-contest.html" class="announcement-link malayalam-text">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
                                             </a>
-                                        </p>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-6 text-center">
-                                        <h1 class="display-5 mb-4 text-black"></h1>
-                                        <iframe class="w-auto w-lg-550" height="315"
-                                            src="https://www.youtube.com/embed/Mb8l1JY-4Ws">
-                                        </iframe>
+                                    <div class="col-lg-6">
+                                        <div class="ratio ratio-16x9">
+                                            <iframe height="315"
+                                                src="https://www.youtube.com/embed/Mb8l1JY-4Ws">
+                                            </iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -404,10 +412,13 @@ function getTestimonialItems() {
                                             <br /><br />
                                             വിജയിക്ക് അഭിനന്ദനങ്ങൾ !
                                             <br /><br />
-                                            കൂടുതൽ വിവരങ്ങൾക്കായി <a class="text-primary"
-                                                href="/main/content/announcements/naming-contest.html">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക</a>.
                                         </p>
+                                        <div class="announcement-section">
+                                            <p class="malayalam-text mb-3">കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാനായി</p>
+                                            <a href="/main/content/announcements/naming-contest.html" class="announcement-link malayalam-text">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 text-center">
                                         <div class="d-flex img-fluid w-75">
@@ -432,12 +443,13 @@ function getTestimonialItems() {
                                             ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ 57-ാം ദേശീയ സമ്മേളന സ്വാഗതസംഘം
                                             2025
                                             ഫെബ്രുവരി 23 ന് തൃപ്പൂണിത്തുറയിൽ വെച്ച് രൂപീകരിച്ചു.
-                                            <br /><br />
-                                            സ്വാഗതസംഘ രൂപീകരണവുമായി ബന്ധപ്പെട്ട കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാനായി <a
-                                                class="text-primary"
-                                                href="/main/content/announcements/orgcom.html">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക</a>.
                                         </p>
+                                        <div class="announcement-section">
+                                            <p class="malayalam-text mb-3">സ്വാഗതസംഘ രൂപീകരണവുമായി ബന്ധപ്പെട്ട കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാനായി</p>
+                                            <a href="/main/content/announcements/orgcom.html" class="announcement-link malayalam-text">
+                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 text-center">
                                         <div class="d-flex img-fluid w-100">

@@ -584,13 +584,8 @@ h6,
 
 /* Payment section end */
 
-/* .testimonial-carousel .owl-item img {
-    width: 90px;
-    height: 90px;
-} */
-
 .transport-item {
-    width: 375px !important;
+    max-width: 360px !important;
     border-radius: 20px;
     padding: 20px 0px !important;
     min-height: 475px !important;
@@ -722,6 +717,16 @@ h6,
     .w-60c {
         width: 100% !important;
     }
+
+    .transport-item {
+        max-width: 315px !important;
+        border-radius: 20px;
+        padding: 20px 0px !important;
+        min-height: 475px !important;
+        margin: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
 }
 
 .welcome-container {
@@ -743,13 +748,13 @@ h6,
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.payments-container {
+.x1-container {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     min-height: 50vh;
     padding: 20px;
 }
 
-.payments-section {
+.x1-section {
     background: linear-gradient(135deg, #e6f2ff 0%, #cce7ff 50%, #b3daff 100%);
     width: 100%;
     backdrop-filter: blur(10px);
@@ -757,11 +762,12 @@ h6,
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.announcements-container {
+.b4-container {
     background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+    padding: 20px;
 }
 
-.announcements-section {
+.b4-section {
     background: linear-gradient(135deg, #ffffff 0%, #ffeaa7 50%, #ffcccb 100%);
     backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -780,6 +786,7 @@ h6,
 
 .h8-container {
     background: linear-gradient(135deg, #dff6ff 0%, #e9f1ff 100%);
+    padding: 20px;
 }
 
 .h8-section {
@@ -855,3 +862,33 @@ h6,
 }
 
 /* Bootstrap border end */
+
+.announcement-section {
+    background: #ffeaa7;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #000;
+    text-align: center;
+    margin: 2rem 0rem;
+}
+
+.announcement-section:hover {
+    background: #f9e79f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-link {
+    background: #3498db;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.announcement-link:hover {
+    background: #2980b9;
+    color: white !important;
+}
