@@ -179,9 +179,10 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">Website Launch</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
-                                            പുഷ്പകായനം 2025 മായി ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും എല്ലാ അംഗങ്ങളിലേക്കും 
+                                            അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനവുമായി (പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ) 
+                                            ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും എല്ലാ അംഗങ്ങളിലേക്കും 
                                             എത്തിക്കുവാനാണ് ഞങ്ങൾ ഈ വെബ്സൈറ്റ് ഒരുക്കിയിരിക്കുന്നത്.
                                             <br/><br/>
                                             www.pushpakayanam.com എന്ന ഈ വെബ്സൈറ്റിന്റെ ഉദ്ഘാടനം ജൂൺ 29 ന് 
@@ -216,7 +217,7 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">Souvenir Naming Contest</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             നമ്മുടെ സമുദായത്തിന്റെയും സംഘടനയുടെയും ചരിത്ര വസ്തുതകൾ ഉൾക്കൊണ്ടുകൊണ്ട് ഒരു 
                                             സുവനീർ ഇറക്കുന്ന വിവരം നിങ്ങൾക്ക് അറിവുള്ളതാണല്ലോ. 
@@ -253,7 +254,7 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">Walkathon</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             സെപ്റ്റംബർ 20, 21 തീയതികളിൽ എറണാകുളത്ത് വെച്ച് നടക്കുന്ന
                                             അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനത്തിന്റെ (പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ)
@@ -289,7 +290,7 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">വിഷു ഫോട്ടോഗ്രാഫി മത്സരം</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             വിഷുവിനെ മനോഹര സങ്കൽപ്പമാക്കി പുഷ്പകായനം 2025 നടത്തിയ ഫോട്ടോഗ്രാഫി
                                             മത്സര
@@ -333,7 +334,7 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">ലോഗോ പ്രകാശനം</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             57-ാം ദേശീയ സമ്മേളനത്തിന്റെ (പുഷ്പകായനം 2025) ഔദ്യോഗിക ലോഗോ പ്രകാശനം
                                             ചെയ്തു.
@@ -363,7 +364,7 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">റീൽസ് മത്സരം</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             57-ാം
                                             ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ റീൽസ് മത്സരത്തിലെ വിജയികളെ
@@ -400,7 +401,7 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">നാമനിർദ്ദേശ മത്സരം</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             57-ാം ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ നാമനിർദ്ദേശ
                                             മത്സരത്തിലെ വിജയിയെ പ്രഖ്യാപിച്ചു.
@@ -438,7 +439,7 @@ function getTestimonialItems() {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-5 mb-4 text-muted">സ്വാഗതസംഘ രൂപീകരണം</h1>
-                                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                        <p class="text-dark fs-5 fw-normal mb-4"><i
                                                 class="fa fa-quote-left text-primary me-3"></i>
                                             ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ 57-ാം ദേശീയ സമ്മേളന സ്വാഗതസംഘം
                                             2025
