@@ -43,25 +43,6 @@
         return false;
     });
 
-
-    // Testimonials carousel
-    try {
-        $(".testimonial-carousel").owlCarousel({
-            autoplay: false,
-            smartSpeed: 500,
-            items: 1,
-            dots: false,
-            loop: true,
-            nav: true,
-            navText: [
-                '<i class="bi bi-arrow-left"></i>',
-                '<i class="bi bi-arrow-right"></i>'
-            ],
-        });
-    } catch (e) {
-        console.log("Error initializing testimonial-carousel")
-    }
-
     try {
         $(".header-carousel").owlCarousel({
             autoplay: true,

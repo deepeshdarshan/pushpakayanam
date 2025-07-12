@@ -82,6 +82,10 @@
     background: linear-gradient(45deg, #1877f2, #0d5bc4);
 }
 
+.instagram .social-icon {
+    background: linear-gradient(45deg, #e4405f, #833ab4);
+}
+
 .whatsapp .social-icon {
     background: linear-gradient(45deg, #25d366, #128c7e);
 }

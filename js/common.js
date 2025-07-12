@@ -254,7 +254,7 @@ function loadFooter() {
             const container = document.getElementById("footer-container");
             container.innerHTML = html;
         })
-        .catch(() => {
+        .catch(err => {
             console.error("Error loading footer:", err);
             const container = document.getElementById("footer-container");
             if (container) container.innerHTML = "Footer not found.";
@@ -346,23 +346,7 @@ function loadTitle() {
 function loadCarousels() {
     $(document).ready(function () {
         try {
-            const $testimonial = $('#testimonial-carousel');
             const $header = $('#header-carousel');
-
-            if ($testimonial.length > 0) {
-                $testimonial.owlCarousel({
-                    autoplay: false,
-                    smartSpeed: 500,
-                    items: 1,
-                    dots: false,
-                    loop: true,
-                    nav: true,
-                    navText: [
-                        '<i class="bi bi-arrow-left"></i>',
-                        '<i class="bi bi-arrow-right"></i>'
-                    ],
-                });
-            }
 
             if ($header.length > 0) {
                 $header.owlCarousel({

@@ -171,314 +171,9 @@ function getVenueDetails() {
         </div>`;
 }
 
-function getTestimonialItems() {
-
-    const websiteLaunch = `
-    <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">Website Launch</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനവുമായി (പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ) 
-                                            ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും എല്ലാ അംഗങ്ങളിലേക്കും 
-                                            എത്തിക്കുവാനാണ് ഞങ്ങൾ ഈ വെബ്സൈറ്റ് ഒരുക്കിയിരിക്കുന്നത്.
-                                            <br/><br/>
-                                            www.pushpakayanam.com എന്ന ഈ വെബ്സൈറ്റിന്റെ ഉദ്ഘാടനം ജൂൺ 29 ന് 
-                                            എറണാകുളം ജില്ലാ വാർഷിക സമ്മേളനത്തിൽ വച്ച് പുഷ്പകധ്വനി മാനേജിംഗ് എഡിറ്റർ 
-                                            കെ എം ദേവകിക്കുട്ടി നിർവഹിച്ചു. 
-                                            <br/><br/>
-                                            പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട അപ്ഡേറ്റുകൾ അറിയുവാൻ ഈ വെബ്സൈറ്റ് നിരന്തരം സന്ദർശിക്കുക, 
-                                            അതിനോടൊപ്പം തന്നെ ഈ വെബ്സൈറ്റിൽ ഉൾക്കൊള്ളിക്കേണ്ട വിഷയങ്ങളെ കുറിച്ച്  
-                                            നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ ഞങ്ങളുമായി പങ്കുവെക്കുക. 
-                                        </p>
-                                        <div class="announcement-section">
-                                            <p class="malayalam-text mb-3">കൂടുതൽ വിവരങ്ങൾക്ക്</p>
-                                            <a href="/main/content/announcements/website-launch.html" class="announcement-link malayalam-text">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="ratio ratio-16x9">
-                                            <iframe height="315"
-                                                src="https://www.youtube.com/embed/h57ttJZz_kQ">
-                                            </iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    `
-    const souvenirConstest = `
-    <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">Souvenir Naming Contest</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            നമ്മുടെ സമുദായത്തിന്റെയും സംഘടനയുടെയും ചരിത്ര വസ്തുതകൾ ഉൾക്കൊണ്ടുകൊണ്ട് ഒരു 
-                                            സുവനീർ ഇറക്കുന്ന വിവരം നിങ്ങൾക്ക് അറിവുള്ളതാണല്ലോ. 
-                                            <br/><br/>
-                                            ജൂൺ 29ന് എറണാകുളത്ത് നടന്ന ജില്ലാ വാർഷികത്തിൽ വച്ച്, മുതിർന്ന സമുദായംഗം 
-                                            സി എൻ രാമൻ നമ്പീശൻ സുവനീറിന്റെ പേര് ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു. 
-                                            <br/><br/>
-                                            പ്രയാണം എന്നതാണ് നമ്മൾ സുവനീറിനു വേണ്ടി കണ്ടെത്തിയിരിക്കുന്ന പേര്.
-                                            <br/><br/>
-                                            സുവനീർ നാമനിർദ്ദേശ മത്സരത്തെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ
-                                        </p>
-                                        <div class="announcement-section">
-                                            <p class="malayalam-text mb-3">സുവനീർ നാമനിർദ്ദേശ മത്സരത്തെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ</p>
-                                            <a href="/main/content/announcements/souvenir-contest.html" class="announcement-link malayalam-text">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="ratio ratio-16x9">
-                                            <iframe height="315"
-                                                src="https://www.youtube.com/embed/mqVg_smMkjk">
-                                            </iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    `
-
-    const walkathonItem = `
-    <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">Walkathon</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            സെപ്റ്റംബർ 20, 21 തീയതികളിൽ എറണാകുളത്ത് വെച്ച് നടക്കുന്ന
-                                            അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനത്തിന്റെ (പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ)
-                                            പ്രചരണത്തിന്റെ
-                                            ഭാഗമായി ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം എറണാകുളം വനിതാ വേദി നടത്തിയ
-                                            വാക്കത്തോൺ 2025, 25/05/25 ന് തൃപ്പൂണിത്തുറയിൽ വെച്ച് നടന്നു.
-                                            <br /><br />
-                                            <b>SAY NO TO DRUGS</b> എന്നതായിരുന്നു വാക്കത്തോൺ ഉയർത്തിപ്പിടിച്ച
-                                            സന്ദേശം. തൃപ്പൂണിത്തുറ Govt. ബോയ്സ് ഹൈസ്കൂളിൽ നിന്നും തുടങ്ങി
-                                            നഗരത്തിലൂടെ 3 KM സഞ്ചരിച്ച്, ബോയ്സ് ഹൈസ്കൂളിൽ തന്നെ വാക്കത്തോൺ
-                                            അവസാനിച്ചു.
-                                        </p>
-                                        <div class="announcement-section">
-                                            <p class="malayalam-text mb-3">വാക്കത്തോണിനെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ</p>
-                                            <a href="/main/content/announcements/walkathon.html" class="announcement-link malayalam-text">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 text-center">
-                                        <div class="d-flex img-fluid">
-                                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMJvz3bKnwgr45SBwXK5N_RBeJvZTZKigsaRdDCXGYhdzCvSVb_hJNl31vQglqhvJwhsui-QpIRW3OXCIbJc0y67RD1dlxw49fnO9xSYrwX7NBtA37NPwEmew88hgNJGmpb5qv6nt6H8SRkiRAP6BSU=w1280-h720"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
-
-    const vishuItem = `
-    <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">വിഷു ഫോട്ടോഗ്രാഫി മത്സരം</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            വിഷുവിനെ മനോഹര സങ്കൽപ്പമാക്കി പുഷ്പകായനം 2025 നടത്തിയ ഫോട്ടോഗ്രാഫി
-                                            മത്സര
-                                            വിജയികളായി
-                                            രണ്ട് പേരെ തിരഞ്ഞെടുത്തിരിക്കുന്നു.
-                                            <br /><br />
-                                            <b>1. രജിത വത്സരാജ്, കൊയിലാണ്ടി പ്രാദേശിക സഭ</b>
-                                            <br />
-                                            <b>2. രമണി എം ടി, പേരാമ്പ്ര പ്രാദേശിക സഭ</b>
-                                            <br /><br />
-                                            വിജയികൾക്ക് അഭിനന്ദനങ്ങൾ!
-                                        </p>
-                                        <div class="announcement-section">
-                                            <p class="malayalam-text mb-3">കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാനായി</p>
-                                            <a href="/main/content/announcements/vishu-contest.html" class="announcement-link malayalam-text">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="d-flex img-fluid w-50">
-                                            <img src="https://lh3.googleusercontent.com/pw/AP1GczP884297GTKOFJewrpV5x3VS4bavmaEToudEPEnM_7U9fyrUamVHggm8IZ2H0cudRgoxXzqCyrAvknAfqUpO2QsySBqgrTFdTIvpuScIsN_rrOFFvK-2CoVsQAPoAnEdNIlQ3YCrTpenigrFLsCHpy5=w938-h922"
-                                                class="img-fluid w-60c">
-                                        </div>
-                                        <b class="text-muted">രജിത വത്സരാജ്</b>
-                                        <br /><br />
-                                        <div class="d-flex img-fluid w-50">
-                                            <img src="https://lh3.googleusercontent.com/pw/AP1GczP7SmmqHlFdpza8_EO2cjiY3Ek3tiktV9RoRwsSwL9AChD7bNumbd6grhObde_kN8A6U35GOUztt1CiBfG4q5nm6_Vt7UDMTKAeS1JacL4fLUSt8aHQ1j9N8RHNA3_Yfm2yTbP_TeG2H5DTtyUPMovR=w855-h678"
-                                                class="img-fluid w-60c">
-                                        </div>
-                                        <b class="text-muted">രമണി എം ടി</b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-  `;
-
-    const logoItem = `
-    <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">ലോഗോ പ്രകാശനം</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            57-ാം ദേശീയ സമ്മേളനത്തിന്റെ (പുഷ്പകായനം 2025) ഔദ്യോഗിക ലോഗോ പ്രകാശനം
-                                            ചെയ്തു.
-                                            <br /><br />
-                                            മലപ്പുറം പോരൂരിൽ നടക്കുന്ന Pushpaka Champions Leagugue - 1 ന്റെ
-                                            കലാസന്ധ്യയുമായി അനുബന്ധിച്ച് നടന്ന
-                                            ചടങ്ങിൽ വെച്ചായിരുന്നു ലോഗോ പ്രകാശനം.
-                                            <br /><br />
-                                            കേന്ദ്ര പ്രസിഡണ്ട്
-                                            ശ്രീ എൽ.പി.വിശ്വനാഥൻ അവർകൾ ആണ് ലോഗോ പ്രകാശനം നിർവഹിച്ചത്.
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-6 text-center">
-                                        <div class="d-flex img-fluid">
-                                            <img src="https://lh3.googleusercontent.com/pw/AP1GczPTtlc16lvlZvrsz5nYu0C6WKbaUptYvFsL_4ARkXOsoh1sbaG6XelFTdurnVnjvabP8pvkVLLORzL75IYsyQZmT6YMQdSMyXzyLmOg6vSTdOB7GCrDxAjZCuU18iL8300HadLkKDCxYn2IV385jnBA"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-  `;
-
-    const reelsItem = `
-   <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">റീൽസ് മത്സരം</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            57-ാം
-                                            ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ റീൽസ് മത്സരത്തിലെ വിജയികളെ
-                                            പ്രഖ്യാപിച്ചു.
-                                            <br /><br />
-                                            മത്സരത്തിലെ <b class="text-success">ഒന്നാം സമ്മാന വിജയി </b>
-                                            തളിപ്പറമ്പ പ്രാദേശിക സഭയിലെ പ്രസാദ് അരയാലയാണ്.
-                                            <br /><br />
-                                            പ്രസാദ് അരയാലക്ക് അഭിനന്ദനങ്ങൾ!
-                                        </p>
-                                        <div class="announcement-section">
-                                            <p class="malayalam-text mb-3">മത്സരത്തിലെ മറ്റു വിജയികളെ അറിയുവാനും, മത്സരത്തിൽ പങ്കെടുത്ത മറ്റ്
-                                            റീലുകൾ കാണുന്നതിനുമായി</p>
-                                            <a href="/main/content/announcements/reels-contest.html" class="announcement-link malayalam-text">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="ratio ratio-16x9">
-                                            <iframe height="315"
-                                                src="https://www.youtube.com/embed/Mb8l1JY-4Ws">
-                                            </iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-  `;
-
-    const namingItem = `
-    <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">നാമനിർദ്ദേശ മത്സരം</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            57-ാം ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ നാമനിർദ്ദേശ
-                                            മത്സരത്തിലെ വിജയിയെ പ്രഖ്യാപിച്ചു.
-                                            <br /><br />
-                                            <b>പുഷ്പകായനം 2025</b> എന്നതാണ് തിരഞ്ഞെടുക്കപ്പെട്ട പേര്.
-                                            <br /><br />
-                                            തൃപ്പൂണിത്തുറ പ്രാദേശിക സഭയിലെ ശ്രീമതി ലളിതാ ദേവിയാണ് ഈ പേര്
-                                            നിർദേശിച്ചത്.
-                                            <br /><br />
-                                            വിജയിക്ക് അഭിനന്ദനങ്ങൾ !
-                                            <br /><br />
-                                        </p>
-                                        <div class="announcement-section">
-                                            <p class="malayalam-text mb-3">കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാനായി</p>
-                                            <a href="/main/content/announcements/naming-contest.html" class="announcement-link malayalam-text">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 text-center">
-                                        <div class="d-flex img-fluid w-75">
-                                            <img src="https://lh3.googleusercontent.com/pw/AP1GczM9twHetQ7cHjlEQgbGYk0el7MUbHNRe1f074Ac6FwfWl6oXYnAAnugxine3e5qxwx5-9whul6LVDtUrYWCYb6R7g3U5Rc8GPEr_iB0MKbneJ8HkETK2GpVamtJl2_Fq08pjuc9G00i_KIiMsRduD-T=w1042-h942"
-                                                class="img-fluid w-80c">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-  `;
-
-    const welcomeItem = `
-    <div class="testimonial-item">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <h1 class="display-5 mb-4 text-muted">സ്വാഗതസംഘ രൂപീകരണം</h1>
-                                        <p class="text-dark fs-5 fw-normal mb-4"><i
-                                                class="fa fa-quote-left text-primary me-3"></i>
-                                            ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ 57-ാം ദേശീയ സമ്മേളന സ്വാഗതസംഘം
-                                            2025
-                                            ഫെബ്രുവരി 23 ന് തൃപ്പൂണിത്തുറയിൽ വെച്ച് രൂപീകരിച്ചു.
-                                        </p>
-                                        <div class="announcement-section">
-                                            <p class="malayalam-text mb-3">സ്വാഗതസംഘ രൂപീകരണവുമായി ബന്ധപ്പെട്ട കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാനായി</p>
-                                            <a href="/main/content/announcements/orgcom.html" class="announcement-link malayalam-text">
-                                                ഇവിടെ ക്ലിക്ക് ചെയ്യുക
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 text-center">
-                                        <div class="d-flex img-fluid w-100">
-                                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMlnWOSO0vYfX9f4XjszcSueCd8CZA5eI5oSGfGcE3p696BTGDU0DEBXlkhYe2M75LmMTDKjeswxRF7IVuJWKp3RRBCrxsNjEsoQnL_seK4PWR7pK1yddJtVV5ZdePRU9bxszX_x2fe6P1HkMOFMypT=w2874-h1916"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-  `;
-
-    const testimonialItems = [
-        websiteLaunch,
-        souvenirConstest,
-        walkathonItem,
-        vishuItem,
-        logoItem,
-        reelsItem,
-        namingItem,
-        welcomeItem
-    ];
-    return testimonialItems;
-}
-
 const programsEl = document.getElementById("programsContainer");
 const venueEl = document.getElementById("venueContainer");
-const testimonialEl = document.getElementById('testimonialContainer');
+const announcementEl = document.getElementById('announcementsContainer');
 
 if (programsEl)
     programsEl.innerHTML = getProgramDetails();
@@ -486,18 +181,293 @@ if (programsEl)
 if (venueEl)
     venueEl.innerHTML = getVenueDetails();
 
-if (testimonialEl) {
-    const testimonialWrapper = `
-      <div class="container-fluid p-0">
-        <div class="row g-0">
-          <div class="col py-4 px-4">
-            <div id="testimonial-carousel" class="owl-carousel testimonial-carousel testimonial-carousel-white pe-4">
-              ${getTestimonialItems().join('')}
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    testimonialEl.innerHTML = testimonialWrapper;
-}
+if (announcementEl) {
+    const announcements = `
+    <div class="carousel-container">
+        <div class="carousel-wrapper">
+            <div class="carousel-track" id="carouselTrack">
 
+                <!-- Slide 1 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <iframe src="https://www.youtube.com/embed/h57ttJZz_kQ" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>Website Launch</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനവുമായി (പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ) 
+                                ബന്ധപ്പെട്ട എല്ലാ വിവരങ്ങളും എല്ലാ അംഗങ്ങളിലേക്കും 
+                                എത്തിക്കുവാനാണ് ഈ വെബ്സൈറ്റ് ഒരുക്കിയിരിക്കുന്നത്.
+                                <br/><br/>
+                                www.pushpakayanam.com എന്ന ഈ വെബ്സൈറ്റിന്റെ ഉദ്ഘാടനം ജൂൺ 29 ന് 
+                                എറണാകുളം ജില്ലാ വാർഷിക സമ്മേളനത്തിൽ വച്ച് പുഷ്പകധ്വനി മാനേജിംഗ് എഡിറ്റർ 
+                                കെ എം ദേവകിക്കുട്ടി നിർവഹിച്ചു. 
+                                <br/><br/>
+                                പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട അപ്ഡേറ്റുകൾ അറിയുവാൻ ഈ വെബ്സൈറ്റ് നിരന്തരം സന്ദർശിക്കുക, 
+                                അതിനോടൊപ്പം തന്നെ ഈ വെബ്സൈറ്റിൽ ഉൾക്കൊള്ളിക്കേണ്ട വിഷയങ്ങളെ കുറിച്ച്  
+                                നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ ഞങ്ങളുമായി പങ്കുവെക്കുക. 
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">നിങ്ങളുടെ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുവാൻ</p>
+                                <a href="/main/content/announcements/website-launch.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <iframe src="https://www.youtube.com/embed/mqVg_smMkjk" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>Souvenir Naming Contest</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                നമ്മുടെ സമുദായത്തിന്റെയും സംഘടനയുടെയും ചരിത്ര വസ്തുതകൾ ഉൾക്കൊണ്ടുകൊണ്ട് ഒരു 
+                                സുവനീർ ഇറക്കുന്ന വിവരം നിങ്ങൾക്ക് അറിവുള്ളതാണല്ലോ. 
+                                <br/><br/>
+                                ജൂൺ 29ന് എറണാകുളത്ത് നടന്ന ജില്ലാ വാർഷികത്തിൽ വച്ച്, മുതിർന്ന സമുദായംഗം 
+                                സി എൻ രാമൻ നമ്പീശൻ സുവനീറിന്റെ പേര് ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു. 
+                                <br/><br/>
+                                പ്രയാണം എന്നതാണ് നമ്മൾ സുവനീറിനു വേണ്ടി കണ്ടെത്തിയിരിക്കുന്ന പേര്.
+                            </p>
+                            <div class="announcement-section">
+                                 <p class="malayalam-text mb-3">സുവനീർ നാമനിർദ്ദേശ മത്സരത്തെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ</p>
+                                    <a href="/main/content/announcements/souvenir-contest.html" class="announcement-link malayalam-text">
+                                        ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMJvz3bKnwgr45SBwXK5N_RBeJvZTZKigsaRdDCXGYhdzCvSVb_hJNl31vQglqhvJwhsui-QpIRW3OXCIbJc0y67RD1dlxw49fnO9xSYrwX7NBtA37NPwEmew88hgNJGmpb5qv6nt6H8SRkiRAP6BSU=w1280-h720" alt="Forest path">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>Walkathon</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                സെപ്റ്റംബർ 20, 21 തീയതികളിൽ എറണാകുളത്ത് വെച്ച് നടക്കുന്ന
+                                അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനത്തിന്റെ (പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ)
+                                പ്രചരണത്തിന്റെ
+                                ഭാഗമായി ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം എറണാകുളം വനിതാ വേദി നടത്തിയ
+                                വാക്കത്തോൺ 2025, 25/05/25 ന് തൃപ്പൂണിത്തുറയിൽ വെച്ച് നടന്നു.
+                                <br /><br />
+                                <b>SAY NO TO DRUGS</b> എന്നതായിരുന്നു വാക്കത്തോൺ ഉയർത്തിപ്പിടിച്ച
+                                സന്ദേശം. തൃപ്പൂണിത്തുറ Govt. ബോയ്സ് ഹൈസ്കൂളിൽ നിന്നും തുടങ്ങി
+                                നഗരത്തിലൂടെ 3 കിലോമീറ്റർ സഞ്ചരിച്ച്, ബോയ്സ് ഹൈസ്കൂളിൽ തന്നെ
+                                അവസാനിച്ചു.
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">വാക്കത്തോണിനെപ്പറ്റിയുള്ള കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/walkathon.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="slide-media">
+                                        <img src="https://lh3.googleusercontent.com/pw/AP1GczP884297GTKOFJewrpV5x3VS4bavmaEToudEPEnM_7U9fyrUamVHggm8IZ2H0cudRgoxXzqCyrAvknAfqUpO2QsySBqgrTFdTIvpuScIsN_rrOFFvK-2CoVsQAPoAnEdNIlQ3YCrTpenigrFLsCHpy5=w938-h922">
+                                    </div>
+                                    <b class="text-muted">രജിത വത്സരാജ്</b>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="slide-media">
+                                        <img src="https://lh3.googleusercontent.com/pw/AP1GczP7SmmqHlFdpza8_EO2cjiY3Ek3tiktV9RoRwsSwL9AChD7bNumbd6grhObde_kN8A6U35GOUztt1CiBfG4q5nm6_Vt7UDMTKAeS1JacL4fLUSt8aHQ1j9N8RHNA3_Yfm2yTbP_TeG2H5DTtyUPMovR=w855-h678">
+                                    </div>
+                                    <b class="text-muted">രമണി എം ടി</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>വിഷു ഫോട്ടോഗ്രാഫി മത്സരം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                വിഷുവിനെ മനോഹര സങ്കൽപ്പമാക്കി പുഷ്പകായനം 2025 നടത്തിയ ഫോട്ടോഗ്രാഫി
+                                മത്സര വിജയികളായി രണ്ട് പേരെ തിരഞ്ഞെടുത്തിരിക്കുന്നു.
+                                <br /><br />
+                                <b>1. രജിത വത്സരാജ്, കൊയിലാണ്ടി പ്രാദേശിക സഭ</b>
+                                <br />
+                                <b>2. രമണി എം ടി, പേരാമ്പ്ര പ്രാദേശിക സഭ</b>
+                                <br /><br />
+                                വിജയികൾക്ക് അഭിനന്ദനങ്ങൾ!
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/vishu-contest.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczPTtlc16lvlZvrsz5nYu0C6WKbaUptYvFsL_4ARkXOsoh1sbaG6XelFTdurnVnjvabP8pvkVLLORzL75IYsyQZmT6YMQdSMyXzyLmOg6vSTdOB7GCrDxAjZCuU18iL8300HadLkKDCxYn2IV385jnBA">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>ലോഗോ പ്രകാശനം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                57-ാം ദേശീയ സമ്മേളനത്തിന്റെ (പുഷ്പകായനം 2025) ഔദ്യോഗിക ലോഗോ പ്രകാശനം
+                                ചെയ്തു.
+                                <br /><br />
+                                മലപ്പുറം പോരൂരിൽ നടക്കുന്ന Pushpaka Champions Leagugue - 1 ന്റെ
+                                കലാസന്ധ്യയുമായി അനുബന്ധിച്ച് നടന്ന
+                                ചടങ്ങിൽ വെച്ചായിരുന്നു ലോഗോ പ്രകാശനം.
+                                <br /><br />
+                                കേന്ദ്ര പ്രസിഡണ്ട്
+                                ശ്രീ എൽ.പി.വിശ്വനാഥൻ അവർകൾ ആണ് ലോഗോ പ്രകാശനം നിർവഹിച്ചത്.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <iframe src="https://www.youtube.com/embed/Mb8l1JY-4Ws" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>റീൽസ് മത്സരം</h2>
+                            <p>
+                            <i class="fa fa-quote-left text-primary me-3"></i>
+                                57-ാം ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ റീൽസ് മത്സരത്തിലെ വിജയികളെ
+                                പ്രഖ്യാപിച്ചു.
+                                <br /><br />
+                                മത്സരത്തിലെ <b class="text-success">ഒന്നാം സമ്മാന വിജയി </b>
+                                തളിപ്പറമ്പ പ്രാദേശിക സഭയിലെ പ്രസാദ് അരയാലയാണ്.
+                                <br /><br />
+                                പ്രസാദ് അരയാലക്ക് അഭിനന്ദനങ്ങൾ!
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">മത്സരത്തിലെ മറ്റു വിജയികളെ അറിയുവാനും, മത്സരത്തിൽ പങ്കെടുത്ത മറ്റ്
+                                റീലുകൾ കാണുന്നതിനുമായി</p>
+                                <a href="/main/content/announcements/reels-contest.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media" style="height: 500px;">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczM9twHetQ7cHjlEQgbGYk0el7MUbHNRe1f074Ac6FwfWl6oXYnAAnugxine3e5qxwx5-9whul6LVDtUrYWCYb6R7g3U5Rc8GPEr_iB0MKbneJ8HkETK2GpVamtJl2_Fq08pjuc9G00i_KIiMsRduD-T=w1042-h942">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>നാമനിർദ്ദേശ മത്സരം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                57-ാം ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ നാമനിർദ്ദേശ
+                                മത്സരത്തിലെ വിജയിയെ പ്രഖ്യാപിച്ചു.
+                                <br /><br />
+                                <b>പുഷ്പകായനം 2025</b> എന്നതാണ് തിരഞ്ഞെടുക്കപ്പെട്ട പേര്.
+                                <br /><br />
+                                തൃപ്പൂണിത്തുറ പ്രാദേശിക സഭയിലെ ശ്രീമതി ലളിതാ ദേവിയാണ് ഈ പേര്
+                                നിർദേശിച്ചത്.
+                                <br /><br />
+                                വിജയിക്ക് അഭിനന്ദനങ്ങൾ !
+                                <br /><br />
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/naming-contest.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <img src="https://lh3.googleusercontent.com/pw/AP1GczMlnWOSO0vYfX9f4XjszcSueCd8CZA5eI5oSGfGcE3p696BTGDU0DEBXlkhYe2M75LmMTDKjeswxRF7IVuJWKp3RRBCrxsNjEsoQnL_seK4PWR7pK1yddJtVV5ZdePRU9bxszX_x2fe6P1HkMOFMypT=w2874-h1916">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>സ്വാഗതസംഘ രൂപീകരണം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ 57-ാം ദേശീയ സമ്മേളന സ്വാഗതസംഘം
+                                2025 ഫെബ്രുവരി 23 ന് തൃപ്പൂണിത്തുറയിൽ വെച്ച് രൂപീകരിച്ചു.
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">സ്വാഗതസംഘ രൂപീകരണവുമായി ബന്ധപ്പെട്ട കൂടുതൽ വിശേഷങ്ങൾ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/orgcom.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-nav prev" id="prevBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15,18 9,12 15,6"></polyline>
+                </svg>
+            </button>
+            
+            <button class="carousel-nav next" id="nextBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div class="carousel-indicators" id="indicators">
+            <div class="indicator active" data-slide="0"></div>
+            <div class="indicator" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
+            <div class="indicator" data-slide="4"></div>
+            <div class="indicator" data-slide="5"></div>
+            <div class="indicator" data-slide="6"></div>
+            <div class="indicator" data-slide="7"></div>
+        </div>
+    </div>
+    `;
+    announcementEl.innerHTML = announcements;
+}

@@ -37,8 +37,8 @@
     --glow-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
 }
 
-html {
-    font-family: 'malayalam', sans-serif;
+html, body {
+    font-family: 'Noto Sans Malayalam', sans-serif;
 }
 
 h1,
@@ -76,6 +76,10 @@ h6,
     font-family: 'malayalam', sans-serif;
     font-weight: 600;
     transition: .5s;
+}
+
+.rounded-20 {
+    border-radius: 20px !important;
 }
 
 .btn-primary {
@@ -349,39 +353,6 @@ h6,
 
 .text-muted-primary {
     color: #DC3545 !important;
-}
-
-.testimonial-carousel .owl-nav {
-    margin-top: 30px;
-    display: flex;
-    justify-content: start;
-}
-
-.testimonial-carousel .owl-nav .owl-prev,
-.testimonial-carousel .owl-nav .owl-next {
-    position: relative;
-    margin: 0 5px;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    background: var(--primary);
-    font-size: 22px;
-    border-radius: 45px;
-    transition: .25s;
-}
-
-.testimonial-carousel-white .owl-nav .owl-prev,
-.testimonial-carousel-white .owl-nav .owl-next {
-    color: #fff;
-    background: var(--indigo-gradient);
-}
-
-.testimonial-carousel .owl-nav .owl-prev:hover,
-.testimonial-carousel .owl-nav .owl-next:hover {
-    color: orange;
 }
 
 /* Payment section start */
@@ -730,7 +701,7 @@ h6,
 }
 
 .welcome-container {
-    background: linear-gradient(135deg, #8ca6db 0%, #b993d6 100%);
+    background: linear-gradient(135deg, #e3d8d8 0%, #f8de8b 50%, #fbaead 100%);
     min-height: 50vh;
     display: flex;
     align-items: center;
@@ -745,16 +716,31 @@ h6,
     border-radius: 20px;
     padding: 15px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.x1-container {
+.f1-container {
+    background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.f1-section {
+    background: linear-gradient(135deg, #ffffff 0%, #ffeaa7 50%, #ffcccb 100%);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.x2-container {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     min-height: 50vh;
     padding: 20px;
 }
 
-.x1-section {
+.x2-section {
     background: linear-gradient(135deg, #e6f2ff 0%, #cce7ff 50%, #b3daff 100%);
     width: 100%;
     backdrop-filter: blur(10px);
@@ -763,7 +749,7 @@ h6,
 }
 
 .b4-container {
-    background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+    background: linear-gradient(135deg, #fae4e4 0%, #fae088 50%, #feb1af 100%);
     padding: 20px;
 }
 
@@ -774,7 +760,7 @@ h6,
 }
 
 .c6-container {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, rgb(251, 193, 99) 0%, #034c7c 100%);
     padding: 20px;
 }
 
@@ -785,7 +771,7 @@ h6,
 }
 
 .h8-container {
-    background: linear-gradient(135deg, #dff6ff 0%, #e9f1ff 100%);
+    background: linear-gradient(135deg, #cb9af9 0%, #64affa 100%);
     padding: 20px;
 }
 
@@ -864,7 +850,7 @@ h6,
 /* Bootstrap border end */
 
 .announcement-section {
-    background: #ffeaa7;
+    background: transparent;
     padding: 2rem;
     border-radius: 8px;
     border: 1px solid #000;
@@ -873,7 +859,7 @@ h6,
 }
 
 .announcement-section:hover {
-    background: #f9e79f;
+    background: rgba(251, 249, 249, 0.8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

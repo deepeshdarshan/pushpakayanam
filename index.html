@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <title>പുഷ്പകായനം 2025</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം"
+        name="keywords">
+    <meta content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം"
+        name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -33,6 +35,7 @@
     <link href="/css/style.css" rel="stylesheet" />
     <link href="/css/program.css" rel="stylesheet" />
     <link href="/css/follow-us.css" rel="stylesheet" />
+    <link href="/css/carousel.css" rel="stylesheet" />
 
 </head>
 
@@ -50,10 +53,18 @@
             <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="w-100" src="img/landing1.png" alt="Image">
+                        <div class="f1-container">
+                            <div class="f1-section rounded-20">
+                                <img class="w-100 rounded-20" src="img/landing1.png" alt="Image">
+                            </div>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img class="w-100" src="img/landing.png" alt="Image">
+                    <div class="f1-container">
+                        <div class="f1-section rounded-20">
+                            <div class="carousel-item">
+                                <img class="w-100 rounded-20" src="img/landing.png" alt="Image">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,8 +79,6 @@
         </div>
     </div>
     <!-- Carousel End -->
-
-    <div class="container-fluid bg-dark text-secondary p-1"></div>
 
     <div class="welcome-container">
         <div class="welcome-section">
@@ -129,7 +138,7 @@
     </div>
     <!-- Welcome section end -->
 
-    
+
     <!-- Follow us section start -->
     <div class="follow-us-container">
         <div class="follow-us-section">
@@ -147,12 +156,20 @@
                     <div class="social-description">Subscribe for educational videos and live sessions</div>
                 </a>
 
-                <a href="https://www.facebook.com/groups/224314291078396" target="_blank" class="social-link facebook">
+                <a href="https://www.facebook.com/profile.php?id=61577957774264" target="_blank" class="social-link facebook">
                     <div class="social-icon">
                         <i class="fab fa-facebook-f"></i>
                     </div>
                     <div class="social-title">Facebook</div>
                     <div class="social-description">Join our community group for discussions and updates</div>
+                </a>
+
+                <a href="https://www.instagram.com/pushpakayanam_2025/" target="_blank" class="social-link instagram">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="social-title">Instagram</div>
+                    <div class="social-description">Follow for event updates, highlights, and exclusive content</div>
                 </a>
 
                 <a href="https://whatsapp.com/channel/0029VbAhFQhBadmgkREWz21V" target="_blank"
@@ -170,8 +187,8 @@
 
 
     <!-- Accont details section -->
-    <div class="x1-container">
-        <div class="x1-section">
+    <div class="h8-container">
+        <div class="h8-section">
             <div class="container-fluid p-0">
 
                 <div class="container-fluid pt-5">
@@ -329,7 +346,7 @@
     <div class="b4-container">
         <div class="b4-section">
             <div class="container-fluid p-0">
-                <div class="container-fluid p-5">
+                <div class="container-fluid pt-5">
                     <div class="row">
                         <div class="col-12 text-center">
                             <h1 class="display-5 text-dark"><i class="bi bi-megaphone me-4"></i>Announcements</h1>
@@ -341,7 +358,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="testimonialContainer"></div>
+                <div id="announcementsContainer" style="padding: 20px;"></div>
             </div>
         </div>
     </div>
@@ -400,7 +417,9 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="/js/common.js"></script>
     <script src="/js/dom-generator.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/carousel.js"></script>
+    <script src="/js/main.js"></script>
+
     <script type="module">
         import { initVisitCounter } from '/js/visit-counter.js';
         document.addEventListener("DOMContentLoaded", () => {
