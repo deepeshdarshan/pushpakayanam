@@ -37,7 +37,8 @@
     --glow-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
 }
 
-html, body {
+html,
+body {
     font-family: 'Noto Sans Malayalam', sans-serif;
 }
 
@@ -267,40 +268,6 @@ h6,
     }
 }
 
-.carousel-caption {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(21, 36, 64, .7);
-    z-index: 1;
-}
-
-@media (max-width: 576px) {
-    .carousel-caption h5 {
-        font-size: 14px;
-        font-weight: 500 !important;
-    }
-
-    .carousel-caption h1 {
-        font-size: 30px;
-        font-weight: 600 !important;
-    }
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    width: 10%;
-    top: 50% !important;
-    height: 250px !important;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 3rem;
-    height: 3rem;
-}
-
 .service-item {
     position: relative;
     overflow: hidden;
@@ -310,7 +277,6 @@ h6,
     align-items: center;
     justify-content: center;
 }
-
 
 .team-item img {
     transform: scale(1.15);
@@ -720,7 +686,6 @@ h6,
 
 .f1-container {
     background: linear-gradient(135deg, #000428 0%, #004e92 100%);
-    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -878,3 +843,80 @@ h6,
     background: #2980b9;
     color: white !important;
 }
+
+/* header carousel start */
+
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(21, 36, 64, .7);
+    z-index: 1;
+}
+
+@media (max-width: 576px) {
+    .carousel-caption h5 {
+        font-size: 14px;
+        font-weight: 500 !important;
+    }
+
+    .carousel-caption h1 {
+        font-size: 30px;
+        font-weight: 600 !important;
+    }
+}
+
+.photo-gallery-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.gallery-slide-item img {
+    width: 100vw;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.gallery-nav-left,
+.gallery-nav-right {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gallery-nav-left {
+    left: 20px;
+}
+
+.gallery-nav-right {
+    right: 20px;
+}
+
+.gallery-arrow-left,
+.gallery-arrow-right {
+    width: 20px;
+    height: 20px;
+}
+
+.gallery-dots-container {
+    bottom: 20px;
+}
+
+.gallery-dots-container button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.gallery-slide-item img {
+    height: 85vh;
+}
+
+/* header carousel end */

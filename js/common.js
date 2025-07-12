@@ -196,13 +196,13 @@ function copyToClipboard() {
     const copyBtn = document.querySelector('.copy-clipbrd-btn');
     const textToCopy = copyBtn.getAttribute('data-clipboard-text');
     copyBtn.addEventListener('click', function () {
-       navigator.clipboard.writeText(textToCopy).then(function () {
-                const successMsg = document.querySelector('.copy-success-msg');
-                successMsg.classList.remove('d-none');
+        navigator.clipboard.writeText(textToCopy).then(function () {
+            const successMsg = document.querySelector('.copy-success-msg');
+            successMsg.classList.remove('d-none');
 
-                setTimeout(() => {
-                    successMsg.classList.add('d-none');
-                }, 2000);
+            setTimeout(() => {
+                successMsg.classList.add('d-none');
+            }, 2000);
         }).catch(err => {
             console.log('Copy failed: ' + err);
         });
@@ -309,7 +309,6 @@ function loadPageHeader(pageId) {
             const pageHeader = document.getElementById("page-header");
             if (page.title === "index") {
                 pageHeader.style.display = "none";
-                requestAnimationFrame(() => loadCarousels());
                 return;
             }
             else {
@@ -343,28 +342,48 @@ function loadTitle() {
     document.head.appendChild(title);
 }
 
-function loadCarousels() {
-    $(document).ready(function () {
-        try {
-            const $header = $('#header-carousel');
+function loadHeaderCarousel() {
+    // Initialize carousel
+    const photoGallery = new bootstrap.Carousel('#mainPhotoGallery', {
+        interval: 5000, // Auto-slide every 5 seconds (set to false to disable)
+        wrap: true, // Loop back to first slide after last
+        pause: 'hover' // Pause on hover
+    });
 
-            if ($header.length > 0) {
-                $header.owlCarousel({
-                    autoplay: true,
-                    smartSpeed: 500,
-                    items: 1,
-                    dots: false,
-                    loop: true,
-                    nav: true,
-                    navText: [
-                        '<i class="bi bi-arrow-left"></i>',
-                        '<i class="bi bi-arrow-right"></i>'
-                    ],
-                });
-            }
-        } catch (err) {
-            alert(e);
-            console.error("Error initializing carousels:", err);
+    // Optional: Add keyboard navigation
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') {
+            photoGallery.prev();
+        } else if (event.key === 'ArrowRight') {
+            photoGallery.next();
         }
     });
+
+    // Optional: Add touch/swipe support for mobile
+    let galleryStartX = 0;
+    let galleryEndX = 0;
+
+    const photoGalleryElement = document.getElementById('mainPhotoGallery');
+
+    photoGalleryElement.addEventListener('touchstart', function (event) {
+        galleryStartX = event.touches[0].clientX;
+    });
+
+    photoGalleryElement.addEventListener('touchend', function (event) {
+        galleryEndX = event.changedTouches[0].clientX;
+        handleGallerySwipe();
+    });
+
+    function handleGallerySwipe() {
+        const swipeThreshold = 50;
+        const diff = galleryStartX - galleryEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                photoGallery.next(); // Swipe left - next slide
+            } else {
+                photoGallery.prev(); // Swipe right - previous slide
+            }
+        }
+    }
 }

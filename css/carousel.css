@@ -92,7 +92,7 @@
     position: absolute;
     top: 30%;
     transform: translateY(-50%);
-    background: rgba(253, 226, 205, 0.95);
+    background: rgba(235, 239, 253, 0.95);
     border: none;
     width: 60px;
     height: 60px;
@@ -149,8 +149,8 @@
 
 @media (max-width: 768px) {
     .carousel-slide {
-         display: flex;
-    flex-direction: column;
+        display: flex;
+        flex-direction: column;
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 10px;
@@ -174,4 +174,3 @@
         right: 0px;
     }
 }
-

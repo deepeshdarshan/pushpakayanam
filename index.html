@@ -48,33 +48,38 @@
     <div class="container-fluid bg-warning text-secondary p-1"></div>
 
     <!-- Carousel Start -->
-    <div class="container-fluid p-0">
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="f1-container">
-                        <div class="f1-section rounded-20">
-                            <img class="w-100 rounded-20" src="img/landing1.png" alt="Image">
-                        </div>
-                    </div>
+    <div class="photo-gallery-container">
+            <div id="mainPhotoGallery" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators -->
+                <div class="carousel-indicators gallery-dots-container">
+                    <button type="button" data-bs-target="#mainPhotoGallery" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#mainPhotoGallery" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 </div>
+                
+                <!-- Carousel Items -->
                 <div class="f1-container">
                     <div class="f1-section rounded-20">
-                        <div class="carousel-item">
-                            <img class="w-100 rounded-20" src="img/landing.png" alt="Image">
+                        <div class="carousel-inner">
+                            <div class="carousel-item gallery-slide-item active">
+                                <img src="/img/landing1.png" class="d-block w-100 rounded-20" alt="Image 1">
+                            </div>
+                            <div class="carousel-item gallery-slide-item">
+                                <img src="/img/landing.png" class="d-block w-100 rounded-20" alt="Image 2">
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Navigation Controls -->
+                <button class="carousel-control-prev gallery-nav-left" type="button" data-bs-target="#mainPhotoGallery" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon gallery-arrow-left" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next gallery-nav-right" type="button" data-bs-target="#mainPhotoGallery" data-bs-slide="next">
+                    <span class="carousel-control-next-icon gallery-arrow-right" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
-        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button> -->
     </div>
     <!-- Carousel End -->
 
@@ -372,7 +377,7 @@
                         <div class="col-12 text-center">
                             <h1 class="display-5 text-dark"><i class="bi bi-calendar-range-fill me-3"></i>Programs</h1>
                             <hr class="w-25 mx-auto bg-white">
-                            <h6 class="section-subtitle text-white">Program names and schedules are subject to change
+                            <h6 class="section-subtitle text-dark">Program names and schedules are subject to change
                                 based on unforeseen circumstances</h6>
                         </div>
                     </div>
@@ -391,8 +396,8 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <h1 class="display-5 text-dark"><i class="bi bi-pin-map-fill me-2"></i>Venue Details</h1>
-                            <hr class="w-25 mx-auto bg-white">
-                            <h6 class="text-muted">Click
+                            <hr class="w-25 mx-auto bg-primary">
+                            <h6 class="text-dark">Click
                                 <a class="text-primary" href="/main/content/location.html">here</a>
                                 to view the complete venue details
                             </h6>
@@ -427,6 +432,7 @@
             loadFooter();
             initVisitCounter();
             copyToClipboard();
+            loadHeaderCarousel();
         });
     </script>
 
