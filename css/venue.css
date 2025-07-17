@@ -114,6 +114,7 @@
 
 .card-content {
     padding: 2rem;
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
 }
 
 .attraction-title {
