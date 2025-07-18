@@ -121,6 +121,22 @@ const pageData = {
             { name: "Announcements", href: "/main/content/announcements.html" },
             { name: "Souvenir Naming Contest", href: "#" }
         ]
+    },
+    videos: {
+        title: "Hues and Frames",
+        breadcrumbs: [
+            { name: "Home", href: "/index.html" },
+            { name: "Gallery", href: "#" },
+            { name: "Hues and Frames", href: "#" },
+        ]
+    },
+    photos: {
+        title: "Snaps and Scenes",
+        breadcrumbs: [
+            { name: "Home", href: "/index.html" },
+            { name: "Gallery", href: "#" },
+            { name: "Snaps and Scenes", href: "#" },
+        ]
     }
 }
 
