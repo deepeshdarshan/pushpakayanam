@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ml">
+
+<head>
+    <script src="/js/common.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", () => init("gift_coupon"));</script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(243, 82, 90, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(240, 147, 251, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(102, 126, 234, 0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .revenue-container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        @keyframes gradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .gift-showcase {
+            background: var(--success-gradient);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 50px 0;
+            position: relative;
+            box-shadow: var(--card-shadow);
+        }
+
+        .gift-showcase p {
+            color: var(--dark);
+        }
+
+        .gift-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--light);
+        }
+
+        .gift-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .feature-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        /* New Coupon Section Styles */
+        .coupon-showcase {
+            background: var(--warning-gradient);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 50px 0;
+            position: relative;
+            box-shadow: var(--card-shadow);
+        }
+
+        .coupon-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .coupon-image-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .coupon-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .coupon-image:hover {
+            transform: scale(1.05);
+        }
+
+        .coupon-details {
+            color: var(--dark);
+        }
+
+        .coupon-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .coupon-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Prize Details Section */
+        .prize-showcase {
+            background: var(--warning-gradient);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 50px 0;
+            position: relative;
+            box-shadow: var(--card-shadow);
+        }
+
+        .prize-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .prize-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .prize-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .prize-rank {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .prize-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #820303;
+            margin-bottom: 10px;
+        }
+
+        .prize-icon {
+            font-size: 2.5rem;
+            margin: 15px 0;
+            display: block;
+        }
+
+        .incentive-section {
+            background: var(--success-gradient);
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .incentive-section p {
+            color: var(--dark);
+        }
+
+        .incentive-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .prize-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+
+        .footer-section {
+            background: var(--baby-blue-gradient);
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .footer-section p {
+            color: var(--dark);
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .footer-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .floating-emoji {
+            display: inline-block;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .glow-text {
+            text-shadow: var(--glow-shadow);
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .revenue-container-fluid {
+                padding: 10px;
+            }
+
+            .gift-features,
+            .prizes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gift-title,
+            .incentive-title,
+            .prize-title,
+            .coupon-title {
+                font-size: 2rem;
+            }
+
+            .gift-showcase,
+            .incentive-section,
+            .prize-showcase,
+            .coupon-showcase {
+                padding: 30px 20px;
+            }
+
+            .coupon-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .coupon-price {
+                font-size: 2.5rem;
+            }
+
+            .prize-rank {
+                font-size: 2rem;
+            }
+
+            .prize-name {
+                font-size: 1.1rem;
+            }
+           
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+    <!-- Page Header Start -->
+    <div id="page-header-container"></div>
+    <!-- Page Header End -->
+
+    <div class="bg-pattern"></div>
+
+    <div class="revenue-container-fluid">
+
+        <!-- Coupon Section -->
+        <div class="coupon-showcase">
+            <div class="coupon-content">
+                <div class="coupon-image-container">
+                    <div class="coupon-image">
+                        <img src="/img/coupon/lucky-draw-coupon.jpg" alt="Lucky Draw Coupon"
+                            class="img-fluid rounded-3" />
+                    </div>
+                </div>
+                <div class="coupon-details">
+                    <h2 class="coupon-title" style="text-align: center;">
+                        <span class="floating-emoji">🎫</span>
+                        സമ്മാന കൂപ്പൺ
+                    </h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 20px; text-align: center;">
+                        Lucky Draw Coupon available for purchase
+                    </p>
+                    <div class="coupon-price">₹100</div>
+                    <p style="font-size: 1.1rem; text-align: center;">
+                        <strong>Each coupon costs only ₹100</strong><br>
+                        Get a chance to win amazing prizes!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gift-showcase">
+            <h2 class="gift-title">
+                <span class="floating-emoji">🎁</span>
+                Gift Coupon Benefit
+            </h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 20px;">
+                <strong>₹100</strong> രൂപ വില വരുന്ന ഓരോ സമ്മാന കൂപ്പണിനോടൊപ്പം <strong>₹500</strong> രൂപ മൂല്യമുള്ള
+                <strong>Nandilath G-Mart</strong> ന്റെ gift voucher</strong> നേടൂ.
+            </p>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #000;">
+                <strong>Note:</strong> This voucher is in addition to the main prizes such as AC, TV, and smartphones.
+            </p>
+
+            <div class="gift-features">
+                <div class="feature-item">
+                    <div class="feature-icon">📅</div>
+                    <h4 class="feature-title">Validity Period</h4>
+                    <p class="feature-text">August 1 to October 31</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🏪</div>
+                    <h4 class="feature-title">Locations</h4>
+                    <p class="feature-text">74+ Nandilath showrooms across Kerala</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h4 class="feature-title">How to Use</h4>
+                    <p class="feature-text">Get ₹500 discount on purchase of ₹5000 or more</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🏷️</div>
+                    <h4 class="feature-title">Price Basis</h4>
+                    <p class="feature-text">Store sale price (not MRP)</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🎫</div>
+                    <h4 class="feature-title">No Limit</h4>
+                    <p class="feature-text">Unlimited coupons per person</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prize Details Section -->
+        <div class="prize-showcase">
+            <h2 class="prize-title">
+                <span class="floating-emoji">🏆</span>
+                പാരിതോഷിക വിവരങ്ങൾ
+            </h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 15px; color: var(--dark);">
+                Prize Details - Win Exciting Rewards!
+            </p>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: var(--dark);">
+                <strong>These prizes are in addition to the ₹500 gift voucher included in every coupon</strong>
+            </p>
+
+            <div class="prizes-grid">
+                <div class="prize-item">
+                    <div class="prize-rank">1st</div>
+                    <div class="prize-icon">❄️</div>
+                    <div class="prize-name">1.5 Ton AC</div>
+                </div>
+
+                <div class="prize-item">
+                    <div class="prize-rank">2nd</div>
+                    <div class="prize-icon">❄️</div>
+                    <div class="prize-name">1 Ton AC</div>
+                </div>
+
+                <div class="prize-item">
+                    <div class="prize-rank">3rd</div>
+                    <div class="prize-icon">📺</div>
+                    <div class="prize-name">32 Inch LED TV</div>
+                </div>
+
+                <div class="prize-item">
+                    <div class="prize-rank">4th</div>
+                    <div class="prize-icon">📱</div>
+                    <div class="prize-name">Vivo Smart Phone</div>
+                </div>
+
+                <div class="prize-item">
+                    <div class="prize-rank">5th</div>
+                    <div class="prize-icon">📱</div>
+                    <div class="prize-name">Vivo Smart Phone</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="incentive-section">
+            <h2 class="incentive-title">
+                <span class="floating-emoji">🎊</span>
+                Assured Gifts
+            </h2>
+            <p style="font-size: 1.3rem; margin-bottom: 10px;">Five exciting prizes worth over</p>
+            <div class="prize-amount">₹1.25 LAKHS</div>
+            <p style="font-size: 1.2rem; margin-top: 20px;">
+                🎁 Guaranteed promotional gift for <strong>1 out of every 100 tickets</strong>
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="footer-title">
+                <span class="floating-emoji">🤝</span>
+                Thank you for your continued support
+            </h3>
+            <p class="footer-subtitle">നിങ്ങളുടെ അടുത്തുള്ള <strong>Nandilath G-Mart</strong> ന്റെ ഷോറൂം എവിടെയാണ് എന്നറിയുവാൻ
+                <a href="https://nandilathgmart.com/our-stores/" target="_blank" class="text-decoration-underline">ഇവിടെ ക്ലിക്ക് ചെയ്യൂ</a></p>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(66, 141, 227, 0.2);">
+                <p style="font-size: 1.3rem; color: rgba(0, 0, 0, 0.8);">For More Details</p>
+                <p style="font-size: 1.1rem; font-weight: 600; margin-top: 10px; color: #F3525A;">
+                    <a href="https://wa.me/919747022263?text=Hello%20Girish%2C%20I%20want%20to%20know%20more%20about%20the%20gift%20coupon!"
+                        target="_blank">+91 97470 22263</a> / <a href="/main/content/contact-us.html">Contact Us</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+
+</body>
+
+</html>

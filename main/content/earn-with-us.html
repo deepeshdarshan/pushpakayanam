@@ -56,10 +56,9 @@
             margin-bottom: 20px;
             background: linear-gradient(45deg, var(--primary), var(--secondary-gradient), var(--teal-gradient), var(--emerald-gradient));
             background-size: 400% 400%;
-
             background-clip: text;
             animation: gradient 3s ease-in-out infinite;
-            color: var(--dark);
+            color: var(--light);
         }
 
         @keyframes gradient {
@@ -178,7 +177,6 @@
 
         .highlight-banner p {
             color: var(--dark);
-
         }
 
         .highlight-banner::before {
@@ -202,66 +200,8 @@
             }
         }
 
-        .gift-showcase {
-            background: var(--success-gradient);
-            padding: 50px;
-            border-radius: 25px;
-            margin: 50px 0;
-            position: relative;
-            box-shadow: var(--card-shadow);
-        }
-
-        .gift-showcase p {
-            color: var(--dark);
-        }
-
-        .gift-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-align: center;
-            color: var(--light);
-        }
-
-        .gift-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-item:hover {
-            transform: scale(1.05);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--light);
-        }
-
-        .feature-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--light);
-        }
-
-        .feature-text {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9rem;
-        }
-
         .incentive-section {
-            background: var(--warning-gradient);
+            background: var(--success-gradient);
             padding: 50px;
             border-radius: 25px;
             text-align: center;
@@ -278,14 +218,6 @@
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--light);
-        }
-
-        .prize-amount {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--light);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin: 20px 0;
         }
 
         .cta-section {
@@ -312,10 +244,12 @@
         }
 
         .footer-section {
+            background: var(--baby-blue-gradient);
+            padding: 50px;
+            border-radius: 25px;
             text-align: center;
-            padding: 40px;
-            margin-top: 50px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 50px 0;
+            box-shadow: var(--card-shadow);
         }
 
         .footer-section p {
@@ -370,7 +304,7 @@
                 padding: 10px;
             }
 
-            .gift-features {
+            .prizes-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -378,8 +312,9 @@
                 font-size: 2rem;
             }
 
-            .gift-title,
-            .incentive-title {
+            .incentive-title,
+            .prize-title,
+            .coupon-title {
                 font-size: 2rem;
             }
 
@@ -387,10 +322,28 @@
                 padding: 60px 20px;
             }
 
-            .gift-showcase,
             .incentive-section,
-            .highlight-banner {
+            .highlight-banner,
+            .prize-showcase,
+            .coupon-showcase {
                 padding: 30px 20px;
+            }
+
+            .coupon-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .coupon-price {
+                font-size: 2.5rem;
+            }
+
+            .prize-rank {
+                font-size: 2rem;
+            }
+
+            .prize-name {
+                font-size: 1.1rem;
             }
 
             .cta-section {
@@ -418,7 +371,7 @@
                 <span class="floating-emoji">💰</span>
                 ജില്ലകൾക്ക് വരുമാന സാധ്യതകൾ
             </h1>
-            <p class="hero-subtitle">Revenue Opportunities for Districts</p>
+            <p class="hero-subtitle">Earn with Pushpakayanam</p>
         </div>
 
         <div class="section">
@@ -452,8 +405,7 @@
                 <div class="advt-card">
                     <div class="advt-card-icon">🖼️</div>
                     <h3 class="advt-card-title">സ്റ്റാൻഡി / പ്ലെയർ</h3>
-                    <p class="advt-card-description">High visibility promotional displays
-                    </p>
+                    <p class="advt-card-description">High visibility promotional displays</p>
                 </div>
 
                 <div class="advt-card">
@@ -485,60 +437,6 @@
             </p>
         </div>
 
-        <div class="gift-showcase">
-            <h2 class="gift-title">
-                <span class="floating-emoji">🎁</span>
-                Gift Coupon Benefit
-            </h2>
-            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px;">
-                Purchase coupons worth ₹100 each and receive a <strong>₹500 Nandilath G-Mart gift voucher</strong>
-            </p>
-
-            <div class="gift-features">
-                <div class="feature-item">
-                    <div class="feature-icon">📅</div>
-                    <h4 class="feature-title">Validity Period</h4>
-                    <p class="feature-text">August 1 to October 31</p>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🏪</div>
-                    <h4 class="feature-title">Locations</h4>
-                    <p class="feature-text">74+ Nandilath showrooms across Kerala</p>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">💰</div>
-                    <h4 class="feature-title">Minimum Purchase</h4>
-                    <p class="feature-text">₹5000 to redeem ₹500</p>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🏷️</div>
-                    <h4 class="feature-title">Price Basis</h4>
-                    <p class="feature-text">Store sale price (not MRP)</p>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🎫</div>
-                    <h4 class="feature-title">No Limit</h4>
-                    <p class="feature-text">Unlimited coupons per person</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="incentive-section">
-            <h2 class="incentive-title">
-                <span class="floating-emoji">🏆</span>
-                Assured Gifts
-            </h2>
-            <p style="font-size: 1.3rem; margin-bottom: 10px;">Five exciting prizes worth over</p>
-            <div class="prize-amount">₹1.25 LAKHS</div>
-            <p style="font-size: 1.2rem; margin-top: 20px;">
-                🎁 Guaranteed promotional gift for <strong>1 out of every 100 tickets</strong>
-            </p>
-        </div>
-
         <div class="cta-section">
             <h2 class="cta-title">
                 <span class="floating-emoji">📌</span>
@@ -557,21 +455,19 @@
             </h3>
             <p class="footer-subtitle">Thank you for your continued support</p>
 
-            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(75, 107, 211, 0.2);">
                 <p style="font-size: 1.3rem; color: rgba(0, 0, 0, 0.8);">For More Details</p>
                 <p style="font-size: 1.1rem; font-weight: 600; margin-top: 10px; color: #F3525A;"><a
-                        href="#">pushpakayanam2025@gmail.com / <a class="text-decoration-underline"
-                            href="/main/content/contact-us.html">Contact Us</a></p>
+                        href="#">pushpakayanam2025@gmail.com</a> / <a href="/main/content/contact-us.html">
+                        Contact Us</a>
+                </p>
             </div>
         </div>
     </div>
 
-
     <!-- Footer Start -->
     <div id="footer-container"></div>
     <!-- Footer End -->
-
-
 
 </body>
 

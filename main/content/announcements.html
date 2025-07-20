@@ -7,7 +7,6 @@
     <style>
         body {
             background: linear-gradient(135deg, #e1f5fe, #ede7f6);
-
         }
 
         .announcement-card {
@@ -53,7 +52,7 @@
         .announcement-card .card-header {
             background: transparent;
             border: none;
-            padding: 2rem 2rem 0;
+            padding: 0;
             position: relative;
         }
 
@@ -75,50 +74,47 @@
             }
         }
 
-        .announcement-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+        .announcement-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 20px 20px 0 0;
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
+            border: none;
+            transition: all 0.4s ease;
+            box-shadow: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            color: white;
-            position: relative;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            font-size: 1.2rem;
+            color: #64748b;
+            text-align: center;
         }
 
-        .announcement-card:hover .announcement-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        .announcement-card:hover .announcement-image {
+            transform: scale(1.05);
+            box-shadow: none;
+            border-color: transparent;
         }
 
-        .icon-general {
-            background: var(--primary-gradient);
+        .announcement-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
         }
 
-        .icon-urgent {
-            background: var(--secondary-gradient);
-        }
-
-        .icon-event {
-            background: var(--success-gradient);
-        }
-
-        .icon-maintenance {
-            background: var(--warning-gradient);
-        }
-
-        .icon-info {
-            background: var(--info-gradient);
+        .announcement-image.placeholder {
+            background: linear-gradient(135deg, #f8f9ff, #e8f0ff);
         }
 
         .announcement-title {
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            margin-top: 1.5rem;
             color: #2c3e50;
             line-height: 1.4;
             background: linear-gradient(135deg, #2c3e50, #4a6741);
@@ -335,7 +331,7 @@
 
         @media (max-width: 768px) {
             .announcement-card .card-header {
-                padding: 1.5rem 1.5rem 0;
+                padding: 0;
             }
 
             .announcement-card .card-body {
@@ -350,10 +346,8 @@
                 font-size: 2.5rem;
             }
 
-            .announcement-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+            .announcement-image {
+                height: 150px;
             }
 
             .filter-btn {
@@ -503,12 +497,11 @@
             {
                 id: 'website-launch',
                 title: 'Website Launch',
-                excerpt: 'ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനമായ പുഷ്പകായനം 2025 ന്റെ ഔദ്യോഗിക വെബ്‌സൈറ്റിന്റെ ഉദ്‌ഘാടനം, എറണാകുളം ജില്ലാ വാർഷിക പൊതുയോഗവേദിയിൽ വെച്ച് പുഷ്പകധ്വനി മാനേജിങ് എഡിറ്റർ ശ്രീമതി കെ എം ദേവകിക്കുട്ടി ഓൺലൈൻ ആയി നിർവഹിച്ചു.',
+                excerpt: 'ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ അൻപത്തിയേഴാമത്‌ ദേശീയ സമ്മേളനമായ പുഷ്പകായനം 2025 ന്റെ ഔദ്യോഗിക വെബ്‌സൈറ്റിന്റെ ഉദ്‌ഘാടനം, എറണാകുളം ജില്ലാ വാർഷിക പൊതുയോഗവേദിയിൽ വെച്ച് പുഷ്പകധ്വനി മാനേജിങ എഡിറ്റർ ശ്രീമതി കെ എം ദേവകിക്കുട്ടി ഓൺലൈൻ ആയി നിർവഹിച്ചു.',
                 date: 'June 29, 2025',
                 priority: 'urgent',
                 category: 'general',
-                icon: 'bi-laptop',
-                iconType: 'general',
+                image: '/img/announcements/website.jpg', 
                 link: '/main/content/announcements/website-launch.html'
             },
             {
@@ -518,8 +511,7 @@
                 date: 'June 29, 2025',
                 priority: 'high',
                 category: 'contests',
-                icon: 'bi-pencil-square',
-                iconType: 'event',
+                image: '/img/announcements/souvenir.jpg', 
                 link: '/main/content/announcements/souvenir-contest.html'
             },
             {
@@ -529,8 +521,7 @@
                 date: 'May 25, 2025',
                 priority: 'high',
                 category: 'events',
-                icon: 'bi-person-hearts',
-                iconType: 'event',
+                image: '/img/announcements/walkathon.jpg',
                 link: '/main/content/announcements/walkathon.html'
             },
             {
@@ -540,8 +531,7 @@
                 date: 'May 14, 2025',
                 priority: 'high',
                 category: 'contests',
-                icon: 'bi-camera',
-                iconType: 'event',
+                image: '/img/announcements/vishu-contest.jpg',
                 link: '/main/content/announcements/vishu-contest.html'
             },
             {
@@ -551,8 +541,7 @@
                 date: 'May 10, 2025',
                 priority: 'urgent',
                 category: 'general',
-                icon: 'bi-badge-tm',
-                iconType: 'general',
+                image: '/img/announcements/logo.jpg',
                 link: '/main/content/announcements/logo.html'
             },
             {
@@ -562,8 +551,7 @@
                 date: 'March 18, 2025',
                 priority: 'high',
                 category: 'contests',
-                icon: 'bi-pencil-square',
-                iconType: 'event',
+                image: '/img/announcements/naming-contest.jpg',
                 link: '/main/content/announcements/naming-contest.html'
             },
             {
@@ -573,8 +561,7 @@
                 date: 'March 1, 2025',
                 priority: 'high',
                 category: 'contests',
-                icon: 'bi-camera-reels',
-                iconType: 'event',
+                image: '/img/announcements/reels-contest.jpg',
                 link: '/main/content/announcements/reels-contest.html'
             },
             {
@@ -584,8 +571,7 @@
                 date: 'February 23, 2025',
                 priority: 'medium',
                 category: 'general',
-                icon: 'bi-people',
-                iconType: 'general',
+                image: '/img/announcements/orgcom.jpg',
                 link: '/main/content/announcements/orgcom.html'
             },
         ];
@@ -600,16 +586,20 @@
         ];
 
         function createAnnouncementCard(announcement, index) {
+            const imageSection = announcement.image ?
+                `<img src="${announcement.image}" alt="${announcement.title}" />` :
+                '<div class="placeholder-text">Image will be added here</div>';
+
             return `
                 <div class="col-xl-4 col-md-6" data-category="${announcement.category}" data-priority="${announcement.priority}">
                     <a href="${announcement.link}" class="announcement-card d-block h-100" style="animation-delay: ${(index + 1) * 0.1}s">
                         <div class="card-header">
-                            <div class="announcement-icon icon-${announcement.iconType}">
-                                <i class="${announcement.icon}"></i>
+                            <div class="announcement-image placeholder">
+                                ${imageSection}
                             </div>
-                            <h3 class="announcement-title">${announcement.title}</h3>
                         </div>
                         <div class="card-body">
+                            <h3 class="announcement-title">${announcement.title}</h3>
                             <p class="announcement-excerpt">${announcement.excerpt}</p>
                             <div class="announcement-meta">
                                 <div class="announcement-date">
@@ -662,6 +652,7 @@
 
         // Initialize the page
         function initializePage() {
+            //
             // Generate and insert announcements
             const announcementsHTML = announcementsData.map((announcement, index) =>
                 createAnnouncementCard(announcement, index)
