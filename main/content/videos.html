@@ -410,7 +410,7 @@
     <div class="container mt-5 mb-5">
         <!-- Statistics Section -->
         <div class="stats-section">
-            <div class="row" id="stats-container">
+            <div class="row d-flex flex-wrap justify-content-center" id="stats-container">
                 <!-- Stats will be dynamically generated -->
             </div>
         </div>
@@ -439,17 +439,29 @@
         // Sample video data with updated categories
         const videosData = [
             {
-                id: 'video1',
+                id: 'video9',
+                title: 'Pushpakayanam collaborates with UPI to celebrate its win over Visa',
+                description: `നമ്മുടെ രാജ്യത്തിന്റെ സ്വന്തം പേയ്മെന്റ് സിസ്റ്റം ആയ UPI, റിയൽ ടൈം ട്രാൻസാക്ഷൻ കണക്കിൽ ആഗോള ഭീമൻ VISA യെ, 
+                വെറും 9 വർഷം കൊണ്ട്, മറികടന്ന കാര്യം നിങ്ങൾ അറിഞ്ഞു കാണുമല്ലോ. ഈ അവസരത്തിൽ പുഷ്പകായനം 2025, UPI യുടെ ഈ നേട്ടത്തിൽ 
+                അഭിമാനം കൊള്ളുകയും, ഇതിന്റെ  ഒരു ചെറിയ ഭാഗമാകാൻ കഴിഞ്ഞതിൽ അതിയായ സന്തോഷം രേഖപ്പെടുത്തുകയും ചെയ്യുന്നു.`,
+                youtubeId: 'uTO3CaeZUqs',
+                type: 'shorts',
+                duration: '00:59',
+                category: 'info',
+                tags: ['upi', 'visa', 'sreepushpaka@sbi']
+            },
+            {
+                id: 'video8',
                 title: 'Wishes from a Guiding Voice | Shri Ramachandran P R',
-                description: 'ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം തൃശ്ശൂർ ജില്ലാ പ്രസിഡന്റ് ശ്രീ രാമചന്ദ്രൻ പി ആർ പുഷ്പകായനം 2025 ന് ആശംസകൾ നേരുന്നു..',
+                description: 'ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം തൃശ്ശൂർ ജില്ലാ പ്രസിഡന്റ് ശ്രീ രാമചന്ദ്രൻ പി ആർ പുഷ്പകായനം 2025 ന് ആശംസകൾ നേരുന്നു.',
                 youtubeId: 'eZqiEB4XEqw',
                 type: 'video',
                 duration: '00:43',
-                category: 'wishes-leaders',
-                tags: ['wishes', 'leaders', 'thrissur']
+                category: 'leader-messages',
+                tags: ['wishes', 'leader', 'thrissur']
             },
             {
-                id: 'video2',
+                id: 'video7',
                 title: 'കർക്കടകം 1',
                 description: `പരിപാവനമായ രാമായണ ശീലുകൾ പ്രതിധ്വനിക്കുന്ന കർക്കടക മാസത്തിലെ ഭക്തിസാന്ദ്രമായ പുലരികളിലേക്ക് ഏവർക്കും സ്വാഗതം. <br/><br/>
                 എല്ലാ സമുദായ അംഗങ്ങൾക്കും പുഷ്പകായനം 2025 ൻ്റെ രാമായണമാസ ആശംസകൾ!`,
@@ -460,29 +472,29 @@
                 tags: ['കർക്കടകം', 'രാമായണം']
             },
             {
-                id: 'video3',
+                id: 'video6',
                 title: 'നാൾ ഇതുവരെ | ദിനേഷ് കുമാർ വി എൻ | കോഴിക്കോട് ജില്ലാ സെക്രട്ടറി',
                 description: `ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിൻറെ 57 -ാം ദേശീയ സമ്മേളനമായ പുഷ്പകായനം 2025 ന്റെ ഇതുവരെയുള്ള  നാൾവഴികളും, മറ്റു വിശേഷങ്ങളും 
                 കോഴിക്കോട് ജില്ലാ സെക്രട്ടറി ശ്രീ ദിനേഷ് കുമാർ വി എൻ നിങ്ങളുമായി പങ്കുവയ്ക്കുന്നു. കൂടാതെ, ഈ സമ്മേളനത്തിലേക്ക് നിങ്ങൾ ഏവരെയും അദ്ദേഹം ഹാർദ്ദമായി സ്വാഗതം ചെയ്യുന്നു.`,
                 youtubeId: '2pDIaQuBop4',
                 type: 'shorts',
                 duration: '02:06',
-                category: 'wishes-leaders',
-                tags: ['wishes', 'leaders', 'calicut']
+                category: 'leader-messages',
+                tags: ['wishes', 'leader', 'calicut']
             },
             {
-                id: 'video4',
+                id: 'video5',
                 title: 'From the Desk of PR Chairman',
                 description: `ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ അൻപത്തിയേഴാം ദേശീയ സമ്മേളനമായ പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട PR 
                 ആക്ടിവിടറ്റികളെക്കുറിച്ച് ഉപസമിതി ചെയർമാൻ ഹരീഷ് പി നാരായണൻ സംസാരിക്കുന്നു.`,
                 youtubeId: 'rOei32eI2pk',
                 type: 'shorts',
                 duration: '02:44',
-                category: 'announcements',
+                category: 'info',
                 tags: ['public relations', 'chairman']
             },
             {
-                id: 'video5',
+                id: 'video4',
                 title: 'Share your voice - Articles for souvenir | P V Sudheer Nambeesan',
                 description: `പുഷ്പകായനം 2025 നോട് അനുബന്ധിച്ച് പുറത്തിറക്കുന്ന സുവനീറിൽ, സംഘടനയുടെ വിവിധ തലങ്ങളിൽ പ്രവർത്തിച്ച നേതാക്കളുടെയും, എല്ലാ പ്രാദേശിക / ജില്ലാ സമിതികളുടെയും 
                 ചരിത്രം ഉൾക്കൊള്ളിക്കുവാൻ ഒരു എളിയ ശ്രമം നടത്തുന്നു. കൂടാതെ, സംഘടനയുടെ വിവിധ പദ്ധതികളെക്കുറിച്ചുള്ള ഒരു ലഘു വിവരണവും ചേർക്കുവാൻ ആഗ്രഹിക്കുന്നു. <br/><br/>
@@ -490,11 +502,11 @@
                 youtubeId: 'xosKcEpcB1A',
                 type: 'shorts',
                 duration: '02:34',
-                category: 'info',
+                category: 'leader-messages',
                 tags: ['souvenir', 'articles', 'history', 'vice president']
             },
             {
-                id: 'video5',
+                id: 'video3',
                 title: 'Website inauguration | Smt. K M Devakikkutty',
                 description: `പുഷ്പകധ്വനി മാനേജിംഗ് എഡിറ്റർ ശ്രീമതി കെ.എം.ദേവകിക്കുട്ടി പുഷ്പകായനം 2025 ന്റെ വെബ്സൈറ്റ് ഉദ്ഘാടനം ചെയ്യുന്നു.`,
                 youtubeId: 'h57ttJZz_kQ',
@@ -504,7 +516,7 @@
                 tags: ['pushpakayanam', 'website', 'pushpakadhwani']
             },
             {
-                id: 'video6',
+                id: 'video2',
                 title: 'WALKATHON 2025 | SPSS എറണാകുളം ജില്ലാ വനിതാവേദി',
                 description: `സെപ്റ്റംബർ  20, 21 തീയതികളിൽ എറണാകുളത്ത് നടക്കുന്ന ദേശീയ സമ്മേളനത്തിന്റെ പ്രചരണത്തിന്റെ ഭാഗമായി 
                 ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം എറണാകുളം വനിതാ വേദി നടത്തിയ വാക്കത്തോൺ 2025, 25/05/25 6.15 AM ന് തൃപ്പൂണിത്തുറയിൽ  വെച്ച് നടന്നു. <br/><br/>
@@ -512,11 +524,11 @@
                 youtubeId: '_zhBZPBCvNk',
                 type: 'video',
                 duration: '02:56',
-                category: 'announcements',
+                category: 'info',
                 tags: ['walkathon', 'വനിതാവേദി', 'തൃപ്പൂണിത്തുറ']
             },
             {
-                id: 'video7',
+                id: 'video1',
                 title: 'Title Announcement',
                 description: `2025 സെപ്റ്റംബർ 20 21 തീയതികളിലായി എറണാകുളത്ത് വച്ച് നടക്കുന്ന SPSS ന്റെ 57-ാം ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടന്ന 
                 നാമനിർദ്ദേശ മത്സരത്തിലെ പേരുകളിൽ നിന്നും വിധികർത്താക്കൾ തിരഞ്ഞെടുത്ത പേര് പ്രഖ്യാപിക്കുന്നു.`,
@@ -531,8 +543,8 @@
         // Updated filter configuration
         const filters = [
             { id: 'all', label: 'All Videos', icon: 'bi-collection-play' },
-            { id: 'wishes-leaders', label: 'Wishes by Leaders', icon: 'bi-person-badge' },
-            { id: 'wishes-celebrities', label: 'Wishes by Celebrities', icon: 'bi-star' },
+            { id: 'leader-messages', label: 'Leader Messages', icon: 'bi-person-badge' },
+            { id: 'celebrity-messages', label: 'Celebrity Messages', icon: 'bi-star' },
             { id: 'announcements', label: 'Announcements', icon: 'bi-megaphone' },
             { id: 'info', label: 'Information', icon: 'bi-info-circle' }
         ];
@@ -587,19 +599,21 @@
 
         function generateStats() {
             const totalVideos = videosData.length;
-            const wishesLeaders = videosData.filter(v => v.category === 'wishes-leaders').length;
-            const wishesCelebrities = videosData.filter(v => v.category === 'wishes-celebrities').length;
+            const wishesLeaders = videosData.filter(v => v.category === 'leader-messages').length;
+            const wishesCelebrities = videosData.filter(v => v.category === 'celebrity-messages').length;
             const announcements = videosData.filter(v => v.category === 'announcements').length;
+            const info = videosData.filter(v => v.category === 'info').length;
 
             const stats = [
                 { number: totalVideos, label: 'Total Videos' },
-                { number: wishesLeaders, label: 'Leader Wishes' },
-                { number: wishesCelebrities, label: 'Celebrity Wishes' },
-                { number: announcements, label: 'Announcements' }
+                { number: wishesLeaders, label: 'Leader Messages' },
+                { number: wishesCelebrities, label: 'Celebrity Messages' },
+                { number: announcements, label: 'Announcements' },
+                { number: info, label: 'Info' },
             ];
 
             return stats.map(stat => `
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="stat-item">
                         <div class="stat-number">${stat.number}</div>
                         <div class="stat-label">${stat.label}</div>
