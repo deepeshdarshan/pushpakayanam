@@ -101,10 +101,10 @@
             transform: scale(1.05);
         }
 
-        .feature-icon {
+        .item-icon {
             font-size: 2rem;
             margin-bottom: 15px;
-            color: var(--light);
+            color: var(--primary);
         }
 
         .feature-title {
@@ -269,8 +269,28 @@
             margin: 20px 0;
         }
 
+        .last-date-section {
+            background: var(--indigo-gradient);
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .last-date-section p {
+            color: var(--dark);
+        }
+
+        .last-date-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
         .footer-section {
-            background: var(--baby-blue-gradient);
+            background: var(--dark-gradient);
             padding: 50px;
             border-radius: 25px;
             text-align: center;
@@ -279,19 +299,38 @@
         }
 
         .footer-section p {
-            color: var(--dark);
+            color: var(--light);
         }
 
-        .footer-title {
+        .contact-info a {
             font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--primary);
+            margin-top: 20px;
+            color: #09e8e4;
+            margin-top: 10px;
+        }
+
+        .contact-info a:hover {
+            color: #ebad03;
         }
 
         .footer-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-subtitle a {
+            color: #09e8e4 !important;
+        }
+
+        .footer-subtitle a:hover {
+            color: #ebad03 !important;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: rgba(230, 242, 9, 0.8)
         }
 
         .floating-emoji {
@@ -357,7 +396,7 @@
             .prize-name {
                 font-size: 1.1rem;
             }
-           
+
         }
     </style>
 </head>
@@ -417,31 +456,31 @@
 
             <div class="gift-features">
                 <div class="feature-item">
-                    <div class="feature-icon">📅</div>
+                    <div class="item-icon">📅</div>
                     <h4 class="feature-title">Validity Period</h4>
                     <p class="feature-text">August 1 to October 31</p>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🏪</div>
+                    <div class="item-icon">🏪</div>
                     <h4 class="feature-title">Locations</h4>
                     <p class="feature-text">74+ Nandilath showrooms across Kerala</p>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">💰</div>
+                    <div class="item-icon">💰</div>
                     <h4 class="feature-title">How to Use</h4>
                     <p class="feature-text">Get ₹500 discount on purchase of ₹5000 or more</p>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🏷️</div>
+                    <div class="item-icon">🏷️</div>
                     <h4 class="feature-title">Price Basis</h4>
                     <p class="feature-text">Store sale price (not MRP)</p>
                 </div>
 
                 <div class="feature-item">
-                    <div class="feature-icon">🎫</div>
+                    <div class="item-icon">🎫</div>
                     <h4 class="feature-title">No Limit</h4>
                     <p class="feature-text">Unlimited coupons per person</p>
                 </div>
@@ -452,42 +491,42 @@
         <div class="prize-showcase">
             <h2 class="prize-title">
                 <span class="floating-emoji">🏆</span>
-                പാരിതോഷിക വിവരങ്ങൾ
+                Prize Details
             </h2>
             <p style="text-align: center; font-size: 1.2rem; margin-bottom: 15px; color: var(--dark);">
-                Prize Details - Win Exciting Rewards!
+                Win Exciting Rewards!
             </p>
             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: var(--dark);">
-                <strong>These prizes are in addition to the ₹500 gift voucher included in every coupon</strong>
+                <strong>ഓരോ സമ്മാന കൂപ്പണിന്റേയും കൂടെ ലഭിക്കുന്ന ₹500 രൂപ മൂല്യമുള്ള gift voucher നു പുറമെയുള്ള സമ്മാനങ്ങൾ.</strong>
             </p>
 
             <div class="prizes-grid">
                 <div class="prize-item">
-                    <div class="prize-rank">1st</div>
+                    <div class="prize-rank">1st Prize</div>
                     <div class="prize-icon">❄️</div>
                     <div class="prize-name">1.5 Ton AC</div>
                 </div>
 
                 <div class="prize-item">
-                    <div class="prize-rank">2nd</div>
+                    <div class="prize-rank">2nd Prize</div>
                     <div class="prize-icon">❄️</div>
                     <div class="prize-name">1 Ton AC</div>
                 </div>
 
                 <div class="prize-item">
-                    <div class="prize-rank">3rd</div>
+                    <div class="prize-rank">3rd Prize</div>
                     <div class="prize-icon">📺</div>
                     <div class="prize-name">32 Inch LED TV</div>
                 </div>
 
                 <div class="prize-item">
-                    <div class="prize-rank">4th</div>
+                    <div class="prize-rank">4th Prize</div>
                     <div class="prize-icon">📱</div>
                     <div class="prize-name">Vivo Smart Phone</div>
                 </div>
 
                 <div class="prize-item">
-                    <div class="prize-rank">5th</div>
+                    <div class="prize-rank">5th Prize</div>
                     <div class="prize-icon">📱</div>
                     <div class="prize-name">Vivo Smart Phone</div>
                 </div>
@@ -506,17 +545,27 @@
             </p>
         </div>
 
+        <div class="last-date-section">
+            <h2 class="last-date-title">
+                <span class="floating-emoji">📅</span>
+                കൂപ്പണിന്റെ കൗണ്ടർ ഫോയിൽ തിരികെ ഞങ്ങൾക്ക് ലഭിക്കേണ്ട അവസാന തീയതി
+            </h2>
+            <div class="prize-amount">September 21, 2025 11:00 AM</div>
+        </div>
+
         <div class="footer-section">
             <h3 class="footer-title">
                 <span class="floating-emoji">🤝</span>
                 Thank you for your continued support
             </h3>
-            <p class="footer-subtitle">നിങ്ങളുടെ അടുത്തുള്ള <strong>Nandilath G-Mart</strong> ന്റെ ഷോറൂം എവിടെയാണ് എന്നറിയുവാൻ
-                <a href="https://nandilathgmart.com/our-stores/" target="_blank" class="text-decoration-underline">ഇവിടെ ക്ലിക്ക് ചെയ്യൂ</a></p>
+            <p class="footer-subtitle">നിങ്ങളുടെ അടുത്തുള്ള <strong>Nandilath G-Mart</strong> ന്റെ ഷോറൂം എവിടെയാണ്
+                എന്നറിയുവാൻ
+                <a href="https://nandilathgmart.com/our-stores/" target="_blank" class="showroom-link">ഇവിടെ ക്ലിക്ക് ചെയ്യൂ</a>
+            </p>
 
             <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(66, 141, 227, 0.2);">
-                <p style="font-size: 1.3rem; color: rgba(0, 0, 0, 0.8);">For More Details</p>
-                <p style="font-size: 1.1rem; font-weight: 600; margin-top: 10px; color: #F3525A;">
+                <p style="font-size: 1.3rem; color: rgba(230, 242, 9, 0.8);">For More Details</p>
+                <p class="contact-info">
                     <a href="https://wa.me/919747022263?text=Hello%20Girish%2C%20I%20want%20to%20know%20more%20about%20the%20gift%20coupon!"
                         target="_blank">+91 97470 22263</a> / <a href="/main/content/contact-us.html">Contact Us</a>
                 </p>
