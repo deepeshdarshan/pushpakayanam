@@ -53,6 +53,14 @@ function getProgramDetails() {
                             </div>
                         </div>
                         <div class="program-item">
+                            <div class="program-icon bg-white text-primary"><i class="fa fa-child"></i></div>
+                            <div class="ps-4">
+                                <h3>ബാലോത്സവം</h3>
+                                <h6>ലക്ഷ്മി പൂർണ്ണ ഓഡിറ്റോറിയം (വേദി 2)</h6>
+                                <p>10:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
                             <div class="program-icon bg-white text-primary"><i class="fa fa-comments"></i></div>
                             <div class="ps-4">
                                 <h3>സംഘടന ചർച്ച</h3>
@@ -212,7 +220,7 @@ if (announcementEl) {
                                 നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ ഞങ്ങളുമായി പങ്കുവെക്കുക. 
                             </p>
                             <div class="announcement-section">
-                                <p class="malayalam-text mb-3">നിങ്ങളുടെ അഭിപ്രായങ്ങൾ പങ്കുവെക്കുവാൻ</p>
+                                <p class="malayalam-text mb-3">കൂടുതൽ വിവരങ്ങൾ അറിയുവാൻ</p>
                                 <a href="/main/content/announcements/website-launch.html" class="announcement-link malayalam-text">
                                     ഇവിടെ ക്ലിക്ക് ചെയ്യുക
                                 </a>

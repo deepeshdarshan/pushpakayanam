@@ -852,7 +852,7 @@ nav-link .navbar-light .navbar-nav .nav-link.active {
 }
 
 .announcement-section:hover {
-    background: rgba(251, 249, 249, 0.8);
+    background: rgba(252, 250, 228, 0.95);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

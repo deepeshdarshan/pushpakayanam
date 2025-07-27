@@ -61,6 +61,10 @@
     transition: all 0.3s ease;
 }
 
+.program-item h6 {
+    color: #fcebb7; /* Bootstrap primary blue */
+}
+
 .program-icon {
     height: 60px;
     width: 60px;
