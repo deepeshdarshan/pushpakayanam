@@ -195,7 +195,39 @@ if (announcementEl) {
         <div class="carousel-wrapper">
             <div class="carousel-track" id="carouselTrack">
 
-                <!-- Slide 1 -->
+            <!-- Slide 9 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <img src="/img/announcements/balolsavam.png" alt="Balolsavam">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>ബാലോത്സവം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘത്തിന്റെ 57-ാം ദേശീയ സമ്മേളനത്തിന്റെ  
+                                രണ്ടാം ദിനമായ സെപ്റ്റംബർ 21 ന്, “ബാലോത്സവം“ എന്ന പേരിൽ നമ്മുടെ കുട്ടികൾക്കും 
+                                ദേശീയ സമ്മേളന വേദിയിൽ കലാ ചാതുര്യം അവതരിപ്പിക്കാനുള്ള ഒരു സുവർണാവസരം ഒരുങ്ങുന്നു.
+                                <br /><br />
+                                സെപ്റ്റംബർ 21 ന്, രാവിലെ 10 മണി മുതൽ ഉച്ചയ്ക്ക് 2 മണി വരെ, 10 മുതൽ 16 വയസ്സ് 
+                                വരെയുള്ള കുട്ടികൾക്ക് കലാപരിപാടികൾ അവതരിപ്പിക്കാവുന്നതാണ്. സമ്മേളന നഗരിയിലെ 
+                                ഉപവേദിയിൽ ആയിരിക്കും പ്രോഗ്രാം നടക്കുന്നത്.
+                                <br /><br />
+                                കൂടുതൽ വിവരങ്ങൾക്ക് ബന്ധെപ്പെടുക: ചെയർമാൻ, കലാസമിതി. Phone: +91 98959 99390
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">ഈ പ്രോഗ്രാമിനെപ്പറ്റി കൂടുതൽ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/balolsavam.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 8 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="slide-media">
@@ -229,7 +261,7 @@ if (announcementEl) {
                     </div>
                 </div>
 
-                <!-- Slide 2 -->
+                <!-- Slide 7 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="slide-media">
@@ -259,7 +291,7 @@ if (announcementEl) {
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
+                <!-- Slide 6 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="slide-media">
@@ -292,7 +324,7 @@ if (announcementEl) {
                     </div>
                 </div>
 
-                <!-- Slide 4 -->
+                <!-- Slide 5 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="container-fluid">
@@ -336,7 +368,7 @@ if (announcementEl) {
                     </div>
                 </div>
 
-                <!-- Slide 5 -->
+                <!-- Slide 4 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="slide-media">
@@ -362,7 +394,7 @@ if (announcementEl) {
                     </div>
                 </div>
 
-                <!-- Slide 6 -->
+                <!-- Slide 3 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="slide-media">
@@ -393,7 +425,7 @@ if (announcementEl) {
                     </div>
                 </div>
 
-                <!-- Slide 7 -->
+                <!-- Slide 2 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="slide-media" style="height: 500px;">
@@ -426,7 +458,7 @@ if (announcementEl) {
                     </div>
                 </div>
 
-                <!-- Slide 8 -->
+                <!-- Slide 1 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
                         <div class="slide-media">
