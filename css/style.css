@@ -830,7 +830,7 @@ nav-link .navbar-light .navbar-nav .nav-link.active {
 /* Bootstrap border end */
 
 .carousel-bg-color1 {
-    background: linear-gradient(135deg, #f2f2ea 0%, #f0f3bc 100%) !important;
+    background: linear-gradient(135deg, #F7ECDA 0%, #f2e4ce 100%) !important;
     border-radius: 12px !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
 }
