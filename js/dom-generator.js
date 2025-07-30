@@ -1,5 +1,5 @@
 function getProgramDetails() {
-    return `
+  return `
         <div class="container timeline-container">
             <div class="row">
                 <div class="col-lg-6">
@@ -92,7 +92,7 @@ function getProgramDetails() {
 }
 
 function getVenueDetails() {
-    return `
+  return `
         <div class="container-fluid px-0">
             <div class="row g-0">
                 <div class="col-lg-6 px-6">
@@ -181,19 +181,50 @@ function getVenueDetails() {
 
 const programsEl = document.getElementById("programsContainer");
 const venueEl = document.getElementById("venueContainer");
-const announcementEl = document.getElementById('announcementsContainer');
+const announcementEl = document.getElementById("announcementsContainer");
 
-if (programsEl)
-    programsEl.innerHTML = getProgramDetails();
+if (programsEl) programsEl.innerHTML = getProgramDetails();
 
-if (venueEl)
-    venueEl.innerHTML = getVenueDetails();
+if (venueEl) venueEl.innerHTML = getVenueDetails();
 
 if (announcementEl) {
-    const announcements = `
+  const announcements = `
     <div class="carousel-container">
         <div class="carousel-wrapper">
             <div class="carousel-track" id="carouselTrack">
+
+            <!-- Slide 10 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <img src="/img/announcements/sandhyavandanam.jpg" alt="Sandhyavandanam">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>സ്വാദ്ധ്യായ യജ്ഞം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                ഷോഡശസംസ്കാരത്തിൽ അധിഷ്ഠിതമായ നമ്മുടെ സമുദായത്തിന്റെ ഒരു വലിയ യജ്ഞമാണ് 
+                                ഈ വരുന്ന സെപ്റ്റംബർ 20, 21 തീയതികളിൽ നടക്കുന്നത്. 
+                                <br /><br />
+                                അതിന്റെ ഭാഗമായി വ്യത്യസ്തമായ ഒരു മത്സരം സംഘടിപ്പിക്കുന്നു - <b>സ്വാദ്ധ്യായ യജ്ഞം</b>
+                                <br /><br />
+                                മൂന്ന് വ്യത്യസ്ത മത്സരങ്ങളാണ് ഇതിന്റെ ഭാഗമായി സംഘടിപ്പിക്കുന്നത്. 31/07/2025 മുതൽ 
+                                തുടർച്ചയായി 51 ദിവസം ഒരു നേരമെങ്കിലും  സന്ധ്യാവന്ദനം കൃത്യമായി ചെയ്യുന്ന, 
+                                വിഷ്ണുസഹസ്രനാമമോ ലളിതസഹസ്രനാമമോ ജപിക്കുന്ന മൂന്നുപേർക്ക്, വിശിഷ്ട സമ്മാനം നൽകി, 
+                                സമ്മേളനവേദിയിൽ വച്ച് അവരെ ആദരിക്കുന്നു. 
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">ഈ മത്സരത്തെപ്പറ്റി കൂടുതൽ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/swadhyaya-yajnam.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             <!-- Slide 9 -->
                 <div class="carousel-slide">
@@ -506,8 +537,11 @@ if (announcementEl) {
             <div class="indicator" data-slide="5"></div>
             <div class="indicator" data-slide="6"></div>
             <div class="indicator" data-slide="7"></div>
+            <div class="indicator" data-slide="8"></div>
+            <div class="indicator" data-slide="9"></div>
+            <div class="indicator" data-slide="10"></div>
         </div>
     </div>
     `;
-    announcementEl.innerHTML = announcements;
+  announcementEl.innerHTML = announcements;
 }

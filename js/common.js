@@ -153,6 +153,14 @@ const pageData = {
       { name: "ബാലോത്സവം", href: "#" },
     ],
   },
+  swadhyaya_yajnam: {
+    title: "സ്വാദ്ധ്യായ യജ്ഞം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Announcements", href: "/main/content/announcements.html" },
+      { name: "സ്വാദ്ധ്യായ യജ്ഞം", href: "#" },
+    ],
+  },
 };
 
 const metas = [
