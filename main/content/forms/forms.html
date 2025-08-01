@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/js/common.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", () => init("forms"));</script>
+
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .folder-box {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .folder-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .folder-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .folder-box:hover::before {
+            opacity: 1;
+        }
+
+        .folder-box:hover .folder-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .folder-box:hover .folder-label {
+            color: #2d3748;
+        }
+
+        /* Individual gradients for each box */
+        .folder-box:nth-child(1) .folder-icon {
+            background: var(--purple-gradient);
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .folder-box:nth-child(2) .folder-icon {
+            background: var(--orange-gradient);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+
+        .folder-box:nth-child(3) .folder-icon {
+            background: var(--teal-gradient);
+            box-shadow: 0 10px 25px rgba(20, 184, 166, 0.3);
+        }
+
+        .folder-box:nth-child(4) .folder-icon {
+            background: var(--rose-gradient);
+            box-shadow: 0 10px 25px rgba(244, 63, 94, 0.3);
+        }
+
+        .folder-box:nth-child(5) .folder-icon {
+            background: var(--emerald-gradient);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .folder-box:nth-child(6) .folder-icon {
+            background: var(--indigo-gradient);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .folder-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .folder-icon::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: inherit;
+            border-radius: 22px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .folder-box:hover .folder-icon::after {
+            opacity: 0.6;
+        }
+
+        .folder-label {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            color: #4a5568;
+            margin: 0;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+
+        .stats-bar {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Card entrance animation */
+        .folder-box {
+            animation: slideInUp 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Enhanced Section Header Styles */
+        .section-header {
+            margin: 4rem 0 3rem 0;
+            position: relative;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .section-header:first-of-type {
+            margin-top: 2rem;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                    rgba(102, 126, 234, 0.03) 0%,
+                    rgba(118, 75, 162, 0.03) 50%,
+                    rgba(240, 147, 251, 0.03) 100%);
+            z-index: -1;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--primary-gradient);
+            border-radius: 25px 25px 0 0;
+        }
+
+        /* Contest Management specific styling */
+        .section-header.contest-section::after {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+        }
+
+        .section-header.contest-section .section-title {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Administration specific styling */
+        .section-header.admin-section::after {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 50%, #0e7490 100%);
+        }
+
+        .section-header.admin-section .section-title {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 50%, #0e7490 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: none;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title i {
+            background: inherit;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-right: 0.5rem;
+            font-size: 0.9em;
+            vertical-align: middle;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: inherit;
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+            margin-top: 1.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hover effects */
+        .section-header:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .section-header:hover::before {
+            background: linear-gradient(135deg,
+                    rgba(102, 126, 234, 0.06) 0%,
+                    rgba(118, 75, 162, 0.06) 50%,
+                    rgba(240, 147, 251, 0.06) 100%);
+        }
+
+        /* Floating decoration elements */
+        .section-header .decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+            opacity: 0.6;
+        }
+
+        .section-header .decoration:nth-child(1) {
+            top: -20px;
+            right: -20px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .section-header .decoration:nth-child(2) {
+            bottom: -20px;
+            left: -20px;
+            animation: float 4s ease-in-out infinite reverse;
+            animation-delay: 2s;
+        }
+
+        .folder-box:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .folder-box:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .folder-box:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .folder-box:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .folder-box:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .folder-box:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem 0;
+            }
+
+            .folder-box {
+                padding: 2rem;
+            }
+
+            .folder-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .stats-bar {
+                padding: 1.5rem;
+            }
+
+            .section-header {
+                margin: 2.5rem 0 2rem 0;
+                padding: 2rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-gradient);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+    <!-- Page Header Start -->
+    <div id="page-header-container"></div>
+    <!-- Page Header End -->
+
+    <div class="container mt-5">
+
+        <!-- Contests Section -->
+        <div class="section-header contest-section">
+            <div class="decoration"></div>
+            <div class="decoration"></div>
+            <h2 class="section-title">
+                <i class="bi bi-trophy-fill"></i>
+                Forms
+            </h2>
+            <p class="section-subtitle">
+                View and manage all forms related to Pushpakayanam 2025.
+            </p>
+        </div>
+
+        <div class="dashboard-grid">
+            <a href="/main/content/forms/participation-ekm.html" class="folder-box dashboard-item">
+                <div class="folder-icon">
+                    <i class="bi bi-journal-check"></i>
+                </div>
+                <div class="folder-label">Participation form - EKM</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+
+</body>
+
+</html>

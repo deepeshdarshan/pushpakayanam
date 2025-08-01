@@ -161,6 +161,20 @@ const pageData = {
       { name: "സ്വാദ്ധ്യായ യജ്ഞം", href: "#" },
     ],
   },
+  forms: {
+    title: "Forms Dashboard",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Forms Dashboard", href: "#" },
+    ],
+  },
+  ekm_part_form: {
+    title: "Participation Form - EKM",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Participation form - EKM", href: "#" },
+    ],
+  },
 };
 
 const metas = [
