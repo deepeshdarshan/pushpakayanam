@@ -100,7 +100,7 @@
 
         .evt-form-logo-container {
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
             border-radius: 15px;
             border: 1px solid #cdcdd9;
@@ -120,7 +120,7 @@
         }
 
         .evt-form-logo-container img {
-            max-height: 180px;
+            max-height: 230px;
             width: auto;
             filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.3));
         }
@@ -142,7 +142,7 @@
             <div class="col-lg-8">
                 <!-- Logo Section -->
                 <div class="evt-form-logo-container mb-2">
-                    <img src="/img/logo.png" alt="Organization Logo" class="img-fluid">
+                    <img src="/img/logo-detailed.png" alt="Organization Logo" class="img-fluid">
                 </div>
 
                 <div class="card shadow evt-form">
@@ -156,7 +156,7 @@
 
                             <div class="mb-3">
                                 <label for="fullName" class="form-label">
-                                    Full Name <span class="evt-form-required">*</span>
+                                    Full Name (പേര്) <span class="evt-form-required">*</span>
                                 </label>
                                 <input type="text" class="form-control" id="fullName" name="fullName">
                                 <div class="evt-form-error-message" id="fullName-error"></div>
@@ -164,21 +164,22 @@
 
                             <div class="mb-3">
                                 <label for="phoneNumber" class="form-label">
-                                    Phone Number <span class="evt-form-required">*</span>
+                                    Phone Number (ഫോൺ നമ്പർ) <span class="evt-form-required">*</span>
                                 </label>
-                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    maxlength="10">
                                 <div class="evt-form-error-message" id="phoneNumber-error"></div>
                             </div>
 
                             <div class="mb-3">
-                                <label for="emailAddress" class="form-label">Email Address</label>
+                                <label for="emailAddress" class="form-label">Email Address (ഇമെയിൽ) </label>
                                 <input type="email" class="form-control" id="emailAddress" name="emailAddress">
                                 <div class="evt-form-error-message" id="emailAddress-error"></div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="pradeshikaSabha" class="form-label">
-                                    Pradeshika Sabha <span class="evt-form-required">*</span>
+                                    Pradeshika Sabha (പ്രാദേശിക സഭ) <span class="evt-form-required">*</span>
                                 </label>
                                 <select class="form-select" id="pradeshikaSabha" name="pradeshikaSabha">
                                     <option value="">Select Pradeshika Sabha</option>
@@ -201,7 +202,9 @@
                             <!-- Day 1 Attendance -->
                             <div class="mb-4">
                                 <label class="form-label">
-                                    Will you be attending on Day 1? <span class="evt-form-required">*</span>
+                                    Will you OR your family members be attending on Day 1<br /> ( താങ്കളോ താങ്കളുടെ
+                                    കുടുംബാംഗങ്ങളോ സമ്മേളനത്തിന്റെ ഒന്നാം ദിവസം പങ്കെടുക്കുമോ)? <span
+                                        class="evt-form-required">*</span>
                                 </label>
                                 <div class="mt-2">
                                     <div class="form-check form-check-inline">
@@ -220,8 +223,8 @@
                                 <!-- Conditional field for Day 1 family members -->
                                 <div class="evt-form-conditional-field" id="day1FamilySection">
                                     <label for="day1FamilyMembers" class="form-label">
-                                        How many of your family members will attend on Day 1? <span
-                                            class="evt-form-required">*</span>
+                                        How many of your family members will attend on Day 1<br /> (ഒന്നാം ദിവസം എത്ര
+                                        കുടുംബാംഗങ്ങൾ പങ്കെടുക്കും)? <span class="evt-form-required">*</span>
                                     </label>
                                     <input type="text" class="form-control" id="day1FamilyMembers"
                                         name="day1FamilyMembers">
@@ -232,7 +235,9 @@
                             <!-- Day 2 Attendance -->
                             <div class="mb-3">
                                 <label class="form-label">
-                                    Will you be attending on Day 2? <span class="evt-form-required">*</span>
+                                    Will you OR your family members be attending on Day 2 <br /> ( താങ്കളോ താങ്കളുടെ
+                                    കുടുംബാംഗങ്ങളോ സമ്മേളനത്തിന്റെ രണ്ടാം ദിവസം പങ്കെടുക്കുമോ)? <span
+                                        class="evt-form-required">*</span>
                                 </label>
                                 <div class="mt-2">
                                     <div class="form-check form-check-inline">
@@ -251,8 +256,8 @@
                                 <!-- Conditional field for Day 2 family members -->
                                 <div class="evt-form-conditional-field" id="day2FamilySection">
                                     <label for="day2FamilyMembers" class="form-label">
-                                        How many of your family members will attend on Day 2? <span
-                                            class="evt-form-required">*</span>
+                                        How many of your family members will attend on Day 2<br /> (രണ്ടാം ദിവസം എത്ര
+                                        കുടുംബാംഗങ്ങൾ പങ്കെടുക്കും)? <span class="evt-form-required">*</span>
                                     </label>
                                     <input type="text" class="form-control" id="day2FamilyMembers"
                                         name="day2FamilyMembers">
@@ -266,9 +271,11 @@
                             <h2 class="h5 mb-4">Additional Details</h2>
 
                             <div class="mb-3">
-                                <label for="additionalComments" class="form-label">Additional Comments</label>
+                                <label for="additionalComments" class="form-label">Additional Comments (മറ്റു വിവരങ്ങൾ)
+                                </label>
                                 <textarea class="form-control" id="additionalComments" name="additionalComments"
-                                    rows="4" placeholder="Any additional comments or requirements..."></textarea>
+                                    rows="4"
+                                    placeholder="Any additional comments or requirements (മറ്റു വിവരങ്ങൾ എന്തെങ്കിലും ഉണ്ടെങ്കിൽ ഇവിടെ ചേർക്കുക) ..."></textarea>
                             </div>
                         </div>
 
@@ -277,19 +284,20 @@
                             <h2 class="h5 mb-4">Declaration</h2>
 
                             <div class="declaration-text mb-3">
-                                <p class="mb-2">1. I confirm that all the information provided is accurate to the best
-                                    of my knowledge.</p>
+                                <p class="mb-0">1. I consent to sharing this information with my Pradeshika Sabha
+                                    President or Secretary for any necessary follow-up. (ഈ വിവരങ്ങൾ എന്റെ പ്രാദേശിക
+                                    സഭയിലെ പ്രസിഡണ്ടുമായോ സെക്രട്ടറിയുമായോ പങ്കുവെക്കുന്നതിന് എനിക്ക് സമ്മതമാണ്)</p>
                                 <p class="mb-2">2. I will promptly inform the concerned authorities if there are any
-                                    updates or changes to the above details.</p>
-                                <p class="mb-0">3. I consent to sharing this information with my Pradeshika Sabha
-                                    President or Secretary for any necessary follow-up.</p>
+                                    updates or changes to the above details. (മേൽപ്പറഞ്ഞ കാര്യങ്ങളിൽ എന്തെങ്കിലും
+                                    വ്യത്യാസങ്ങൾ ഉണ്ടെങ്കിൽ, ചുമതലപ്പെട്ടവരെ ഞാൻ ഉടനടി അറിയിക്കുന്നതാണ്)</p>
                             </div>
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="declarationAccepted"
                                     name="declarationAccepted">
                                 <label class="form-check-label font-weight-bold" for="declarationAccepted">
-                                    I accept the above declaration <span class="evt-form-required">*</span>
+                                    I accept the above declaration (മേൽപ്പറഞ്ഞ കാര്യങ്ങൾ എന്റെ ഉത്തമ ബോധ്യത്തിൽ നിന്നും
+                                    ഉള്ളവയാണ്) <span class="evt-form-required">*</span>
                                 </label>
                                 <div class="evt-form-error-message" id="declarationAccepted-error"></div>
                             </div>
