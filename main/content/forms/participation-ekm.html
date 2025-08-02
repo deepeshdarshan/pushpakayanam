@@ -613,10 +613,6 @@
 
             } catch (error) {
                 showMessage('error', 'Form submission failed. Please try again.');
-            } finally {
-                submitBtn.disabled = false;
-                submitText.textContent = 'Submit';
-                submitSpinner.classList.add('d-none');
             }
         }
 
@@ -625,7 +621,8 @@
             console.log('Form Submission Data:', jsonData);
 
             const submitBtn = document.getElementById('submitBtn');
-            const submitBtnText = document.getElementById('submitText');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
 
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbzq_vDtlWDZ6JGOovkvHRYcEhymSec87e9iqPQAoJWQ0hQQRA3Xgm3XoKb60RsKzDI4/exec';
             fetch(scriptUrl, {
@@ -653,7 +650,11 @@
                 .catch(error => {
                     console.error('Error:', error);
                     throw new Error('Server error occurred', error);
-                })
+                }).finally(() => {
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit';
+                    submitSpinner.classList.add('d-none');
+                });
         }
     </script>
 
