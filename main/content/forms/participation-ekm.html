@@ -202,8 +202,8 @@
                             <!-- Day 1 Attendance -->
                             <div class="mb-4">
                                 <label class="form-label">
-                                    Will you OR your family members be attending on Day 1<br /> ( താങ്കളോ താങ്കളുടെ
-                                    കുടുംബാംഗങ്ങളോ സമ്മേളനത്തിന്റെ ഒന്നാം ദിവസം പങ്കെടുക്കുമോ)? <span
+                                    Will you OR your family members be attending on Day 1?<br /> (താങ്കളോ താങ്കളുടെ
+                                    കുടുംബാംഗങ്ങളോ സമ്മേളനത്തിന്റെ ഒന്നാം ദിവസം പങ്കെടുക്കുമോ?) <span
                                         class="evt-form-required">*</span>
                                 </label>
                                 <div class="mt-2">
@@ -223,8 +223,9 @@
                                 <!-- Conditional field for Day 1 family members -->
                                 <div class="evt-form-conditional-field" id="day1FamilySection">
                                     <label for="day1FamilyMembers" class="form-label">
-                                        How many of your family members will attend on Day 1<br /> (ഒന്നാം ദിവസം എത്ര
-                                        കുടുംബാംഗങ്ങൾ പങ്കെടുക്കും)? <span class="evt-form-required">*</span>
+                                        Including yourself, how many of your family members will attend on Day
+                                        1?<br /> (ഒന്നാം ദിവസം, താങ്കൾ ഉൾപ്പെടെ, താങ്കളുടെ കുടുംബത്തിൽ നിന്നും എത്രപേർ
+                                        പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
                                     </label>
                                     <input type="text" class="form-control" id="day1FamilyMembers"
                                         name="day1FamilyMembers">
@@ -235,8 +236,8 @@
                             <!-- Day 2 Attendance -->
                             <div class="mb-3">
                                 <label class="form-label">
-                                    Will you OR your family members be attending on Day 2 <br /> ( താങ്കളോ താങ്കളുടെ
-                                    കുടുംബാംഗങ്ങളോ സമ്മേളനത്തിന്റെ രണ്ടാം ദിവസം പങ്കെടുക്കുമോ)? <span
+                                    Will you OR your family members be attending on Day 2? <br /> (താങ്കളോ താങ്കളുടെ
+                                    കുടുംബാംഗങ്ങളോ സമ്മേളനത്തിന്റെ രണ്ടാം ദിവസം പങ്കെടുക്കുമോ?) <span
                                         class="evt-form-required">*</span>
                                 </label>
                                 <div class="mt-2">
@@ -256,8 +257,9 @@
                                 <!-- Conditional field for Day 2 family members -->
                                 <div class="evt-form-conditional-field" id="day2FamilySection">
                                     <label for="day2FamilyMembers" class="form-label">
-                                        How many of your family members will attend on Day 2<br /> (രണ്ടാം ദിവസം എത്ര
-                                        കുടുംബാംഗങ്ങൾ പങ്കെടുക്കും)? <span class="evt-form-required">*</span>
+                                        Including yourself, how many of your family members will attend on Day 2?<br />
+                                        (രണ്ടാം ദിവസം, താങ്കൾ ഉൾപ്പെടെ, താങ്കളുടെ കുടുംബത്തിൽ നിന്നും എത്രപേർ
+                                        പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
                                     </label>
                                     <input type="text" class="form-control" id="day2FamilyMembers"
                                         name="day2FamilyMembers">
@@ -275,7 +277,7 @@
                                 </label>
                                 <textarea class="form-control" id="additionalComments" name="additionalComments"
                                     rows="4"
-                                    placeholder="Any additional comments or requirements (മറ്റു വിവരങ്ങൾ എന്തെങ്കിലും ഉണ്ടെങ്കിൽ ഇവിടെ ചേർക്കുക) ..."></textarea>
+                                    placeholder="Any additional comments or requirements ... (മറ്റു വിവരങ്ങൾ എന്തെങ്കിലും ഉണ്ടെങ്കിൽ ഇവിടെ ചേർക്കുക ...)"></textarea>
                             </div>
                         </div>
 
@@ -592,7 +594,6 @@
             const errors = validateForm();
             if (Object.keys(errors).length > 0) {
                 displayErrors(errors);
-
                 submitBtn.disabled = false;
                 submitText.textContent = 'Submit';
                 submitSpinner.classList.add('d-none');
@@ -621,8 +622,6 @@
         function sendToServer(jsonData) {
 
             console.log('Form Submission Data:', jsonData);
-            showMessage('success', 'Form submitted successfully! Thank you for your registration.');
-            clearForm();
 
             const submitBtn = document.getElementById('submitBtn');
             const submitBtnText = document.getElementById('submitText');
@@ -644,7 +643,7 @@
                 .then(data => {
                     console.log('Server response:', data);
                     if (data.status === 'success') {
-                        showMessage('danger', 'Thanks! We have received your response');
+                        showMessage('success', 'Form submitted successfully! Thank you for your registration.');
                         clearForm();
                     } else {
                         showMessage('danger', 'Error: ' + (data.message || 'Unknown error occurred'));
@@ -654,11 +653,6 @@
                     console.error('Error:', error);
                     throw new Error('Server error occurred', error);
                 })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('btn-loading');
-                    submitBtnText.textContent = 'Submit';
-                });
         }
     </script>
 
