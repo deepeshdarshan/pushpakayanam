@@ -4,8 +4,7 @@ let columnSelectionEnabled = true;
 let sortEnabled = true;
 
 export const domElements = {
-
-    spinnerModal: `
+  spinnerModal: `
         <div class="modal fade" id="spinnerModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
             data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
@@ -20,7 +19,7 @@ export const domElements = {
             </div>
         </div>`,
 
-    warningModal: `
+  warningModal: `
         <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border border-warning">
@@ -39,20 +38,19 @@ export const domElements = {
             </div>
         </div>`,
 
-    dataTable: `
+  dataTable: `
         <table id="sheetTable">
             <thead></thead>
             <tbody></tbody>
         </table>`,
 
-    seperator: `<div class="vr d-none d-md-block mx-2"></div>`,
+  seperator: `<div class="vr d-none d-md-block mx-2"></div>`,
 
-    dataFilterControls: populateDataFilterControls(),
+  dataFilterControls: populateDataFilterControls(),
 
+  paginationControls: populatePaginationControls(),
 
-    paginationControls: populatePaginationControls(),
-
-    pageHeader: `
+  pageHeader: `
                 <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                         <div class="text-white text-center text-md-start mb-3 mb-md-0">
@@ -75,7 +73,7 @@ export const domElements = {
                     </div>
                 </div>`,
 
-    navbar: `
+  navbar: `
             <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-3 py-2">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
@@ -96,6 +94,12 @@ export const domElements = {
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Forms</a>
+                                <div class="dropdown-menu m-0">
+                                    <a href="/main/admin/forms/participation-ekm.html" class="dropdown-item">Participation - EKM</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Enqueries</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="/main/admin/contact-us.html" class="dropdown-item">Contact Us</a>
@@ -106,7 +110,7 @@ export const domElements = {
                 </div>
             </nav>`,
 
-    topbar: `
+  topbar: `
             <div class="container-fluid bg-secondary ps-5 pe-0 d-none d-lg-block">
                 <div class="row gx-0">
                     <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
@@ -126,13 +130,12 @@ export const domElements = {
                         </div>
                     </div>
                 </div>
-            </div>`
-
-}
+            </div>`,
+};
 function populateDataFilterControls() {
-    let html = `<div class="d-flex flex-wrap align-items-center gap-2 control-group">`;
-    if (columnSelectionEnabled) {
-        html += `<div class="dropdown w-md-auto">
+  let html = `<div class="d-flex flex-wrap align-items-center gap-2 control-group">`;
+  if (columnSelectionEnabled) {
+    html += `<div class="dropdown w-md-auto">
                         <button class="form-select text-start h-43p w-100 w-md-auto" type="button"
                             id="checkboxDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
                             Visible columns
@@ -140,9 +143,9 @@ function populateDataFilterControls() {
                         <ul class="dropdown-menu w-100" aria-labelledby="checkboxDropdownBtn" id="checkboxDropdownMenu">
                         </ul>
                     </div>`;
-    }
-    if (searchEnabled) {
-        html += `<div class="vr d-none d-md-block mx-2"></div>
+  }
+  if (searchEnabled) {
+    html += `<div class="vr d-none d-md-block mx-2"></div>
                     <div class="col-12 col-md-auto">
                         <select id="searchField" class="form-select w-100 w-md-auto"></select>
                     </div>
@@ -152,29 +155,29 @@ function populateDataFilterControls() {
                     <div class="col-12 col-md-auto">
                         <button id="searchBtn" class="btn btn-outline-danger w-100">Search</button>
                     </div>`;
-    }
-    if (sortEnabled) {
-        html += `<div class="vr d-none d-md-block mx-2"></div>
+  }
+  if (sortEnabled) {
+    html += `<div class="vr d-none d-md-block mx-2"></div>
                     <div class="col-12 col-md-auto">
                         <select id="sortField" class="form-select w-100 w-md-auto"></select>
                     </div>
                     <div class="col-12 col-md-auto">
                         <button id="sortBtn" class="btn btn-outline-danger w-100">Sort</button>
                     </div>`;
-    }
-    html += `<div class="vr d-none d-md-block mx-2"></div>
+  }
+  html += `<div class="vr d-none d-md-block mx-2"></div>
                     <div class="col-12 col-md-auto">
                         <button id="resetBtn" class="btn btn-outline-dark w-100">Reset</button>
                     </div>
                 </div>`;
 
-    return html;
+  return html;
 }
 
 function populatePaginationControls() {
-    let html = null;
-    if (paginationEnabled) {
-        html = `
+  let html = null;
+  if (paginationEnabled) {
+    html = `
                     <div class="d-flex flex-wrap flex-md-nowrap align-items-center gap-2 control-group">
                         <div>
                             Page size:
@@ -203,13 +206,13 @@ function populatePaginationControls() {
                                 </ul>
                             </nav>
                         </div>
-                    </div>`
-    }
-    return html;
+                    </div>`;
+  }
+  return html;
 }
 
 export function populatePageHeader(title) {
-    return `
+  return `
             <div id="page-header" class="container-fluid bg-dark py-4 px-3 shadow">
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                     <div class="text-white text-center text-md-start mb-3 mb-md-0">
@@ -230,5 +233,5 @@ export function populatePageHeader(title) {
                         </button>
                     </div>
                 </div>
-            </div>`
+            </div>`;
 }
