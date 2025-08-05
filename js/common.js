@@ -169,10 +169,10 @@ const pageData = {
     ],
   },
   ekm_part_form: {
-    title: "Participation Form - EKM",
+    title: "Participation Form - Ernakulam",
     breadcrumbs: [
       { name: "Home", href: "/index.html" },
-      { name: "Participation form - EKM", href: "#" },
+      { name: "Participation form - Ernakulam", href: "#" },
     ],
   },
   del_part_form: {
