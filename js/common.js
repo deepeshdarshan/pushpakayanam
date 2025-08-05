@@ -175,6 +175,13 @@ const pageData = {
       { name: "Participation form - EKM", href: "#" },
     ],
   },
+  del_part_form: {
+    title: "Participation Form - Delegates",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Participation form - Delegates", href: "#" },
+    ],
+  },
 };
 
 const metas = [

@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="പുഷ്പകായനം 2025 - കമ്മ്യൂണിറ്റി ഫീഡ്ബാക്ക് സർവേ" name="keywords">
+    <meta content="57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" name="description">
+    <meta property="og:title" content="പുഷ്പകായനം 2025 - കമ്മ്യൂണിറ്റി ഫീഡ്ബാക്ക് സർവേ" />
+    <meta property="og:description"
+        content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" />
+    <meta property="og:image" content="https://pushpakayanam.com/img/logo.png" />
+    <meta property="og:url" content="https://pushpakayanam.com/main/content/forms/feedback-survey.html" />
+    <meta property="og:type" content="website" />
+    <title>പുഷ്പകായനം 2025 - ഫീഡ്ബാക്ക് സർവേ</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --light-bg: #f8f9fa;
+            --dreamy-gradient: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+
+        body {
+            background: var(--dreamy-gradient);
+            min-height: 100vh;
+        }
+
+        .survey-form {
+            border: 1px solid #aab2fa !important;
+            border-radius: 15px !important;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .survey-form-required {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+
+        .survey-form-error-message {
+            color: var(--danger-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .survey-form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .survey-form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .survey-form-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0px 0px !important;
+            background: linear-gradient(135deg, #3b99f8 0%, #99cffa 100%);
+            padding: 1.5rem;
+        }
+
+        .survey-form-logo-container {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+            border-radius: 15px;
+            border: 1px solid #cdcdd9;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .survey-form-logo-container img {
+            max-height: 200px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.3));
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .form-check-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-scale {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .rating-scale .form-check {
+            margin-bottom: 0;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .alert {
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .progress-step::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            right: -50%;
+            height: 2px;
+            background: #dee2e6;
+            z-index: -1;
+        }
+
+        .progress-step:last-child::before {
+            display: none;
+        }
+
+        .progress-step.active .progress-circle {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .progress-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #dee2e6;
+            color: #6c757d;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-scale {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Logo Section -->
+                <div class="survey-form-logo-container">
+                    <img src="/img/logo-detailed.png" alt="പുഷ്പകായനം 2025 Logo" class="img-fluid">
+                </div>
+
+                <div class="card shadow survey-form">
+                    <div class="card-header text-white">
+                        <h2 class="mb-0 h4 text-white">പുഷ്പകായനം 2025 - ഫീഡ്ബാക്ക് സർവേ</h2>
+                        <p class="mb-0 mt-2">നിങ്ങളുടെ വിലയേറിയ അഭിപ്രായങ്ങൾ ഞങ്ങളുടെ സേവനങ്ങൾ മെച്ചപ്പെടുത്താൻ
+                            സഹായിക്കുന്നു.</p>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="feedbackSurveyForm">
+                            <!-- Section 1: Personal Information -->
+                            <div class="survey-form-section">
+                                <h2 class="h5">വ്യക്തിഗത വിവരങ്ങൾ</h2>
+
+
+
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        നിങ്ങൾ സാധാരണയായി ഉപയോഗിക്കുന്ന സോഷ്യൽ മീഡിയ പ്ലാറ്റ്ഫോമുകൾ എവയൊക്കെയാണ്? <span
+                                            class="survey-form-required">*</span>
+                                        <small class="text-muted">(Choose multiple)</small>
+                                    </label>
+                                    <div class="checkbox-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="platform_facebook"
+                                                name="socialPlatforms" value="Facebook">
+                                            <label class="form-check-label" for="platform_facebook">ഫേസ്ബുക്ക്</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="platform_instagram"
+                                                name="socialPlatforms" value="Instagram">
+                                            <label class="form-check-label"
+                                                for="platform_instagram">ഇൻസ്റ്റാഗ്രാം</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="platform_whatsapp"
+                                                name="socialPlatforms" value="WhatsApp">
+                                            <label class="form-check-label" for="platform_whatsapp">വാട്സ്ആപ്പ്</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="platform_youtube"
+                                                name="socialPlatforms" value="YouTube">
+                                            <label class="form-check-label" for="platform_youtube">യൂട്യൂബ്</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="platform_twitter"
+                                                name="socialPlatforms" value="Twitter">
+                                            <label class="form-check-label" for="platform_twitter">ട്വിറ്റർ (X)</label>
+                                        </div>
+                                    </div>
+                                    <div class="survey-form-error-message" id="socialPlatforms-error"></div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട ഞങ്ങളുടെ ചാനലുകൾ/പേജുകൾ നിങ്ങൾ ഫോളോ ചെയ്യുകയോ
+                                        സബ്സ്ക്രൈബ് ചെയ്യുകയോ ചെയ്തിട്ടുണ്ടോ? <span
+                                            class="survey-form-required">*</span>
+                                        <small class="text-muted">(Choose multiple)</small>
+                                    </label>
+                                    <div class="checkbox-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="follow_facebook"
+                                                name="followedChannels" value="Facebook Page">
+                                            <label class="form-check-label" for="follow_facebook">ഫേസ്ബുക്ക് പേജ് ഫോളോ
+                                                ചെയ്യുന്നു</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="follow_instagram"
+                                                name="followedChannels" value="Instagram Page">
+                                            <label class="form-check-label" for="follow_instagram">ഇൻസ്റ്റാഗ്രാം പേജ്
+                                                ഫോളോ ചെയ്യുന്നു</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="follow_whatsapp"
+                                                name="followedChannels" value="WhatsApp Channel">
+                                            <label class="form-check-label" for="follow_whatsapp">വാട്സ്ആപ്പ് ചാനൽ
+                                                സബ്സ്ക്രൈബ് ചെയ്തിട്ടുണ്ട്</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="follow_youtube"
+                                                name="followedChannels" value="YouTube Channel">
+                                            <label class="form-check-label" for="follow_youtube">യൂട്യൂബ് ചാനൽ
+                                                സബ്സ്ക്രൈബ് ചെയ്തിട്ടുണ്ട്</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="follow_website"
+                                                name="followedChannels" value="Website">
+                                            <label class="form-check-label" for="follow_website">വെബ്സൈറ്റ്
+                                                പതിവായി സന്ദർശിക്കുന്നു</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="follow_none_but_see"
+                                                name="followedChannels" value="None but see content">
+                                            <label class="form-check-label" for="follow_none_but_see">ഒന്നും ഫോളോ
+                                                ചെയ്യുന്നില്ല, പക്ഷേ കണ്ടെന്റ് കാണാറുണ്ട്</label>
+                                        </div>
+                                    </div>
+                                    <div class="survey-form-error-message" id="followedChannels-error"></div>
+                                </div>
+                            </div>
+
+                            <!-- Section 2: Social Media Reach -->
+                            <div class="survey-form-section">
+                                <h2 class="h5">സോഷ്യൽ മീഡിയ എത്തിച്ചേരൽ</h2>
+
+                                <div class="mb-3">
+                                    <label for="firstHeardFrom" class="form-label">
+                                        പുഷ്പകായനം 2025 നെ കുറിച്ച് നിങ്ങൾ ആദ്യമായി അറിഞ്ഞത് ഏത് മാധ്യമത്തിലൂടെയാണ്?
+                                        <span class="survey-form-required">*</span>
+                                    </label>
+                                    <select class="form-select" id="firstHeardFrom" name="firstHeardFrom" required>
+                                        <option value="">Select</option>
+                                        <option value="Website">വെബ്സൈറ്റ്</option>
+                                        <option value="Facebook">ഫേസ്ബുക്ക് പേജ്</option>
+                                        <option value="Instagram">ഇൻസ്റ്റാഗ്രാം പേജ്</option>
+                                        <option value="WhatsApp">വാട്സ്ആപ്പ് ചാനൽ</option>
+                                        <option value="YouTube">യൂട്യൂബ് ചാനൽ</option>
+                                        <option value="Pushpakadhwani">പുഷ്പകധ്വനി</option>
+                                        <option value="Friends/Family">സുഹൃത്തുക്കളിൽ നിന്നും/കുടുംബാംഗങ്ങളിൽ നിന്നും
+                                        </option>
+                                    </select>
+                                    <div class="survey-form-error-message" id="firstHeardFrom-error"></div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="mostUpdatesFrom" class="form-label">
+                                        ഏത് സോഷ്യൽ മീഡിയ പ്ലാറ്റ്ഫോമിൽ നിന്നാണ് നിങ്ങൾക്ക് ഏറ്റവും കൂടുതൽ അപ്ഡേറ്റുകൾ
+                                        ലഭിക്കുന്നത്? <span class="survey-form-required">*</span>
+                                    </label>
+                                    <select class="form-select" id="mostUpdatesFrom" name="mostUpdatesFrom" required>
+                                        <option value="">Select</option>
+                                        <option value="Facebook">ഫേസ്ബുക്ക്</option>
+                                        <option value="Instagram">ഇൻസ്റ്റാഗ്രാം</option>
+                                        <option value="WhatsApp">വാട്സ്ആപ്പ്</option>
+                                        <option value="YouTube">യൂട്യൂബ്</option>
+                                        <option value="Website">വെബ്സൈറ്റ്</option>
+                                    </select>
+                                    <div class="survey-form-error-message" id="mostUpdatesFrom-error"></div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="contentFrequency" class="form-label">
+                                        ആഴ്ചയിൽ ഏതാണ്ട് എത്ര തവണ നിങ്ങൾ പുഷ്പകായനവുമായി ബന്ധപ്പെട്ട കണ്ടെന്റ്
+                                        കാണുന്നുണ്ട്? <span class="survey-form-required">*</span>
+                                    </label>
+                                    <select class="form-select" id="contentFrequency" name="contentFrequency" required>
+                                        <option value="">Select</option>
+                                        <option value="5+ times daily">ദിവസവും 3-4 തവണ</option>
+                                        <option value="Once daily">1-2 തവണ</option>
+                                        <option value="Rarely">വളരെ അപൂർവ്വമായി</option>
+                                    </select>
+                                    <div class="survey-form-error-message" id="contentFrequency-error"></div>
+                                </div>
+                            </div>
+
+                            <!-- Section 3: Content Quality -->
+                            <div class="survey-form-section">
+                                <h2 class="h5">കണ്ടെന്റ് ഗുണനിലവാരം</h2>
+
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        ഏത് തരത്തിലുള്ള പോസ്റ്റുകളാണ് നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടം? <span
+                                            class="survey-form-required">*</span>
+                                        <small class="text-muted">(Choose multiple)</small>
+                                    </label>
+                                    <div class="checkbox-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="content_video"
+                                                name="preferredContent" value="Video Updates">
+                                            <label class="form-check-label" for="content_video">വീഡിയോ
+                                                അപ്ഡേറ്റുകൾ</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="content_photo"
+                                                name="preferredContent" value="Photo Gallery">
+                                            <label class="form-check-label" for="content_photo">ഫോട്ടോ
+                                                അപ്ഡേറ്റുകൾ</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="content_text"
+                                                name="preferredContent" value="Text Updates">
+                                            <label class="form-check-label" for="content_text">ടെക്സ്റ്റ്
+                                                അടിസ്ഥാനമാക്കി സോഷ്യൽ മീഡിയയിലൂടെയുള്ള അപ്ഡേറ്റുകൾ</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="content_infographic"
+                                                name="preferredContent" value="Pushpakadhwani updates">
+                                            <label class="form-check-label" for="content_infographic">പുഷ്പകധ്വനിയിലുള്ള
+                                                അറിയിപ്പുകൾ</label>
+                                        </div>
+                                    </div>
+                                    <div class="survey-form-error-message" id="preferredContent-error"></div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        പുഷ്പകായനം 2025 ൽ അവതരിപ്പിച്ച പുതിയ സവിശേഷതകളിൽ ഏതാണ് നിങ്ങൾക്ക് ഏറ്റവും
+                                        ഇഷ്ടപ്പെട്ടത്? <span class="survey-form-required">*</span>
+                                        <small class="text-muted">(Choose multiple)</small>
+                                    </label>
+                                    <div class="checkbox-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="feature_website"
+                                                name="likedFeatures" value="Official Website">
+                                            <label class="form-check-label" for="feature_website">ഔദ്യോഗിക
+                                                വെബ്സൈറ്റ്</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="feature_digital"
+                                                name="likedFeatures" value="Digital Campaigns">
+                                            <label class="form-check-label" for="feature_digital">ഡിജിറ്റൽ പ്രമോഷൻ
+                                                കാമ്പെയ്നുകൾ</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="feature_contests"
+                                                name="likedFeatures" value="Interactive Contests">
+                                            <label class="form-check-label" for="feature_contests">വൈവിധ്യമാർന്ന
+                                                മത്സരങ്ങൾ</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="feature_other"
+                                                name="likedFeatures" value="Other">
+                                            <label class="form-check-label" for="feature_other">മറ്റുള്ളവ</label>
+                                        </div>
+                                    </div>
+                                    <div class="survey-form-error-message" id="likedFeatures-error"></div>
+                                </div>
+                            </div>
+
+                            <!-- Section 4: Campaign Effectiveness -->
+                            <div class="survey-form-section">
+                                <h2 class="h5">കാമ്പെയ്ൻ ഫലപ്രാപ്തി</h2>
+
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        ഏത് മത്സരമാണ് നിങ്ങൾക്ക് ഏറ്റവും ആകർഷകമായി തോന്നിയത്? <span
+                                            class="survey-form-required">*</span>
+                                    </label>
+                                    <div class="rating-scale">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="favoriteContest"
+                                                id="contest_vishu" value="Vishu Photo Contest">
+                                            <label class="form-check-label" for="contest_vishu">
+                                                വിഷു ഫോട്ടോഗ്രാഫി മത്സരം
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="favoriteContest"
+                                                id="contest_naming" value="Naming Contests">
+                                            <label class="form-check-label" for="contest_naming">
+                                                പേരിടൽ മത്സരങ്ങൾ
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="favoriteContest"
+                                                id="contest_reels" value="Reels Contest">
+                                            <label class="form-check-label" for="contest_reels">
+                                                റീൽസ് മത്സരം
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="favoriteContest"
+                                                id="contest_swadhyaaya" value="Swadhyaaya Yajnam">
+                                            <label class="form-check-label" for="contest_swadhyaaya">
+                                                സ്വാദ്ധ്യായ യജ്ഞം
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="survey-form-error-message" id="favoriteContest-error"></div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="contestParticipation" class="form-label">
+                                        നിങ്ങൾ ഏതെങ്കിലും മത്സരത്തിൽ പങ്കെടുത്തോ?
+                                        <span class="survey-form-required">*</span>
+                                    </label>
+                                    <div class="rating-scale">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="overallRating"
+                                                id="rating_poor" value="Yes">
+                                            <label class="form-check-label" for="rating_poor">പങ്കെടുത്തു</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="overallRating"
+                                                id="rating_average" value="No">
+                                            <label class="form-check-label" for="rating_average">പങ്കെടുത്തില്ല</label>
+                                        </div>
+                                        </select>
+                                        <div class="survey-form-error-message" id="contestParticipation-error"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Section 5: Likes and Dislikes -->
+                                <div class="survey-form-section">
+                                    <h2 class="h5">വിഭാഗം 5: ഇഷ്ടങ്ങളും അനിഷ്ടങ്ങളും</h2>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            പുഷ്പകായനം 2025 ന്റെ പ്രമോഷണൽ പ്രവർത്തനങ്ങളിൽ നിങ്ങൾക്ക് ഏറ്റവും ഇഷ്ടപ്പെട്ട
+                                            മൂന്ന് കാര്യങ്ങൾ എന്തൊക്കെയാണ്? <span class="survey-form-required">*</span>
+                                            <small class="text-muted">(3 എണ്ണം തിരഞ്ഞെടുക്കുക)</small>
+                                        </label>
+                                        <div class="checkbox-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="liked_updates"
+                                                    name="likedAspects" value="Regular Updates">
+                                                <label class="form-check-label" for="liked_updates">സ്ഥിരമായ
+                                                    അപ്ഡേറ്റുകൾ</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="liked_quality"
+                                                    name="likedAspects" value="Quality Visual Content">
+                                                <label class="form-check-label" for="liked_quality">ഗുണനിലവാരമുള്ള
+                                                    ഉള്ളടക്കം</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="liked_transparency"
+                                                    name="likedAspects" value="Transparency">
+                                                <label class="form-check-label"
+                                                    for="liked_transparency">സുതാര്യത</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="liked_creative"
+                                                    name="likedAspects" value="Creative Presentation">
+                                                <label class="form-check-label" for="liked_creative">വൈവിധ്യത</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="liked_creative"
+                                                    name="likedAspects" value="Creative Presentation">
+                                                <label class="form-check-label" for="liked_creative">പ്രൊമോഷൻ</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="liked_other"
+                                                    name="likedAspects" value="Other">
+                                                <label class="form-check-label" for="liked_other">മറ്റുള്ളവ</label>
+                                            </div>
+                                        </div>
+                                        <div class="survey-form-error-message" id="likedAspects-error"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            എന്തെങ്കിലും മെച്ചപ്പെടുത്താൻ കഴിയുന്ന കാര്യങ്ങൾ ഉണ്ടോ? <span
+                                                class="survey-form-required">*</span>
+                                            <small class="text-muted">(Choose multiple)</small>
+                                        </label>
+                                        <div class="checkbox-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="improve_frequency"
+                                                    name="improvements" value="Update Frequency">
+                                                <label class="form-check-label" for="improve_frequency">അപ്ഡേറ്റുകളുടെ
+                                                    ആവൃത്തി</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="improve_quality"
+                                                    name="improvements" value="Content Quality">
+                                                <label class="form-check-label" for="improve_quality">കണ്ടെന്റിന്റെ
+                                                    നിലവാരം</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="improve_interaction"
+                                                    name="improvements" value="Interaction/Response">
+                                                <label class="form-check-label"
+                                                    for="improve_interaction">ഇന്ററാക്ഷൻ/പ്രതികരണം</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="improve_technical"
+                                                    name="improvements" value="Technical Issues">
+                                                <label class="form-check-label" for="improve_technical">സാങ്കേതിക
+                                                    പ്രശ്നങ്ങൾ</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="improve_clarity"
+                                                    name="improvements" value="Information Clarity">
+                                                <label class="form-check-label" for="improve_clarity">സുതാര്യത</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="improve_other"
+                                                    name="improvements" value="Other">
+                                                <label class="form-check-label" for="improve_other">മറ്റുള്ളവ</label>
+                                            </div>
+                                        </div>
+                                        <div class="survey-form-error-message" id="improvements-error"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Section 6: Feedback & Suggestions -->
+                                <div class="survey-form-section">
+                                    <h2 class="h5">ഫീഡ്ബാക്ക് & നിർദ്ദേശങ്ങൾ</h2>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            1 മുതൽ 10 വരെയുള്ള സ്കെയിലിൽ, പുഷ്പകായനം 2025 ന്റെ പബ്ലിക് റിലേഷൻസ്
+                                            പ്രവർത്തനങ്ങൾക്ക് നിങ്ങൾ എത്ര മാർക്ക് നൽകും? <span
+                                                class="survey-form-required">*</span>
+                                        </label>
+                                        <div class="rating-scale">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="overallRating"
+                                                    id="rating_poor" value="1-3">
+                                                <label class="form-check-label" for="rating_poor">1-3 (ശരാശരിയേക്കാൾ
+                                                    താഴെ)</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="overallRating"
+                                                    id="rating_average" value="4-6">
+                                                <label class="form-check-label" for="rating_average">4-6
+                                                    (ശരാശരി)</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="overallRating"
+                                                    id="rating_good" value="7-8">
+                                                <label class="form-check-label" for="rating_good">7-8 (നല്ലത്)</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="overallRating"
+                                                    id="rating_excellent" value="9-10">
+                                                <label class="form-check-label" for="rating_excellent">9-10
+                                                    (വളരെ മികച്ചത്)</label>
+                                            </div>
+                                        </div>
+                                        <div class="survey-form-error-message" id="overallRating-error"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="suggestions" class="form-label">
+                                            നിങ്ങളുടെ വിലയേറിയ നിർദ്ദേശങ്ങളും അഭിപ്രായങ്ങളും പങ്കുവെക്കുക:
+                                        </label>
+                                        <textarea class="form-control" id="suggestions" name="suggestions" rows="4"
+                                            placeholder="നിങ്ങളുടെ നിർദ്ദേശങ്ങൾ ഇവിടെ എഴുതുക..."></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            പുഷ്പകായനം 2025 ൽ പങ്കെടുക്കാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ? <span
+                                                class="survey-form-required">*</span>
+                                        </label>
+                                        <div class="rating-scale">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="eventParticipation"
+                                                    id="participation_definitely" value="Definitely">
+                                                <label class="form-check-label" for="participation_definitely">
+                                                    തീർച്ചയായും പങ്കെടുക്കും
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="eventParticipation"
+                                                    id="participation_willtry" value="Will try">
+                                                <label class="form-check-label" for="participation_willtry">
+                                                    പങ്കെടുക്കാൻ ശ്രമിക്കും
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="eventParticipation"
+                                                    id="participation_notsure" value="Not sure">
+                                                <label class="form-check-label" for="participation_notsure">
+                                                    ഉറപ്പില്ല
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="eventParticipation"
+                                                    id="participation_cannot" value="Cannot attend">
+                                                <label class="form-check-label" for="participation_cannot">
+                                                    പങ്കെടുക്കാൻ കഴിയില്ല
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="survey-form-error-message" id="eventParticipation-error"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Section 7: Demographic Information -->
+                                <div class="survey-form-section">
+                                    <h2 class="h5">വ്യക്തിഗത വിവരങ്ങൾ</h2>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            നിങ്ങളുടെ പ്രായം: <span class="survey-form-required">*</span>
+                                        </label>
+                                        <div class="rating-scale">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="ageGroup"
+                                                    id="age_below18" value="Below 18">
+                                                <label class="form-check-label" for="age_below18">
+                                                    18 വയസ്സിന് താഴെ
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="ageGroup"
+                                                    id="age_18to45" value="18-45">
+                                                <label class="form-check-label" for="age_18to45">
+                                                    18-45
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="ageGroup"
+                                                    id="age_46to60" value="46-60">
+                                                <label class="form-check-label" for="age_46to60">
+                                                    46-60
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="ageGroup"
+                                                    id="age_above60" value="Above 60">
+                                                <label class="form-check-label" for="age_above60">
+                                                    60 വയസ്സിന് മുകളിൽ
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="survey-form-error-message" id="ageGroup-error"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="district" class="form-label">
+                                            നിങ്ങളുടെ ജില്ല <span class="survey-form-required">*</span>
+                                        </label>
+                                        <select class="form-select" id="district" name="district" required>
+                                            <option value="">Select district</option>
+                                        </select>
+                                        <div class="survey-form-error-message" id="district-error"></div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="pradeshikaSabha" class="form-label">
+                                            നിങ്ങളുടെ പ്രാദേശിക സഭ <span class="survey-form-required">*</span>
+                                        </label>
+                                        <select class="form-select" id="pradeshikaSabha" name="pradeshikaSabha" required
+                                            disabled>
+                                            <option value="">-- Select district --</option>
+                                        </select>
+                                        <div class="survey-form-error-message" id="pradeshikaSabha-error"></div>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-primary" id="submitBtn"
+                                            onclick="submitSurvey()">
+                                            <i class="fas fa-paper-plane me-2"></i><span
+                                                id="submitText">സമർപ്പിക്കുക</span>
+                                            <span id="submitSpinner"
+                                                class="spinner-border spinner-border-sm d-none ms-2" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Success/Error Messages -->
+                                    <div id="messageContainer" class="mt-4" style="display: none;">
+                                        <div id="messageAlert" class="alert" role="alert"></div>
+                                    </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // District and Pradeshika Sabha data
+        const districtWisePsMap = {
+            "തിരുവനന്തപുരം": ["തിരുവനന്തപുരം", "നെയ്യാറ്റിൻകര", "വെഞ്ഞാറമൂട്"],
+            "കൊല്ലം": ["തലവൂർ", "കൊട്ടാരക്കര"],
+            "പത്തനംതിട്ട": ["ഓമല്ലൂർ", "എഴുമറ്റൂർ"],
+            "ആലപ്പുഴ": ["ചേർത്തല", "തുറവൂർ", "കൂറ്റുവേലി", "ഹരിപ്പാട്", "കായംകുളം", "മണ്ണഞ്ചേരി"],
+            "കോട്ടയം": ["കോട്ടയം", "വൈക്കം"],
+            "ഇടുക്കി": ["തൊടുപുഴ"],
+            "എറണാകുളം": ["എറണാകുളം", "പെരുമ്പാവൂർ", "ആലുവ", "ചോറ്റാനിക്കര", "തൃപ്പൂണിത്തുറ", "പനങ്ങാട്", "ഇടപ്പള്ളി"],
+            "തൃശ്ശൂർ": ["തൃശ്ശൂർ", "വടക്കാഞ്ചേരി", "മുകുന്ദപുരം", "കുന്ദംകുളം", "ഗുരുവായൂർ", "തൃപ്രയാർ", "ചേർപ്പ്"],
+            "പാലക്കാട്": ["ഒറ്റപ്പാലം", "പാലക്കാട്", "പട്ടാമ്പി"],
+            "മലപ്പുറം": ["മഞ്ചേരി", "പൊന്നാനി", "വണ്ടൂർ", "മലപ്പുറം", "തിരൂർ", "പരപ്പനങ്ങാടി"],
+            "കോഴിക്കോട്": ["കൊയിലാണ്ടി", "താമരശ്ശേരി", "വേങ്ങേരി", "ചേവായൂർ", "കക്കോടി", "കോട്ടൂർ", "തൃക്കുറ്റിശ്ശേരി", "വെസ്റ്റ് ഹിൽ", "പേരാമ്പ്ര", "നിട്ടൂർ", "രാമനാട്ടുകര", "പാലക്കോട്"],
+            "വയനാട്": ["പനമരം", "മാനന്തവാടി"],
+            "കണ്ണൂർ": ["പയ്യന്നൂർ", "ആലപ്പടമ്പ", "അറത്തിൽ", "തലശ്ശേരി", "വടവന്തൂർ", "മട്ടന്നൂർ", "മുഴക്കുന്ന്", "തളിപ്പറമ്പ്"],
+            "കാസർഗോഡ്": ["ഹോസ്‌ദുർഗ്", "കാസർഗോഡ്"],
+            "Outside Kerala": ["ഹൈദരാബാദ്", "കോയമ്പത്തൂർ", "ചെന്നൈ", "ഈറോഡ്", "ഡൽഹി", "അഹമ്മദാബാദ്", "ബാംഗ്ലൂർ", "ബാന്ദ്ര", "മുംബൈ", "മസ്‌ക്കറ്റ്", "Others"]
+        };
+
+        // Form data object
+        let surveyData = {};
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function () {
+            populateDistricts();
+            setupEventListeners();
+        });
+
+        function populateDistricts() {
+            const districtSelect = document.getElementById('district');
+            districtSelect.innerHTML = '<option value="">-- Select --</option>';
+
+            Object.keys(districtWisePsMap).forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+        }
+
+        function populatePradeshikaSabha(district) {
+            const psSelect = document.getElementById('pradeshikaSabha');
+            psSelect.innerHTML = '<option value="">-- Select --</option>';
+
+            if (district && districtWisePsMap[district]) {
+                psSelect.disabled = false;
+                districtWisePsMap[district].forEach(ps => {
+                    const option = document.createElement('option');
+                    option.value = ps;
+                    option.textContent = ps;
+                    psSelect.appendChild(option);
+                });
+            } else {
+                psSelect.disabled = true;
+                psSelect.innerHTML = '<option value="">ആദ്യം ജില്ല തിരഞ്ഞെടുക്കുക</option>';
+            }
+        }
+
+        function setupEventListeners() {
+            // District change handler
+            document.getElementById('district').addEventListener('change', function () {
+                populatePradeshikaSabha(this.value);
+                clearError('district');
+            });
+
+            // Add change listeners to all form elements
+            const formElements = document.querySelectorAll('input, select, textarea');
+            formElements.forEach(element => {
+                element.addEventListener('change', function () {
+                    clearError(this.name || this.id);
+                });
+            });
+
+            // Checkbox group validation for limited selections
+            const likedAspectsCheckboxes = document.querySelectorAll('input[name="likedAspects"]');
+            likedAspectsCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const checkedCount = document.querySelectorAll('input[name="likedAspects"]:checked').length;
+                    if (checkedCount > 3) {
+                        this.checked = false;
+                        showError('likedAspects', 'ദയവായി 3 എണ്ണം മാത്രം തിരഞ്ഞെടുക്കുക');
+                    }
+                });
+            });
+        }
+
+        function collectFormData() {
+            surveyData = {
+                // Section 1: Personal Information
+                district: document.getElementById('district').value,
+                pradeshikaSabha: document.getElementById('pradeshikaSabha').value,
+                socialPlatforms: getCheckedValues('socialPlatforms'),
+                followedChannels: getCheckedValues('followedChannels'),
+
+                // Section 2: Social Media Reach
+                firstHeardFrom: document.getElementById('firstHeardFrom').value,
+                mostUpdatesFrom: document.getElementById('mostUpdatesFrom').value,
+                contentFrequency: document.getElementById('contentFrequency').value,
+
+                // Section 3: Content Quality
+                preferredContent: getCheckedValues('preferredContent'),
+                likedFeatures: getCheckedValues('likedFeatures'),
+
+                // Section 4: Campaign Effectiveness
+                favoriteCampaign: document.getElementById('favoriteCampaign').value,
+                favoriteContest: document.getElementById('favoriteContest').value,
+                contestParticipation: document.getElementById('contestParticipation').value,
+
+                // Section 5: Likes and Dislikes
+                likedAspects: getCheckedValues('likedAspects'),
+                improvements: getCheckedValues('improvements'),
+
+                // Section 6: Feedback & Suggestions
+                overallRating: getRadioValue('overallRating'),
+                futureFeatures: getCheckedValues('futureFeatures'),
+                suggestions: document.getElementById('suggestions').value,
+                eventParticipation: document.getElementById('eventParticipation').value,
+
+                // Section 7: Demographic Information
+                ageGroup: document.getElementById('ageGroup').value,
+                primaryResidence: document.getElementById('primaryResidence').value,
+
+                // Metadata
+                timestamp: getFormattedTimestamp()
+            };
+        }
+
+        function getCheckedValues(name) {
+            const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+            return Array.from(checked).map(cb => cb.value);
+        }
+
+        function getRadioValue(name) {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            return selected ? selected.value : '';
+        }
+
+        function validateForm() {
+            const errors = {};
+
+            // Section 1 validation
+            if (!surveyData.district) {
+                errors.district = 'ദയവായി ജില്ല തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (!surveyData.pradeshikaSabha) {
+                errors.pradeshikaSabha = 'ദയവായി പ്രാദേശിക സഭ തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (surveyData.socialPlatforms.length === 0) {
+                errors.socialPlatforms = 'ദയവായി കുറഞ്ഞത് ഒരു സോഷ്യൽ മീഡിയ പ്ലാറ്റ്ഫോം തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (surveyData.followedChannels.length === 0) {
+                errors.followedChannels = 'ദയവായി കുറഞ്ഞത് ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക';
+            }
+
+            // Section 2 validation
+            if (!surveyData.firstHeardFrom) {
+                errors.firstHeardFrom = 'ദയവായി തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (!surveyData.mostUpdatesFrom) {
+                errors.mostUpdatesFrom = 'ദയവായി തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (!surveyData.contentFrequency) {
+                errors.contentFrequency = 'ദയവായി തിരഞ്ഞെടുക്കുക';
+            }
+
+            // Section 3 validation
+            if (surveyData.preferredContent.length === 0) {
+                errors.preferredContent = 'ദയവായി കുറഞ്ഞത് ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (surveyData.likedFeatures.length === 0) {
+                errors.likedFeatures = 'ദയവായി കുറഞ്ഞത് ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക';
+            }
+
+            // Section 4 validation
+            if (!surveyData.favoriteCampaign) {
+                errors.favoriteCampaign = 'ദയവായി തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (!surveyData.favoriteContest) {
+                errors.favoriteContest = 'ദയവായി തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (!surveyData.contestParticipation) {
+                errors.contestParticipation = 'ദയവായി തിരഞ്ഞെടുക്കുക';
+            }
+
+            // Section 5 validation
+            if (surveyData.likedAspects.length === 0) {
+                errors.likedAspects = 'ദയവായി കുറഞ്ഞത് ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക';
+            } else if (surveyData.likedAspects.length > 3) {
+                errors.likedAspects = 'ദയവായി 3 എണ്ണം മാത്രം തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (surveyData.improvements.length === 0) {
+                errors.improvements = 'ദയവായി കുറഞ്ഞത് ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക';
+            }
+
+            // Section 6 validation
+            if (!surveyData.overallRating) {
+                errors.overallRating = 'ദയവായി റേറ്റിംഗ് തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (surveyData.futureFeatures.length === 0) {
+                errors.futureFeatures = 'ദയവായി കുറഞ്ഞത് ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (!surveyData.eventParticipation) {
+                errors.eventParticipation = 'ദയവായി തിരഞ്ഞെടുക്കുക';
+            }
+
+            // Section 7 validation
+            if (!surveyData.ageGroup) {
+                errors.ageGroup = 'ദയവായി പ്രായവിഭാഗം തിരഞ്ഞെടുക്കുക';
+            }
+
+            if (!surveyData.primaryResidence) {
+                errors.primaryResidence = 'ദയവായി താമസ സ്ഥലം തിരഞ്ഞെടുക്കുക';
+            }
+
+            return errors;
+        }
+
+        function showError(fieldName, message) {
+            const errorElement = document.getElementById(fieldName + '-error');
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+
+            // Add Bootstrap error styling
+            const inputElement = document.getElementById(fieldName) ||
+                document.querySelector(`[name="${fieldName}"]`);
+            if (inputElement) {
+                inputElement.classList.add('is-invalid');
+            }
+        }
+
+        function clearError(fieldName) {
+            const errorElement = document.getElementById(fieldName + '-error');
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+            }
+
+            // Remove Bootstrap error styling
+            const inputElements = document.querySelectorAll(`[name="${fieldName}"], #${fieldName}`);
+            inputElements.forEach(element => {
+                element.classList.remove('is-invalid');
+            });
+        }
+
+        function clearAllErrors() {
+            const errorElements = document.querySelectorAll('.survey-form-error-message');
+            errorElements.forEach(el => {
+                el.textContent = '';
+                el.style.display = 'none';
+            });
+
+            const invalidInputs = document.querySelectorAll('.is-invalid');
+            invalidInputs.forEach(input => input.classList.remove('is-invalid'));
+        }
+
+        function displayErrors(errors) {
+            clearAllErrors();
+
+            Object.keys(errors).forEach(field => {
+                showError(field, errors[field]);
+            });
+
+            // Scroll to first error
+            const firstError = document.querySelector('.is-invalid');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            showMessage('error', 'Please fix the errors above before submitting the form.');
+        }
+
+        function showMessage(type, text) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageAlert = document.getElementById('messageAlert');
+
+            messageAlert.className = `alert alert-${type === 'success' ? 'success' : 'danger'}`;
+            messageAlert.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>${text}`;
+            messageContainer.style.display = 'block';
+
+            // Scroll to message
+            messageContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageContainer.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function getFormattedTimestamp() {
+            const d = new Date();
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            const hours = String(d.getHours()).padStart(2, '0');
+            const minutes = String(d.getMinutes()).padStart(2, '0');
+            const seconds = String(d.getSeconds()).padStart(2, '0');
+            return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+        }
+
+        async function submitSurvey() {
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.textContent = 'സമർപ്പിക്കുന്നു...';
+            submitSpinner.classList.remove('d-none');
+
+            // Hide previous messages
+            document.getElementById('messageContainer').style.display = 'none';
+
+            // Collect form data
+            collectFormData();
+
+            // Validate form
+            const errors = validateForm();
+            if (Object.keys(errors).length > 0) {
+                displayErrors(errors);
+                submitBtn.disabled = false;
+                submitText.textContent = 'സമർപ്പിക്കുക';
+                submitSpinner.classList.add('d-none');
+                return;
+            }
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Log the data (replace with actual API call)
+                console.log('Survey Data:', surveyData);
+
+                // Show success message
+                showMessage('success', 'നിങ്ങളുടെ ഫീഡ്ബാക്ക് വിജയകരമായി സമർപ്പിച്ചു. നന്ദി!');
+
+                // Reset form
+                document.getElementById('feedbackSurveyForm').reset();
+                document.getElementById('pradeshikaSabha').disabled = true;
+                surveyData = {};
+
+            } catch (error) {
+                showMessage('error', 'സമർപ്പിക്കുന്നതിൽ പിശക് സംഭവിച്ചു. ദയവായി വീണ്ടും ശ്രമിക്കുക.');
+            } finally {
+                submitBtn.disabled = false;
+                submitText.textContent = 'സമർപ്പിക്കുക';
+                submitSpinner.classList.add('d-none');
+            }
+        }
+    </script>
+</body>
+
+</html>

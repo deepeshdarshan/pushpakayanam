@@ -96,11 +96,12 @@ export const domElements = {
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Forms</a>
                                 <div class="dropdown-menu m-0">
-                                    <a href="/main/admin/forms/participation-ekm.html" class="dropdown-item">Participation - EKM</a>
+                                    <a href="/main/admin/forms/participation-ekm.html" class="dropdown-item">Participation - Ernakulam</a>
+                                    <a href="/main/admin/forms/participation-all.html" class="dropdown-item">Participation - Delegates</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Enqueries</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Enquiries</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="/main/admin/contact-us.html" class="dropdown-item">Contact Us</a>
                                 </div>

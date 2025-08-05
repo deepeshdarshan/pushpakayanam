@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ" name="keywords">
+    <meta content="57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" name="description">
+    <meta property="og:title" content="Participation form for Ernakulam members" />
+    <meta property="og:description"
+        content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" />
+    <meta property="og:image" content="https://pushpakayanam.com/img/logo.png" />
+    <meta property="og:url" content="https://pushpakayanam.com/main/content/forms/participation-ekm.html" />
+    <meta property="og:type" content="website" />
+    <script src="/js/common.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", () => init("del_part_form"));</script>
+    <style>
+        body {
+            background: var(--dreamy-gradient);
+        }
+
+        .evt-form {
+            border: 1px solid #aab2fa !important;
+            border-radius: 15px !important;
+            background: var(--light-bg);
+        }
+
+        .evt-form-required {
+            color: #dc3545;
+        }
+
+        .evt-form-conditional-field {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e3f2fd;
+            border-left: 4px solid #007bff;
+            border-radius: 0 0.375rem 0.375rem 0;
+        }
+
+        .evt-form-error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .evt-form-declaration-text {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .evt-form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .evt-form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Blue theme customizations */
+        .evt-form .form-check-input:checked {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .evt-form .form-check-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        .evt-form .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .evt-form .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .evt-form .btn-primary:focus {
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5);
+        }
+
+        .evt-form .form-control:focus,
+        .evt-form .form-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0px 0px !important;
+        }
+
+        .evt-form .card-header.bg-primary {
+            background: linear-gradient(135deg, #3b99f8 0%, #99cffa 100%);
+        }
+
+        .evt-form-logo-container {
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+            border-radius: 15px;
+            border: 1px solid #cdcdd9;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+            position: relative;
+        }
+
+        .evt-form-logo-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 18px;
+            z-index: -1;
+        }
+
+        .evt-form-logo-container img {
+            max-height: 230px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.3));
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+    <!-- Page Header Start -->
+    <div id="page-header-container"></div>
+    <!-- Page Header End -->
+
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Logo Section -->
+                <div class="evt-form-logo-container mb-2">
+                    <img src="/img/logo-detailed.png" alt="Organization Logo" class="img-fluid">
+                </div>
+
+                <div class="card shadow evt-form">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="mb-0 h3 text-white">Participation Form</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Basic Details Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Basic Details</h2>
+
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">
+                                    Full Name (പേര്) <span class="evt-form-required">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="fullName" name="fullName">
+                                <div class="evt-form-error-message" id="fullName-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phoneNumber" class="form-label">
+                                    Phone Number (ഫോൺ നമ്പർ) <span class="evt-form-required">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    maxlength="10">
+                                <div class="evt-form-error-message" id="phoneNumber-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="emailAddress" class="form-label">Email Address (ഇമെയിൽ) </label>
+                                <input type="email" class="form-control" id="emailAddress" name="emailAddress">
+                                <div class="evt-form-error-message" id="emailAddress-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="district" class="form-label">
+                                    District (ജില്ല) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="district" name="district">
+                                    <option value="">Select District</option>
+                                </select>
+                                <div class="evt-form-error-message" id="district-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="pradeshikaSabha" class="form-label">
+                                    Pradeshika Sabha (പ്രാദേശിക സഭ) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="pradeshikaSabha" name="pradeshikaSabha" disabled>
+                                    <option value="">Select Pradeshika Sabha</option>
+                                </select>
+                                <div class="evt-form-error-message" id="pradeshikaSabha-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Designation (ഔദ്യോഗിക പദവി) <span class="evt-form-required">*</span>
+                                </label>
+                                <div class="mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="designation"
+                                            id="designationEC" value="EC">
+                                        <label class="form-check-label" for="designationEC">EC Member
+                                            (എക്സിക്ക്യൂട്ടിവ്‌ കമ്മിറ്റി അംഗം) </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="designation"
+                                            id="designationBharanasamithi" value="Bharanasamithi">
+                                        <label class="form-check-label" for="designationBharanasamithi">Bharanasamithi
+                                            (ഭരണസമിതി അംഗം)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="designation"
+                                            id="designationKendraPradhinidhi" value="Kendra pradhinidhi">
+                                        <label class="form-check-label" for="designationKendraPradhinidhi">Kendra
+                                            pradhinidhi (കേന്ദ്ര പ്രധിനിധി) </label>
+                                    </div>
+                                </div>
+                                <div class="evt-form-error-message" id="designation-error"></div>
+                            </div>
+                        </div>
+
+                        <!-- Participation Details Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Participation Details</h2>
+
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    When do you plan to attend the sammelanam?<br /> (ഏതു ദിവസങ്ങളിലാണ് താങ്കൾ
+                                    സമ്മേളനത്തിൽ
+                                    പങ്കെടുക്കുവാൻ ആഗ്രഹിക്കുന്നത് ?) <span class="evt-form-required">*</span>
+                                </label>
+                                <div class="mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="attendancePlan"
+                                            id="attendDay1" value="Day 1">
+                                        <label class="form-check-label" for="attendDay1">Day 1 (ഒന്നാം ദിവസം)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="attendancePlan"
+                                            id="attendDay2" value="Day 2">
+                                        <label class="form-check-label" for="attendDay2">Day 2 (രണ്ടാം ദിവസം)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="attendancePlan"
+                                            id="attendBothDays" value="Both days">
+                                        <label class="form-check-label" for="attendBothDays">Both days (രണ്ടു
+                                            ദിവസങ്ങളിലും)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="attendancePlan"
+                                            id="unableToAttend" value="Unable to attend">
+                                        <label class="form-check-label" for="unableToAttend">Unable to attend (രണ്ടു
+                                            ദിവസങ്ങളിലും പങ്കെടുക്കുവാൻ സാധ്യമല്ല)</label>
+                                    </div>
+                                </div>
+                                <div class="evt-form-error-message" id="attendancePlan-error"></div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Details Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Additional Details</h2>
+
+                            <div class="mb-3">
+                                <label for="additionalComments" class="form-label">Additional Comments (മറ്റു വിവരങ്ങൾ)
+                                </label>
+                                <textarea class="form-control" id="additionalComments" name="additionalComments"
+                                    rows="4"
+                                    placeholder="Any additional comments ... (മറ്റു വിവരങ്ങൾ എന്തെങ്കിലും ഉണ്ടെങ്കിൽ ഇവിടെ ചേർക്കുക ...)"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Declaration Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Declaration</h2>
+
+                            <div class="declaration-text mb-3">
+                                <p class="mb-2">1. I consent to share this information with sub-committees for smooth
+                                    coordination of the Sammelanam. <br />(ഈ സമ്മേളനത്തിന്റെ സുഗമമായ ഏകോപനത്തിനായി മറ്റ്
+                                    ഉപസമിതികളുമായി ഈ വിവരങ്ങൾ പങ്കുവെക്കുന്നതിന് ഞാൻ സമ്മതിക്കുന്നു)</p>
+                                <p class="mb-0">2. I will promptly inform the Chairman if there are any updates or
+                                    changes to the above details. <br />(മേൽപ്പറഞ്ഞ കാര്യങ്ങളിൽ എന്തെങ്കിലും
+                                    വ്യത്യാസങ്ങൾ ഉണ്ടെങ്കിൽ, ചുമതലപ്പെട്ടവരെ ഞാൻ ഉടനടി അറിയിക്കുന്നതാണ്)</p>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="declarationAccepted"
+                                    name="declarationAccepted">
+                                <label class="form-check-label font-weight-bold" for="declarationAccepted">
+                                    I accept the above declaration (മേൽപ്പറഞ്ഞ കാര്യങ്ങൾ എന്റെ ഉത്തമ ബോധ്യത്തിൽ നിന്നും
+                                    ഉള്ളവയാണ് എന്ന് ഇതിനാൽ സാക്ഷ്യപ്പെടുത്തുന്നു) <span
+                                        class="evt-form-required">*</span>
+                                </label>
+                                <div class="evt-form-error-message" id="declarationAccepted-error"></div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" id="submitBtn" onclick="submitForm()">
+                                <i class="fas fa-paper-plane me-2"></i><span id="submitText">Submit</span>
+                                <span id="submitSpinner" class="spinner-border spinner-border-sm d-none ms-2"
+                                    role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Success/Error Messages -->
+                        <div id="messageContainer" class="mt-4" style="display: none;">
+                            <div id="messageAlert" class="alert" role="alert"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+
+        import { districtWisePsMap } from '/js/master-data.js';
+
+        // Form data object
+        let formData = {
+            fullName: '',
+            phoneNumber: '',
+            emailAddress: '',
+            district: '',
+            pradeshikaSabha: '',
+            designation: '',
+            attendancePlan: '',
+            additionalComments: '',
+            declarationAccepted: false
+        };
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function () {
+            populateDistrictDropdown();
+            setupEventListeners();
+        });
+
+        function populateDistrictDropdown() {
+            const districtSelect = document.getElementById('district');
+            const districts = Object.keys(districtWisePsMap);
+
+            districts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+        }
+
+
+        function setupEventListeners() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    clearError(this.name || this.id);
+                    updateFormData();
+                });
+
+                input.addEventListener('change', function () {
+                    updateFormData();
+                });
+            });
+
+            // Phone number - numbers only
+            document.getElementById('phoneNumber').addEventListener('input', function (e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+
+            // District change event
+            document.getElementById('district').addEventListener('change', function () {
+                const selectedDistrict = this.value;
+                populatePradeshikaSabhaDropdown(selectedDistrict);
+                clearError('pradeshikaSabha'); // Clear any previous pradeshika sabha errors
+                updateFormData();
+            });
+
+            document.getElementById('submitBtn').addEventListener('click', submitForm);
+        }
+
+        function populatePradeshikaSabhaDropdown(selectedDistrict) {
+            const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
+
+            // Clear existing options
+            pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+
+            if (selectedDistrict && districtWisePsMap[selectedDistrict]) {
+                pradeshikaSabhaSelect.disabled = false;
+
+                districtWisePsMap[selectedDistrict].forEach(ps => {
+                    const option = document.createElement('option');
+                    option.value = ps;
+                    option.textContent = ps;
+                    pradeshikaSabhaSelect.appendChild(option);
+                });
+            } else {
+                pradeshikaSabhaSelect.disabled = true;
+                // Reset pradeshika sabha in form data
+                formData.pradeshikaSabha = '';
+            }
+        }
+
+        function updateFormData() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                const name = input.name || input.id;
+                if (input.type === 'checkbox') {
+                    formData[name] = input.checked;
+                } else if (input.type === 'radio') {
+                    if (input.checked) {
+                        formData[name] = input.value;
+                    }
+                } else {
+                    formData[name] = input.value;
+                }
+            });
+        }
+
+        function validateForm() {
+            const errors = {};
+
+            // Basic details validation
+            if (!formData.fullName.trim()) {
+                errors.fullName = 'Full name is required';
+            }
+
+            if (!formData.phoneNumber.trim()) {
+                errors.phoneNumber = 'Phone number is required';
+            } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
+                errors.phoneNumber = 'Phone number must be exactly 10 digits';
+            }
+
+            if (formData.emailAddress.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailAddress)) {
+                errors.emailAddress = 'Please enter a valid email address';
+            }
+
+            if (!formData.district) {
+                errors.district = 'Please select a district';
+            }
+
+            if (!formData.pradeshikaSabha) {
+                errors.pradeshikaSabha = 'Please select a pradeshika sabha';
+            }
+
+            if (!formData.designation) {
+                errors.designation = 'Please select a designation';
+            }
+
+            if (!formData.attendancePlan) {
+                errors.attendancePlan = 'Please select when you plan to attend the sammelanam';
+            }
+
+            // Declaration validation
+            if (!formData.declarationAccepted) {
+                errors.declarationAccepted = 'Please accept the declaration to proceed';
+            }
+
+            return errors;
+        }
+
+        function displayErrors(errors) {
+            showMessage('error', 'Please fix the errors above before submitting the form.');
+            // Clear all previous errors
+            const errorElements = document.querySelectorAll('.evt-form-error-message');
+            errorElements.forEach(el => el.textContent = '');
+
+            // Display new errors
+            Object.keys(errors).forEach(field => {
+                const errorElement = document.getElementById(field + '-error');
+                if (errorElement) {
+                    errorElement.textContent = errors[field];
+                }
+
+                // Add Bootstrap error styling
+                const inputElement = document.getElementById(field) || document.querySelector(`[name="${field}"]`);
+                if (inputElement) {
+                    inputElement.classList.add('is-invalid');
+                }
+            });
+        }
+
+        function clearError(fieldName) {
+            const errorElement = document.getElementById(fieldName + '-error');
+            if (errorElement) {
+                errorElement.textContent = '';
+            }
+
+            // Remove Bootstrap error styling
+            const inputElement = document.getElementById(fieldName) || document.querySelector(`[name="${fieldName}"]`);
+            if (inputElement) {
+                inputElement.classList.remove('is-invalid');
+            }
+        }
+
+        function clearAllErrors() {
+            const errorElements = document.querySelectorAll('.evt-form-error-message');
+            errorElements.forEach(el => el.textContent = '');
+
+            const invalidInputs = document.querySelectorAll('.is-invalid');
+            invalidInputs.forEach(input => input.classList.remove('is-invalid'));
+        }
+
+        function showMessage(type, text) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageAlert = document.getElementById('messageAlert');
+
+            messageAlert.className = `alert alert-${type === 'success' ? 'success' : 'danger'}`;
+            messageAlert.textContent = text;
+            messageContainer.style.display = 'block';
+
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageContainer.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function clearForm() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+
+            // Reset form data
+            formData = {
+                fullName: '',
+                phoneNumber: '',
+                emailAddress: '',
+                district: '',
+                pradeshikaSabha: '',
+                designation: '',
+                attendancePlan: '',
+                additionalComments: '',
+                declarationAccepted: false
+            };
+
+            // Reset pradeshika sabha dropdown
+            const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
+            pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+            pradeshikaSabhaSelect.disabled = true;
+
+            clearAllErrors();
+        }
+
+        function getFormattedTimestamp() {
+            const d = new Date();
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            const hours = String(d.getHours()).padStart(2, '0');
+            const minutes = String(d.getMinutes()).padStart(2, '0');
+            const seconds = String(d.getSeconds()).padStart(2, '0');
+            return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+        }
+
+        async function submitForm() {
+            updateFormData();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+
+            submitBtn.disabled = true;
+            submitText.textContent = 'Submitting...';
+            submitSpinner.classList.remove('d-none');
+
+            // Hide previous messages
+            document.getElementById('messageContainer').style.display = 'none';
+
+            const errors = validateForm();
+            if (Object.keys(errors).length > 0) {
+                displayErrors(errors);
+                submitBtn.disabled = false;
+                submitText.textContent = 'Submit';
+                submitSpinner.classList.add('d-none');
+                return;
+            }
+
+            try {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                const jsonData = {
+                    formData: formData,
+                    timestamp: getFormattedTimestamp()
+                };
+
+                sendToServer(jsonData);
+
+            } catch (error) {
+                showMessage('error', 'Form submission failed. Please try again.');
+            }
+        }
+
+        function sendToServer(jsonData) {
+
+            console.log('Form Submission Data:', jsonData);
+
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbzK93SeORf93KoJ5UxigVh70zMUAgXNQ4Jqv2xpkT7c1W35u7w6R4K_-YFKWvDQxlTb/exec';
+            fetch(scriptUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: JSON.stringify(jsonData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Server response:', data);
+                    if (data.status === 'success') {
+                        clearForm();
+                        showMessage('success', 'Form submitted successfully! Thank you for your registration.');
+                    } else {
+                        showMessage('danger', 'Error: ' + (data.message || 'Unknown error occurred'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    throw new Error('Server error occurred', error);
+                }).finally(() => {
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit';
+                    submitSpinner.classList.add('d-none');
+                });
+        }
+    </script>
+
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+
+</body>
+
+</html>

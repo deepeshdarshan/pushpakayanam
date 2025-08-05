@@ -224,7 +224,7 @@
                                 <div class="evt-form-conditional-field" id="day1FamilySection">
                                     <label for="day1FamilyMembers" class="form-label">
                                         Including yourself, how many of your family members will attend on Day
-                                        1?<br /> (ഒന്നാം ദിവസം, താങ്കൾ ഉൾപ്പെടെ, താങ്കളുടെ കുടുംബത്തിൽ നിന്നും എത്രപേർ
+                                        1?<br /> (ഒന്നാം ദിവസം, താങ്കൾ ഉൾപ്പെടെ, കുടുംബത്തിൽ നിന്നും എത്രപേർ
                                         പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
                                     </label>
                                     <input type="text" class="form-control" id="day1FamilyMembers"
@@ -258,8 +258,8 @@
                                 <div class="evt-form-conditional-field" id="day2FamilySection">
                                     <label for="day2FamilyMembers" class="form-label">
                                         Including yourself, how many of your family members will attend on Day 2?<br />
-                                        (രണ്ടാം ദിവസം, താങ്കൾ ഉൾപ്പെടെ, താങ്കളുടെ കുടുംബത്തിൽ നിന്നും എത്രപേർ
-                                        പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
+                                        (രണ്ടാം ദിവസം, താങ്കൾ ഉൾപ്പെടെ, കുടുംബത്തിൽ നിന്നും എത്രപേർ പങ്കെടുക്കും?) <span
+                                            class="evt-form-required">*</span>
                                     </label>
                                     <input type="text" class="form-control" id="day2FamilyMembers"
                                         name="day2FamilyMembers">
@@ -641,8 +641,8 @@
                 .then(data => {
                     console.log('Server response:', data);
                     if (data.status === 'success') {
-                        showMessage('success', 'Form submitted successfully! Thank you for your registration.');
                         clearForm();
+                        showMessage('success', 'Form submitted successfully! Thank you for your registration.');
                     } else {
                         showMessage('danger', 'Error: ' + (data.message || 'Unknown error occurred'));
                     }

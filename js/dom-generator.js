@@ -539,7 +539,6 @@ if (announcementEl) {
             <div class="indicator" data-slide="7"></div>
             <div class="indicator" data-slide="8"></div>
             <div class="indicator" data-slide="9"></div>
-            <div class="indicator" data-slide="10"></div>
         </div>
     </div>
     `;
