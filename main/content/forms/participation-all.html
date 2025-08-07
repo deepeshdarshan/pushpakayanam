@@ -153,50 +153,6 @@
                         <!-- Basic Details Section -->
                         <div class="evt-form-section">
                             <h2 class="h5 mb-4">Basic Details</h2>
-
-                            <div class="mb-3">
-                                <label for="fullName" class="form-label">
-                                    Full Name (പേര്) <span class="evt-form-required">*</span>
-                                </label>
-                                <input type="text" class="form-control" id="fullName" name="fullName">
-                                <div class="evt-form-error-message" id="fullName-error"></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="phoneNumber" class="form-label">
-                                    Phone Number (ഫോൺ നമ്പർ) <span class="evt-form-required">*</span>
-                                </label>
-                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
-                                    maxlength="10">
-                                <div class="evt-form-error-message" id="phoneNumber-error"></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="emailAddress" class="form-label">Email Address (ഇമെയിൽ) </label>
-                                <input type="email" class="form-control" id="emailAddress" name="emailAddress">
-                                <div class="evt-form-error-message" id="emailAddress-error"></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="district" class="form-label">
-                                    District (ജില്ല) <span class="evt-form-required">*</span>
-                                </label>
-                                <select class="form-select" id="district" name="district">
-                                    <option value="">Select District</option>
-                                </select>
-                                <div class="evt-form-error-message" id="district-error"></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="pradeshikaSabha" class="form-label">
-                                    Pradeshika Sabha (പ്രാദേശിക സഭ) <span class="evt-form-required">*</span>
-                                </label>
-                                <select class="form-select" id="pradeshikaSabha" name="pradeshikaSabha" disabled>
-                                    <option value="">Select Pradeshika Sabha</option>
-                                </select>
-                                <div class="evt-form-error-message" id="pradeshikaSabha-error"></div>
-                            </div>
-
                             <div class="mb-3">
                                 <label class="form-label">
                                     Designation (ഔദ്യോഗിക പദവി) <span class="evt-form-required">*</span>
@@ -222,6 +178,62 @@
                                     </div>
                                 </div>
                                 <div class="evt-form-error-message" id="designation-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="district" class="form-label">
+                                    District (ജില്ല) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="district" name="district" disabled>
+                                    <option value="">Select District</option>
+                                </select>
+                                <div class="evt-form-error-message" id="district-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="pradeshikaSabha" class="form-label">
+                                    Pradeshika Sabha (പ്രാദേശിക സഭ) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="pradeshikaSabha" name="pradeshikaSabha" disabled>
+                                    <option value="">Select Pradeshika Sabha</option>
+                                </select>
+                                <div class="evt-form-error-message" id="pradeshikaSabha-error"></div>
+                            </div>
+
+                            <!-- Name field for EC Member and Bharanasamithi (text input) -->
+                            <div class="mb-3" id="memberNameTextSection" style="display: none;">
+                                <label for="memberNameText" class="form-label">
+                                    Full Name (പേര്) <span class="evt-form-required">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="memberNameText" name="memberNameText">
+                                <div class="evt-form-error-message" id="memberNameText-error"></div>
+                            </div>
+
+                            <!-- Kendra Pradhinidhi Name field (dropdown for Kendra pradhinidhi) -->
+                            <div class="mb-3" id="kendraPradhinighiNameSection" style="display: none;">
+                                <label for="kendraPradhinighiName" class="form-label">
+                                    Name (പേര്) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="kendraPradhinighiName" name="kendraPradhinighiName"
+                                    disabled>
+                                    <option value="">Select Name</option>
+                                </select>
+                                <div class="evt-form-error-message" id="kendraPradhinighiName-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phoneNumber" class="form-label">
+                                    Phone Number (ഫോൺ നമ്പർ) <span class="evt-form-required">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    maxlength="10">
+                                <div class="evt-form-error-message" id="phoneNumber-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="emailAddress" class="form-label">Email Address (ഇമെയിൽ) </label>
+                                <input type="email" class="form-control" id="emailAddress" name="emailAddress">
+                                <div class="evt-form-error-message" id="emailAddress-error"></div>
                             </div>
                         </div>
 
@@ -324,16 +336,17 @@
 
     <script type="module">
 
-        import { districtWisePsMap } from '/js/master-data.js';
+        import { districtWisePsMap, kendraPrathinidhiList } from '/js/master-data.js';
 
-        // Form data object
         let formData = {
             fullName: '',
             phoneNumber: '',
             emailAddress: '',
+            designation: '',
             district: '',
             pradeshikaSabha: '',
-            designation: '',
+            memberNameText: '',
+            kendraPradhinighiName: '',
             attendancePlan: '',
             additionalComments: '',
             declarationAccepted: false
@@ -341,22 +354,8 @@
 
         // Initialize form
         document.addEventListener('DOMContentLoaded', function () {
-            populateDistrictDropdown();
             setupEventListeners();
         });
-
-        function populateDistrictDropdown() {
-            const districtSelect = document.getElementById('district');
-            const districts = Object.keys(districtWisePsMap);
-
-            districts.forEach(district => {
-                const option = document.createElement('option');
-                option.value = district;
-                option.textContent = district;
-                districtSelect.appendChild(option);
-            });
-        }
-
 
         function setupEventListeners() {
             const inputs = document.querySelectorAll('input, select, textarea');
@@ -376,27 +375,113 @@
                 this.value = this.value.replace(/[^0-9]/g, '');
             });
 
+            // Designation change event
+            const designationRadios = document.querySelectorAll('input[name="designation"]');
+            designationRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    handleDesignationChange(this.value);
+                    updateFormData();
+                });
+            });
+
             // District change event
             document.getElementById('district').addEventListener('change', function () {
                 const selectedDistrict = this.value;
                 populatePradeshikaSabhaDropdown(selectedDistrict);
-                clearError('pradeshikaSabha'); // Clear any previous pradeshika sabha errors
+                clearError('pradeshikaSabha');
+                clearError('kendraPradhinighiName');
+                updateFormData();
+            });
+
+            // Pradeshika Sabha change event
+            document.getElementById('pradeshikaSabha').addEventListener('change', function () {
+                const selectedDistrict = document.getElementById('district').value;
+                const selectedPS = this.value;
+                const designation = document.querySelector('input[name="designation"]:checked')?.value;
+
+                if (designation === 'Kendra pradhinidhi' && selectedDistrict && selectedPS) {
+                    populateKendraPradhinighiNames(selectedDistrict, selectedPS);
+                }
                 updateFormData();
             });
 
             document.getElementById('submitBtn').addEventListener('click', submitForm);
         }
 
+        function handleDesignationChange(designation) {
+            const districtSelect = document.getElementById('district');
+            const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
+            const kendraPradhinighiNameSection = document.getElementById('kendraPradhinighiNameSection');
+            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
+            const memberNameTextSection = document.getElementById('memberNameTextSection');
+            const memberNameTextInput = document.getElementById('memberNameText');
+
+            // Reset all sections first
+            districtSelect.disabled = true;
+            pradeshikaSabhaSelect.disabled = true;
+            kendraPradhinighiNameSelect.disabled = true;
+            kendraPradhinighiNameSection.style.display = 'none';
+            memberNameTextSection.style.display = 'none';
+
+            // Clear all dropdowns and inputs
+            districtSelect.value = '';
+            pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
+            memberNameTextInput.value = '';
+
+            // Reset form data
+            formData.district = '';
+            formData.pradeshikaSabha = '';
+            formData.kendraPradhinighiName = '';
+            formData.memberNameText = '';
+
+            if (designation === 'Kendra pradhinidhi') {
+                districtSelect.style.display = 'block';
+                pradeshikaSabhaSelect.style.display = 'block';
+                districtSelect.disabled = false;
+                populateDistrictDropdown();
+                kendraPradhinighiNameSection.style.display = 'block';
+                memberNameTextSection.style.display = 'none';
+            } else if (designation === 'EC' || designation === 'Bharanasamithi') {
+                // Show text input for EC Member and Bharanasamithi
+                memberNameTextSection.style.display = 'block';
+                kendraPradhinighiNameSection.style.display = 'none';
+                districtSelect.style.display = 'none';
+                pradeshikaSabhaSelect.style.display = 'none';
+            } else {
+                // Hide both sections for no selection or other cases
+                memberNameTextSection.style.display = 'none';
+                kendraPradhinighiNameSection.style.display = 'none';
+            }
+        }
+
+        function populateDistrictDropdown() {
+            const districtSelect = document.getElementById('district');
+            districtSelect.innerHTML = '<option value="">Select District</option>';
+
+            const districts = Object.keys(kendraPrathinidhiList);
+            districts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+        }
+
         function populatePradeshikaSabhaDropdown(selectedDistrict) {
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
+            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
 
             // Clear existing options
             pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
 
-            if (selectedDistrict && districtWisePsMap[selectedDistrict]) {
+            if (selectedDistrict && kendraPrathinidhiList[selectedDistrict]) {
                 pradeshikaSabhaSelect.disabled = false;
+                kendraPradhinighiNameSelect.disabled = true;
 
-                districtWisePsMap[selectedDistrict].forEach(ps => {
+                const pradeshikaSabhas = Object.keys(kendraPrathinidhiList[selectedDistrict]);
+                pradeshikaSabhas.forEach(ps => {
                     const option = document.createElement('option');
                     option.value = ps;
                     option.textContent = ps;
@@ -404,8 +489,35 @@
                 });
             } else {
                 pradeshikaSabhaSelect.disabled = true;
-                // Reset pradeshika sabha in form data
+                kendraPradhinighiNameSelect.disabled = true;
+                // Reset pradeshika sabha and name in form data
                 formData.pradeshikaSabha = '';
+                formData.kendraPradhinighiName = '';
+            }
+        }
+
+        function populateKendraPradhinighiNames(selectedDistrict, selectedPS) {
+            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
+
+            // Clear existing options
+            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
+
+            if (selectedDistrict && selectedPS &&
+                kendraPrathinidhiList[selectedDistrict] &&
+                kendraPrathinidhiList[selectedDistrict][selectedPS]) {
+
+                kendraPradhinighiNameSelect.disabled = false;
+
+                const names = kendraPrathinidhiList[selectedDistrict][selectedPS];
+                names.forEach(person => {
+                    const option = document.createElement('option');
+                    option.value = person.Id;
+                    option.textContent = person.Name;
+                    kendraPradhinighiNameSelect.appendChild(option);
+                });
+            } else {
+                kendraPradhinighiNameSelect.disabled = true;
+                formData.kendraPradhinighiName = '';
             }
         }
 
@@ -443,16 +555,27 @@
                 errors.emailAddress = 'Please enter a valid email address';
             }
 
-            if (!formData.district) {
-                errors.district = 'Please select a district';
-            }
-
-            if (!formData.pradeshikaSabha) {
-                errors.pradeshikaSabha = 'Please select a pradeshika sabha';
-            }
-
             if (!formData.designation) {
                 errors.designation = 'Please select a designation';
+            }
+
+            // Validate based on designation type
+            if (formData.designation === 'Kendra pradhinidhi') {
+                if (!formData.district) {
+                    errors.district = 'Please select a district';
+                }
+
+                if (!formData.pradeshikaSabha) {
+                    errors.pradeshikaSabha = 'Please select a pradeshika sabha';
+                }
+
+                if (!formData.kendraPradhinighiName) {
+                    errors.kendraPradhinighiName = 'Please select a Kendra Pradhinidhi name';
+                }
+            } else if (formData.designation === 'EC' || formData.designation === 'Bharanasamithi') {
+                if (!formData.memberNameText.trim()) {
+                    errors.memberNameText = 'Name is required';
+                }
             }
 
             if (!formData.attendancePlan) {
@@ -540,18 +663,32 @@
                 fullName: '',
                 phoneNumber: '',
                 emailAddress: '',
+                designation: '',
                 district: '',
                 pradeshikaSabha: '',
-                designation: '',
+                memberNameText: '',
+                kendraPradhinighiName: '',
                 attendancePlan: '',
                 additionalComments: '',
                 declarationAccepted: false
             };
 
-            // Reset pradeshika sabha dropdown
+            // Reset all sections to initial state
+            const districtSelect = document.getElementById('district');
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
-            pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
+            const kendraPradhinighiNameSection = document.getElementById('kendraPradhinighiNameSection');
+            const memberNameTextSection = document.getElementById('memberNameTextSection');
+
+            districtSelect.disabled = true;
             pradeshikaSabhaSelect.disabled = true;
+            kendraPradhinighiNameSelect.disabled = true;
+            kendraPradhinighiNameSection.style.display = 'none';
+            memberNameTextSection.style.display = 'none';
+
+            districtSelect.innerHTML = '<option value="">Select District</option>';
+            pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
 
             clearAllErrors();
         }
@@ -606,7 +743,6 @@
         }
 
         function sendToServer(jsonData) {
-
             console.log('Form Submission Data:', jsonData);
 
             const submitBtn = document.getElementById('submitBtn');
@@ -645,6 +781,9 @@
                     submitSpinner.classList.add('d-none');
                 });
         }
+
+        // Make functions globally available
+        window.submitForm = submitForm;
     </script>
 
     <!-- Footer Start -->

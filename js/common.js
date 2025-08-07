@@ -168,6 +168,13 @@ const pageData = {
       { name: "Forms Dashboard", href: "#" },
     ],
   },
+  follow_us: {
+    title: "Follow & Subscribe",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Follow & Subscribe", href: "#" },
+    ],
+  },
   ekm_part_form: {
     title: "Participation Form - Ernakulam",
     breadcrumbs: [
