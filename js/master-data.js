@@ -95,6 +95,44 @@ export const queryCategories = [
   "Publc Relations",
 ];
 
+export const ecMemberList = [
+  { Id: "EC-01", Name: "L.P. Viswanathan" },
+  { Id: "EC-02", Name: "P.V.Sudheer Nambisan" },
+  { Id: "EC-03", Name: "T.R. Harinarayanan" },
+  { Id: "EC-04", Name: "P.R.Hari" },
+  { Id: "EC-05", Name: "K.N.Krishnan Nambisan" },
+  { Id: "EC-06", Name: "T.M.Ravidran Nambisan" },
+  { Id: "EC-07", Name: "K.M.Sanoj" },
+  { Id: "EC-08", Name: "Rajan P.S." },
+  { Id: "EC-09", Name: "A.B.Balamurali" },
+  { Id: "EC-10", Name: "K.M. Devakikutty" },
+  { Id: "EC-11", Name: "B.Satheesh Kumar" },
+  { Id: "EC-12", Name: "T.V.Venugopal" },
+  { Id: "EC-13", Name: "Dr.Pradeep Jeothi" },
+  { Id: "EC-14", Name: "Dr.P.Gopeenathan" },
+  { Id: "EC-15", Name: "SATHEESH.V.N" },
+  { Id: "EC-16", Name: "DR. D. NEELAKANDAN" },
+];
+
+export const bsMemberList = [
+  { Id: "BS-01", Name: "Raveendra Kumar D" },
+  { Id: "BS-02", Name: "Unnikrishnan.V" },
+  { Id: "BS-03", Name: "Sankar T.V." },
+  { Id: "BS-04", Name: "Jayan M.P." },
+  { Id: "BS-05", Name: "Vijayan V.M." },
+  { Id: "BS-06", Name: "Priyanka Mohan" },
+  { Id: "BS-07", Name: "Krishnamoorthy P.N." },
+  { Id: "BS-08", Name: "Nambisan.P.P." },
+  { Id: "BS-09", Name: "Sathi Kesavan" },
+  { Id: "BS-10", Name: "Muraleekumar .A." },
+  { Id: "BS-11", Name: "Sreedevi C.P." },
+  { Id: "BS-12", Name: "Vijayan Nambisan T.P." },
+  { Id: "BS-13", Name: "Mohanan Nambisan V.M." },
+  { Id: "BS-14", Name: "Muraleedharan R. Dr" },
+  { Id: "BS-15", Name: "Harikumar T.R." },
+  { Id: "BS-16", Name: "Suresh Kumar S" },
+];
+
 export const kendraPrathinidhiList = {
   തിരുവനന്തപുരം: {
     തിരുവനന്തപുരം: [

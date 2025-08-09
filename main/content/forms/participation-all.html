@@ -128,7 +128,6 @@
 </head>
 
 <body>
-
     <!-- Topbar Start -->
     <div id="header-container"></div>
     <!-- Topbar End -->
@@ -180,7 +179,8 @@
                                 <div class="evt-form-error-message" id="designation-error"></div>
                             </div>
 
-                            <div class="mb-3">
+                            <!-- District and Pradeshika Sabha (only for Kendra pradhinidhi) -->
+                            <div class="mb-3" id="districtSection" style="display: none;">
                                 <label for="district" class="form-label">
                                     District (ജില്ല) <span class="evt-form-required">*</span>
                                 </label>
@@ -190,7 +190,7 @@
                                 <div class="evt-form-error-message" id="district-error"></div>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3" id="pradeshikaSabhaSection" style="display: none;">
                                 <label for="pradeshikaSabha" class="form-label">
                                     Pradeshika Sabha (പ്രാദേശിക സഭ) <span class="evt-form-required">*</span>
                                 </label>
@@ -200,25 +200,15 @@
                                 <div class="evt-form-error-message" id="pradeshikaSabha-error"></div>
                             </div>
 
-                            <!-- Name field for EC Member and Bharanasamithi (text input) -->
-                            <div class="mb-3" id="memberNameTextSection" style="display: none;">
-                                <label for="memberNameText" class="form-label">
-                                    Full Name (പേര്) <span class="evt-form-required">*</span>
-                                </label>
-                                <input type="text" class="form-control" id="memberNameText" name="memberNameText">
-                                <div class="evt-form-error-message" id="memberNameText-error"></div>
-                            </div>
-
-                            <!-- Kendra Pradhinidhi Name field (dropdown for Kendra pradhinidhi) -->
-                            <div class="mb-3" id="kendraPradhinighiNameSection" style="display: none;">
-                                <label for="kendraPradhinighiName" class="form-label">
+                            <!-- Name Dropdown (for all designations) -->
+                            <div class="mb-3" id="nameDropdownSection" style="display: none;">
+                                <label for="memberName" class="form-label">
                                     Name (പേര്) <span class="evt-form-required">*</span>
                                 </label>
-                                <select class="form-select" id="kendraPradhinighiName" name="kendraPradhinighiName"
-                                    disabled>
+                                <select class="form-select" id="memberName" name="memberName" disabled>
                                     <option value="">Select Name</option>
                                 </select>
-                                <div class="evt-form-error-message" id="kendraPradhinighiName-error"></div>
+                                <div class="evt-form-error-message" id="memberName-error"></div>
                             </div>
 
                             <div class="mb-3">
@@ -335,19 +325,17 @@
     </div>
 
     <script type="module">
-
-        import { districtWisePsMap, kendraPrathinidhiList } from '/js/master-data.js';
+        import { districtWisePsMap, kendraPrathinidhiList, bsMemberList, ecMemberList } from '/js/master-data.js';
 
         let formData = {
-            fullName: '',
             phoneNumber: '',
             emailAddress: '',
             designation: '',
             district: '',
             pradeshikaSabha: '',
-            memberNameText: '',
-            kendraPradhinighiName: '',
-            attendancePlan: '',
+            memberName: '',
+            day1Attendance: '',
+            day2Attendance: '',
             additionalComments: '',
             declarationAccepted: false
         };
@@ -389,7 +377,7 @@
                 const selectedDistrict = this.value;
                 populatePradeshikaSabhaDropdown(selectedDistrict);
                 clearError('pradeshikaSabha');
-                clearError('kendraPradhinighiName');
+                clearError('memberName');
                 updateFormData();
             });
 
@@ -405,54 +393,87 @@
                 updateFormData();
             });
 
+            // Attendance plan change event
+            const attendancePlanRadios = document.querySelectorAll('input[name="attendancePlan"]');
+            attendancePlanRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    updateAttendanceData(this.value);
+                    updateFormData();
+                });
+            });
+
             document.getElementById('submitBtn').addEventListener('click', submitForm);
         }
 
         function handleDesignationChange(designation) {
+            const districtSection = document.getElementById('districtSection');
+            const pradeshikaSabhaSection = document.getElementById('pradeshikaSabhaSection');
+            const nameDropdownSection = document.getElementById('nameDropdownSection');
             const districtSelect = document.getElementById('district');
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
-            const kendraPradhinighiNameSection = document.getElementById('kendraPradhinighiNameSection');
-            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
-            const memberNameTextSection = document.getElementById('memberNameTextSection');
-            const memberNameTextInput = document.getElementById('memberNameText');
+            const memberNameSelect = document.getElementById('memberName');
 
             // Reset all sections first
+            districtSection.style.display = 'none';
+            pradeshikaSabhaSection.style.display = 'none';
+            nameDropdownSection.style.display = 'none';
+
             districtSelect.disabled = true;
             pradeshikaSabhaSelect.disabled = true;
-            kendraPradhinighiNameSelect.disabled = true;
-            kendraPradhinighiNameSection.style.display = 'none';
-            memberNameTextSection.style.display = 'none';
+            memberNameSelect.disabled = true;
 
-            // Clear all dropdowns and inputs
+            // Clear all dropdowns
             districtSelect.value = '';
             pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
-            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
-            memberNameTextInput.value = '';
+            memberNameSelect.innerHTML = '<option value="">Select Name</option>';
 
             // Reset form data
             formData.district = '';
             formData.pradeshikaSabha = '';
-            formData.kendraPradhinighiName = '';
-            formData.memberNameText = '';
+            formData.memberName = '';
 
-            if (designation === 'Kendra pradhinidhi') {
-                districtSelect.style.display = 'block';
-                pradeshikaSabhaSelect.style.display = 'block';
+            if (designation === 'EC') {
+                // Show name dropdown, populate with EC members, hide district/PS
+                nameDropdownSection.style.display = 'block';
+                memberNameSelect.disabled = false;
+                populateECMembers();
+            } else if (designation === 'Bharanasamithi') {
+                // Show name dropdown, populate with BS members, hide district/PS
+                nameDropdownSection.style.display = 'block';
+                memberNameSelect.disabled = false;
+                populateBSMembers();
+            } else if (designation === 'Kendra pradhinidhi') {
+                // Show district, PS and name dropdown
+                districtSection.style.display = 'block';
+                pradeshikaSabhaSection.style.display = 'block';
+                nameDropdownSection.style.display = 'block';
                 districtSelect.disabled = false;
                 populateDistrictDropdown();
-                kendraPradhinighiNameSection.style.display = 'block';
-                memberNameTextSection.style.display = 'none';
-            } else if (designation === 'EC' || designation === 'Bharanasamithi') {
-                // Show text input for EC Member and Bharanasamithi
-                memberNameTextSection.style.display = 'block';
-                kendraPradhinighiNameSection.style.display = 'none';
-                districtSelect.style.display = 'none';
-                pradeshikaSabhaSelect.style.display = 'none';
-            } else {
-                // Hide both sections for no selection or other cases
-                memberNameTextSection.style.display = 'none';
-                kendraPradhinighiNameSection.style.display = 'none';
             }
+        }
+
+        function populateECMembers() {
+            const memberNameSelect = document.getElementById('memberName');
+            memberNameSelect.innerHTML = '<option value="">Select Name</option>';
+            ecMemberList.sort((a, b) => a.Name.localeCompare(b.Name, 'en', { sensitivity: 'base' }));
+            ecMemberList.forEach(member => {
+                const option = document.createElement('option');
+                option.value = member.Id;
+                option.textContent = member.Name;
+                memberNameSelect.appendChild(option);
+            });
+        }
+
+        function populateBSMembers() {
+            const memberNameSelect = document.getElementById('memberName');
+            memberNameSelect.innerHTML = '<option value="">Select Name</option>';
+            bsMemberList.sort((a, b) => a.Name.localeCompare(b.Name, 'en', { sensitivity: 'base' }));
+            bsMemberList.forEach(member => {
+                const option = document.createElement('option');
+                option.value = member.Id;
+                option.textContent = member.Name;
+                memberNameSelect.appendChild(option);
+            });
         }
 
         function populateDistrictDropdown() {
@@ -470,15 +491,15 @@
 
         function populatePradeshikaSabhaDropdown(selectedDistrict) {
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
-            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
+            const memberNameSelect = document.getElementById('memberName');
 
             // Clear existing options
             pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
-            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
+            memberNameSelect.innerHTML = '<option value="">Select Name</option>';
 
             if (selectedDistrict && kendraPrathinidhiList[selectedDistrict]) {
                 pradeshikaSabhaSelect.disabled = false;
-                kendraPradhinighiNameSelect.disabled = true;
+                memberNameSelect.disabled = true;
 
                 const pradeshikaSabhas = Object.keys(kendraPrathinidhiList[selectedDistrict]);
                 pradeshikaSabhas.forEach(ps => {
@@ -489,35 +510,59 @@
                 });
             } else {
                 pradeshikaSabhaSelect.disabled = true;
-                kendraPradhinighiNameSelect.disabled = true;
-                // Reset pradeshika sabha and name in form data
+                memberNameSelect.disabled = true;
                 formData.pradeshikaSabha = '';
-                formData.kendraPradhinighiName = '';
+                formData.memberName = '';
             }
         }
 
         function populateKendraPradhinighiNames(selectedDistrict, selectedPS) {
-            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
+            const memberNameSelect = document.getElementById('memberName');
 
             // Clear existing options
-            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
+            memberNameSelect.innerHTML = '<option value="">Select Name</option>';
 
             if (selectedDistrict && selectedPS &&
                 kendraPrathinidhiList[selectedDistrict] &&
                 kendraPrathinidhiList[selectedDistrict][selectedPS]) {
 
-                kendraPradhinighiNameSelect.disabled = false;
+                memberNameSelect.disabled = false;
 
                 const names = kendraPrathinidhiList[selectedDistrict][selectedPS];
+                names.sort((a, b) => a.Name.localeCompare(b.Name, 'en', { sensitivity: 'base' }));
                 names.forEach(person => {
                     const option = document.createElement('option');
                     option.value = person.Id;
                     option.textContent = person.Name;
-                    kendraPradhinighiNameSelect.appendChild(option);
+                    memberNameSelect.appendChild(option);
                 });
             } else {
-                kendraPradhinighiNameSelect.disabled = true;
-                formData.kendraPradhinighiName = '';
+                memberNameSelect.disabled = true;
+                formData.memberName = '';
+            }
+        }
+
+        function updateAttendanceData(attendancePlan) {
+            switch (attendancePlan) {
+                case 'Day 1':
+                    formData.day1Attendance = 'YES';
+                    formData.day2Attendance = 'NO';
+                    break;
+                case 'Day 2':
+                    formData.day1Attendance = 'NO';
+                    formData.day2Attendance = 'YES';
+                    break;
+                case 'Both days':
+                    formData.day1Attendance = 'YES';
+                    formData.day2Attendance = 'YES';
+                    break;
+                case 'Unable to attend':
+                    formData.day1Attendance = 'NO';
+                    formData.day2Attendance = 'NO';
+                    break;
+                default:
+                    formData.day1Attendance = '';
+                    formData.day2Attendance = '';
             }
         }
 
@@ -529,7 +574,11 @@
                     formData[name] = input.checked;
                 } else if (input.type === 'radio') {
                     if (input.checked) {
-                        formData[name] = input.value;
+                        if (name === 'attendancePlan') {
+                            updateAttendanceData(input.value);
+                        } else {
+                            formData[name] = input.value;
+                        }
                     }
                 } else {
                     formData[name] = input.value;
@@ -539,11 +588,6 @@
 
         function validateForm() {
             const errors = {};
-
-            // Basic details validation
-            if (!formData.fullName.trim()) {
-                errors.fullName = 'Full name is required';
-            }
 
             if (!formData.phoneNumber.trim()) {
                 errors.phoneNumber = 'Phone number is required';
@@ -559,6 +603,10 @@
                 errors.designation = 'Please select a designation';
             }
 
+            if (!formData.memberName) {
+                errors.memberName = 'Please select a name';
+            }
+
             // Validate based on designation type
             if (formData.designation === 'Kendra pradhinidhi') {
                 if (!formData.district) {
@@ -568,17 +616,9 @@
                 if (!formData.pradeshikaSabha) {
                     errors.pradeshikaSabha = 'Please select a pradeshika sabha';
                 }
-
-                if (!formData.kendraPradhinighiName) {
-                    errors.kendraPradhinighiName = 'Please select a Kendra Pradhinidhi name';
-                }
-            } else if (formData.designation === 'EC' || formData.designation === 'Bharanasamithi') {
-                if (!formData.memberNameText.trim()) {
-                    errors.memberNameText = 'Name is required';
-                }
             }
 
-            if (!formData.attendancePlan) {
+            if (!formData.day1Attendance || !formData.day2Attendance) {
                 errors.attendancePlan = 'Please select when you plan to attend the sammelanam';
             }
 
@@ -660,35 +700,37 @@
 
             // Reset form data
             formData = {
-                fullName: '',
                 phoneNumber: '',
                 emailAddress: '',
                 designation: '',
                 district: '',
                 pradeshikaSabha: '',
-                memberNameText: '',
-                kendraPradhinighiName: '',
-                attendancePlan: '',
+                memberName: '',
+                day1Attendance: '',
+                day2Attendance: '',
                 additionalComments: '',
                 declarationAccepted: false
             };
 
             // Reset all sections to initial state
+            const districtSection = document.getElementById('districtSection');
+            const pradeshikaSabhaSection = document.getElementById('pradeshikaSabhaSection');
+            const nameDropdownSection = document.getElementById('nameDropdownSection');
             const districtSelect = document.getElementById('district');
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
-            const kendraPradhinighiNameSelect = document.getElementById('kendraPradhinighiName');
-            const kendraPradhinighiNameSection = document.getElementById('kendraPradhinighiNameSection');
-            const memberNameTextSection = document.getElementById('memberNameTextSection');
+            const memberNameSelect = document.getElementById('memberName');
+
+            districtSection.style.display = 'none';
+            pradeshikaSabhaSection.style.display = 'none';
+            nameDropdownSection.style.display = 'none';
 
             districtSelect.disabled = true;
             pradeshikaSabhaSelect.disabled = true;
-            kendraPradhinighiNameSelect.disabled = true;
-            kendraPradhinighiNameSection.style.display = 'none';
-            memberNameTextSection.style.display = 'none';
+            memberNameSelect.disabled = true;
 
             districtSelect.innerHTML = '<option value="">Select District</option>';
             pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
-            kendraPradhinighiNameSelect.innerHTML = '<option value="">Select Name</option>';
+            memberNameSelect.innerHTML = '<option value="">Select Name</option>';
 
             clearAllErrors();
         }
