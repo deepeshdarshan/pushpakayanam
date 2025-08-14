@@ -175,6 +175,14 @@ const pageData = {
       { name: "Follow & Subscribe", href: "#" },
     ],
   },
+  sponsorship: {
+    title: "Sponsorship Tariff",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Announcements", href: "/main/content/announcements.html" },
+      { name: "Sponsorship Tariff", href: "#" },
+    ],
+  },
   ekm_part_form: {
     title: "Participation Form - Ernakulam",
     breadcrumbs: [
