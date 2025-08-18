@@ -197,6 +197,13 @@ const pageData = {
       { name: "Participation form - Delegates", href: "#" },
     ],
   },
+  uniform: {
+    title: "Shirt/Saree Order Form",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Shirt/Saree Order Form", href: "#" },
+    ],
+  },
 };
 
 const metas = [

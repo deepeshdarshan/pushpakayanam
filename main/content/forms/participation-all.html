@@ -263,6 +263,17 @@
                                 </div>
                                 <div class="evt-form-error-message" id="attendancePlan-error"></div>
                             </div>
+
+                            <!-- Food Preferences Section -->
+                            <div class="food-preferences-section" id="foodPreferencesSection" style="display: none;">
+                                <h5 class="mb-3">Please select your food preferences (ഭക്ഷണ മുൻഗണനകൾ തിരഞ്ഞെടുക്കുക)
+                                    <span class="evt-form-required">*</span>
+                                </h5>
+                                <div class="checkbox-group" id="foodCheckboxes">
+                                    <!-- Food preference checkboxes will be populated here dynamically -->
+                                </div>
+                                <div class="evt-form-error-message" id="foodPreferences-error"></div>
+                            </div>
                         </div>
 
                         <!-- Additional Details Section -->
@@ -325,7 +336,15 @@
     </div>
 
     <script type="module">
-        import { districtWisePsMap, kendraPrathinidhiList, bsMemberList, ecMemberList } from '/js/master-data.js';
+        // Mock data - replace with actual import
+        const districtWisePsMap = {};
+        const kendraPrathinidhiList = {
+            'District 1': {
+                'PS 1': [{ Id: 1, Name: 'John Doe' }, { Id: 2, Name: 'Jane Smith' }]
+            }
+        };
+        const bsMemberList = [{ Id: 1, Name: 'BS Member 1' }, { Id: 2, Name: 'BS Member 2' }];
+        const ecMemberList = [{ Id: 1, Name: 'EC Member 1' }, { Id: 2, Name: 'EC Member 2' }];
 
         let formData = {
             phoneNumber: '',
@@ -337,7 +356,14 @@
             day1Attendance: '',
             day2Attendance: '',
             additionalComments: '',
-            declarationAccepted: false
+            declarationAccepted: false,
+            // Food preferences
+            day1LunchRequired: false,
+            day1DinnerRequired: false,
+            noFoodDay1: false,
+            day2BreakfastRequired: false,
+            day2LunchRequired: false,
+            noFoodDay2: false
         };
 
         // Initialize form
@@ -398,6 +424,7 @@
             attendancePlanRadios.forEach(radio => {
                 radio.addEventListener('change', function () {
                     updateAttendanceData(this.value);
+                    populateFoodPreferences(this.value);
                     updateFormData();
                 });
             });
@@ -542,6 +569,74 @@
             }
         }
 
+        function populateFoodPreferences(attendancePlan) {
+            const foodPreferencesSection = document.getElementById('foodPreferencesSection');
+            const foodCheckboxesContainer = document.getElementById('foodCheckboxes');
+
+            // Clear existing checkboxes
+            foodCheckboxesContainer.innerHTML = '';
+
+            // Reset food preferences in form data
+            formData.day1LunchRequired = false;
+            formData.day1DinnerRequired = false;
+            formData.noFoodDay1 = false;
+            formData.day2BreakfastRequired = false;
+            formData.day2LunchRequired = false;
+            formData.noFoodDay2 = false;
+
+            if (attendancePlan === 'Unable to attend') {
+                foodPreferencesSection.style.display = 'none';
+                return;
+            }
+
+            foodPreferencesSection.style.display = 'block';
+
+            const checkboxes = [];
+
+            if (attendancePlan === 'Day 1' || attendancePlan === 'Both days') {
+                checkboxes.push(
+                    { id: 'day1LunchRequired', name: 'day1LunchRequired', text: 'Day 1 lunch required (ഒന്നാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
+                    { id: 'day1DinnerRequired', name: 'day1DinnerRequired', text: 'Day 1 dinner required (ഒന്നാം ദിവസം അത്താഴം വേണം)' },
+                    { id: 'noFoodDay1', name: 'noFoodDay1', text: 'No food required for Day 1 (ഒന്നാം ദിവസം ഭക്ഷണം വേണ്ട)' }
+                );
+            }
+
+            if (attendancePlan === 'Day 2' || attendancePlan === 'Both days') {
+                checkboxes.push(
+                    { id: 'day2BreakfastRequired', name: 'day2BreakfastRequired', text: 'Day 2 breakfast required (രണ്ടാം ദിവസം പ്രാതൽ വേണം)' },
+                    { id: 'day2LunchRequired', name: 'day2LunchRequired', text: 'Day 2 lunch required (രണ്ടാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
+                    { id: 'noFoodDay2', name: 'noFoodDay2', text: 'No food required for Day 2 (രണ്ടാം ദിവസം ഭക്ഷണം വേണ്ട)' }
+                );
+            }
+
+            // Create checkbox elements
+            checkboxes.forEach(checkbox => {
+                const checkboxDiv = document.createElement('div');
+                checkboxDiv.className = 'form-check';
+
+                const input = document.createElement('input');
+                input.className = 'form-check-input';
+                input.type = 'checkbox';
+                input.id = checkbox.id;
+                input.name = checkbox.name;
+
+                const label = document.createElement('label');
+                label.className = 'form-check-label';
+                label.setAttribute('for', checkbox.id);
+                label.textContent = checkbox.text;
+
+                checkboxDiv.appendChild(input);
+                checkboxDiv.appendChild(label);
+                foodCheckboxesContainer.appendChild(checkboxDiv);
+
+                // Add event listener
+                input.addEventListener('change', function () {
+                    clearError('foodPreferences');
+                    updateFormData();
+                });
+            });
+        }
+
         function updateAttendanceData(attendancePlan) {
             switch (attendancePlan) {
                 case 'Day 1':
@@ -620,6 +715,22 @@
 
             if (!formData.day1Attendance || !formData.day2Attendance) {
                 errors.attendancePlan = 'Please select when you plan to attend the sammelanam';
+            }
+
+            // Validate food preferences - at least one should be selected if attending
+            const attendancePlan = document.querySelector('input[name="attendancePlan"]:checked')?.value;
+            if (attendancePlan && attendancePlan !== 'Unable to attend') {
+                const foodPreferencesSelected =
+                    formData.day1LunchRequired ||
+                    formData.day1DinnerRequired ||
+                    formData.noFoodDay1 ||
+                    formData.day2BreakfastRequired ||
+                    formData.day2LunchRequired ||
+                    formData.noFoodDay2;
+
+                if (!foodPreferencesSelected) {
+                    errors.foodPreferences = 'Please select at least one food preference option';
+                }
             }
 
             // Declaration validation
@@ -709,13 +820,20 @@
                 day1Attendance: '',
                 day2Attendance: '',
                 additionalComments: '',
-                declarationAccepted: false
+                declarationAccepted: false,
+                day1LunchRequired: false,
+                day1DinnerRequired: false,
+                noFoodDay1: false,
+                day2BreakfastRequired: false,
+                day2LunchRequired: false,
+                noFoodDay2: false
             };
 
             // Reset all sections to initial state
             const districtSection = document.getElementById('districtSection');
             const pradeshikaSabhaSection = document.getElementById('pradeshikaSabhaSection');
             const nameDropdownSection = document.getElementById('nameDropdownSection');
+            const foodPreferencesSection = document.getElementById('foodPreferencesSection');
             const districtSelect = document.getElementById('district');
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
             const memberNameSelect = document.getElementById('memberName');
@@ -723,6 +841,7 @@
             districtSection.style.display = 'none';
             pradeshikaSabhaSection.style.display = 'none';
             nameDropdownSection.style.display = 'none';
+            foodPreferencesSection.style.display = 'none';
 
             districtSelect.disabled = true;
             pradeshikaSabhaSelect.disabled = true;
