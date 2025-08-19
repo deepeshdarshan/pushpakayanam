@@ -141,11 +141,7 @@
         }
 
         .evt-form-title-container {
-            background: var(--cotton-candy-gradient);
-        }
-
-        .evt-form-logo-container {
-            background: transparent;
+            background: var(--warning-gradient);
         }
 
         .evt-form-container {
@@ -157,22 +153,37 @@
             position: relative;
         }
 
+        .evt-form-logo-container {
+            background: var(--primary-gradient);
+            padding: 20px;
+            position: relative;
+        }
+
         .evt-form-logo-container::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 18px;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 23px;
+            background: var(--indigo-gradient);
             z-index: -1;
+            opacity: 0.8;
         }
 
         .evt-form-logo-container img {
             max-height: 230px;
             width: auto;
-            filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.3));
+            filter: drop-shadow(0 4px 20px rgba(0, 123, 255, 0.4));
+            transition: var(--transition);
         }
+
+        .evt-form-logo-container:hover img {
+            transform: scale(1.02);
+            filter: drop-shadow(0 8px 30px rgba(0, 123, 255, 0.5));
+        }
+
 
         @keyframes spin {
             0% {
@@ -202,7 +213,7 @@
                 <img src="/img/logo-detailed.png" alt="Organization Logo" class="img-fluid">
             </div>
             <div class="evt-form-container evt-form-title-container my-4 pt-4">
-                <h2 class="text-primary"><i class="fas fa-tshirt me-2 text-light"></i>Shirt / Saree Order Form</h2>
+                <h2 class="text-white"><i class="fas fa-tshirt me-2 text-white"></i>Shirt / Saree Order Form</h2>
             </div>
             <!-- Instructions -->
             <div class="instructions">
@@ -298,12 +309,11 @@
                 <div class="mb-3">
                     <label for="paymentRef" class="form-label mandatory">Payment Reference Number (ട്രാൻസാക്ഷൻ
                         നമ്പർ)</label>
-                    <input type="text" class="form-control" id="paymentRef" name="paymentRef" required>
                     <div class="form-text">Enter the transaction reference number after making payment
-                        <br />
-                        വസ്ത്രത്തിന്റെ പണം അയച്ചതിനു ശേഷം അതിന്റെ ട്രാൻസാക്ഷൻ നമ്പർ ഇവിടെ ചേർക്കൂ
-                    </div>
+                        (പണം അയച്ചതിനു ശേഷം അതിന്റെ ട്രാൻസാക്ഷൻ നമ്പർ ഇവിടെ ചേർക്കുക)</div>
+                    <input type="text" class="form-control" id="paymentRef" name="paymentRef" required>
                     <div class="invalid-feedback"></div>
+
                 </div>
 
                 <!-- Submit Button -->
