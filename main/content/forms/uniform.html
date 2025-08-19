@@ -305,6 +305,13 @@
                     <input type="text" class="form-control price-display" id="price" name="price" readonly>
                 </div>
 
+                <!-- Payment Date Field -->
+                <div class="mb-3">
+                    <label for="paymentDate" class="form-label mandatory">Payment Date (പേയ്മെന്റ് തീയതി)</label>
+                    <input type="date" class="form-control" id="paymentDate" name="paymentDate" required>
+                    <div class="invalid-feedback"></div>
+                </div>
+
                 <!-- Payment Reference Field -->
                 <div class="mb-3">
                     <label for="paymentRef" class="form-label mandatory">Payment Reference Number (ട്രാൻസാക്ഷൻ
@@ -330,10 +337,13 @@
     <script type="module">
         import { districtWisePsMap } from "/js/master-data.js";
 
+        let previousPaymentDate = ''; // Store the previous date value
+
         document.addEventListener('DOMContentLoaded', function () {
             init("uniform");
             populateDistricts();
             setupEventListeners();
+            initializePaymentDate();
         });
 
         function getFormattedTimestamp() {
@@ -345,6 +355,53 @@
             const minutes = String(d.getMinutes()).padStart(2, '0');
             const seconds = String(d.getSeconds()).padStart(2, '0');
             return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+        }
+
+        // Initialize payment date field
+        function initializePaymentDate() {
+            const paymentDateInput = document.getElementById('paymentDate');
+
+            // Keep it blank by default
+            paymentDateInput.value = '';
+            previousPaymentDate = '';
+
+            // Prevent keyboard input
+            paymentDateInput.addEventListener('keydown', function (e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // Prevent paste
+            paymentDateInput.addEventListener('paste', function (e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // Monitor changes and prevent deletion once set
+            paymentDateInput.addEventListener('change', function (e) {
+                if (this.value) {
+                    // Date has been set, store it
+                    previousPaymentDate = this.value;
+                } else if (previousPaymentDate) {
+                    // User tried to clear the date, restore previous value
+                    this.value = previousPaymentDate;
+                    // Show a message to user
+                    const feedback = this.nextElementSibling;
+                    feedback.textContent = 'Payment date cannot be removed once set.';
+                    this.classList.add('is-invalid');
+                    setTimeout(() => {
+                        feedback.textContent = '';
+                        this.classList.remove('is-invalid');
+                    }, 3000);
+                }
+            });
+
+            // Also handle the clear button in some browsers
+            paymentDateInput.addEventListener('input', function (e) {
+                if (!this.value && previousPaymentDate) {
+                    this.value = previousPaymentDate;
+                }
+            });
         }
 
         // Populate district dropdown
@@ -546,6 +603,13 @@
                         }
                         break;
 
+                    case 'paymentDate':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Payment date is required.';
+                        }
+                        break;
+
                     case 'paymentRef':
                         if (!value) {
                             isValid = false;
@@ -610,6 +674,7 @@
                 pradeshikaSabha: formData.get('pradeshikaSabha') || '',
                 shirtSize: formData.get('shirtSize') || '',
                 price: document.getElementById('price').value || '',
+                paymentDate: formData.get('paymentDate') || '',
                 paymentRef: formData.get('paymentRef') || ''
             };
 
@@ -646,6 +711,7 @@
                 document.getElementById('pradeshikaSabha').innerHTML = '<option value="">Select Pradeshika Sabha</option>';
                 document.getElementById('shirtSizeContainer').style.display = 'none';
                 document.getElementById('price').value = '';
+                previousPaymentDate = ''; // Reset the stored payment date
 
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('btn-loading');
@@ -676,6 +742,7 @@
                         document.getElementById('pradeshikaSabha').innerHTML = '<option value="">Select Pradeshika Sabha</option>';
                         document.getElementById('shirtSizeContainer').style.display = 'none';
                         document.getElementById('price').value = '';
+                        previousPaymentDate = ''; // Reset the stored payment date
                     } else {
                         showMessage('Error: ' + (data.message || 'Unknown error occurred'), 'error');
                     }
