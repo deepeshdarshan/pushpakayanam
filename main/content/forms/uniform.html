@@ -135,9 +135,9 @@
         }
 
         .price-display {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #28a745;
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            color: #28a745 !important;
         }
 
         .evt-form-title-container {
@@ -145,7 +145,7 @@
         }
 
         .evt-form-logo-container {
-            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+            background: transparent;
         }
 
         .evt-form-container {
@@ -299,8 +299,9 @@
                     <label for="paymentRef" class="form-label mandatory">Payment Reference Number (ട്രാൻസാക്ഷൻ
                         നമ്പർ)</label>
                     <input type="text" class="form-control" id="paymentRef" name="paymentRef" required>
-                    <div class="form-text">Enter the transaction reference number after making payment</div>
-                    <div class="form-text">വസ്ത്രത്തിന്റെ പണം അയച്ചതിനു ശേഷം അതിന്റെ ട്രാൻസാക്ഷൻ നമ്പർ ഇവിടെ ചേർക്കൂ
+                    <div class="form-text">Enter the transaction reference number after making payment
+                        <br />
+                        വസ്ത്രത്തിന്റെ പണം അയച്ചതിനു ശേഷം അതിന്റെ ട്രാൻസാക്ഷൻ നമ്പർ ഇവിടെ ചേർക്കൂ
                     </div>
                     <div class="invalid-feedback"></div>
                 </div>
@@ -470,86 +471,86 @@
             // Reset validation state
             field.classList.remove('is-invalid');
             let feedback = field.nextElementSibling;
-
-            // Handle radio buttons
-            if (field.type === 'radio') {
-                const genderError = document.getElementById('genderError');
-                const selectedGender = document.querySelector('input[name="gender"]:checked');
-                if (!selectedGender) {
-                    isValid = false;
-                    errorMessage = 'Gender selection is required.';
-                    genderError.textContent = errorMessage;
-                    genderError.style.display = 'block';
-                    field.classList.add('is-invalid');
-                } else {
-                    genderError.textContent = '';
-                    genderError.style.display = 'none';
-                }
-                return isValid;
-            }
-
-            switch (fieldName) {
-                case 'name':
-                    if (!value) {
-                        isValid = false;
-                        errorMessage = 'Name is required.';
-                    }
-                    break;
-
-                case 'phone':
-                    if (!value) {
-                        isValid = false;
-                        errorMessage = 'Phone number is required.';
-                    } else if (!/^\d{10}$/.test(value)) {
-                        isValid = false;
-                        errorMessage = 'Phone number must be exactly 10 digits.';
-                    }
-                    break;
-
-                case 'email':
-                    if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                        isValid = false;
-                        errorMessage = 'Please enter a valid email address.';
-                    }
-                    break;
-
-                case 'district':
-                    if (!value) {
-                        isValid = false;
-                        errorMessage = 'District is required.';
-                    }
-                    break;
-
-                case 'pradeshikaSabha':
-                    if (!value) {
-                        isValid = false;
-                        errorMessage = 'Pradeshika Sabha is required.';
-                    }
-                    break;
-
-                case 'shirtSize':
+            if (feedback) {
+                // Handle radio buttons
+                if (field.type === 'radio') {
+                    const genderError = document.getElementById('genderError');
                     const selectedGender = document.querySelector('input[name="gender"]:checked');
-                    if (selectedGender && selectedGender.value === 'male' && !value) {
+                    if (!selectedGender) {
                         isValid = false;
-                        errorMessage = 'Shirt size is required for male customers.';
+                        errorMessage = 'Gender selection is required.';
+                        genderError.textContent = errorMessage;
+                        genderError.style.display = 'block';
+                        field.classList.add('is-invalid');
+                    } else {
+                        genderError.textContent = '';
+                        genderError.style.display = 'none';
                     }
-                    break;
+                    return isValid;
+                }
 
-                case 'paymentRef':
-                    if (!value) {
-                        isValid = false;
-                        errorMessage = 'Payment reference number is required.';
-                    }
-                    break;
+                switch (fieldName) {
+                    case 'name':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Name is required.';
+                        }
+                        break;
+
+                    case 'phone':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Phone number is required.';
+                        } else if (!/^\d{10}$/.test(value)) {
+                            isValid = false;
+                            errorMessage = 'Phone number must be exactly 10 digits.';
+                        }
+                        break;
+
+                    case 'email':
+                        if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid email address.';
+                        }
+                        break;
+
+                    case 'district':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'District is required.';
+                        }
+                        break;
+
+                    case 'pradeshikaSabha':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Pradeshika Sabha is required.';
+                        }
+                        break;
+
+                    case 'shirtSize':
+                        const selectedGender = document.querySelector('input[name="gender"]:checked');
+                        if (selectedGender && selectedGender.value === 'male' && !value) {
+                            isValid = false;
+                            errorMessage = 'Shirt size is required for male customers.';
+                        }
+                        break;
+
+                    case 'paymentRef':
+                        if (!value) {
+                            isValid = false;
+                            errorMessage = 'Payment reference number is required.';
+                        }
+                        break;
+                }
+
+                if (!isValid) {
+                    field.classList.add('is-invalid');
+                    feedback.textContent = errorMessage;
+                } else {
+                    feedback.textContent = '';
+                }
             }
-
-            if (!isValid) {
-                field.classList.add('is-invalid');
-                feedback.textContent = errorMessage;
-            } else {
-                feedback.textContent = '';
-            }
-
             return isValid;
         }
 
@@ -642,8 +643,7 @@
             }, 2000);
 
             // For production, replace the setTimeout with actual fetch call:
-            /*
-            const scriptUrl = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbxJQLWWNnlXn3cPuJKCBIxjkmqfX5BNc6tYTENQnD_CljsXpk3eHBAo37rnk7M4wzPZRw/exec';
             fetch(scriptUrl, {
                 method: 'POST',
                 headers: {
@@ -651,35 +651,35 @@
                 },
                 body: JSON.stringify(jsonData)
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Server response:', data);
-                if (data.status === 'success') {
-                    showMessage('Thank you! Your order has been placed successfully. We will contact you shortly.', 'success');
-                    document.getElementById('orderForm').reset();
-                    document.getElementById('pradeshikaSabha').disabled = true;
-                    document.getElementById('pradeshikaSabha').innerHTML = '<option value="">Select Pradeshika Sabha</option>';
-                    document.getElementById('shirtSizeContainer').style.display = 'none';
-                    document.getElementById('price').value = '';
-                } else {
-                    showMessage('Error: ' + (data.message || 'Unknown error occurred'), 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showMessage('Error submitting order: ' + error.message, 'error');
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('btn-loading');
-                submitBtnText.textContent = 'Place Order';
-            });
-            */
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Server response:', data);
+                    if (data.status === 'success') {
+                        showMessage('Thank you! Your order has been placed successfully. We will contact you shortly.', 'success');
+                        document.getElementById('orderForm').reset();
+                        document.getElementById('pradeshikaSabha').disabled = true;
+                        document.getElementById('pradeshikaSabha').innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+                        document.getElementById('shirtSizeContainer').style.display = 'none';
+                        document.getElementById('price').value = '';
+                    } else {
+                        showMessage('Error: ' + (data.message || 'Unknown error occurred'), 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage('Error submitting order: ' + error.message, 'error');
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtnText.textContent = 'Place Order';
+                });
+
         }
     </script>
 
