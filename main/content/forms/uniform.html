@@ -299,6 +299,17 @@
                     <div class="invalid-feedback"></div>
                 </div>
 
+                <!-- Sleeve Type Field (Hidden by default) -->
+                <div class="mb-3" id="sleeveTypeContainer" style="display: none;">
+                    <label for="sleeveType" class="form-label mandatory">Sleeve Type (സ്ലീവ് ടൈപ്പ്)</label>
+                    <select class="form-select" id="sleeveType" name="sleeveType">
+                        <option value="">Select Sleeve Type</option>
+                        <option value="full">Full Sleeve (ഫുൾ സ്ലീവ്)</option>
+                        <option value="half">Half Sleeve (ഹാഫ് സ്ലീവ്)</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+
                 <!-- Price Field -->
                 <div class="mb-3">
                     <label for="price" class="form-label">Price (വില)</label>
@@ -474,29 +485,41 @@
         // Handle gender selection
         function handleGenderChange(gender) {
             const shirtSizeContainer = document.getElementById('shirtSizeContainer');
+            const sleeveTypeContainer = document.getElementById('sleeveTypeContainer');
             const shirtSizeSelect = document.getElementById('shirtSize');
+            const sleeveTypeSelect = document.getElementById('sleeveType');
             const priceInput = document.getElementById('price');
 
             if (gender === 'male') {
                 shirtSizeContainer.style.display = 'block';
+                sleeveTypeContainer.style.display = 'block';
                 shirtSizeSelect.required = true;
+                sleeveTypeSelect.required = true;
                 priceInput.value = '₹460 (Shirt)';
             } else if (gender === 'female') {
                 shirtSizeContainer.style.display = 'none';
+                sleeveTypeContainer.style.display = 'none';
                 shirtSizeSelect.required = false;
+                sleeveTypeSelect.required = false;
                 shirtSizeSelect.value = '';
+                sleeveTypeSelect.value = '';
                 priceInput.value = '₹490 (Saree)';
             } else {
                 shirtSizeContainer.style.display = 'none';
+                sleeveTypeContainer.style.display = 'none';
                 shirtSizeSelect.required = false;
+                sleeveTypeSelect.required = false;
                 shirtSizeSelect.value = '';
+                sleeveTypeSelect.value = '';
                 priceInput.value = '';
             }
 
-            // Clear any validation errors for shirt size when hiding
+            // Clear any validation errors when hiding
             if (gender !== 'male') {
                 shirtSizeSelect.classList.remove('is-invalid');
                 shirtSizeSelect.nextElementSibling.textContent = '';
+                sleeveTypeSelect.classList.remove('is-invalid');
+                sleeveTypeSelect.nextElementSibling.textContent = '';
             }
         }
 
@@ -603,6 +626,14 @@
                         }
                         break;
 
+                    case 'sleeveType':
+                        const selectedGenderForSleeve = document.querySelector('input[name="gender"]:checked');
+                        if (selectedGenderForSleeve && selectedGenderForSleeve.value === 'male' && !value) {
+                            isValid = false;
+                            errorMessage = 'Sleeve type is required for male customers.';
+                        }
+                        break;
+
                     case 'paymentDate':
                         if (!value) {
                             isValid = false;
@@ -673,6 +704,7 @@
                 district: formData.get('district') || '',
                 pradeshikaSabha: formData.get('pradeshikaSabha') || '',
                 shirtSize: formData.get('shirtSize') || '',
+                sleeveType: formData.get('sleeveType') || '',
                 price: document.getElementById('price').value || '',
                 paymentDate: formData.get('paymentDate') || '',
                 paymentRef: formData.get('paymentRef') || ''
@@ -702,23 +734,7 @@
             submitBtn.classList.add('btn-loading');
             submitBtnText.textContent = 'Processing Order...';
 
-            // Simulate server call (replace with your actual endpoint)
-            setTimeout(() => {
-                console.log('Order data:', jsonData);
-                showMessage('Thank you! Your order has been placed successfully. We will contact you shortly.', 'success');
-                document.getElementById('orderForm').reset();
-                document.getElementById('pradeshikaSabha').disabled = true;
-                document.getElementById('pradeshikaSabha').innerHTML = '<option value="">Select Pradeshika Sabha</option>';
-                document.getElementById('shirtSizeContainer').style.display = 'none';
-                document.getElementById('price').value = '';
-                previousPaymentDate = ''; // Reset the stored payment date
-
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('btn-loading');
-                submitBtnText.textContent = 'Place Order';
-            }, 2000);
-
-            // For production, replace the setTimeout with actual fetch call:
+            // For production, use actual fetch call:
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbxJQLWWNnlXn3cPuJKCBIxjkmqfX5BNc6tYTENQnD_CljsXpk3eHBAo37rnk7M4wzPZRw/exec';
             fetch(scriptUrl, {
                 method: 'POST',
@@ -741,6 +757,7 @@
                         document.getElementById('pradeshikaSabha').disabled = true;
                         document.getElementById('pradeshikaSabha').innerHTML = '<option value="">Select Pradeshika Sabha</option>';
                         document.getElementById('shirtSizeContainer').style.display = 'none';
+                        document.getElementById('sleeveTypeContainer').style.display = 'none';
                         document.getElementById('price').value = '';
                         previousPaymentDate = ''; // Reset the stored payment date
                     } else {
@@ -756,7 +773,6 @@
                     submitBtn.classList.remove('btn-loading');
                     submitBtnText.textContent = 'Place Order';
                 });
-
         }
     </script>
 
