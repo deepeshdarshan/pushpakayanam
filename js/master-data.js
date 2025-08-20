@@ -893,3 +893,62 @@ export const kendraPrathinidhiList = {
     ],
   },
 };
+
+export const exOfficioMap = {
+  Thiruvanthapuram: {
+    president: "V S RAJU",
+    secretary: "K M SREEDENI KUTTY",
+  },
+  Kollam: {
+    president: "C VASUDEVN NAMBIAR",
+    secretary: "G MADHUSOODANAN UNNI",
+  },
+  Pathanamthitta: {
+    president: "ARUN DAS M P",
+    secretary: "REMA SARMA",
+  },
+  Kottayam: {
+    president: "K M NARAYNAN UNNI",
+    secretary: "K S KRISHN KUMAR",
+  },
+  Idukki: {
+    president: "SINDHU VASUDEVAN",
+    secretary: "M S NEELAKANTAN UNNI",
+  },
+  Alleppy: {
+    president: "PRADEEP K S",
+    secretary: "AJI R",
+  },
+  Ernakulam: {
+    president: "R S NAMBIAR",
+    secretary: "VASUDEVAN NARAYANAN",
+  },
+  Thrissur: {
+    president: "P R RAMACHANDRAN",
+    secretary: "Dr. K R HARINARAYANAN",
+  },
+  Palakkad: {
+    president: "K BALASUBRMANAN NAMBISAN",
+    secretary: "T R D NAMBISAN",
+  },
+  Malappuram: {
+    president: "K M PARAMESWARAN NAMBISAN",
+    secretary: "PREMLATHA UNNIKRISHNAN",
+  },
+  Kozhikode: {
+    president: "PADMANABHA NAMBISAN",
+    secretary: "V D DINESH KUMAR",
+  },
+  Kannur: {
+    president: "K M RAGHUNANTHAN NAMBISAN",
+    secretary: "T M SUREASH BABU",
+  },
+  Kasargod: {
+    president: "N M NARAYANAN NAMBISAN",
+    secretary: "E RAJESH",
+  },
+  Wayanad: {
+    president: "P SIVARAMAN NAMBISAN",
+    secretary: "T VASUDEVN NAMBISAN",
+  },
+};

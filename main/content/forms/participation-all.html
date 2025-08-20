@@ -175,6 +175,12 @@
                                         <label class="form-check-label" for="designationKendraPradhinidhi">Kendra
                                             pradhinidhi (കേന്ദ്ര പ്രധിനിധി) </label>
                                     </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="designation"
+                                            id="designationExOfficio" value="Ex Officio">
+                                        <label class="form-check-label" for="designationExOfficio">Ex Officio
+                                            (എക്സ് ഒഫീഷ്യോ)</label>
+                                    </div>
                                 </div>
                                 <div class="evt-form-error-message" id="designation-error"></div>
                             </div>
@@ -198,6 +204,28 @@
                                     <option value="">Select Pradeshika Sabha</option>
                                 </select>
                                 <div class="evt-form-error-message" id="pradeshikaSabha-error"></div>
+                            </div>
+
+                            <!-- Ex Officio District (only for Ex Officio) -->
+                            <div class="mb-3" id="exOfficioDistrictSection" style="display: none;">
+                                <label for="exOfficioDistrict" class="form-label">
+                                    District (ജില്ല) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="exOfficioDistrict" name="exOfficioDistrict" disabled>
+                                    <option value="">Select District</option>
+                                </select>
+                                <div class="evt-form-error-message" id="exOfficioDistrict-error"></div>
+                            </div>
+
+                            <!-- Ex Officio Position (only for Ex Officio) -->
+                            <div class="mb-3" id="exOfficioPositionSection" style="display: none;">
+                                <label for="exOfficioPosition" class="form-label">
+                                    Name (Designation) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="exOfficioPosition" name="exOfficioPosition" disabled>
+                                    <option value="">Select Name (Designation)</option>
+                                </select>
+                                <div class="evt-form-error-message" id="exOfficioPosition-error"></div>
                             </div>
 
                             <!-- Name Dropdown (for all designations) -->
@@ -336,15 +364,8 @@
     </div>
 
     <script type="module">
-        // Mock data - replace with actual import
-        const districtWisePsMap = {};
-        const kendraPrathinidhiList = {
-            'District 1': {
-                'PS 1': [{ Id: 1, Name: 'John Doe' }, { Id: 2, Name: 'Jane Smith' }]
-            }
-        };
-        const bsMemberList = [{ Id: 1, Name: 'BS Member 1' }, { Id: 2, Name: 'BS Member 2' }];
-        const ecMemberList = [{ Id: 1, Name: 'EC Member 1' }, { Id: 2, Name: 'EC Member 2' }];
+        // Import the ex officio data
+        import { ecMemberList, bsMemberList, kendraPrathinidhiList, exOfficioMap, districtWisePsMap } from "/js/master-data.js";
 
         let formData = {
             phoneNumber: '',
@@ -353,6 +374,8 @@
             district: '',
             pradeshikaSabha: '',
             memberName: '',
+            exOfficioDistrict: '',
+            exOfficioPosition: '',
             day1Attendance: '',
             day2Attendance: '',
             additionalComments: '',
@@ -407,6 +430,14 @@
                 updateFormData();
             });
 
+            // Ex Officio District change event
+            document.getElementById('exOfficioDistrict').addEventListener('change', function () {
+                const selectedDistrict = this.value;
+                populateExOfficioPositions(selectedDistrict);
+                clearError('exOfficioPosition');
+                updateFormData();
+            });
+
             // Pradeshika Sabha change event
             document.getElementById('pradeshikaSabha').addEventListener('change', function () {
                 const selectedDistrict = document.getElementById('district').value;
@@ -436,28 +467,41 @@
             const districtSection = document.getElementById('districtSection');
             const pradeshikaSabhaSection = document.getElementById('pradeshikaSabhaSection');
             const nameDropdownSection = document.getElementById('nameDropdownSection');
+            const exOfficioDistrictSection = document.getElementById('exOfficioDistrictSection');
+            const exOfficioPositionSection = document.getElementById('exOfficioPositionSection');
+
             const districtSelect = document.getElementById('district');
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
             const memberNameSelect = document.getElementById('memberName');
+            const exOfficioDistrictSelect = document.getElementById('exOfficioDistrict');
+            const exOfficioPositionSelect = document.getElementById('exOfficioPosition');
 
             // Reset all sections first
             districtSection.style.display = 'none';
             pradeshikaSabhaSection.style.display = 'none';
             nameDropdownSection.style.display = 'none';
+            exOfficioDistrictSection.style.display = 'none';
+            exOfficioPositionSection.style.display = 'none';
 
             districtSelect.disabled = true;
             pradeshikaSabhaSelect.disabled = true;
             memberNameSelect.disabled = true;
+            exOfficioDistrictSelect.disabled = true;
+            exOfficioPositionSelect.disabled = true;
 
             // Clear all dropdowns
             districtSelect.value = '';
             pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
             memberNameSelect.innerHTML = '<option value="">Select Name</option>';
+            exOfficioDistrictSelect.value = '';
+            exOfficioPositionSelect.innerHTML = '<option value="">Select Name (Designation)</option>';
 
             // Reset form data
             formData.district = '';
             formData.pradeshikaSabha = '';
             formData.memberName = '';
+            formData.exOfficioDistrict = '';
+            formData.exOfficioPosition = '';
 
             if (designation === 'EC') {
                 // Show name dropdown, populate with EC members, hide district/PS
@@ -476,6 +520,51 @@
                 nameDropdownSection.style.display = 'block';
                 districtSelect.disabled = false;
                 populateDistrictDropdown();
+            } else if (designation === 'Ex Officio') {
+                // Show ex officio district and position dropdowns
+                exOfficioDistrictSection.style.display = 'block';
+                exOfficioPositionSection.style.display = 'block';
+                exOfficioDistrictSelect.disabled = false;
+                populateExOfficioDistricts();
+            }
+        }
+
+        function populateExOfficioDistricts() {
+            const exOfficioDistrictSelect = document.getElementById('exOfficioDistrict');
+            exOfficioDistrictSelect.innerHTML = '<option value="">Select District</option>';
+
+            const districts = Object.keys(exOfficioMap).sort();
+            districts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                exOfficioDistrictSelect.appendChild(option);
+            });
+        }
+
+        function populateExOfficioPositions(selectedDistrict) {
+            const exOfficioPositionSelect = document.getElementById('exOfficioPosition');
+            exOfficioPositionSelect.innerHTML = '<option value="">Select Name (Designation)</option>';
+
+            if (selectedDistrict && exOfficioMap[selectedDistrict]) {
+                exOfficioPositionSelect.disabled = false;
+
+                const districtData = exOfficioMap[selectedDistrict];
+
+                // Add President option
+                const presidentOption = document.createElement('option');
+                presidentOption.value = `${districtData.president} (President)`;
+                presidentOption.textContent = `${districtData.president} (President)`;
+                exOfficioPositionSelect.appendChild(presidentOption);
+
+                // Add Secretary option
+                const secretaryOption = document.createElement('option');
+                secretaryOption.value = `${districtData.secretary} (Secretary)`;
+                secretaryOption.textContent = `${districtData.secretary} (Secretary)`;
+                exOfficioPositionSelect.appendChild(secretaryOption);
+            } else {
+                exOfficioPositionSelect.disabled = true;
+                formData.exOfficioPosition = '';
             }
         }
 
@@ -591,49 +680,72 @@
 
             foodPreferencesSection.style.display = 'block';
 
-            const checkboxes = [];
-
+            // Add Day 1 options
             if (attendancePlan === 'Day 1' || attendancePlan === 'Both days') {
-                checkboxes.push(
+                // Add Day 1 heading for Both days
+                if (attendancePlan === 'Both days') {
+                    const day1Heading = document.createElement('h6');
+                    day1Heading.className = 'mb-2 mt-2 text-dark';
+                    day1Heading.textContent = 'Day 1 Food Preferences:';
+                    foodCheckboxesContainer.appendChild(day1Heading);
+                }
+
+                const day1Checkboxes = [
                     { id: 'day1LunchRequired', name: 'day1LunchRequired', text: 'Day 1 lunch required (ഒന്നാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
                     { id: 'day1DinnerRequired', name: 'day1DinnerRequired', text: 'Day 1 dinner required (ഒന്നാം ദിവസം അത്താഴം വേണം)' },
                     { id: 'noFoodDay1', name: 'noFoodDay1', text: 'No food required for Day 1 (ഒന്നാം ദിവസം ഭക്ഷണം വേണ്ട)' }
-                );
+                ];
+
+                day1Checkboxes.forEach(checkbox => {
+                    createCheckbox(checkbox, foodCheckboxesContainer);
+                });
             }
 
+            // Add Day 2 options
             if (attendancePlan === 'Day 2' || attendancePlan === 'Both days') {
-                checkboxes.push(
+                // Add Day 2 heading for Both days
+                if (attendancePlan === 'Both days') {
+                    const day2Heading = document.createElement('h6');
+                    day2Heading.className = 'mb-2 mt-3 text-dark';
+                    day2Heading.textContent = 'Day 2 Food Preferences:';
+                    foodCheckboxesContainer.appendChild(day2Heading);
+                }
+
+                const day2Checkboxes = [
                     { id: 'day2BreakfastRequired', name: 'day2BreakfastRequired', text: 'Day 2 breakfast required (രണ്ടാം ദിവസം പ്രാതൽ വേണം)' },
                     { id: 'day2LunchRequired', name: 'day2LunchRequired', text: 'Day 2 lunch required (രണ്ടാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
                     { id: 'noFoodDay2', name: 'noFoodDay2', text: 'No food required for Day 2 (രണ്ടാം ദിവസം ഭക്ഷണം വേണ്ട)' }
-                );
-            }
+                ];
 
-            // Create checkbox elements
-            checkboxes.forEach(checkbox => {
-                const checkboxDiv = document.createElement('div');
-                checkboxDiv.className = 'form-check';
-
-                const input = document.createElement('input');
-                input.className = 'form-check-input';
-                input.type = 'checkbox';
-                input.id = checkbox.id;
-                input.name = checkbox.name;
-
-                const label = document.createElement('label');
-                label.className = 'form-check-label';
-                label.setAttribute('for', checkbox.id);
-                label.textContent = checkbox.text;
-
-                checkboxDiv.appendChild(input);
-                checkboxDiv.appendChild(label);
-                foodCheckboxesContainer.appendChild(checkboxDiv);
-
-                // Add event listener
-                input.addEventListener('change', function () {
-                    clearError('foodPreferences');
-                    updateFormData();
+                day2Checkboxes.forEach(checkbox => {
+                    createCheckbox(checkbox, foodCheckboxesContainer);
                 });
+            }
+        }
+
+        function createCheckbox(checkbox, container) {
+            const checkboxDiv = document.createElement('div');
+            checkboxDiv.className = 'form-check';
+
+            const input = document.createElement('input');
+            input.className = 'form-check-input';
+            input.type = 'checkbox';
+            input.id = checkbox.id;
+            input.name = checkbox.name;
+
+            const label = document.createElement('label');
+            label.className = 'form-check-label';
+            label.setAttribute('for', checkbox.id);
+            label.textContent = checkbox.text;
+
+            checkboxDiv.appendChild(input);
+            checkboxDiv.appendChild(label);
+            container.appendChild(checkboxDiv);
+
+            // Add event listener
+            input.addEventListener('change', function () {
+                clearError('foodPreferences');
+                updateFormData();
             });
         }
 
@@ -698,18 +810,27 @@
                 errors.designation = 'Please select a designation';
             }
 
-            if (!formData.memberName) {
-                errors.memberName = 'Please select a name';
-            }
-
             // Validate based on designation type
-            if (formData.designation === 'Kendra pradhinidhi') {
+            if (formData.designation === 'Ex Officio') {
+                if (!formData.exOfficioDistrict) {
+                    errors.exOfficioDistrict = 'Please select a district';
+                }
+                if (!formData.exOfficioPosition) {
+                    errors.exOfficioPosition = 'Please select a name (designation)';
+                }
+            } else if (formData.designation === 'Kendra pradhinidhi') {
                 if (!formData.district) {
                     errors.district = 'Please select a district';
                 }
-
                 if (!formData.pradeshikaSabha) {
                     errors.pradeshikaSabha = 'Please select a pradeshika sabha';
+                }
+                if (!formData.memberName) {
+                    errors.memberName = 'Please select a name';
+                }
+            } else if (formData.designation === 'EC' || formData.designation === 'Bharanasamithi') {
+                if (!formData.memberName) {
+                    errors.memberName = 'Please select a name';
                 }
             }
 
@@ -717,19 +838,42 @@
                 errors.attendancePlan = 'Please select when you plan to attend the sammelanam';
             }
 
-            // Validate food preferences - at least one should be selected if attending
+            // Enhanced food preferences validation
             const attendancePlan = document.querySelector('input[name="attendancePlan"]:checked')?.value;
             if (attendancePlan && attendancePlan !== 'Unable to attend') {
-                const foodPreferencesSelected =
-                    formData.day1LunchRequired ||
-                    formData.day1DinnerRequired ||
-                    formData.noFoodDay1 ||
-                    formData.day2BreakfastRequired ||
-                    formData.day2LunchRequired ||
-                    formData.noFoodDay2;
+                if (attendancePlan === 'Both days') {
+                    // Separate validation for Day 1 and Day 2
+                    const day1FoodSelected = formData.day1LunchRequired ||
+                        formData.day1DinnerRequired ||
+                        formData.noFoodDay1;
 
-                if (!foodPreferencesSelected) {
-                    errors.foodPreferences = 'Please select at least one food preference option';
+                    const day2FoodSelected = formData.day2BreakfastRequired ||
+                        formData.day2LunchRequired ||
+                        formData.noFoodDay2;
+
+                    if (!day1FoodSelected) {
+                        errors.foodPreferences = 'Please select at least one food preference option for Day 1';
+                    } else if (!day2FoodSelected) {
+                        errors.foodPreferences = 'Please select at least one food preference option for Day 2';
+                    }
+                } else if (attendancePlan === 'Day 1') {
+                    // Validation for Day 1 only
+                    const day1FoodSelected = formData.day1LunchRequired ||
+                        formData.day1DinnerRequired ||
+                        formData.noFoodDay1;
+
+                    if (!day1FoodSelected) {
+                        errors.foodPreferences = 'Please select at least one food preference option for Day 1';
+                    }
+                } else if (attendancePlan === 'Day 2') {
+                    // Validation for Day 2 only
+                    const day2FoodSelected = formData.day2BreakfastRequired ||
+                        formData.day2LunchRequired ||
+                        formData.noFoodDay2;
+
+                    if (!day2FoodSelected) {
+                        errors.foodPreferences = 'Please select at least one food preference option for Day 2';
+                    }
                 }
             }
 
@@ -817,6 +961,8 @@
                 district: '',
                 pradeshikaSabha: '',
                 memberName: '',
+                exOfficioDistrict: '',
+                exOfficioPosition: '',
                 day1Attendance: '',
                 day2Attendance: '',
                 additionalComments: '',
@@ -833,23 +979,33 @@
             const districtSection = document.getElementById('districtSection');
             const pradeshikaSabhaSection = document.getElementById('pradeshikaSabhaSection');
             const nameDropdownSection = document.getElementById('nameDropdownSection');
+            const exOfficioDistrictSection = document.getElementById('exOfficioDistrictSection');
+            const exOfficioPositionSection = document.getElementById('exOfficioPositionSection');
             const foodPreferencesSection = document.getElementById('foodPreferencesSection');
             const districtSelect = document.getElementById('district');
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
             const memberNameSelect = document.getElementById('memberName');
+            const exOfficioDistrictSelect = document.getElementById('exOfficioDistrict');
+            const exOfficioPositionSelect = document.getElementById('exOfficioPosition');
 
             districtSection.style.display = 'none';
             pradeshikaSabhaSection.style.display = 'none';
             nameDropdownSection.style.display = 'none';
+            exOfficioDistrictSection.style.display = 'none';
+            exOfficioPositionSection.style.display = 'none';
             foodPreferencesSection.style.display = 'none';
 
             districtSelect.disabled = true;
             pradeshikaSabhaSelect.disabled = true;
             memberNameSelect.disabled = true;
+            exOfficioDistrictSelect.disabled = true;
+            exOfficioPositionSelect.disabled = true;
 
             districtSelect.innerHTML = '<option value="">Select District</option>';
             pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
             memberNameSelect.innerHTML = '<option value="">Select Name</option>';
+            exOfficioDistrictSelect.innerHTML = '<option value="">Select District</option>';
+            exOfficioPositionSelect.innerHTML = '<option value="">Select Name (Designation)</option>';
 
             clearAllErrors();
         }
@@ -891,8 +1047,18 @@
             try {
                 await new Promise(resolve => setTimeout(resolve, 1500));
 
+                // Prepare the final data for submission
+                const finalFormData = { ...formData };
+
+                // For Ex Officio, we need to extract the name and designation separately
+                if (formData.designation === 'Ex Officio' && formData.exOfficioPosition) {
+                    // The exOfficioPosition contains "Name (Designation)"
+                    // We'll send it as is, but you can parse it if needed
+                    finalFormData.memberName = formData.exOfficioPosition;
+                }
+
                 const jsonData = {
-                    formData: formData,
+                    formData: finalFormData,
                     timestamp: getFormattedTimestamp()
                 };
 
@@ -900,6 +1066,9 @@
 
             } catch (error) {
                 showMessage('error', 'Form submission failed. Please try again.');
+                submitBtn.disabled = false;
+                submitText.textContent = 'Submit';
+                submitSpinner.classList.add('d-none');
             }
         }
 
@@ -935,8 +1104,9 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    throw new Error('Server error occurred', error);
-                }).finally(() => {
+                    showMessage('error', 'Server error occurred. Please try again later.');
+                })
+                .finally(() => {
                     submitBtn.disabled = false;
                     submitText.textContent = 'Submit';
                     submitSpinner.classList.add('d-none');
@@ -950,7 +1120,6 @@
     <!-- Footer Start -->
     <div id="footer-container"></div>
     <!-- Footer End -->
-
 </body>
 
 </html>
