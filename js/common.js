@@ -198,6 +198,14 @@ const pageData = {
     ],
   },
   uniform: {
+    title: "Pushpakayanam 2025 Uniform",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Announcements", href: "/main/content/announcements.html" },
+      { name: "Pushpakayanam 2025 Uniform", href: "#" },
+    ],
+  },
+  uniform_form: {
     title: "Shirt/Saree Order Form",
     breadcrumbs: [
       { name: "Home", href: "/index.html" },

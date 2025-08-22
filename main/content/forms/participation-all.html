@@ -551,17 +551,16 @@
 
                 const districtData = exOfficioMap[selectedDistrict];
 
-                // Add President option
-                const presidentOption = document.createElement('option');
-                presidentOption.value = `${districtData.president} (President)`;
-                presidentOption.textContent = `${districtData.president} (President)`;
-                exOfficioPositionSelect.appendChild(presidentOption);
-
-                // Add Secretary option
-                const secretaryOption = document.createElement('option');
-                secretaryOption.value = `${districtData.secretary} (Secretary)`;
-                secretaryOption.textContent = `${districtData.secretary} (Secretary)`;
-                exOfficioPositionSelect.appendChild(secretaryOption);
+                // Iterate through all keys that start with "EXO-"
+                Object.keys(districtData).forEach(key => {
+                    if (key.startsWith('EXO-')) {
+                        const person = districtData[key];
+                        const option = document.createElement('option');
+                        option.value = key; // Use the ID as the value
+                        option.textContent = `${person.Name} (${person.Designation})`;
+                        exOfficioPositionSelect.appendChild(option);
+                    }
+                });
             } else {
                 exOfficioPositionSelect.disabled = true;
                 formData.exOfficioPosition = '';
@@ -693,7 +692,7 @@
                 const day1Checkboxes = [
                     { id: 'day1LunchRequired', name: 'day1LunchRequired', text: 'Day 1 lunch required (ഒന്നാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
                     { id: 'day1DinnerRequired', name: 'day1DinnerRequired', text: 'Day 1 dinner required (ഒന്നാം ദിവസം അത്താഴം വേണം)' },
-                    { id: 'noFoodDay1', name: 'noFoodDay1', text: 'No food required for Day 1 (ഒന്നാം ദിവസം ഭക്ഷണം വേണ്ട)' }
+                    { id: 'noFoodDay1', name: 'noFoodDay1', text: 'No food required for Day 1 (ഒന്നാം ദിവസം ഭക്ഷണം വേണ്ട)', onclick: clearDay1FoodPreferences }
                 ];
 
                 day1Checkboxes.forEach(checkbox => {
@@ -714,7 +713,7 @@
                 const day2Checkboxes = [
                     { id: 'day2BreakfastRequired', name: 'day2BreakfastRequired', text: 'Day 2 breakfast required (രണ്ടാം ദിവസം പ്രാതൽ വേണം)' },
                     { id: 'day2LunchRequired', name: 'day2LunchRequired', text: 'Day 2 lunch required (രണ്ടാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
-                    { id: 'noFoodDay2', name: 'noFoodDay2', text: 'No food required for Day 2 (രണ്ടാം ദിവസം ഭക്ഷണം വേണ്ട)' }
+                    { id: 'noFoodDay2', name: 'noFoodDay2', text: 'No food required for Day 2 (രണ്ടാം ദിവസം ഭക്ഷണം വേണ്ട)', onclick: clearDay2FoodPreferences }
                 ];
 
                 day2Checkboxes.forEach(checkbox => {
@@ -732,6 +731,9 @@
             input.type = 'checkbox';
             input.id = checkbox.id;
             input.name = checkbox.name;
+            if (checkbox.onclick) {
+                input.onclick = checkbox.onclick; // Assign onclick if provided
+            }
 
             const label = document.createElement('label');
             label.className = 'form-check-label';
@@ -791,6 +793,37 @@
                     formData[name] = input.value;
                 }
             });
+        }
+
+        function clearDay1FoodPreferences() {
+            // Clear all Day 1 food preferences if "No food required" is checked
+            if (document.getElementById('noFoodDay1').checked) {
+                document.getElementById('day1LunchRequired').checked = false;
+                document.getElementById('day1DinnerRequired').checked = false;
+                document.getElementById('day1LunchRequired').disabled = true;
+                document.getElementById('day1DinnerRequired').disabled = true;
+                formData.day1LunchRequired = false;
+                formData.day1DinnerRequired = false;
+            } else {
+                document.getElementById('day1LunchRequired').disabled = false;
+                document.getElementById('day1DinnerRequired').disabled = false;
+            }
+        }
+
+
+        function clearDay2FoodPreferences() {
+            // Clear all Day 2 food preferences if "No food required" is checked
+            if (document.getElementById('noFoodDay2').checked) {
+                document.getElementById('day2BreakfastRequired').checked = false;
+                document.getElementById('day2LunchRequired').checked = false;
+                document.getElementById('day2BreakfastRequired').disabled = true;
+                document.getElementById('day2LunchRequired').disabled = true;
+                formData.day2BreakfastRequired = false;
+                formData.day2LunchRequired = false;
+            } else {
+                document.getElementById('day2BreakfastRequired').disabled = false;
+                document.getElementById('day2LunchRequired').disabled = false;
+            }
         }
 
         function validateForm() {
@@ -1061,8 +1094,8 @@
                     formData: finalFormData,
                     timestamp: getFormattedTimestamp()
                 };
-
-                sendToServer(jsonData);
+                console.log('Form Submission Data:', jsonData);
+                // sendToServer(jsonData);
 
             } catch (error) {
                 showMessage('error', 'Form submission failed. Please try again.');

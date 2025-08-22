@@ -895,60 +895,144 @@ export const kendraPrathinidhiList = {
 };
 
 export const exOfficioMap = {
-  Thiruvanthapuram: {
-    president: "V S RAJU",
-    secretary: "K M SREEDENI KUTTY",
+  തിരുവനന്തപുരം: {
+    "EXO-TVM-01": {
+      Name: "V S RAJU",
+      Designation: "President",
+    },
+    "EXO-TVM-02": {
+      Name: "K M SREEDENI KUTTY",
+      Designation: "Secretary",
+    },
   },
-  Kollam: {
-    president: "C VASUDEVN NAMBIAR",
-    secretary: "G MADHUSOODANAN UNNI",
+  കൊല്ലം: {
+    "EXO-KLM-01": {
+      Name: "C VASUDEVN NAMBIAR",
+      Designation: "President",
+    },
+    "EXO-KLM-02": {
+      Name: "G MADHUSOODANAN UNNI",
+      Designation: "Secretary",
+    },
   },
-  Pathanamthitta: {
-    president: "ARUN DAS M P",
-    secretary: "REMA SARMA",
+  പത്തനംതിട്ട: {
+    "EXO-PTA-01": {
+      Name: "ARUN DAS M P",
+      Designation: "President",
+    },
+    "EXO-PTA-02": {
+      Name: "REMA SARMA",
+      Designation: "Secretary",
+    },
   },
-  Kottayam: {
-    president: "K M NARAYNAN UNNI",
-    secretary: "K S KRISHN KUMAR",
+  കോട്ടയം: {
+    "EXO-KTM-01": {
+      Name: "K M NARAYNAN UNNI",
+      Designation: "President",
+    },
+    "EXO-KTM-02": {
+      Name: "K S KRISHN KUMAR",
+      Designation: "Secretary",
+    },
   },
-  Idukki: {
-    president: "SINDHU VASUDEVAN",
-    secretary: "M S NEELAKANTAN UNNI",
+  ഇടുക്കി: {
+    "EXO-IDK-01": {
+      Name: "SINDHU VASUDEVAN",
+      Designation: "President",
+    },
+    "EXO-IDK-02": {
+      Name: "M S NEELAKANTAN UNNI",
+      Designation: "Secretary",
+    },
   },
-  Alleppy: {
-    president: "PRADEEP K S",
-    secretary: "AJI R",
+  ആലപ്പുഴ: {
+    "EXO-ALP-01": {
+      Name: "PRADEEP K S",
+      Designation: "President",
+    },
+    "EXO-ALP-02": {
+      Name: "AJI R",
+      Designation: "Secretary",
+    },
   },
-  Ernakulam: {
-    president: "R S NAMBIAR",
-    secretary: "VASUDEVAN NARAYANAN",
+  എറണാകുളം: {
+    "EXO-EKM-01": {
+      Name: "R S NAMBIAR",
+      Designation: "President",
+    },
+    "EXO-EKM-02": {
+      Name: "VASUDEVAN NARAYANAN",
+      Designation: "Secretary",
+    },
   },
-  Thrissur: {
-    president: "P R RAMACHANDRAN",
-    secretary: "Dr. K R HARINARAYANAN",
+  തൃശ്ശൂർ: {
+    "EXO-TSR-01": {
+      Name: "P R RAMACHANDRAN",
+      Designation: "President",
+    },
+    "EXO-TSR-02": {
+      Name: "Dr. K R HARINARAYANAN",
+      Designation: "Secretary",
+    },
   },
-  Palakkad: {
-    president: "K BALASUBRMANAN NAMBISAN",
-    secretary: "T R D NAMBISAN",
+  പാലക്കാട്: {
+    "EXO-PKD-01": {
+      Name: "K BALASUBRMANAN NAMBISAN",
+      Designation: "President",
+    },
+    "EXO-PKD-02": {
+      Name: "T R D NAMBISAN",
+      Designation: "Secretary",
+    },
   },
-  Malappuram: {
-    president: "K M PARAMESWARAN NAMBISAN",
-    secretary: "PREMLATHA UNNIKRISHNAN",
+  മലപ്പുറം: {
+    "EXO-MLP-01": {
+      Name: "K M PARAMESWARAN NAMBISAN",
+      Designation: "President",
+    },
+    "EXO-MLP-02": {
+      Name: "PREMLATHA UNNIKRISHNAN",
+      Designation: "Secretary",
+    },
   },
-  Kozhikode: {
-    president: "PADMANABHA NAMBISAN",
-    secretary: "V D DINESH KUMAR",
+  കോഴിക്കോട്: {
+    "EXO-CLT-01": {
+      Name: "PADMANABHA NAMBISAN",
+      Designation: "President",
+    },
+    "EXO-CLT-02": {
+      Name: "V D DINESH KUMAR",
+      Designation: "Secretary",
+    },
   },
-  Kannur: {
-    president: "K M RAGHUNANTHAN NAMBISAN",
-    secretary: "T M SUREASH BABU",
+  കണ്ണൂർ: {
+    "EXO-KNR-01": {
+      Name: "K M RAGHUNANTHAN NAMBISAN",
+      Designation: "President",
+    },
+    "EXO-KNR-02": {
+      Name: "T M SUREASH BABU",
+      Designation: "Secretary",
+    },
   },
-  Kasargod: {
-    president: "N M NARAYANAN NAMBISAN",
-    secretary: "E RAJESH",
+  വയനാട്: {
+    "EXO-WYD-01": {
+      Name: "P SIVARAMAN NAMBISAN",
+      Designation: "President",
+    },
+    "EXO-WYD-02": {
+      Name: "T VASUDEVN NAMBISAN",
+      Designation: "Secretary",
+    },
   },
-  Wayanad: {
-    president: "P SIVARAMAN NAMBISAN",
-    secretary: "T VASUDEVN NAMBISAN",
+  കാസർഗോഡ്: {
+    "EXO-KGD-01": {
+      Name: "N M NARAYANAN NAMBISAN",
+      Designation: "President",
+    },
+    "EXO-KGD-02": {
+      Name: "E RAJESH",
+      Designation: "Secretary",
+    },
   },
 };
