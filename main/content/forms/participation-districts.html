@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ" name="keywords">
+    <meta content="57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" name="description">
+    <meta property="og:title" content="Participation Count Form" />
+    <meta property="og:description"
+        content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" />
+    <meta property="og:image" content="https://pushpakayanam.com/img/logo.png" />
+    <meta property="og:url" content="https://pushpakayanam.com/main/content/forms/participation-count.html" />
+    <meta property="og:type" content="website" />
+    <script src="/js/common.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", () => init("participation_form_districts"));</script>
+    <style>
+        body {
+            background: var(--dreamy-gradient);
+        }
+
+        .evt-form {
+            border: 1px solid #aab2fa !important;
+            border-radius: 15px !important;
+            background: var(--light-bg);
+        }
+
+        .evt-form-required {
+            color: #dc3545;
+        }
+
+        .evt-form-error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .evt-form-declaration-text {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .evt-form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .evt-form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Blue theme customizations */
+        .evt-form .form-check-input:checked {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .evt-form .form-check-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        .evt-form .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .evt-form .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .evt-form .btn-primary:focus {
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5);
+        }
+
+        .evt-form .form-control:focus,
+        .evt-form .form-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0px 0px !important;
+        }
+
+        .evt-form .card-header.bg-primary {
+            background: linear-gradient(135deg, #3b99f8 0%, #99cffa 100%);
+        }
+
+        .evt-form-logo-container {
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+            border-radius: 15px;
+            border: 1px solid #cdcdd9;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+            position: relative;
+        }
+
+        .evt-form-logo-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 18px;
+            z-index: -1;
+        }
+
+        .evt-form-logo-container img {
+            max-height: 230px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.3));
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+    <!-- Page Header Start -->
+    <div id="page-header-container"></div>
+    <!-- Page Header End -->
+
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Logo Section -->
+                <div class="evt-form-logo-container mb-2">
+                    <img src="/img/logo-detailed.png" alt="Organization Logo" class="img-fluid">
+                </div>
+
+                <div class="card shadow evt-form">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="mb-0 h3 text-white">Participation Count Form</h1>
+                    </div>
+                    <div class="card-body">
+                        <!-- Location Details Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Location Details</h2>
+
+                            <div class="mb-3">
+                                <label for="district" class="form-label">
+                                    District (ജില്ല) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="district" name="district">
+                                    <option value="">Select District</option>
+                                </select>
+                                <div class="evt-form-error-message" id="district-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="pradeshikaSabha" class="form-label">
+                                    Pradeshika Sabha (പ്രാദേശിക സഭ) <span class="evt-form-required">*</span>
+                                </label>
+                                <select class="form-select" id="pradeshikaSabha" name="pradeshikaSabha" disabled>
+                                    <option value="">Select Pradeshika Sabha</option>
+                                </select>
+                                <div class="evt-form-error-message" id="pradeshikaSabha-error"></div>
+                            </div>
+                        </div>
+
+                        <!-- Participation Details Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Participation Details</h2>
+
+                            <div class="mb-3">
+                                <label for="day1Count" class="form-label">
+                                    How many people will attend Sammelanam on Day 1? (ഒന്നാം ദിവസം എത്രപേർ
+                                    പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="day1Count" name="day1Count"
+                                    placeholder="Enter number (0 or more)">
+                                <div class="evt-form-error-message" id="day1Count-error"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="day2Count" class="form-label">
+                                    How many people will attend Sammelanam on Day 2? (രണ്ടാം ദിവസം എത്രപേർ
+                                    പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="day2Count" name="day2Count"
+                                    placeholder="Enter number (0 or more)">
+                                <div class="evt-form-error-message" id="day2Count-error"></div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Comments Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Additional Comments</h2>
+
+                            <div class="mb-3">
+                                <label for="additionalComments" class="form-label">
+                                    Additional Comments (അധിക അഭിപ്രായങ്ങൾ) <span class="text-muted">(Optional)</span>
+                                </label>
+                                <textarea class="form-control" id="additionalComments" name="additionalComments"
+                                    rows="4"
+                                    placeholder="Enter any additional comments or suggestions here..."></textarea>
+                                <small class="form-text text-muted">
+                                    Feel free to share any additional information or suggestions for the organizing
+                                    committee.
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Declaration Section -->
+                        <div class="evt-form-section">
+                            <h2 class="h5 mb-4">Declaration</h2>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="declarationAccepted"
+                                    name="declarationAccepted">
+                                <label class="form-check-label font-weight-bold" for="declarationAccepted">
+                                    I confirm that the information provided above is accurate and I consent to sharing
+                                    this data with the organizing committee for event planning purposes. (മേൽപ്പറഞ്ഞ
+                                    വിവരങ്ങൾ ശരിയാണെന്നും സംഘാടക സമിതിയുമായി പങ്കുവെക്കുന്നതിന് സമ്മതമാണെന്നും
+                                    സാക്ഷ്യപ്പെടുത്തുന്നു) <span class="evt-form-required">*</span>
+                                </label>
+                                <div class="evt-form-error-message" id="declarationAccepted-error"></div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" id="submitBtn" onclick="submitForm()">
+                                <i class="fas fa-paper-plane me-2"></i><span id="submitText">Submit</span>
+                                <span id="submitSpinner" class="spinner-border spinner-border-sm d-none ms-2"
+                                    role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Success/Error Messages -->
+                        <div id="messageContainer" class="mt-4" style="display: none;">
+                            <div id="messageAlert" class="alert" role="alert"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { districtWisePsMap } from "/js/master-data.js";
+
+        // Form data object
+        let formData = {
+            district: '',
+            pradeshikaSabha: '',
+            day1Count: '',
+            day2Count: '',
+            additionalComments: '',
+            declarationAccepted: false
+        };
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeDistrictDropdown();
+            setupEventListeners();
+        });
+
+        function initializeDistrictDropdown() {
+            const districtSelect = document.getElementById('district');
+            Object.keys(districtWisePsMap).forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+        }
+
+        function setupEventListeners() {
+            // District dropdown change event
+            document.getElementById('district').addEventListener('change', function () {
+                const selectedDistrict = this.value;
+                const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
+
+                // Clear and reset pradeshika sabha dropdown
+                pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+                pradeshikaSabhaSelect.disabled = !selectedDistrict;
+
+                if (selectedDistrict && districtWisePsMap[selectedDistrict]) {
+                    districtWisePsMap[selectedDistrict].forEach(sabha => {
+                        const option = document.createElement('option');
+                        option.value = sabha;
+                        option.textContent = sabha;
+                        pradeshikaSabhaSelect.appendChild(option);
+                    });
+                }
+
+                clearError('district');
+                updateFormData();
+            });
+
+            // Add input event listeners for real-time validation
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    clearError(this.name || this.id);
+                    updateFormData();
+                });
+
+                input.addEventListener('change', function () {
+                    updateFormData();
+                });
+            });
+
+            // Number inputs - numbers only (accepts 0)
+            document.getElementById('day1Count').addEventListener('input', function (e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+
+            document.getElementById('day2Count').addEventListener('input', function (e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+        }
+
+        function updateFormData() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                const name = input.name || input.id;
+                if (input.type === 'checkbox') {
+                    formData[name] = input.checked;
+                } else {
+                    formData[name] = input.value;
+                }
+            });
+        }
+
+        function validateForm() {
+            const errors = {};
+
+            // District validation
+            if (!formData.district) {
+                errors.district = 'Please select a district';
+            }
+
+            // Pradeshika Sabha validation
+            if (!formData.pradeshikaSabha) {
+                errors.pradeshikaSabha = 'Please select a Pradeshika Sabha';
+            }
+
+            // Day 1 count validation
+            if (formData.day1Count === '') {
+                errors.day1Count = 'Please enter the number of participants for Day 1';
+            } else if (!/^\d+$/.test(formData.day1Count)) {
+                errors.day1Count = 'Please enter a valid number';
+            }
+
+            // Day 2 count validation
+            if (formData.day2Count === '') {
+                errors.day2Count = 'Please enter the number of participants for Day 2';
+            } else if (!/^\d+$/.test(formData.day2Count)) {
+                errors.day2Count = 'Please enter a valid number';
+            }
+
+            // Declaration validation
+            if (!formData.declarationAccepted) {
+                errors.declarationAccepted = 'Please accept the declaration to proceed';
+            }
+
+            return errors;
+        }
+
+        function displayErrors(errors) {
+            showMessage('error', 'Please fix the errors above before submitting the form.');
+            // Clear all previous errors
+            const errorElements = document.querySelectorAll('.evt-form-error-message');
+            errorElements.forEach(el => el.textContent = '');
+
+            // Display new errors
+            Object.keys(errors).forEach(field => {
+                const errorElement = document.getElementById(field + '-error');
+                if (errorElement) {
+                    errorElement.textContent = errors[field];
+                }
+
+                // Add Bootstrap error styling
+                const inputElement = document.getElementById(field) || document.querySelector(`[name="${field}"]`);
+                if (inputElement) {
+                    inputElement.classList.add('is-invalid');
+                }
+            });
+        }
+
+        function clearError(fieldName) {
+            const errorElement = document.getElementById(fieldName + '-error');
+            if (errorElement) {
+                errorElement.textContent = '';
+            }
+
+            // Remove Bootstrap error styling
+            const inputElement = document.getElementById(fieldName) || document.querySelector(`[name="${fieldName}"]`);
+            if (inputElement) {
+                inputElement.classList.remove('is-invalid');
+            }
+        }
+
+        function clearAllErrors() {
+            const errorElements = document.querySelectorAll('.evt-form-error-message');
+            errorElements.forEach(el => el.textContent = '');
+
+            const invalidInputs = document.querySelectorAll('.is-invalid');
+            invalidInputs.forEach(input => input.classList.remove('is-invalid'));
+        }
+
+        function showMessage(type, text) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageAlert = document.getElementById('messageAlert');
+
+            messageAlert.className = `alert alert-${type === 'success' ? 'success' : 'danger'}`;
+            messageAlert.textContent = text;
+            messageContainer.style.display = 'block';
+
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageContainer.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        function clearForm() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                if (input.type === 'checkbox') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+
+            // Reset pradeshika sabha dropdown
+            const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
+            pradeshikaSabhaSelect.innerHTML = '<option value="">Select Pradeshika Sabha</option>';
+            pradeshikaSabhaSelect.disabled = true;
+
+            // Reset form data
+            formData = {
+                district: '',
+                pradeshikaSabha: '',
+                day1Count: '',
+                day2Count: '',
+                additionalComments: '',
+                declarationAccepted: false
+            };
+
+            clearAllErrors();
+        }
+
+        function getFormattedTimestamp() {
+            const d = new Date();
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            const hours = String(d.getHours()).padStart(2, '0');
+            const minutes = String(d.getMinutes()).padStart(2, '0');
+            const seconds = String(d.getSeconds()).padStart(2, '0');
+            return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+        }
+
+        window.submitForm = async function () {
+            updateFormData();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitText.textContent = 'Submitting...';
+            submitSpinner.classList.remove('d-none');
+
+            // Hide previous messages
+            document.getElementById('messageContainer').style.display = 'none';
+
+            const errors = validateForm();
+            if (Object.keys(errors).length > 0) {
+                displayErrors(errors);
+                submitBtn.disabled = false;
+                submitText.textContent = 'Submit';
+                submitSpinner.classList.add('d-none');
+                return;
+            }
+
+            try {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                const jsonData = {
+                    formData: formData,
+                    timestamp: getFormattedTimestamp()
+                };
+
+                sendToServer(jsonData);
+
+            } catch (error) {
+                showMessage('error', 'Form submission failed. Please try again.');
+                submitBtn.disabled = false;
+                submitText.textContent = 'Submit';
+                submitSpinner.classList.add('d-none');
+            }
+        }
+
+        function sendToServer(jsonData) {
+            console.log('Form Submission Data:', jsonData);
+
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbxHbi4BK7Crw-KnTOh2aYFfoETgj32udTfAe-1kofvCpXhSbRxER0gS321z_VQe6JtC/exec';
+
+            fetch(scriptUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: JSON.stringify(jsonData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Server response:', data);
+                    if (data.status === 'success') {
+                        clearForm();
+                        showMessage('success', 'Form submitted successfully! Thank you for providing the participation count.');
+                    } else {
+                        showMessage('error', 'Error: ' + (data.message || 'Unknown error occurred'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showMessage('error', 'Server error occurred. Please try again.');
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit';
+                    submitSpinner.classList.add('d-none');
+                });
+        }
+    </script>
+
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+</body>
+
+</html>
