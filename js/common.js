@@ -205,11 +205,19 @@ const pageData = {
     ],
   },
   uniform: {
-    title: "Pushpakayanam 2025 Uniform",
+    title: "Uniform for Pushpakayanam 2025",
     breadcrumbs: [
       { name: "Home", href: "/index.html" },
       { name: "Announcements", href: "/main/content/announcements.html" },
       { name: "Pushpakayanam 2025 Uniform", href: "#" },
+    ],
+  },
+  varnnolsavam: {
+    title: "വർണ്ണോത്സവം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Announcements", href: "/main/content/announcements.html" },
+      { name: "വർണ്ണോത്സവം", href: "#" },
     ],
   },
   uniform_form: {
