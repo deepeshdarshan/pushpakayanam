@@ -621,6 +621,9 @@ if (announcementEl) {
             <div class="indicator" data-slide="7"></div>
             <div class="indicator" data-slide="8"></div>
             <div class="indicator" data-slide="9"></div>
+            <div class="indicator" data-slide="10"></div>
+            <div class="indicator" data-slide="11"></div>
+            <div class="indicator" data-slide="12"></div>
         </div>
     </div>
     `;
