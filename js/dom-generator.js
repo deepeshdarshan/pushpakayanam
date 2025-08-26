@@ -193,6 +193,58 @@ if (announcementEl) {
         <div class="carousel-wrapper">
             <div class="carousel-track" id="carouselTrack">
 
+            <!-- Slide 13 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <img src="/img/announcements/uthradappookkalam.png" alt="uthradappookkalam">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>ഉത്രാടപ്പൂക്കളം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                57ാം ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് 10 നും 20 നും ഇടയിൽ വയസ്സുള്ള കുട്ടികൾക്കായി ഒരു പൂക്കളമത്സരം നടത്തുന്നു. 
+                                തിരഞ്ഞെടുക്കപ്പെടുന്ന മികച്ച ചിത്രങ്ങൾക്ക് പുഷ്പകായനം 2025 വേദിയിൽ വച്ച് സമ്മാനങ്ങൾ നൽകുന്നു, 
+                                ഒപ്പം നിങ്ങളുടെ ചിത്രങ്ങൾ വേദിയിൽ പ്രദർശിപ്പിക്കുന്നു.
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">ഈ മത്സരത്തെപ്പറ്റി കൂടുതൽ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/uthradappookkalam.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Slide 12 -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-media">
+                            <img src="/img/announcements/varnnolsavam.jpg" alt="varnnolsavam">
+                        </div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h2>വർണ്ണോത്സവം</h2>
+                            <p>
+                                <i class="fa fa-quote-left text-primary me-3"></i>
+                                57ാം ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് 10 വയസ്സിന് താഴെയുള്ള കുട്ടികൾക്കായി ഒരു ചിത്രരചന മത്സരം നടത്തുന്നു. 
+                                തിരഞ്ഞെടുക്കപ്പെടുന്ന മികച്ച ചിത്രങ്ങൾക്ക് പുഷ്പകായനം 2025 വേദിയിൽ വച്ച് സമ്മാനങ്ങൾ നൽകുന്നു, 
+                                ഒപ്പം നിങ്ങളുടെ ചിത്രങ്ങൾ വേദിയിൽ പ്രദർശിപ്പിക്കുന്നു.
+                            </p>
+                            <div class="announcement-section">
+                                <p class="malayalam-text mb-3">ഈ മത്സരത്തെപ്പറ്റി കൂടുതൽ അറിയുവാൻ</p>
+                                <a href="/main/content/announcements/varnnolsavam.html" class="announcement-link malayalam-text">
+                                    ഇവിടെ ക്ലിക്ക് ചെയ്യുക
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             <!-- Slide 11 -->
                 <div class="carousel-slide">
                     <div class="slide-content">
@@ -202,7 +254,7 @@ if (announcementEl) {
                     </div>
                     <div class="slide-content">
                         <div class="slide-text">
-                            <h2>Pushpakayanam 2025 Uniform</h2>
+                            <h2>Uniform for Pushpakayanam 2025</h2>
                             <p>
                                 <i class="fa fa-quote-left text-primary me-3"></i>
                                 57-ാം ദേശീയ സമ്മേളനത്തോട് അനുബന്ധിച്ച് പുഷ്പകായനം യൂണിഫോം കൊണ്ടുവരാൻ ഉദ്ദേശിക്കുന്നു. 

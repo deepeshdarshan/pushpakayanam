@@ -220,6 +220,14 @@ const pageData = {
       { name: "വർണ്ണോത്സവം", href: "#" },
     ],
   },
+  uthradappookkalam: {
+    title: "ഉത്രാടപ്പൂക്കളം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Announcements", href: "/main/content/announcements.html" },
+      { name: "ഉത്രാടപ്പൂക്കളം", href: "#" },
+    ],
+  },
   uniform_form: {
     title: "Shirt/Saree Order Form",
     breadcrumbs: [
