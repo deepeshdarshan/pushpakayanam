@@ -191,17 +191,17 @@ const pageData = {
     ],
   },
   del_part_form: {
-    title: "Participation Form - Delegates",
+    title: "Participation Form for the Delegates",
     breadcrumbs: [
       { name: "Home", href: "/index.html" },
-      { name: "Participation form - Delegates", href: "#" },
+      { name: "Participation form for the Delegates", href: "#" },
     ],
   },
   participation_form_districts: {
-    title: "Participation Form - Districts",
+    title: "Participation Form for the district officials",
     breadcrumbs: [
       { name: "Home", href: "/index.html" },
-      { name: "Participation form - Districts", href: "#" },
+      { name: "Participation form the district officials", href: "#" },
     ],
   },
   uniform: {

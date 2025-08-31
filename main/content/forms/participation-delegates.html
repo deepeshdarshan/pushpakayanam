@@ -9,7 +9,7 @@
     <meta property="og:description"
         content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" />
     <meta property="og:image" content="https://pushpakayanam.com/img/logo.png" />
-    <meta property="og:url" content="https://pushpakayanam.com/main/content/forms/participation-all.html" />
+    <meta property="og:url" content="https://pushpakayanam.com/main/content/forms/participation-delegates.html" />
     <meta property="og:type" content="website" />
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("del_part_form"));</script>
@@ -171,9 +171,9 @@
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="designation"
-                                            id="designationKendraPradhinidhi" value="Kendra pradhinidhi">
-                                        <label class="form-check-label" for="designationKendraPradhinidhi">Kendra
-                                            pradhinidhi (കേന്ദ്ര പ്രതിനിധി) </label>
+                                            id="designationKendraprathinidhi" value="Kendra prathinidhi">
+                                        <label class="form-check-label" for="designationKendraprathinidhi">Kendra
+                                            prathinidhi (കേന്ദ്ര പ്രതിനിധി) </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="designation"
@@ -185,7 +185,7 @@
                                 <div class="evt-form-error-message" id="designation-error"></div>
                             </div>
 
-                            <!-- District and Pradeshika Sabha (only for Kendra pradhinidhi) -->
+                            <!-- District and Pradeshika Sabha (only for Kendra prathinidhi) -->
                             <div class="mb-3" id="districtSection" style="display: none;">
                                 <label for="district" class="form-label">
                                     District (ജില്ല) <span class="evt-form-required">*</span>
@@ -261,9 +261,9 @@
 
                             <div class="mb-3">
                                 <label class="form-label">
-                                    When do you plan to attend the sammelanam?<br /> (ഏതു ദിവസങ്ങളിലാണ് താങ്കൾ
-                                    സമ്മേളനത്തിൽ
-                                    പങ്കെടുക്കുവാൻ ആഗ്രഹിക്കുന്നത് ?) <span class="evt-form-required">*</span>
+                                    On which days will you be attending the sammelanam?<br /> (ഏതു ദിവസങ്ങളിലാണ് താങ്കൾ
+                                    സമ്മേളനത്തിൽ പങ്കെടുക്കുവാൻ ആഗ്രഹിക്കുന്നത് ?) <span
+                                        class="evt-form-required">*</span>
                                 </label>
                                 <div class="mt-2">
                                     <div class="form-check">
@@ -314,9 +314,13 @@
                                 <p class="mb-2">1. I consent to share this information with sub-committees for smooth
                                     coordination of the Sammelanam. <br />(ഈ സമ്മേളനത്തിന്റെ സുഗമമായ ഏകോപനത്തിനായി മറ്റ്
                                     ഉപസമിതികളുമായി ഈ വിവരങ്ങൾ പങ്കുവെക്കുന്നതിന് ഞാൻ സമ്മതിക്കുന്നു)</p>
-                                <p class="mb-0">2. I will promptly inform the Chairman if there are any updates or
-                                    changes to the above details. <br />(മേൽപ്പറഞ്ഞ കാര്യങ്ങളിൽ എന്തെങ്കിലും
-                                    വ്യത്യാസങ്ങൾ ഉണ്ടെങ്കിൽ, ചുമതലപ്പെട്ടവരെ ഞാൻ ഉടനടി അറിയിക്കുന്നതാണ്)</p>
+                                <p class="mb-0">2. I will promptly inform the organising committe if there are any
+                                    updates or
+                                    changes to the above details. <br />(മേൽപ്പറഞ്ഞ വിവരങ്ങളിൽ എന്തെങ്കിലും
+                                    വ്യതിയാനങ്ങൾ ഉണ്ടായാൽ ഉടനെ സ്വാഗതസംഘവുമായി ബന്ധപ്പെടുന്നതാണ്.)</p>
+                                <p class="mb-0">3. Contact Number: <a
+                                        href="https://wa.me/919447086991?text=Hello%20Jayan!" target="_blank">+91
+                                        94470 86991</a></p>
                             </div>
 
                             <div class="form-check">
@@ -426,7 +430,7 @@
                 const selectedPS = this.value;
                 const designation = document.querySelector('input[name="designation"]:checked')?.value;
 
-                if (designation === 'Kendra pradhinidhi' && selectedDistrict && selectedPS) {
+                if (designation === 'Kendra prathinidhi' && selectedDistrict && selectedPS) {
                     populateKendraPradhinighiNames(selectedDistrict, selectedPS);
                 }
                 updateFormData();
@@ -494,7 +498,7 @@
                 nameDropdownSection.style.display = 'block';
                 memberNameSelect.disabled = false;
                 populateBSMembers();
-            } else if (designation === 'Kendra pradhinidhi') {
+            } else if (designation === 'Kendra prathinidhi') {
                 // Show district, PS and name dropdown
                 districtSection.style.display = 'block';
                 pradeshikaSabhaSection.style.display = 'block';
@@ -707,7 +711,7 @@
                 if (!formData.exOfficioPosition) {
                     errors.exOfficioPosition = 'Please select a name (designation)';
                 }
-            } else if (formData.designation === 'Kendra pradhinidhi') {
+            } else if (formData.designation === 'Kendra prathinidhi') {
                 if (!formData.district) {
                     errors.district = 'Please select a district';
                 }
@@ -903,8 +907,7 @@
                     formData: finalFormData,
                     timestamp: getFormattedTimestamp()
                 };
-                console.log('Form Submission Data:', jsonData);
-                // sendToServer(jsonData);
+                sendToServer(jsonData);
 
             } catch (error) {
                 showMessage('error', 'Form submission failed. Please try again.');

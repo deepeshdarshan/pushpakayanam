@@ -97,7 +97,7 @@ export const domElements = {
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Forms</a>
                                 <div class="dropdown-menu m-0">
                                     <a href="/main/admin/forms/participation-ekm.html" class="dropdown-item">Participation - Ernakulam</a>
-                                    <a href="/main/admin/forms/participation-all.html" class="dropdown-item">Participation - Delegates</a>
+                                    <a href="/main/admin/forms/participation-delegates.html" class="dropdown-item">Participation - Delegates</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
