@@ -291,17 +291,6 @@
                                 </div>
                                 <div class="evt-form-error-message" id="attendancePlan-error"></div>
                             </div>
-
-                            <!-- Food Preferences Section -->
-                            <div class="food-preferences-section" id="foodPreferencesSection" style="display: none;">
-                                <h5 class="mb-3">Please select your food preferences (ഭക്ഷണ മുൻഗണനകൾ തിരഞ്ഞെടുക്കുക)
-                                    <span class="evt-form-required">*</span>
-                                </h5>
-                                <div class="checkbox-group" id="foodCheckboxes">
-                                    <!-- Food preference checkboxes will be populated here dynamically -->
-                                </div>
-                                <div class="evt-form-error-message" id="foodPreferences-error"></div>
-                            </div>
                         </div>
 
                         <!-- Additional Details Section -->
@@ -379,14 +368,7 @@
             day1Attendance: '',
             day2Attendance: '',
             additionalComments: '',
-            declarationAccepted: false,
-            // Food preferences
-            day1LunchRequired: false,
-            day1DinnerRequired: false,
-            noFoodDay1: false,
-            day2BreakfastRequired: false,
-            day2LunchRequired: false,
-            noFoodDay2: false
+            declarationAccepted: false
         };
 
         // Initialize form
@@ -455,7 +437,6 @@
             attendancePlanRadios.forEach(radio => {
                 radio.addEventListener('change', function () {
                     updateAttendanceData(this.value);
-                    populateFoodPreferences(this.value);
                     updateFormData();
                 });
             });
@@ -657,100 +638,6 @@
             }
         }
 
-        function populateFoodPreferences(attendancePlan) {
-            const foodPreferencesSection = document.getElementById('foodPreferencesSection');
-            const foodCheckboxesContainer = document.getElementById('foodCheckboxes');
-
-            // Clear existing checkboxes
-            foodCheckboxesContainer.innerHTML = '';
-
-            // Reset food preferences in form data
-            formData.day1LunchRequired = false;
-            formData.day1DinnerRequired = false;
-            formData.noFoodDay1 = false;
-            formData.day2BreakfastRequired = false;
-            formData.day2LunchRequired = false;
-            formData.noFoodDay2 = false;
-
-            if (attendancePlan === 'Unable to attend') {
-                foodPreferencesSection.style.display = 'none';
-                return;
-            }
-
-            foodPreferencesSection.style.display = 'block';
-
-            // Add Day 1 options
-            if (attendancePlan === 'Day 1' || attendancePlan === 'Both days') {
-                // Add Day 1 heading for Both days
-                if (attendancePlan === 'Both days') {
-                    const day1Heading = document.createElement('h6');
-                    day1Heading.className = 'mb-2 mt-2 text-dark';
-                    day1Heading.textContent = 'Day 1 Food Preferences:';
-                    foodCheckboxesContainer.appendChild(day1Heading);
-                }
-
-                const day1Checkboxes = [
-                    { id: 'day1LunchRequired', name: 'day1LunchRequired', text: 'Day 1 lunch required (ഒന്നാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
-                    { id: 'day1DinnerRequired', name: 'day1DinnerRequired', text: 'Day 1 dinner required (ഒന്നാം ദിവസം അത്താഴം വേണം)' },
-                    { id: 'noFoodDay1', name: 'noFoodDay1', text: 'No food required for Day 1 (ഒന്നാം ദിവസം ഭക്ഷണം വേണ്ട)', onclick: clearDay1FoodPreferences }
-                ];
-
-                day1Checkboxes.forEach(checkbox => {
-                    createCheckbox(checkbox, foodCheckboxesContainer);
-                });
-            }
-
-            // Add Day 2 options
-            if (attendancePlan === 'Day 2' || attendancePlan === 'Both days') {
-                // Add Day 2 heading for Both days
-                if (attendancePlan === 'Both days') {
-                    const day2Heading = document.createElement('h6');
-                    day2Heading.className = 'mb-2 mt-3 text-dark';
-                    day2Heading.textContent = 'Day 2 Food Preferences:';
-                    foodCheckboxesContainer.appendChild(day2Heading);
-                }
-
-                const day2Checkboxes = [
-                    { id: 'day2BreakfastRequired', name: 'day2BreakfastRequired', text: 'Day 2 breakfast required (രണ്ടാം ദിവസം പ്രാതൽ വേണം)' },
-                    { id: 'day2LunchRequired', name: 'day2LunchRequired', text: 'Day 2 lunch required (രണ്ടാം ദിവസം ഉച്ചഭക്ഷണം വേണം)' },
-                    { id: 'noFoodDay2', name: 'noFoodDay2', text: 'No food required for Day 2 (രണ്ടാം ദിവസം ഭക്ഷണം വേണ്ട)', onclick: clearDay2FoodPreferences }
-                ];
-
-                day2Checkboxes.forEach(checkbox => {
-                    createCheckbox(checkbox, foodCheckboxesContainer);
-                });
-            }
-        }
-
-        function createCheckbox(checkbox, container) {
-            const checkboxDiv = document.createElement('div');
-            checkboxDiv.className = 'form-check';
-
-            const input = document.createElement('input');
-            input.className = 'form-check-input';
-            input.type = 'checkbox';
-            input.id = checkbox.id;
-            input.name = checkbox.name;
-            if (checkbox.onclick) {
-                input.onclick = checkbox.onclick; // Assign onclick if provided
-            }
-
-            const label = document.createElement('label');
-            label.className = 'form-check-label';
-            label.setAttribute('for', checkbox.id);
-            label.textContent = checkbox.text;
-
-            checkboxDiv.appendChild(input);
-            checkboxDiv.appendChild(label);
-            container.appendChild(checkboxDiv);
-
-            // Add event listener
-            input.addEventListener('change', function () {
-                clearError('foodPreferences');
-                updateFormData();
-            });
-        }
-
         function updateAttendanceData(attendancePlan) {
             switch (attendancePlan) {
                 case 'Day 1':
@@ -793,37 +680,6 @@
                     formData[name] = input.value;
                 }
             });
-        }
-
-        function clearDay1FoodPreferences() {
-            // Clear all Day 1 food preferences if "No food required" is checked
-            if (document.getElementById('noFoodDay1').checked) {
-                document.getElementById('day1LunchRequired').checked = false;
-                document.getElementById('day1DinnerRequired').checked = false;
-                document.getElementById('day1LunchRequired').disabled = true;
-                document.getElementById('day1DinnerRequired').disabled = true;
-                formData.day1LunchRequired = false;
-                formData.day1DinnerRequired = false;
-            } else {
-                document.getElementById('day1LunchRequired').disabled = false;
-                document.getElementById('day1DinnerRequired').disabled = false;
-            }
-        }
-
-
-        function clearDay2FoodPreferences() {
-            // Clear all Day 2 food preferences if "No food required" is checked
-            if (document.getElementById('noFoodDay2').checked) {
-                document.getElementById('day2BreakfastRequired').checked = false;
-                document.getElementById('day2LunchRequired').checked = false;
-                document.getElementById('day2BreakfastRequired').disabled = true;
-                document.getElementById('day2LunchRequired').disabled = true;
-                formData.day2BreakfastRequired = false;
-                formData.day2LunchRequired = false;
-            } else {
-                document.getElementById('day2BreakfastRequired').disabled = false;
-                document.getElementById('day2LunchRequired').disabled = false;
-            }
         }
 
         function validateForm() {
@@ -869,45 +725,6 @@
 
             if (!formData.day1Attendance || !formData.day2Attendance) {
                 errors.attendancePlan = 'Please select when you plan to attend the sammelanam';
-            }
-
-            // Enhanced food preferences validation
-            const attendancePlan = document.querySelector('input[name="attendancePlan"]:checked')?.value;
-            if (attendancePlan && attendancePlan !== 'Unable to attend') {
-                if (attendancePlan === 'Both days') {
-                    // Separate validation for Day 1 and Day 2
-                    const day1FoodSelected = formData.day1LunchRequired ||
-                        formData.day1DinnerRequired ||
-                        formData.noFoodDay1;
-
-                    const day2FoodSelected = formData.day2BreakfastRequired ||
-                        formData.day2LunchRequired ||
-                        formData.noFoodDay2;
-
-                    if (!day1FoodSelected) {
-                        errors.foodPreferences = 'Please select at least one food preference option for Day 1';
-                    } else if (!day2FoodSelected) {
-                        errors.foodPreferences = 'Please select at least one food preference option for Day 2';
-                    }
-                } else if (attendancePlan === 'Day 1') {
-                    // Validation for Day 1 only
-                    const day1FoodSelected = formData.day1LunchRequired ||
-                        formData.day1DinnerRequired ||
-                        formData.noFoodDay1;
-
-                    if (!day1FoodSelected) {
-                        errors.foodPreferences = 'Please select at least one food preference option for Day 1';
-                    }
-                } else if (attendancePlan === 'Day 2') {
-                    // Validation for Day 2 only
-                    const day2FoodSelected = formData.day2BreakfastRequired ||
-                        formData.day2LunchRequired ||
-                        formData.noFoodDay2;
-
-                    if (!day2FoodSelected) {
-                        errors.foodPreferences = 'Please select at least one food preference option for Day 2';
-                    }
-                }
             }
 
             // Declaration validation
@@ -999,13 +816,7 @@
                 day1Attendance: '',
                 day2Attendance: '',
                 additionalComments: '',
-                declarationAccepted: false,
-                day1LunchRequired: false,
-                day1DinnerRequired: false,
-                noFoodDay1: false,
-                day2BreakfastRequired: false,
-                day2LunchRequired: false,
-                noFoodDay2: false
+                declarationAccepted: false
             };
 
             // Reset all sections to initial state
@@ -1014,7 +825,6 @@
             const nameDropdownSection = document.getElementById('nameDropdownSection');
             const exOfficioDistrictSection = document.getElementById('exOfficioDistrictSection');
             const exOfficioPositionSection = document.getElementById('exOfficioPositionSection');
-            const foodPreferencesSection = document.getElementById('foodPreferencesSection');
             const districtSelect = document.getElementById('district');
             const pradeshikaSabhaSelect = document.getElementById('pradeshikaSabha');
             const memberNameSelect = document.getElementById('memberName');
@@ -1026,7 +836,6 @@
             nameDropdownSection.style.display = 'none';
             exOfficioDistrictSection.style.display = 'none';
             exOfficioPositionSection.style.display = 'none';
-            foodPreferencesSection.style.display = 'none';
 
             districtSelect.disabled = true;
             pradeshikaSabhaSelect.disabled = true;

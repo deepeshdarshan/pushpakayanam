@@ -897,141 +897,141 @@ export const kendraPrathinidhiList = {
 export const exOfficioMap = {
   തിരുവനന്തപുരം: {
     "EXO-TVM-01": {
-      Name: "V S RAJU",
+      Name: "V S Raju",
       Designation: "President",
     },
     "EXO-TVM-02": {
-      Name: "K M SREEDENI KUTTY",
+      Name: "K M Sreedevi Kutty",
       Designation: "Secretary",
     },
   },
   കൊല്ലം: {
     "EXO-KLM-01": {
-      Name: "C VASUDEVN NAMBIAR",
+      Name: "C Vasudevan Nambiar",
       Designation: "President",
     },
     "EXO-KLM-02": {
-      Name: "G MADHUSOODANAN UNNI",
+      Name: "G Madhusoodanan Unni",
       Designation: "Secretary",
     },
   },
   പത്തനംതിട്ട: {
     "EXO-PTA-01": {
-      Name: "ARUN DAS M P",
+      Name: "Arun Das M P",
       Designation: "President",
     },
     "EXO-PTA-02": {
-      Name: "REMA SARMA",
+      Name: "Rema Sarma",
       Designation: "Secretary",
     },
   },
   കോട്ടയം: {
     "EXO-KTM-01": {
-      Name: "K M NARAYNAN UNNI",
+      Name: "K M Narayanan Unni",
       Designation: "President",
     },
     "EXO-KTM-02": {
-      Name: "K S KRISHN KUMAR",
+      Name: "K S Krishnan Kumar",
       Designation: "Secretary",
     },
   },
   ഇടുക്കി: {
     "EXO-IDK-01": {
-      Name: "SINDHU VASUDEVAN",
+      Name: "Sindhu Vasudevan",
       Designation: "President",
     },
     "EXO-IDK-02": {
-      Name: "M S NEELAKANTAN UNNI",
+      Name: "M S Neelakantan Unni",
       Designation: "Secretary",
     },
   },
   ആലപ്പുഴ: {
     "EXO-ALP-01": {
-      Name: "PRADEEP K S",
+      Name: "Pradeep K S",
       Designation: "President",
     },
     "EXO-ALP-02": {
-      Name: "AJI R",
+      Name: "Aji R",
       Designation: "Secretary",
     },
   },
   എറണാകുളം: {
     "EXO-EKM-01": {
-      Name: "R S NAMBIAR",
+      Name: "R S Nambiar",
       Designation: "President",
     },
     "EXO-EKM-02": {
-      Name: "VASUDEVAN NARAYANAN",
+      Name: "Narayanan Vasudevan",
       Designation: "Secretary",
     },
   },
   തൃശ്ശൂർ: {
     "EXO-TSR-01": {
-      Name: "P R RAMACHANDRAN",
+      Name: "P R Ramachandran",
       Designation: "President",
     },
     "EXO-TSR-02": {
-      Name: "Dr. K R HARINARAYANAN",
+      Name: "Dr. K R Harinarayanan",
       Designation: "Secretary",
     },
   },
   പാലക്കാട്: {
     "EXO-PKD-01": {
-      Name: "K BALASUBRMANAN NAMBISAN",
+      Name: "K Balasubramanian Nambisan",
       Designation: "President",
     },
     "EXO-PKD-02": {
-      Name: "T R D NAMBISAN",
+      Name: "T R D Nambisan",
       Designation: "Secretary",
     },
   },
   മലപ്പുറം: {
     "EXO-MLP-01": {
-      Name: "K M PARAMESWARAN NAMBISAN",
+      Name: "K M Parameswaran Nambisan",
       Designation: "President",
     },
     "EXO-MLP-02": {
-      Name: "PREMLATHA UNNIKRISHNAN",
+      Name: "Premlatha Unnikrishnan",
       Designation: "Secretary",
     },
   },
   കോഴിക്കോട്: {
     "EXO-CLT-01": {
-      Name: "PADMANABHA NAMBISAN",
+      Name: "Padmanabha Nambisan",
       Designation: "President",
     },
     "EXO-CLT-02": {
-      Name: "V D DINESH KUMAR",
+      Name: "V D Dinesh Kumar",
       Designation: "Secretary",
     },
   },
   കണ്ണൂർ: {
     "EXO-KNR-01": {
-      Name: "K M RAGHUNANTHAN NAMBISAN",
+      Name: "K M Raghunandan Nambisan",
       Designation: "President",
     },
     "EXO-KNR-02": {
-      Name: "T M SUREASH BABU",
+      Name: "T M Suresh Babu",
       Designation: "Secretary",
     },
   },
   വയനാട്: {
     "EXO-WYD-01": {
-      Name: "P SIVARAMAN NAMBISAN",
+      Name: "P Sivaraman Nambisan",
       Designation: "President",
     },
     "EXO-WYD-02": {
-      Name: "T VASUDEVN NAMBISAN",
+      Name: "T Vasudevan Nambisan",
       Designation: "Secretary",
     },
   },
   കാസർഗോഡ്: {
     "EXO-KGD-01": {
-      Name: "N M NARAYANAN NAMBISAN",
+      Name: "N M Narayanan Nambisan",
       Designation: "President",
     },
     "EXO-KGD-02": {
-      Name: "E RAJESH",
+      Name: "E Rajesh",
       Designation: "Secretary",
     },
   },
