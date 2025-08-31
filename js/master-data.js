@@ -110,8 +110,8 @@ export const ecMemberList = [
   { Id: "EC-12", Name: "T.V.Venugopal" },
   { Id: "EC-13", Name: "Dr.Pradeep Jeothi" },
   { Id: "EC-14", Name: "Dr.P.Gopeenathan" },
-  { Id: "EC-15", Name: "SATHEESH.V.N" },
-  { Id: "EC-16", Name: "DR. D. NEELAKANDAN" },
+  { Id: "EC-15", Name: "Satheesh.V.N" },
+  { Id: "EC-16", Name: "Dr. D.Neelakandan" },
 ];
 
 export const bsMemberList = [
@@ -120,7 +120,7 @@ export const bsMemberList = [
   { Id: "BS-03", Name: "Muraleedharan R. Dr" },
   { Id: "BS-04", Name: "Mohanan Nambisan V.M." },
   { Id: "BS-05", Name: "Mohanachandran T.N." },
-  { Id: "BS-06", Name: "Lekha Radhakrishnan. Dr." },
+  { Id: "BS-06", Name: "Dr.Lekha Radhakrishnan" },
   { Id: "BS-07", Name: "Krishnan Nambisan K.P." },
   { Id: "BS-08", Name: "Krishnamoorthy P.N." },
   { Id: "BS-09", Name: "Krishna Prasad V.M." },
