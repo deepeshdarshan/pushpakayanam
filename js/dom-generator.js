@@ -10,23 +10,50 @@ function getProgramDetails() {
                             </div>
                         </div>
                         <div class="program-item">
-                            <div class="program-icon bg-primary text-white"><i class="fa fa-icons"></i></div>
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-flag"></i></div>
                             <div class="ps-4">
-                                <h3>കലാപരിപാടികൾ</h3>
-                                <p class="text-primary">3:00 PM</p>
+                                <h3>ധ്വജാരോഹണം</h3>
+                                <p class="text-primary">1:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-with-children">
+                            <div class="program-item">
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-ribbon"></i></div>
+                                <div class="ps-4">
+                                    <h3>കലാസന്ധ്യ ഉദ്ഘാടനം</h3>
+                                    <p class="text-primary">02:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="program-child-primary">
+                                <div class="child-title">കലാസന്ധ്യ</div>
+                                <div class="child-time">02:45 PM</div>
                             </div>
                         </div>
                         <div class="program-item">
+                            <div class="program-icon bg-primary text-white"><i class="fa fa-drum-steelpan"></i></div>
+                            <div class="ps-4">
+                                <h3>ചെണ്ടമേളം</h3>
+                                <h6 class="text-dark">അവതരണം: ജില്ലാ വനിതാവേദി എറണാകുളം</h6>
+                                <p class="text-primary">04:35 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-with-children">
+                        <div class="program-item">
                             <div class="program-icon bg-primary text-white"><i class="fa fa-handshake"></i></div>
                             <div class="ps-4">
-                                <h3>സമ്മേളന ഉദ്‌ഘാടനം</h3>
+                                <h3>ഉദ്ഘാടന സമ്മേളനം</h3>
                                 <p class="text-primary">5:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-child-primary">
+                                <div class="child-title">കലാസന്ധ്യ തുടരുന്നു</div>
+                                <div class="child-time">06:00 PM</div>
                             </div>
                         </div>
                         <div class="program-item">
                             <div class="program-icon bg-primary text-white"><i class="fa fa-film"></i></div>
                             <div class="ps-4">
-                                <h3>Short Film Festival</h3>
+                                <h3>ഷോർട്ട് ഫിലിം പ്രദർശനം</h3>
                                 <p class="text-primary">10:00 PM</p>
                             </div>
                         </div>
@@ -41,30 +68,59 @@ function getProgramDetails() {
                         </div>
                         <div class="program-with-children">
                             <div class="program-item">
-                                <div class="program-icon bg-white text-primary"><i class="fa fa-star"></i></div>
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-landmark"></i></div>
                                 <div class="ps-4">
-                                    <h3>പ്രതിനിധി സഭ ഉദ്‌ഘാടനം</h3>
+                                    <h3>പ്രതിനിധി സമ്മേളനം</h3>
                                     <p>09:00 AM</p>
                                 </div>
                             </div>
                             <div class="program-child">
                                 <div class="child-title">പ്രതിനിധി സഭ</div>
-                                <div class="child-time">പ്രതിനിധി സഭ ഉദ്‌ഘാടനത്തിന് ശേഷം</div>
+                                <div class="child-time">10:30 AM</div>
+                            </div>
+                        </div>
+                        <div class="program-with-children">
+                            <div class="program-item">
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-cake-candles"></i></div>
+                                <div class="ps-4">
+                                    <h3>ബാലോത്സവം ഉദ്ഘാടനം</h3>
+                                    <h6>ലക്ഷ്മി പൂർണ്ണ ഓഡിറ്റോറിയം (വേദി 2)</h6>
+                                    <p>10:30 AM</p>
+                                </div>
+                            </div>
+                             <div class="program-child">
+                                <div class="child-title">ബാലോത്സവം</div>
+                                <div class="child-subtitle">(വേദി 2)</div>
+                                <div class="child-time">11:00 AM</div>
                             </div>
                         </div>
                         <div class="program-item">
-                            <div class="program-icon bg-white text-primary"><i class="fa fa-child"></i></div>
+                            <div class="program-icon bg-white text-primary"><i class="fa fa-binoculars"></i></div>
                             <div class="ps-4">
-                                <h3>ബാലോത്സവം</h3>
-                                <h6>ലക്ഷ്മി പൂർണ്ണ ഓഡിറ്റോറിയം (വേദി 2)</h6>
-                                <p>10:00 AM</p>
-                            </div>
-                        </div>
-                        <div class="program-item">
-                            <div class="program-icon bg-white text-primary"><i class="fa fa-comments"></i></div>
-                            <div class="ps-4">
-                                <h3>സംഘടന ചർച്ച</h3>
+                                <h3>ഭാവി പ്രവർത്തനം</h3>
+                                <h6>വിഷൻ 2030</h6>
                                 <p>2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-icon bg-white text-primary"><i class="fa fa-box-open"></i></div>
+                            <div class="ps-4">
+                                <h3>സമ്മാനക്കൂപ്പൺ നറുക്കെടുപ്പ്</h3>
+                                <p>3:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="program-with-children">
+                            <div class="program-item">
+                                <div class="program-icon bg-white text-primary"><i class="fa fa-calendar-check"></i>
+                                </div>
+                                <div class="ps-4">
+                                    <h3>സമാപന സമ്മേളനം</h3>
+                                    <p>3:45 PM</p>
+                                </div>
+                            </div>
+                            <div class="program-child">
+                                <div class="child-title">സമ്മേളന അവലോകനം</div>
+                                <div class="child-time">സമാപന സമ്മേളനത്തിന് ശേഷം</div>
                             </div>
                         </div>
                         <div class="program-with-children">
@@ -72,17 +128,16 @@ function getProgramDetails() {
                                 <div class="program-icon bg-white text-primary"><i class="fa fa-flag-checkered"></i>
                                 </div>
                                 <div class="ps-4">
-                                    <h3>സമാപന സമ്മേളനം</h3>
-                                    <p>4:00 PM</p>
+                                    <h3>ധ്വജാവരോഹണം</h3>
+                                    <p>4:55 PM</p>
                                 </div>
                             </div>
                             <div class="program-child">
-                                <div class="child-title">സമ്മാനദാനം</div>
-                                <div class="child-time">സമാപന സമ്മേളനത്തിന് ശേഷം</div>
+                                <div class="child-title">പതാക കൈമാറൽ</div>
+                                <div class="child-time">ധ്വജാവരോഹണത്തിന് ശേഷം</div>
                             </div>
                             <div class="program-child">
-                                <div class="child-title">Lucky Draw Coupon നറുക്കെടുപ്പ്</div>
-                                <div class="child-time">സമ്മാനദാനത്തിന് ശേഷം</div>
+                                <div class="child-title">ദേശീയഗാനം</div>
                             </div>
                         </div>
                     </div>
