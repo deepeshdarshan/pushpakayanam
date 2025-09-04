@@ -220,6 +220,14 @@ const pageData = {
       { name: "വർണ്ണോത്സവം", href: "#" },
     ],
   },
+  onam_ponnonam: {
+    title: " ഓണം പൊന്നോണം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Announcements", href: "/main/content/announcements.html" },
+      { name: " ഓണം പൊന്നോണം", href: "#" },
+    ],
+  },
   uthradappookkalam: {
     title: "ഉത്രാടപ്പൂക്കളം",
     breadcrumbs: [
