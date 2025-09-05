@@ -184,10 +184,10 @@ const pageData = {
     ],
   },
   ekm_part_form: {
-    title: "Participation Form - Ernakulam",
+    title: "Participation Form - Ernakulam Jilla",
     breadcrumbs: [
       { name: "Home", href: "/index.html" },
-      { name: "Participation form - Ernakulam", href: "#" },
+      { name: "Participation form - Ernakulam Jilla", href: "#" },
     ],
   },
   del_part_form: {
