@@ -9,7 +9,7 @@
     <meta property="og:description"
         content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" />
     <meta property="og:image" content="https://pushpakayanam.com/img/logo.png" />
-    <meta property="og:url" content="https://pushpakayanam.com/main/content/forms/participation-count.html" />
+    <meta property="og:url" content="https://pushpakayanam.com/main/content/forms/participation-districts.html" />
     <meta property="og:type" content="website" />
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("participation_form_districts"));</script>
@@ -137,7 +137,7 @@
 
                 <div class="card shadow evt-form">
                     <div class="card-header bg-primary text-white">
-                        <h1 class="mb-0 h3 text-white">Participation Count Form</h1>
+                        <h1 class="mb-0 h3 text-white">Participation form for the district officials</h1>
                     </div>
                     <div class="card-body">
                         <!-- Location Details Section -->
@@ -171,8 +171,9 @@
 
                             <div class="mb-3">
                                 <label for="day1Count" class="form-label">
-                                    How many people will attend Sammelanam on Day 1? (ഒന്നാം ദിവസം എത്രപേർ
-                                    പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
+                                    How many people will attend Sammelanam on Day 1? <br />
+                                    (താങ്കളുടെ പ്രാദേശികസഭയിൽ നിന്നും ഒന്നാം ദിവസം എത്രപേർ പങ്കെടുക്കും?)
+                                    <span class="evt-form-required">*</span>
                                 </label>
                                 <input type="text" class="form-control" id="day1Count" name="day1Count"
                                     placeholder="Enter number (0 or more)">
@@ -181,8 +182,9 @@
 
                             <div class="mb-3">
                                 <label for="day2Count" class="form-label">
-                                    How many people will attend Sammelanam on Day 2? (രണ്ടാം ദിവസം എത്രപേർ
-                                    പങ്കെടുക്കും?) <span class="evt-form-required">*</span>
+                                    How many people will attend Sammelanam on Day 2? <br />
+                                    (താങ്കളുടെ പ്രാദേശികസഭയിൽ നിന്നും രണ്ടാം ദിവസം എത്രപേർ പങ്കെടുക്കും?)
+                                    <span class="evt-form-required">*</span>
                                 </label>
                                 <input type="text" class="form-control" id="day2Count" name="day2Count"
                                     placeholder="Enter number (0 or more)">
@@ -196,11 +198,11 @@
 
                             <div class="mb-3">
                                 <label for="additionalComments" class="form-label">
-                                    Additional Comments (അധിക അഭിപ്രായങ്ങൾ) <span class="text-muted">(Optional)</span>
+                                    Additional Comments (മറ്റു വിവരങ്ങൾ)
                                 </label>
                                 <textarea class="form-control" id="additionalComments" name="additionalComments"
                                     rows="4"
-                                    placeholder="Enter any additional comments or suggestions here..."></textarea>
+                                    placeholder="Any additional comments ... (മറ്റു വിവരങ്ങൾ എന്തെങ്കിലും ഉണ്ടെങ്കിൽ ഇവിടെ ചേർക്കുക ...)"></textarea>
                                 <small class="form-text text-muted">
                                     Feel free to share any additional information or suggestions for the organizing
                                     committee.
@@ -211,15 +213,24 @@
                         <!-- Declaration Section -->
                         <div class="evt-form-section">
                             <h2 class="h5 mb-4">Declaration</h2>
-
+                            <div class="declaration-text mb-3">
+                                <p class="mb-2">1. I consent to share this information with sub-committees for smooth
+                                    coordination of the Sammelanam.
+                                    (ഈ സമ്മേളനത്തിന്റെ സുഗമമായ ഏകോപനത്തിനായി മറ്റ് ഉപസമിതികളുമായി ഈ വിവരങ്ങൾ
+                                    പങ്കുവെക്കുന്നതിന് ഞാൻ സമ്മതിക്കുന്നു)</p>
+                                <p class="mb-2">3. I will promptly inform the concerned authorities if there are any
+                                    updates or changes to the above details. (മേൽപ്പറഞ്ഞ കാര്യങ്ങളിൽ എന്തെങ്കിലും
+                                    വ്യത്യാസങ്ങൾ ഉണ്ടെങ്കിൽ, സ്വാഗതസംഘം ഭാരവാഹികളെ ഉടനടി ഞാൻ
+                                    ഈ നമ്പറിൽ (<a href="https://wa.me/919447086991?text=Hello%20Jayan!"
+                                        target="_blank">+91 94470 86991</a>) അറിയിക്കുന്നതാണ്)</p>
+                            </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="declarationAccepted"
                                     name="declarationAccepted">
-                                <label class="form-check-label font-weight-bold" for="declarationAccepted">
-                                    I confirm that the information provided above is accurate and I consent to sharing
-                                    this data with the organizing committee for event planning purposes. (മേൽപ്പറഞ്ഞ
-                                    വിവരങ്ങൾ ശരിയാണെന്നും സംഘാടക സമിതിയുമായി പങ്കുവെക്കുന്നതിന് സമ്മതമാണെന്നും
-                                    സാക്ഷ്യപ്പെടുത്തുന്നു) <span class="evt-form-required">*</span>
+                                <label class="form-check-label" for="declarationAccepted">
+                                    I confirm that the information provided above is accurate to the best of my
+                                    knowledge <br /> (മേൽപ്പറഞ്ഞ
+                                    വിവരങ്ങൾ ശരിയാണെന്ന് സാക്ഷ്യപ്പെടുത്തുന്നു) <span class="evt-form-required">*</span>
                                 </label>
                                 <div class="evt-form-error-message" id="declarationAccepted-error"></div>
                             </div>
