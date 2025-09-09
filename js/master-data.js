@@ -344,7 +344,7 @@ export const kendraPrathinidhiList = {
       { Id: "EKM-EDP-08", Name: "TV Ganesh Kumar" },
       { Id: "EKM-EDP-09", Name: "Geetha satheesh" },
       { Id: "EKM-EDP-10", Name: "Sreedevi Roojith" },
-      { Id: "EKM-EDP-11", Name: "Deepathi Vasudevan" },
+      { Id: "EKM-EDP-11", Name: "Dr.Remya Vikas" },
       { Id: "EKM-EDP-12", Name: "Neelakandan Unni" },
     ],
     എറണാകുളം: [
