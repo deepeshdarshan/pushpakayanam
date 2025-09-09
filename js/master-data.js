@@ -890,13 +890,12 @@ export const kendraPrathinidhiList = {
       { Id: "OSK-CHN-01", Name: "Vijayan P M" },
       { Id: "OSK-CHN-02", Name: "Anand C" },
       { Id: "OSK-CHN-03", Name: "Binu Balan" },
-      { Id: "OSK-CHN-04", Name: "Kamalendra Nathan K" },
-      { Id: "OSK-CHN-05", Name: "Prabhavathi Unnikrishnan" },
+      { Id: "OSK-CHN-04", Name: "Krishna Prasad K M" },
+      { Id: "OSK-CHN-05", Name: "Sudha Anand" },
       { Id: "OSK-CHN-06", Name: "Praveen B G" },
       { Id: "OSK-CHN-07", Name: "Narayanan Nambidi K" },
       { Id: "OSK-CHN-08", Name: "Vasudevan K V" },
       { Id: "OSK-CHN-09", Name: "Rajesh R" },
-      { Id: "OSK-CHN-10", Name: "Unnikrishnan C K" },
     ],
 
     ഹൈദരാബാദ്: [
