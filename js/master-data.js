@@ -513,6 +513,15 @@ export const kendraPrathinidhiList = {
       { Id: "TSR-WDK-23", Name: "Muraliram T R" },
       { Id: "TSR-WDK-24", Name: "Devaki parameswaran" },
     ],
+    തൃപ്രയാർ: [
+      { Id: "TSR-TPR-01", Name: "P Krishnan Nambisan" },
+      { Id: "TSR-TPR-02", Name: "Narayanan Nambisan" },
+      { Id: "TSR-TPR-03", Name: "Preetha Raju" },
+      { Id: "TSR-TPR-04", Name: "Rema Kesavan" },
+      { Id: "TSR-TPR-05", Name: "Sreedevi Ramachandran" },
+      { Id: "TSR-TPR-06", Name: "M P Ramachandran" },
+      { Id: "TSR-TPR-07", Name: "Suresh nambissan M P" },
+    ],
   },
   പാലക്കാട്: {
     ഒറ്റപ്പാലം: [
@@ -886,6 +895,8 @@ export const kendraPrathinidhiList = {
       { Id: "OSK-CHN-06", Name: "Praveen B G" },
       { Id: "OSK-CHN-07", Name: "Narayanan Nambidi K" },
       { Id: "OSK-CHN-08", Name: "Vasudevan K V" },
+      { Id: "OSK-CHN-09", Name: "Rajesh R" },
+      { Id: "OSK-CHN-10", Name: "Unnikrishnan C K" },
     ],
 
     ഹൈദരാബാദ്: [
