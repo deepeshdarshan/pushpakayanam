@@ -82,7 +82,16 @@ const pageData = {
     title: "സ്വാഗതസംഘ രൂപീകരണം",
     breadcrumbs: [
       { name: "Home", href: "/index.html" },
+      { name: "Photos", href: "/main/content/gallery/photos.html" },
       { name: "സ്വാഗതസംഘ രൂപീകരണം", href: "#" },
+    ],
+  },
+  jilla_varshikam: {
+    title: "എറണാകുളം ജില്ലാ വാർഷികം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Photos", href: "/main/content/gallery/photos.html" },
+      { name: "എറണാകുളം ജില്ലാ വാർഷികം", href: "#" },
     ],
   },
   account_details: {
