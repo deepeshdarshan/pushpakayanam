@@ -190,6 +190,14 @@ export const kendraPrathinidhiList = {
       { Id: "TRV-TRV-18", Name: "Akshay G Unni" },
       { Id: "TRV-TRV-19", Name: "Shashikala Krishnan" },
       { Id: "TRV-TRV-20", Name: "Krishnasarma S" },
+      { Id: "TRV-TRV-21", Name: "R. Gopalakrishnan Unni" },
+      { Id: "TRV-TRV-22", Name: "N. Gopalakrishnan Unni" },
+      { Id: "TRV-TRV-23", Name: "Adv C N P Nampi" },
+      { Id: "TRV-TRV-24", Name: "Dr. N P Unni" },
+      { Id: "TRV-TRV-25", Name: "Parvathy Balakrishnan Unni" },
+      { Id: "TRV-TRV-26", Name: "S.Probhakara chakyar" },
+      { Id: "TRV-TRV-27", Name: "Mythreyi Amma" },
+      { Id: "TRV-TRV-28", Name: "S. Balakrishnan Unni" },
     ],
     നെയ്യാറ്റിൻകര: [
       { Id: "TRV-NTK-01", Name: "LP Viswanadhan" },
@@ -615,6 +623,7 @@ export const kendraPrathinidhiList = {
       { Id: "MLP-TRR-11", Name: "K Unnikrishnan" },
       { Id: "MLP-TRR-12", Name: "Krishna Das T R" },
       { Id: "MLP-TRR-13", Name: "Gireesh" },
+      { Id: "MLP-TRR-14", Name: "T N Raman Nambisan" },
     ],
     വണ്ടൂർ: [
       { Id: "MLP-WDR-01", Name: "P Sreeprakash Nambisan" },

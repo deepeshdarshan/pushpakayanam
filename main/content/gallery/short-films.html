@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Films Gallery - Independent Cinema</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --gold-color: #ffd700;
+            --text-light: #e1e1e1;
+            --text-dark: #333;
+            --gradient-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --gold-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --hover-transform: translateY(-5px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gold-color);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .header h1 {
+            color: var(--gold-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .stats-section {
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: var(--hover-transform);
+            border-color: var(--gold-color);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .filter-tabs {
+            margin: 2rem 0;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            padding: 0.75rem 1.5rem;
+            margin: 0.25rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+            border-color: var(--gold-color);
+            transform: scale(1.05);
+        }
+
+        .film-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .film-card:hover {
+            transform: var(--hover-transform);
+            border-color: var(--gold-color);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .film-poster {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .film-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .film-poster:hover img {
+            transform: scale(1.1);
+        }
+
+        .film-poster iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .award-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .award-best {
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+        }
+
+        .award-nominee {
+            background: var(--secondary-gradient);
+            color: white;
+        }
+
+        .film-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .film-title {
+            color: var(--gold-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .film-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .film-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-item {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .award-categories {
+            margin-bottom: 1.5rem;
+        }
+
+        .category-tag {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--gold-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            display: inline-block;
+        }
+
+        .film-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-watch-now,
+        .btn-watch-youtube {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-watch-now {
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+        }
+
+        .btn-watch-now:hover {
+            transform: scale(1.05);
+            color: var(--text-dark);
+        }
+
+        .btn-watch-youtube {
+            background: #ff0000;
+            color: white;
+        }
+
+        .btn-watch-youtube:hover {
+            transform: scale(1.05);
+            background: #cc0000;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: var(--gold-color);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .film-actions {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <h1><i class="bi bi-camera-reels me-3"></i>Short Films Gallery</h1>
+            <p>Celebrating Excellence in Independent Cinema</p>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <div class="row d-flex flex-wrap justify-content-center" id="stats-container">
+                <!-- Stats will be dynamically generated -->
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <div class="d-flex flex-wrap justify-content-center" id="filter-container">
+                <!-- Filter buttons will be dynamically generated -->
+            </div>
+        </div>
+
+        <!-- Films Grid -->
+        <div class="row g-4" id="films-grid">
+            <!-- Film cards will be dynamically generated -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state d-none" id="empty-state">
+            <i class="bi bi-film"></i>
+            <h4>No films found</h4>
+            <p>Try adjusting your filter or check back later for new submissions.</p>
+        </div>
+    </div>
+
+    <script>
+        const filmsData = [
+            {
+                id: 'film1',
+                title: 'കെടാവിളക്ക്',
+                description: 'A poignant tale of a deaf child who discovers the power of communication through art. This beautifully crafted film explores themes of isolation, connection, and the universal language of creativity.',
+                poster: '/img/short-films/ketavilakku.jpg',
+                director: 'Maria Rodriguez',
+                duration: '12 min',
+                genre: 'Drama',
+                year: '2024',
+                awardStatus: 'nominee',
+                // categories: ['Best Film', 'Best Director', 'Best Cinematography'],
+                youtubeId: 'U6rJ4MaXB5U',
+            },
+            {
+                id: 'film2',
+                title: 'Match Box',
+                description: 'Set against the backdrop of a bustling city, this film follows three street musicians whose lives intertwine through the power of music and shared dreams.',
+                poster: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=600&fit=crop',
+                director: 'James Chen',
+                duration: '15 min',
+                genre: 'Musical Drama',
+                year: '2024',
+                awardStatus: 'nominee',
+                // categories: ['Best Actor (Male)', 'Best Sound Design'],
+                youtubeId: 'CZPHfPhfquE',
+            },
+            {
+                id: 'film3',
+                title: 'Periods',
+                description: 'An elderly woman discovers a collection of unsent love letters in her attic, leading her on a journey through memories of a life unlived.',
+                poster: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop',
+                director: 'Sarah Thompson',
+                duration: '18 min',
+                genre: 'Romance/Drama',
+                year: '2024',
+                awardStatus: 'nominee',
+                // categories: ['Best Actress (Female)', 'Best Screenplay'],
+                youtubeId: 'zwToUFjlpa8',
+            },
+            {
+                id: 'film4',
+                title: 'വിശപ്പ്',
+                description: 'A cyberpunk thriller about a hacker who uncovers a conspiracy that threatens to reshape society. Stunning visuals meet compelling storytelling.',
+                poster: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop',
+                director: 'Alex Kumar',
+                duration: '14 min',
+                genre: 'Sci-Fi Thriller',
+                year: '2024',
+                awardStatus: 'nominee',
+                // categories: ['Best Visual Effects', 'Best Production Design'],
+                youtubeId: 'Sw_vYc9Z630',
+            },
+            {
+                id: 'film5',
+                title: 'തണൽ',
+                description: 'A heartwarming story about a young chef who returns to her hometown to learn her grandmother\'s secret recipes, discovering more than just ingredients.',
+                poster: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop',
+                director: 'Isabella Martinez',
+                duration: '16 min',
+                genre: 'Family Drama',
+                year: '2024',
+                awardStatus: 'nominee',
+                // categories: ['Best Supporting Actor', 'Best Editing'],
+                youtubeId: '5xuw2aEdRjQ',
+            },
+            {
+                id: 'film6',
+                title: 'നേർവഴി',
+                description: 'An intense psychological drama exploring the breaking point of human endurance when a mountain climber faces impossible choices.',
+                poster: '/img/short-films/nervazhi-poster.jpg',
+                director: 'പ്രസാദ് അരയാല',
+                duration: '09:59',
+                genre: 'Thriller/Drama',
+                year: '2025',
+                awardStatus: 'nominee',
+                // categories: ['Best Actor (Male)', 'Best Cinematography'],
+                youtubeId: '_3tSTa0_ApM',
+            }
+        ];
+
+        const filters = [
+            { id: 'all', label: 'All Films', icon: 'bi-collection-play' },
+            { id: 'best', label: 'Award Winners', icon: 'bi-trophy' },
+            { id: 'best-film', label: 'Best Film', icon: 'bi-star-fill' },
+            { id: 'best-director', label: 'Best Director', icon: 'bi-camera-video' },
+            { id: 'best-actor', label: 'Best Actor', icon: 'bi-person-badge' },
+            { id: 'technical', label: 'Technical Awards', icon: 'bi-gear' }
+        ];
+
+        function createFilmCard(film, index) {
+            const badgeClass = film.awardStatus === 'best' ? 'award-best' : 'award-nominee';
+            const badgeText = film.awardStatus === 'best' ? 'Winner' : 'Nominee';
+            const badgeIcon = film.awardStatus === 'best' ? 'bi-trophy-fill' : 'bi-award';
+
+            const categoriesHTML = (film.categories || []).map(category =>
+                `<span class="category-tag">${category}</span>`
+            ).join('');
+
+            return `
+                <div class="col-xl-4 col-lg-6" data-film-id="${film.id}" data-award-status="${film.awardStatus}" data-categories="${(film.categories || []).join(',').toLowerCase()}" style="animation-delay: ${(index + 1) * 0.1}s">
+                    <div class="film-card">
+                        <div class="film-poster" id="poster-${film.id}">
+                            <img src="${film.poster}" alt="${film.title}" loading="lazy" id="img-${film.id}">
+                        </div>
+                        <div class="film-content">
+                            <h3 class="film-title">
+                                <span>${film.title}</span>
+                                <div class="award-badge ${badgeClass}">
+                                    <i class="${badgeIcon} me-1"></i>${badgeText}
+                                </div>
+                            </h3>
+                            <p class="film-description">${film.description}</p>
+                            
+                            <div class="film-meta">
+                                <div class="meta-item">
+                                    <i class="bi bi-person-circle me-1"></i>${film.director}
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-clock me-1"></i>${film.duration}
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-tag me-1"></i>${film.genre}
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-calendar me-1"></i>${film.year}
+                                </div>
+                            </div>
+                            
+                            <div class="award-categories">
+                                ${categoriesHTML}
+                            </div>
+                            
+                            <div class="film-actions">
+                                <button class="btn-watch-now" onclick="watchNow('${film.id}', '${film.youtubeId}')">
+                                    <i class="bi bi-play-circle-fill me-1"></i>Watch Now
+                                </button>
+                                <a href="https://www.youtube.com/watch?v=${film.youtubeId}" target="_blank" class="btn-watch-youtube">
+                                    <i class="bi bi-youtube me-1"></i>Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function watchNow(filmId, youtubeId) {
+            const posterContainer = document.getElementById(`poster-${filmId}`);
+            const img = document.getElementById(`img-${filmId}`);
+
+            // Check if video is already playing
+            if (posterContainer.querySelector('iframe')) {
+                // If video is playing, switch back to poster
+                posterContainer.innerHTML = `
+                    <img src="${img.src}" alt="${img.alt}" loading="lazy" id="img-${filmId}">
+                `;
+            } else {
+                // Replace poster with YouTube iframe
+                posterContainer.innerHTML = `
+                    <iframe 
+                        src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            }
+        }
+
+        function createFilterButton(filter, isActive = false) {
+            return `
+                <button class="filter-btn ${isActive ? 'active' : ''}" data-filter="${filter.id}">
+                    <i class="${filter.icon} me-1"></i>${filter.label}
+                </button>
+            `;
+        }
+
+        function generateStats() {
+            const totalFilms = filmsData.length;
+            const winners = filmsData.filter(f => f.awardStatus === 'best').length;
+            const nominees = filmsData.filter(f => f.awardStatus === 'nominee').length;
+            const totalCategories = [...new Set(filmsData.flatMap(f => f.categories))].length;
+
+            const stats = [
+                { number: totalFilms, label: 'Total Films' },
+                { number: winners, label: 'Winners' },
+                { number: nominees, label: 'Nominees' },
+                { number: totalCategories, label: 'Award Categories' }
+            ];
+
+            return stats.map(stat => `
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">${stat.number}</div>
+                        <div class="stat-label">${stat.label}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function initializePage() {
+            // Generate and insert films
+            const filmsHTML = filmsData.map((film, index) =>
+                createFilmCard(film, index)
+            ).join('');
+            document.getElementById('films-grid').innerHTML = filmsHTML;
+
+            // Generate and insert filter buttons
+            const filtersHTML = filters.map((filter, index) =>
+                createFilterButton(filter, index === 0)
+            ).join('');
+            document.getElementById('filter-container').innerHTML = filtersHTML;
+
+            // Generate and insert stats
+            document.getElementById('stats-container').innerHTML = generateStats();
+
+            initializeFilters();
+        }
+
+        function initializeFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const filmCards = document.querySelectorAll('[data-film-id]');
+            const emptyState = document.getElementById('empty-state');
+            const grid = document.getElementById('films-grid');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    filmCards.forEach(card => {
+                        let shouldShow = false;
+                        const categories = card.getAttribute('data-categories');
+                        const awardStatus = card.getAttribute('data-award-status');
+
+                        switch (filter) {
+                            case 'all':
+                                shouldShow = true;
+                                break;
+                            case 'best':
+                                shouldShow = awardStatus === 'best';
+                                break;
+                            case 'best-film':
+                                shouldShow = categories.includes('best film');
+                                break;
+                            case 'best-director':
+                                shouldShow = categories.includes('best director');
+                                break;
+                            case 'best-actor':
+                                shouldShow = categories.includes('best actor');
+                                break;
+                            case 'technical':
+                                shouldShow = categories.includes('cinematography') ||
+                                    categories.includes('visual effects') ||
+                                    categories.includes('sound design') ||
+                                    categories.includes('editing') ||
+                                    categories.includes('production design');
+                                break;
+                        }
+
+                        if (shouldShow) {
+                            card.style.display = 'block';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Show/hide empty state
+                    if (visibleCount === 0) {
+                        emptyState.classList.remove('d-none');
+                        grid.classList.add('d-none');
+                    } else {
+                        emptyState.classList.add('d-none');
+                        grid.classList.remove('d-none');
+                    }
+                });
+            });
+        }
+
+        // Initialize page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+</body>
+
+</html>
