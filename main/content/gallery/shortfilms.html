@@ -2,12 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Short Films Gallery - Independent Cinema</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
-        rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ" name="keywords">
+    <meta content="57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" name="description">
+    <meta property="og:title" content="Short Film Gallery" />
+    <meta property="og:description"
+        content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" />
+    <meta property="og:image" content="https://pushpakayanam.com/img/logo.png" />
+    <meta property="og:url" content="https://pushpakayanam.com/main/content/gallery/short-films.html" />
+    <meta property="og:type" content="website" />
+    <script src="/js/common.js"></script>
 
     <style>
         :root {
@@ -254,9 +258,9 @@
         .btn-watch-now,
         .btn-watch-youtube {
             flex: 1;
-            padding: 0.75rem 1rem;
+            padding: 10px 10px;
             border: none;
-            border-radius: 25px;
+            border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
             text-align: center;
@@ -323,13 +327,13 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="container">
-            <h1><i class="bi bi-camera-reels me-3"></i>Short Films Gallery</h1>
-            <p>Celebrating Excellence in Independent Cinema</p>
-        </div>
-    </div>
+    <!-- Topbar Start -->
+    <div id="header-container"></div>
+    <!-- Topbar End -->
+
+    <!-- Page Header Start -->
+    <div id="page-header-container"></div>
+    <!-- Page Header End -->
 
     <div class="container mt-5 mb-5">
         <!-- Statistics Section -->
@@ -364,12 +368,12 @@
             {
                 id: 'film1',
                 title: 'കെടാവിളക്ക്',
-                description: 'A poignant tale of a deaf child who discovers the power of communication through art. This beautifully crafted film explores themes of isolation, connection, and the universal language of creativity.',
-                poster: '/img/short-films/ketavilakku.jpg',
-                director: 'Maria Rodriguez',
-                duration: '12 min',
+                description: ' കുട്ടികളിൽ ചെറുപ്പത്തിൽ തന്നെ സാമൂഹിക പ്രതിബദ്ധത വളർത്തിയെടുക്കുക എന്നതിന്റെ നേർക്കാഴ്ച്ച.',
+                poster: '/img/short-films/kedavilakku.jpg',
+                director: 'രഞ്ജിത്ത് വാസുദേവൻ',
+                duration: '09:59 min',
                 genre: 'Drama',
-                year: '2024',
+                year: '2025',
                 awardStatus: 'nominee',
                 // categories: ['Best Film', 'Best Director', 'Best Cinematography'],
                 youtubeId: 'U6rJ4MaXB5U',
@@ -377,12 +381,12 @@
             {
                 id: 'film2',
                 title: 'Match Box',
-                description: 'Set against the backdrop of a bustling city, this film follows three street musicians whose lives intertwine through the power of music and shared dreams.',
-                poster: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=600&fit=crop',
-                director: 'James Chen',
-                duration: '15 min',
-                genre: 'Musical Drama',
-                year: '2024',
+                description: 'ആൺ പെൺ ഭേദമില്ലാതെ സംസ്കാരമുള്ള ഒരു പുതുതലമുറയെ വാർത്തെടുക്കുവാനായി നമുക്ക് ഓരോരുത്തർക്കും പുതുവഴികൾ തേടി മുന്നേറാം.',
+                poster: '/img/short-films/matchbox-poster.jpg',
+                director: 'സൗമിനി രാമകൃഷ്ണൻ',
+                duration: '10:00',
+                genre: 'Drama',
+                year: '2025',
                 awardStatus: 'nominee',
                 // categories: ['Best Actor (Male)', 'Best Sound Design'],
                 youtubeId: 'CZPHfPhfquE',
@@ -390,25 +394,25 @@
             {
                 id: 'film3',
                 title: 'Periods',
-                description: 'An elderly woman discovers a collection of unsent love letters in her attic, leading her on a journey through memories of a life unlived.',
-                poster: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop',
-                director: 'Sarah Thompson',
-                duration: '18 min',
-                genre: 'Romance/Drama',
-                year: '2024',
+                description: `സ്ത്രീകൾക്ക് ആർത്തവസമയത്ത് ഉണ്ടാകുന്ന ബുദ്ധിമുട്ടുകളും അവർക്ക് ആ സമയത്ത് നൽകേണ്ടുന്ന കരുതലിനെ പറ്റിയുമുള്ള ഒരു നല്ല സന്ദേശം.`,
+                poster: '/img/short-films/periods.jpg',
+                director: 'വിഷ്ണു ശർമ്മ',
+                duration: '06:53',
+                genre: 'Drama',
+                year: '2025',
                 awardStatus: 'nominee',
                 // categories: ['Best Actress (Female)', 'Best Screenplay'],
                 youtubeId: 'zwToUFjlpa8',
             },
             {
                 id: 'film4',
-                title: 'വിശപ്പ്',
-                description: 'A cyberpunk thriller about a hacker who uncovers a conspiracy that threatens to reshape society. Stunning visuals meet compelling storytelling.',
-                poster: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=600&fit=crop',
-                director: 'Alex Kumar',
-                duration: '14 min',
-                genre: 'Sci-Fi Thriller',
-                year: '2024',
+                title: 'അറിയാത്ത വിശപ്പ്',
+                description: `ഭക്ഷണം പാഴാക്കുന്നതിനെതിരെ കുട്ടികൾക്ക് ഒരു സന്ദേശം.`,
+                poster: '/img/short-films/vishappu-poster.jpg',
+                director: 'ഡോ. വിനോദ് കുമാർ',
+                duration: '07:54',
+                genre: 'Drama',
+                year: '2025',
                 awardStatus: 'nominee',
                 // categories: ['Best Visual Effects', 'Best Production Design'],
                 youtubeId: 'Sw_vYc9Z630',
@@ -416,12 +420,12 @@
             {
                 id: 'film5',
                 title: 'തണൽ',
-                description: 'A heartwarming story about a young chef who returns to her hometown to learn her grandmother\'s secret recipes, discovering more than just ingredients.',
-                poster: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop',
-                director: 'Isabella Martinez',
-                duration: '16 min',
-                genre: 'Family Drama',
-                year: '2024',
+                description: ' പ്രായമായ മാതാപിതാക്കളെ വൃദ്ധസദനങ്ങളിലേക്ക് പറഞ്ഞയക്കുന്ന പ്രവണത സമൂഹത്തിൽ കൂടി വരുന്നതിനെതിരെ ഒരു ബോധവൽക്കരണം.',
+                poster: '/img/short-films/thanal.jpg',
+                director: 'ഡോ. വിനോദ് കുമാർ',
+                duration: '10:22',
+                genre: 'Drama',
+                year: '2025',
                 awardStatus: 'nominee',
                 // categories: ['Best Supporting Actor', 'Best Editing'],
                 youtubeId: '5xuw2aEdRjQ',
@@ -429,11 +433,12 @@
             {
                 id: 'film6',
                 title: 'നേർവഴി',
-                description: 'An intense psychological drama exploring the breaking point of human endurance when a mountain climber faces impossible choices.',
+                description: `ജീവിതത്തിൽ സന്തോഷം കണ്ടെത്തുവാൻ കുറുക്കുവഴികൾ തേടുന്ന യുവതലമുറയെ കാത്തിരിക്കുന്ന മാഫിയകളെ തിരിച്ചറിയുന്നതിനും, 
+                ഒരു പരിധിവരെ മാറ്റിനിർത്തുന്നതിനും, നേർവഴിക്ക് നയിക്കുന്നതിനും നമ്മുടെ സംസ്കാരവും പാരമ്പര്യവും നിലനിൽക്കേണ്ടതുണ്ട്.`,
                 poster: '/img/short-films/nervazhi-poster.jpg',
                 director: 'പ്രസാദ് അരയാല',
                 duration: '09:59',
-                genre: 'Thriller/Drama',
+                genre: 'Drama',
                 year: '2025',
                 awardStatus: 'nominee',
                 // categories: ['Best Actor (Male)', 'Best Cinematography'],
@@ -447,7 +452,7 @@
             { id: 'best-film', label: 'Best Film', icon: 'bi-star-fill' },
             { id: 'best-director', label: 'Best Director', icon: 'bi-camera-video' },
             { id: 'best-actor', label: 'Best Actor', icon: 'bi-person-badge' },
-            { id: 'technical', label: 'Technical Awards', icon: 'bi-gear' }
+            { id: 'technical', label: 'Best Cinematography', icon: 'bi-gear' }
         ];
 
         function createFilmCard(film, index) {
@@ -542,7 +547,7 @@
             const totalFilms = filmsData.length;
             const winners = filmsData.filter(f => f.awardStatus === 'best').length;
             const nominees = filmsData.filter(f => f.awardStatus === 'nominee').length;
-            const totalCategories = [...new Set(filmsData.flatMap(f => f.categories))].length;
+            const totalCategories = 4;
 
             const stats = [
                 { number: totalFilms, label: 'Total Films' },
@@ -646,9 +651,16 @@
             });
         }
 
-        // Initialize page when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initializePage);
+        document.addEventListener('DOMContentLoaded', function () {
+            init("shorts_spot");
+            initializePage();
+        });
     </script>
+
+    <!-- Footer Start -->
+    <div id="footer-container"></div>
+    <!-- Footer End -->
+
 </body>
 
 </html>

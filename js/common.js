@@ -154,6 +154,14 @@ const pageData = {
       { name: "Snaps and Scenes", href: "#" },
     ],
   },
+  shorts_spot: {
+    title: "Shorts Spot",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "#" },
+      { name: "Shorts Spot", href: "#" },
+    ],
+  },
   balolsavam: {
     title: "ബാലോത്സവം",
     breadcrumbs: [
