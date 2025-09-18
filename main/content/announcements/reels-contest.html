@@ -4,7 +4,290 @@
 <head>
     <script src="/js/common.js"></script>
     <script>document.addEventListener("DOMContentLoaded", () => init("reels_contest"));</script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container-fluid {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bg-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-primary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite alternate;
+        }
+
+        .bg-secondary {
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-secondary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            animation: shimmer 4s ease-in-out infinite alternate;
+        }
+
+        .bg-warning {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-warning::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(5deg) scale(1.05);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+        }
+
+        .testimonial-item {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .display-5 {
+            background: linear-gradient(45deg, #fff, #f0f9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            font-weight: 700;
+        }
+
+        .bg-secondary .display-5 {
+            background: linear-gradient(45deg, #1f2937, #374151);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bg-warning .display-5 {
+            background: linear-gradient(45deg, #92400e, #451a03);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-white {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-warning {
+            color: #fde047 !important;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-primary {
+            color: #3b82f6 !important;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        iframe {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .fa-quote-left {
+            font-size: 1.5em;
+            opacity: 0.7;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        .col-lg-6,
+        .col-lg-12 {
+            padding: 0;
+        }
+
+        .py-6 {
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
+        }
+
+        .py-3 {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+        }
+
+        .py-5 {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+
+        .pt-6 {
+            padding-top: 4rem !important;
+        }
+
+        .px-5 {
+            padding-left: 3rem !important;
+            padding-right: 3rem !important;
+        }
+
+        .w-lg-550 {
+            max-width: 550px;
+            width: 100%;
+        }
+
+        h4 {
+            margin-top: 1rem;
+            color: #92400e;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .fs-4 {
+            line-height: 1.6;
+        }
+
+        /* Floating particles effect */
+        .bg-primary::after,
+        .bg-secondary::after,
+        .bg-warning::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.4), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.2), transparent);
+            background-repeat: repeat;
+            background-size: 150px 100px;
+            animation: sparkle 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100px);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .testimonial-item {
+                padding: 1.5rem;
+            }
+
+            .px-5 {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+
+            iframe {
+                height: 250px !important;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced button-like effect for iframes */
+        .testimonial-item {
+            cursor: default;
+        }
+
+        /* Subtle gradient overlays */
+        .bg-primary .testimonial-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-secondary .testimonial-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .bg-warning .testimonial-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
+
 
 <body>
     <div>
@@ -18,84 +301,93 @@
         <!-- Page Header End -->
 
 
-    <!-- Testimonial Start -->
-    <div class="container-fluid bg-secondary p-0">
-        <div class="row g-0">
-            <div class="col-lg-6 py-6 px-5 bg-primary">
-                <div class="testimonial-item">
-                    <h1 class="display-5 mb-4 text-white">Winner</h1>
-                    <p class="text-white fs-4 fw-normal mb-4"><i class="fa fa-quote-left text-white me-3"></i>57-ാം
-                        ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ റീൽസ് മത്സരത്തിലെ <b class="text-warning">ഒന്നാം
-                            സമ്മാനത്തിന്</b> തളിപ്പറമ്പ പ്രാദേശിക
-                        സഭയിലെ പ്രസാദ് അരയാല അർഹനായിരിക്കുന്നു.
-                        <br /><br />
-                        പ്രസാദ് അരയാലക്കും കുടുംബത്തിനും അഭിനന്ദനങ്ങൾ !
-                    </p>
-                    <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/Mb8l1JY-4Ws">
+        <!-- Testimonial Start -->
+        <div class="container-fluid bg-secondary p-0">
+            <div class="row g-0">
+                <div class="col-lg-6 py-6 px-5 bg-primary">
+                    <div class="testimonial-item">
+                        <h1 class="display-5 mb-4 text-white">Winner</h1>
+                        <p class="text-white fs-4 fw-normal mb-4"><i class="fa fa-quote-left text-white me-3"></i>57-ാം
+                            ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ റീൽസ് മത്സരത്തിലെ <b class="text-warning">ഒന്നാം
+                                സമ്മാനത്തിന്</b> തളിപ്പറമ്പ പ്രാദേശിക
+                            സഭയിലെ പ്രസാദ് അരയാല അർഹനായിരിക്കുന്നു.
+                            <br /><br />
+                            പ്രസാദ് അരയാലക്കും കുടുംബത്തിനും അഭിനന്দനങ്ങൾ !
+                        </p>
+                        <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/Mb8l1JY-4Ws">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6 py-6 px-5 bg-secondary">
+                    <div class="testimonial-item">
+                        <h1 class="display-5 mb-4">Runner Up</h1>
+                        <p class="text-white fs-4 fw-normal mb-4"><i class="fa fa-quote-left text-white me-3"></i>57-ാം
+                            ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ റീൽസ് മത്സരത്തിലെ <b class="text-primary">രണ്ടാം
+                                സമ്മാനത്തിന്</b> വെസ്റ്റ്ഹിൽ പ്രാദേശിക
+                            സഭയിലെ വിനോദ് കുമാർ അർഹനായിരിക്കുന്നു.
+                            <br /><br />
+                            വിനോദ് കുമാറിനും കുടുംബത്തിനും അഭിനന്ദനങ്ങൾ !
+                        </p>
+                        <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/h4ls5PGPVVc">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-12 pt-6 px-5 bg-warning">
+                    <div class="testimonial-item">
+                        <h1 class="display-5 mb-4">Consolation prize</h1>
+                        <p class="text-dark fs-4 fw-normal mb-4"><i
+                                class="fa fa-quote-left text-dark me-3"></i>മത്സരത്തിനായി അയച്ചുതന്ന മറ്റു റീലുകൾ ചുവടെ
+                            ചേർക്കുന്നു.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-6 py-3 px-5 bg-warning">
+                    <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/PazoN-WSjDU">
                     </iframe>
-                </div>
-            </div>
-            <div class="col-lg-6 py-6 px-5 bg-secondary">
-                <div class="testimonial-item">
-                    <h1 class="display-5 mb-4">Runner Up</h1>
-                    <p class="text-black fs-4 fw-normal mb-4"><i class="fa fa-quote-left text-black me-3"></i>57-ാം
-                        ദേശീയ സമ്മേളനത്തോടനുബന്ധിച്ച് നടത്തിയ റീൽസ് മത്സരത്തിലെ <b class="text-primary">രണ്ടാം
-                            സമ്മാനത്തിന്</b> വെസ്റ്റ്ഹിൽ പ്രാദേശിക
-                        സഭയിലെ വിനോദ് കുമാർ അർഹനായിരിക്കുന്നു.
-                        <br /><br />
-                        വിനോദ് കുമാറിനും കുടുംബത്തിനും അഭിനന്ദനങ്ങൾ !
+                    <p>
+                    <h4>വനിതാവേദി, എറണാകുളം</h4>
                     </p>
-                    <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/h4ls5PGPVVc">
+                </div>
+                <div class="col-lg-6 py-3 px-5 bg-warning">
+                    <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/L7SaOo7TFSQ">
                     </iframe>
+                    <p>
+                    <h4>ഗോപിക സുരേഷ്, പെരുമ്പാവൂർ</h4>
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3 px-5 bg-warning">
+                    <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/2Vswf0RpUmA">
+                    </iframe>
+                    <p>
+                    <h4>യുവവേദി, പെരുമ്പാവൂർ</h4>
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3 px-5 bg-warning">
+                    <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/5xfqT7C65us">
+                    </iframe>
+                    <p>
+                    <h4>അനൂപ് ഉണ്ണി, ചോറ്റാനിക്കര</h4>
+                    </p>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-lg-12 py-5 px-5 bg-warning">
+                    <p class="text-dark fs-4 fw-normal mb-4">
+                        ഈ മത്സരത്തിൽ പങ്കെടുക്കുവാനായി, മനോഹരമായ റീലുകൾ അയച്ചുതന്ന ഓരോരുത്തരെയും അഭിനന്ദിക്കുകയും
+                        അതോടൊപ്പം തന്നെ ഹൃദയംഗമമായ നന്ദിയും രേഖപ്പെടുത്തുന്നു.</p>
                 </div>
             </div>
         </div>
-        <div class="row g-0">
-            <div class="col-lg-12 pt-6 px-5 bg-warning">
-                <div class="testimonial-item">
-                    <h1 class="display-5 mb-4">Consolation prize</h1>
-                    <p class="text-dark fs-4 fw-normal mb-4"><i
-                            class="fa fa-quote-left text-dark me-3"></i>മത്സരത്തിനായി അയച്ചുതന്ന മറ്റു റീലുകൾ ചുവടെ
-                        ചേർക്കുന്നു.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row g-0">
-            <div class="col-lg-6 py-3 px-5 bg-warning">
-                <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/PazoN-WSjDU">
-                </iframe>
-                <p><h4>വനിതാവേദി, എറണാകുളം</h4></p>
-            </div>
-            <div class="col-lg-6 py-3 px-5 bg-warning">
-                <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/L7SaOo7TFSQ">
-                </iframe>
-                <p><h4>ഗോപിക സുരേഷ്, പെരുമ്പാവൂർ</h4></p>
-            </div>
-            <div class="col-lg-6 py-3 px-5 bg-warning">
-                <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/2Vswf0RpUmA">
-                </iframe>
-                <p><h4>യുവവേദി, പെരുമ്പാവൂർ</h4></p>
-            </div>
-            <div class="col-lg-6 py-3 px-5 bg-warning">
-                <iframe class="w-auto w-lg-550" height="315" src="https://www.youtube.com/embed/5xfqT7C65us">
-                </iframe>
-                <p><h4>അനൂപ് ഉണ്ണി, ചോറ്റാനിക്കര</h4></p>
-            </div>
-        </div>
-        <div class="row g-0">
-            <div class="col-lg-12 py-5 px-5 bg-warning">
-                <p class="text-dark fs-4 fw-normal mb-4">
-                    ഈ മത്സരത്തിൽ പങ്കെടുക്കുവാനായി, മനോഹരമായ റീലുകൾ അയച്ചുതന്ന ഓരോരുത്തരെയും അഭിനന്ദിക്കുകയും അതോടൊപ്പം തന്നെ ഹൃദയംഗമമായ നന്ദിയും രേഖപ്പെടുത്തുന്നു.</p>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
+        <!-- Testimonial End -->
 
 
-    <!-- Footer Start -->
-    <div id="footer-container"></div>
-    <!-- Footer End -->
+        <!-- Footer Start -->
+        <div id="footer-container"></div>
+        <!-- Footer End -->
 
-    </body>
+</body>
 
 </html>
