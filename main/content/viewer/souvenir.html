@@ -204,14 +204,6 @@
             </div>
 
             <!-- Optional: Add a dropdown to select different PDFs -->
-            <div class="pdf-selector">
-                <label for="pdfSelect">Document:</label>
-                <select id="pdfSelect" onchange="loadSelectedPDF(this.value)">
-                    <option value="document1.pdf">Document 1</option>
-                    <option value="document2.pdf">Document 2</option>
-                    <option value="subfolder/document3.pdf">Document 3</option>
-                </select>
-            </div>
         </div>
 
         <div class="viewer-container" id="viewerContainer">
@@ -229,7 +221,7 @@
 
         // Configuration - Set your static PDF path here
         const PDF_BASE_PATH = '/downloads'; // Change this to your PDF folder path
-        const DEFAULT_PDF = '/google-file-system.pdf'; // Default PDF file to load
+        const DEFAULT_PDF = '/prayanam.pdf'; // Default PDF file to load
 
         let pdfDoc = null;
         let currentPage = 1;
@@ -426,14 +418,6 @@
         const pdfParam = urlParams.get('pdf');
         if (pdfParam) {
             loadPDFFromPath(pdfParam);
-            // Update dropdown if the PDF is in the list
-            const selectElement = document.getElementById('pdfSelect');
-            for (let option of selectElement.options) {
-                if (option.value === pdfParam) {
-                    selectElement.value = pdfParam;
-                    break;
-                }
-            }
         }
     </script>
 </body>
