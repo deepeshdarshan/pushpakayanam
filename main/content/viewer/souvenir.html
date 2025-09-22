@@ -2,9 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Viewer with PDF.js</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ" name="keywords">
+    <meta content="57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" name="description">
+    <meta property="og:title" content="Prayanam (Souvenir)" />
+    <meta property="og:description"
+        content="പുഷ്പകായനം 2025, പുതുവഴികളിലൂടെ | 57-ാം ദേശീയ സമ്മേളനം | ശ്രീ പുഷ്പകബ്രാഹ്മണ സേവാ സംഘം | എറണാകുളം" />
+    <meta property="og:image" content="https://pushpakayanam.com/img/logo.png" />
+    <meta property="og:url" content="https://pushpakayanam.com/main/content/viewer/souvenir.html" />
+    <meta property="og:type" content="website" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         * {
@@ -201,6 +207,7 @@
                     <option value="3">300%</option>
                 </select>
                 <button onclick="zoomIn()">Zoom In</button>
+                <button onclick="goToHomepage()">Go to Homepage</button>
             </div>
 
             <!-- Optional: Add a dropdown to select different PDFs -->
@@ -210,7 +217,7 @@
             <div class="page-wrapper" id="pageWrapper">
                 <canvas id="pdfCanvas"></canvas>
             </div>
-            <div class="loading" id="loading" style="display: none;">Loading...</div>
+            <div class="loading" id="loading" style="display: none;">Loading souvenir, please wait...</div>
             <div class="error-message" id="errorMessage"></div>
         </div>
     </div>
@@ -418,6 +425,10 @@
         const pdfParam = urlParams.get('pdf');
         if (pdfParam) {
             loadPDFFromPath(pdfParam);
+        }
+
+        function goToHomepage() {
+            window.location.href = "https://www.pushpakayanam.com";
         }
     </script>
 </body>
