@@ -263,6 +263,14 @@ const pageData = {
       { name: "Shirt/Saree Order Form", href: "#" },
     ],
   },
+  lucky_draw: {
+    title: "Lucky Draw Coupon Winners",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Announcements", href: "/main/content/announcements.html" },
+      { name: "Lucky Draw", href: "#" },
+    ],
+  },
 };
 
 const metas = [
