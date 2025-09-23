@@ -271,6 +271,78 @@ const pageData = {
       { name: "Lucky Draw", href: "#" },
     ],
   },
+  balolsavam_gallery: {
+    title: "ബാലോത്സവം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "ബാലോത്സവം", href: "#" },
+    ],
+  },
+  flag_hoisting_gallery: {
+    title: "ധ്വജാരോഹണം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "ധ്വജാരോഹണം", href: "#" },
+    ],
+  },
+  flag_lowering_gallery: {
+    title: "ധ്വജാവരോഹണം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "ധ്വജാവരോഹണം", href: "#" },
+    ],
+  },
+  kalasandhya_gallery: {
+    title: "കലാസന്ധ്യ",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "കലാസന്ധ്യ", href: "#" },
+    ],
+  },
+  misc_gallery: {
+    title: "Miscellaneous",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "Miscellaneous", href: "#" },
+    ],
+  },
+  team_gallery: {
+    title: "ടീം പുഷ്പകായനം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "ടീം പുഷ്പകായനം", href: "#" },
+    ],
+  },
+  prathinidhi_sammelanam_gallery: {
+    title: "പ്രതിനിധി സമ്മേളനം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "പ്രതിനിധി സമ്മേളനം", href: "#" },
+    ],
+  },
+  udghadana_sammelanam_gallery: {
+    title: "ഉദ്ഘാടന സമ്മേളനം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "ഉദ്ഘാടന സമ്മേളനം", href: "#" },
+    ],
+  },
+  samapana_sammelanam_gallery: {
+    title: "സമാപന സമ്മേളനം",
+    breadcrumbs: [
+      { name: "Home", href: "/index.html" },
+      { name: "Gallery", href: "/main/gallery/photos.html" },
+      { name: "സമാപന സമ്മേളനം", href: "#" },
+    ],
+  },
 };
 
 const metas = [
