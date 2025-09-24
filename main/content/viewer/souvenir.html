@@ -181,22 +181,23 @@
             border-radius: 4px;
             display: none;
         }
+
+        @media (max-width: 768px) {
+
+            #zoomOut,
+            #zoomIn,
+            #zoomSelect {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="pdf-container">
         <div class="toolbar">
-            <button id="prevPage" onclick="previousPage()">← Previous</button>
-            <button id="nextPage" onclick="nextPage()">Next →</button>
-
-            <div class="page-info">
-                <input type="number" id="pageNum" min="1" onchange="goToPage(this.value)">
-                <span> / <span id="totalPages">0</span></span>
-            </div>
-
             <div class="zoom-controls">
-                <button onclick="zoomOut()">Zoom Out</button>
+                <button id="zoomOut" onclick="zoomOut()">Zoom Out</button>
                 <select id="zoomSelect" onchange="setZoom(this.value)">
                     <option value="0.5">50%</option>
                     <option value="0.75">75%</option>
@@ -206,7 +207,14 @@
                     <option value="2">200%</option>
                     <option value="3">300%</option>
                 </select>
-                <button onclick="zoomIn()">Zoom In</button>
+                <button id="zoomIn" onclick="zoomIn()">Zoom In</button>
+                <button id="prevPage" onclick="previousPage()">← Previous</button>
+                <button id="nextPage" onclick="nextPage()">Next →</button>
+
+                <div class="page-info">
+                    <input type="number" id="pageNum" min="1" onchange="goToPage(this.value)">
+                    <span> / <span id="totalPages">0</span></span>
+                </div>
                 <button onclick="goToHomepage()">Go to Homepage</button>
             </div>
 
